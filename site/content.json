@@ -1,0 +1,157 @@
+{
+    "hero": {
+        "badge": "New Experience",
+        "heading": "Simplify workinf force Operations with Smart Rostering, Compliance & Reporting Tools",
+        "subheading": "Manage teams, schedules, compliance, and audits—faster, smarter, all in one place.",
+        "ctaLabel": "Book a Demo",
+        "statNumber": "50+",
+        "statLabel": "Clients Secured",
+        "image": "images/img_69d9d4c483575.jpeg"
+    },
+    "features": {
+        "cards": [
+            {
+                "title": "Unified Dashboard",
+                "description": "Access staffing, compliance, incidents, and performance in one powerful, intuitive dashboard."
+            },
+            {
+                "title": "Smart Rostering & Compliance",
+                "description": "Automate complex scheduling with intelligent rostering that considers availability and certifications."
+            },
+            {
+                "title": "Reports, Audits & Communication",
+                "description": "Track labor usage, log incidents, and keep your team informed—all from one platform."
+            }
+        ]
+    },
+    "capabilities": {
+        "heading": "Unlock Advanced Capabilities",
+        "subheading": "Take your workforce management beyond the basics",
+        "cards": [
+            {
+                "title": "Smart Alerts",
+                "description": "Proactive flagging of issues."
+            },
+            {
+                "title": "Seamless Integrations",
+                "description": "Connect with HR & payroll."
+            },
+            {
+                "title": "Automated Reporting",
+                "description": "Real-time insights delivered."
+            },
+            {
+                "title": "Financial Forecasting",
+                "description": "Predict labor costs accurately."
+            }
+        ],
+        "stats": [
+            {
+                "number": "500+",
+                "label": "Worksites Managed"
+            },
+            {
+                "number": "8K+",
+                "label": "Active Users"
+            },
+            {
+                "number": "120K+",
+                "label": "Shifts per Month"
+            },
+            {
+                "number": "50+",
+                "label": "Clients Secured"
+            }
+        ]
+    },
+    "benefits": {
+        "heading": "Why You'll Love Our Platform",
+        "subheading": "Full Control, Zero Stress",
+        "description": "nWorks brings everything into one smart, automated hub—giving you full control over workforce performance, compliance, and communication.",
+        "image": "",
+        "items": [
+            {
+                "text": "Live Workforce Insights"
+            },
+            {
+                "text": "Automated Compliance & Staff Management"
+            },
+            {
+                "text": "Built-in Chat Groups"
+            }
+        ]
+    },
+    "testimonials": [
+        {
+            "quote": "nWorks changed the way we handle scheduling. It's truly revolutionary.",
+            "name": "Finnian Graves",
+            "role": "Digital Marketing Strategist"
+        },
+        {
+            "quote": "nWorks transformed how we manage our workforce. Incredible!",
+            "name": "Client 2",
+            "role": "Operations Manager"
+        },
+        {
+            "quote": "Our compliance tracking is now automated and foolproof.",
+            "name": "Client 3",
+            "role": "HR Director"
+        }
+    ],
+    "faq": [
+        {
+            "question": "How does nWorks simplify workforce scheduling?",
+            "answer": "nWorks uses intelligent rostering that considers staff availability, certifications, and legal compliance to automate complex scheduling while optimizing coverage."
+        },
+        {
+            "question": "Can nWorks help with compliance tracking?",
+            "answer": "Yes! nWorks provides automated compliance tracking with alerts for document expiry and role-specific access controls to ensure all staff meet requirements."
+        },
+        {
+            "question": "Does nWorks integrate with our existing systems?",
+            "answer": "Absolutely. nWorks offers seamless integrations with HR systems, payroll platforms, and compliance tools to streamline workflows across your organization."
+        },
+        {
+            "question": "Is there a trial available?",
+            "answer": "Yes, we offer a demo so you can experience how nWorks simplifies scheduling, compliance, and reporting before making any commitment."
+        }
+    ],
+    "cta": {
+        "heading": "Ready to Transform Workforce Management?",
+        "description": "Experience how nWorks simplifies scheduling, compliance, and service delivery—bringing clarity and control to your operations.",
+        "ctaLabel": "Book a Demo"
+    },
+    "footer": {
+        "email": "nworks@on5.io",
+        "tagline": "Create profiles, connect with friends, or build networks & community.",
+        "copyright": "© 2024 nWorks by On5.io. All Rights Reserved.",
+        "links": [
+            {
+                "label": "Overview",
+                "href": "#"
+            },
+            {
+                "label": "Community",
+                "href": "#"
+            },
+            {
+                "label": "Features",
+                "href": "#features"
+            },
+            {
+                "label": "FAQs",
+                "href": "#faq"
+            },
+            {
+                "label": "Getting Started",
+                "href": "#"
+            }
+        ],
+        "social": {
+            "instagram": "#",
+            "twitter": "#",
+            "facebook": "#",
+            "linkedin": "#"
+        }
+    }
+}

@@ -1,0 +1,48 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build outputs
+dist/
+.next/
+.astro/
+out/
+build/
+
+# Turbo
+.turbo/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Data volumes (infra)
+minio-data/
+postgres-data/
+mailpit-data/
+
+# Temp
+tmp/
+coverage/
+
+# Uploaded images (large binary files — don't commit)
+site/images/
+
+# Stitch source exports (large HTML reference files)
+Downloads/
