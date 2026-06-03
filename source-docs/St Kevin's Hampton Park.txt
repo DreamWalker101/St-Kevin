@@ -1,0 +1,1342 @@
+﻿St Kevin’s School, Hampton Park
+(Task List and Status) 
+        
+WEBSITE LINK (On staging server- not live): https://dev.on5.io/st-kevins/home/
+
+
+CONTENT:
+Task tracker (shared with Jason Micallef (principal), St Kevin’s Hampton Park)        2
+TIMELINE (Actioned By)        2
+Homepage Page        3
+About Us        6
+Learning With Purpose        11
+Community        13
+Enrolments        15
+Contact Us        16
+Policies        18
+Photos Link        19
+VIDEOS Link        19
+HOME PAGE        19
+ABOUT US        20
+ABOUT US        21
+COMMUNITY        21
+ENROLMENTS        22
+CONTACTS        22
+POLICIES        23
+
+
+________________
+
+
+
+
+Task tracker (shared with Jason Micallef (principal), St Kevin’s Hampton Park)
+	SECTION
+	Title
+	Comment
+	Overall Status
+	Due Date
+	TIMELINE (Actioned By)
+	
+
+	
+
+	
+
+	
+
+	nForma & St Kevins
+	Project kickstart and briefing - discussions on website content, lock in shoot date, and project briefing
+	
+
+	Completed
+	Tues 3rd March
+	St Kevins
+	St Kevins to send school colours, logo assets etc.
+	
+
+	Completed
+	Fri 6th Mar
+	St Kevins
+	Website structure/tabs finalised 
+	
+
+	Completed
+	Fri 20th Mar
+	nForma Team
+	Rollout of initial 2 mockup pages with placeholder content based on structure/tabs 
+	
+
+	Completed
+	Fri 27th Mar
+	St Kevins
+	Feedback/approval on 2 mockup pages 
+	
+
+	In progress
+	Fri 10th Apr
+	St Kevins
+	Copy writing for all website pages and content sections due 
+	
+
+	Not started
+	
+
+	nForma & St Kevins
+	360 tour and photography shoot date 
+	
+
+	Completed
+	Tues 13th Mar
+	St Kevins
+	Staging site V1 complete - all content/imagery/360 tour added 
+	
+
+	Not started
+	
+
+	St Kevins
+	Changes to staging site V1 due 
+	
+
+	Not started
+	
+
+	nForma Team
+	Staging site V2 complete with review/feedback implemented 
+	
+
+	Not started
+	
+
+	nForma Team
+	Changes implemented to staging site V2 due 
+	
+
+	Not started
+	
+
+	St Kevins
+	Finalise and approve the staging site due 
+	
+
+	Not started
+	
+
+	nForma Team
+	Website Go Live 
+	
+
+	Not started
+	
+
+	nForma & St Kevins
+	Handover and wordpress training 
+	
+
+	Not started
+	
+
+	Homepage Page
+	
+
+	
+
+	
+
+	
+
+	HOMEPAGE BANNER
+	
+
+	Top banner adjustment. Position St Kevin’s logo to the centre. Include search bar on right.
+	Back to nForma
+	Back to nForma
+	Arrival
+	COPY
+	
+
+	Back to nForma
+	Back to nForma
+	
+
+	Full-screen video of the school.
+
+
+Children arriving
+Teachers greeting
+Morning light in classrooms
+Students learning
+
+
+Text: Welcome to St Kevin’s
+Small line underneath: A community where every child is known, supported and inspired to flourish.
+	Video to come once link is provided.
+	Back to nForma
+	Back to nForma
+	Hamburger menu
+	About us
+Learning
+Community
+Enrolments
+Contact
+	Still to be created
+	Back to nForma
+	Back to nForma
+	MACS
+	MACS logo linked to MACS Website (not dominating - just like the sustainability stats link on Green School homepage))
+	MACS Logo needs to be repositioned to bottom left side of video as an overlay.
+	Back to nForma
+	Back to nForma
+	Quotes
+	“St Kevin’s welcomed my son without judgement, only genuine care and support.”
+Julie M
+
+
+“St Kevin’s is more than a school for our family, it is our extended family.”
+Tash
+
+
+“Thanks to the nurturing environment and dedicated teachers at St Kevin’s, my once very shy daughter has grown into a confident child.”
+Karina Rogers
+
+
+“What we appreciate most about St Kevin’s is its diversity and the way the school brings families together, creating a strong sense of belonging.”
+Shanelle Fairweather
+
+
+“Kindness and love are everywhere at St Kevin’s. You see it when you’re learning, when you’re playing, in church and in the hall.”
+Blaze (Grade 3)
+
+
+“St Kevin’s is a welcoming school with caring teachers and a strong community that supports every child.”
+Koreti Solo Sakopo
+	Use the highlighted quotes and position directly under intro video. Display 1 quote at a time and use large text, cycling through at 6 second intervals
+	Back to nForma
+	Back to nForma
+	Welcome
+	COPY
+	
+
+	Not started
+	Not started
+	
+
+	Large feature photo (nForma_StKevinsPrimary_118A9364)
+
+
+Text overlay (positioned on the sand - bottom of image)
+Welcome to St Kevin’s
+“A community where every child is known, supported and inspired to flourish”
+	Note reposition of Welcome message to underneath quotes.
+	Back to nForma
+	Back to nForma
+	Belonging
+	COPY
+	
+
+	Not started
+	Not started
+	
+
+	
+
+Large photo of students together. 
+Heading: Belonging
+Text: Belonging sits at the heart of life at St Kevin’s. When children feel known, safe and valued, they grow in confidence, curiosity and courage to learn.
+Text: Every child matters here.
+	nForma_StKevinsPrimary_118B0054
+Make circular image larger than screen size (to attract scrolling)
+
+
+Incorporate branding elements as flourishes.
+
+
+Experiment with serif fonts, use script for heading.
+	Back to nForma
+	Back to nForma
+	Learning with purpose
+	COPY
+	
+
+	Completed
+	Completed
+	
+
+	Large photo or video of learning in action.
+Heading: Learning with purpose
+Text: Learning at St Kevin’s is both structured and meaningful, grounded in evidence-informed teaching and rich opportunities for inquiry. We aim not simply to teach for the next test, but to form learners who think deeply and engage with the world around them.
+Text: Clear teaching. Curious minds. Deep thinking.
+	nForma_StKevinsPrimary_118A9406
+Make circular image larger than screen size (to attract scrolling)
+
+
+Incorporate branding elements as flourishes.
+
+
+Experiment with serif fonts, use script for heading.
+
+
+	Not started
+	Not started
+	Faith
+	COPY
+	
+
+	Completed
+	Completed
+	
+
+	Large image or video of prayer, liturgy or reflection.
+Heading: Faith in action
+Text: Our Catholic faith shapes the spirit of our school and the way we care for one another. Through prayer, service and daily action, students learn to live the Gospel values of respect, compassion and love.
+Text: Guided by Christ in all we do.
+	nForma_StKevinsPrimary_118A9562
+Make circular image larger than screen size (to attract scrolling)
+
+
+Incorporate branding elements as flourishes.
+
+
+	Back to nForma
+	Back to nForma
+	Community
+	COPY
+	
+
+	Completed
+	Completed
+	
+
+	Large images or video of families, events, celebration.
+Heading: Growing together
+Text: St Kevin’s is a welcoming and diverse community where families, staff and students work together. It is this partnership that creates the warmth, trust and shared purpose that define our school.
+Text: Together we shape the future.
+	nForma_StKevinsPrimary_118A9787
+Make circular image larger than screen size (to attract scrolling)
+
+
+Incorporate branding elements as flourishes.
+
+
+	Back to nForma
+	Back to nForma
+	The St Kevin's Effect
+	COPY
+	
+
+	Completed
+	Completed
+	
+
+	Photo
+Heading: The St Kevin's Effect
+Text: Over time, something special happens here. Through strong relationships, high expectations and genuine care, children grow into confident and compassionate young people.
+	nForma_StKevinsPrimary_118A9356
+Make circular image larger than screen size (to attract scrolling)
+
+
+Incorporate branding elements as flourishes.
+
+
+	Completed
+	Completed
+	Enrol
+	COPY
+	
+
+	Completed
+	Completed
+	
+
+	Photo 
+Heading: Enrolments / Visit us
+Text: The best way to experience St Kevin’s is to visit and see the community in action. We warmly invite you to come and discover what makes our school such a special place to belong and learn.
+Text: Come and see for yourself
+Buttons: Enquire, Book a tour
+	nForma_StKevinsPrimary_118B0120
+
+
+Make circular image larger than screen size (to attract scrolling)
+
+
+Incorporate branding elements as flourishes.
+
+
+	Completed
+	Completed
+	Quick Links
+	Placed within the footer, we need links to the following:
+
+
+Quick Links
+Contact
+Enrolments
+School Tours
+Newsletter
+Annual Report
+Policies & Compliance
+	
+
+	Completed
+	Completed
+	About Us
+	
+
+	
+
+	
+
+	
+
+	About St Kevin’s
+	St Kevin’s is a Christ-centred Catholic primary school where every child is known, valued and supported to flourish. In our diverse Hampton Park community, faith, learning and belonging come together to shape young people who grow in confidence, compassion and purpose.
+	
+
+	Completed
+	Completed
+	Our Story
+	St Kevin’s has grown alongside the families of Hampton Park since 1988, becoming a vibrant and culturally rich community where many traditions and languages are celebrated. Our story continues to be shaped by the partnership between students, families, parish and staff who share a commitment to learning and faith.
+	
+
+	Completed
+	Completed
+	Our Mission
+	We believe education is sacred work. Our mission is to nurture minds, hearts and spirits so that every child can grow into a person who lives with purpose, compassion and responsibility.
+	
+
+	Completed
+	Completed
+	Our Vision
+	At St Kevin’s, learning prepares children not just for the next stage of schooling, but for life. We aim to develop curious, confident and compassionate learners who will contribute positively to their communities and the wider world.
+	
+
+	Completed
+	Completed
+	Our Principal
+	Welcome to St Kevin’s. Our school is a place where children are supported to grow academically, socially and spiritually, surrounded by a community that believes deeply in their potential.
+What I value most about our school is the way people care for one another. When families, teachers and students work together with trust and purpose, remarkable things happen.
+- Include a 60 - 90 second video of the Principal delivering a welcome message.
+	
+
+	Completed
+	Completed
+	Our People
+	Our staff share a deep commitment to the growth and wellbeing of every child. Working together across Foundation (Prep), Junior (Gr 1 & 2), Middle (Gr 3 & 4) and Senior levels (Gr 5 & 6), our teachers and support staff create learning environments where students feel safe, challenged and inspired.
+
+
+Foundation Team Photo or video of team smiling and waving
+Our Foundation team welcomes children into their first year of school with warmth, patience and a deep understanding of early learning. They create safe and joyful classrooms where curiosity, confidence and independence begin to grow.
+
+
+Things you might hear them say:
+“Let’s try that again together.”
+“You can do hard things.”
+“Who would like to share their thinking?”
+
+
+Photo idea: teacher kneeling beside a child writing their first sentence.
+Caption under image: First stories. First friendships. First days of school.
+
+
+Junior Team (Years 1 & 2) Photo or video of team smiling and waving
+Our Junior team helps students build strong foundations in literacy, numeracy and learning habits that will carry them through their schooling. These classrooms are full of questions, discovery and the excitement that comes when children begin to realise what they are capable of.
+
+
+Things you might hear them say:
+“Tell me how you figured that out.”
+“That’s a great strategy.”
+“Who noticed something interesting?”
+
+
+Photo idea: children working together on a maths task
+Caption under image: The moment when learning starts to click.
+
+
+Middle Team (Years 3 & 4) Photo or video of team smiling and waving
+The Middle team supports students as their confidence and independence grow. Learning becomes deeper and more collaborative as students explore ideas, ask thoughtful questions and begin to see themselves as capable learners.
+
+
+Things you might hear them say:
+“Convince me.”
+“What makes you think that?”
+“Let’s dig a little deeper.”
+
+
+Photo idea: students discussing ideas around a table
+Caption under image: Questions get bigger. Thinking gets deeper.
+
+
+Senior Team (Years 5 & 6) Photo or video of team smiling and waving
+Our Senior team prepares students for the transition to secondary school while nurturing leadership, responsibility and strong learning habits. Students are challenged to think critically, take ownership of their learning and contribute positively to the school community.
+
+
+Things you might hear them say:
+“Show me your reasoning.”
+“What could you try next?”
+“How can we make this even better?”
+
+
+Photo idea: students presenting or leading something
+Caption under image: Growing into confident learners and leaders.
+
+
+Specialist Teachers Photo or video of team smiling and waving
+Our Specialist teachers bring creativity, movement and new ways of thinking into the learning experience. Through Physical Education, Performing Arts, Visual Arts, STEM, Languages and Critical & Creative Thinking, students discover new talents, interests and ways to express themselves.
+
+
+Things you might hear them say:
+“Let’s give it a go.”
+“There’s more than one way to solve that.”
+“Who’s ready to perform, build, create or explore?”
+
+
+Photo idea: students performing, painting, building or playing sport
+Caption under image: Creativity, movement and discovery.
+
+
+Support Staff Photo or video of team smiling and waving
+Behind every great school is a team of people working together to support students and families. Our leaders, coaches, administration team, library staff and intervention specialists help ensure every child is known, supported and able to thrive.
+
+
+Things you might hear them say:
+“How can I help?”
+“Let’s work this out together.”
+“Everyone belongs here.”
+
+
+Photo idea: admin welcoming families or staff supporting a student
+Caption under image: The people who make everything work.
+
+
+	
+
+	Completed
+	Completed
+	Our Parish Connection
+	St Kevin’s Primary School is part of the St Kevin's Parish community. Our close partnership with the parish supports the faith formation of our students and connects school life with the wider spiritual life of the community.
+	
+
+	Completed
+	Completed
+	Learning With Purpose
+	
+
+	
+
+	
+
+	
+
+	Learning with Purpose
+	Hero Section: Full width video or slow moving footage.
+
+
+Possible visuals
+• teacher working with a small group
+• students collaborating
+• moments of curiosity and discovery
+
+
+Text overlay: Learning with Purpose.
+
+
+Text block: Learning at St Kevin’s shapes both the mind and the heart.
+It is about forming young people who are curious, capable and ready to contribute to the world around them.
+	
+
+	Not started
+	Not started
+	Faith and Formation
+	Calm images or short video loop.
+Examples: prayer space, Mass, quiet classroom prayer, service learning.
+
+
+Faith shapes the way we see the world.
+Through prayer, Religious Education and service, students grow in their relationship with God and in their understanding of what it means to live with compassion, justice and hope.
+	
+
+	Not started
+	Not started
+	Belonging and Wellbeing
+	Image showing authentic relationships.
+Examples: Teacher laughing with students, group learning moment.
+
+
+Every child deserves to feel known.
+Strong relationships create the foundation for learning.
+When students feel safe and valued, confidence grows and the joy of learning begins to flourish.
+	
+
+	Not started
+	Not started
+	Teaching that Inspires
+	More energetic image.
+Examples: Students engaged in thinking, questioning, creating.
+
+
+Great teaching sparks curiosity.
+Our teachers combine clear instruction with opportunities to question, explore and create.
+Learning is purposeful, engaging and designed to build confidence and a love of discovery.
+	
+
+	Not started
+	Not started
+	Learning for Every Child
+	Image showing differentiation.
+Examples: Teacher supporting a student or small group.
+
+
+Every learner is different. Every learner matters.
+Our teachers support and challenge each student based on where they are in their learning journey.
+This ensures every child can grow with confidence and experience success.
+	
+
+	Not started
+	Not started
+	Learning Beyond the Classroom
+	Image or video of excursions, STEM, garden, projects.
+
+
+Education shaped by experience.
+Learning extends beyond the classroom through projects, excursions, service and creative opportunities.
+Students discover the excitement of applying their learning in the real world.
+	
+
+	Not started
+	Not started
+	Community
+	
+
+	
+
+	
+
+	
+
+	Community
+	St Kevin’s is more than a school.
+It is a community where families, staff and students walk together in support, friendship and faith.
+	
+
+	Not started
+	Not started
+	A Welcoming Community
+	Everyone is welcome here.
+Families from many cultures and backgrounds form the heart of our school community. Together we create a place where every family feels a sense of belonging.
+
+
+Possible imagery
+• students arriving at school with families
+• a teacher greeting children at the gate
+• a mix of cultures interacting naturally
+• Prep students arriving with parents on their first days
+	
+
+	Not started
+	Not started
+	Partnerships with Families
+	Learning works best when school and home walk together.
+We value strong relationships with families and believe open communication and partnership help every child flourish.
+
+
+Possible imagery
+• parent helpers in classrooms
+• parents reading with small groups
+• family members attending learning expos or open classrooms
+• a parent chatting with a teacher after school
+	
+
+	Not started
+	Not started
+	Celebrating Together
+	Community grows through shared moments.
+School events, celebrations and gatherings bring families together and strengthen the sense of connection across our community.
+
+
+Possible imagery
+• House Colours Day
+• Christmas Carols / Carols by Sunlight
+• school performances
+• whole school celebrations in the yard or hall
+• students and families enjoying the Prep Welcome Picnic
+	
+
+	Not started
+	Not started
+	Faith in Community
+	Our faith brings us together.
+Masses, prayer and parish celebrations are important moments where our community gathers to reflect, celebrate and grow in faith.
+
+
+Possible imagery
+• school Mass with students and families
+• Ash Wednesday liturgy
+• prayer spaces
+• students participating in liturgy
+• parish-school events
+	
+
+	Not started
+	Not started
+	The St Kevin’s Spirit
+	Something special happens when people care for one another.
+The kindness, generosity and support shown within our community help create a place where children and families truly feel at home.
+
+
+Possible imagery
+• buddy program moments (older students helping younger students)
+• students supporting one another
+• charity or service activities
+• staff interacting warmly with students
+• community fundraising events
+	
+
+	Not started
+	Not started
+	Enrolments
+	
+
+	
+
+	
+
+	
+
+	Enrolments
+	Choosing a school is an important decision for every family.
+We would love to welcome you to St Kevin’s and help you discover what makes our community special.
+	
+
+	Not started
+	Not started
+	
+
+	Include a simple visual enrolment pathway, something like:
+Visit → Enquire → Enrol → Begin
+
+
+Could also include buttonlinks to each of the enquiry forms.
+	
+
+	Not started
+	Not started
+	Visit Us
+	The best way to experience St Kevin’s is to visit.
+Throughout the year we offer school tours, open days where families can see learning in action and explore our school.
+
+
+Upcoming Opportunities
+Open Days – March 18, April 1, April 29, May 13
+School Tours – Most Wednesdays at 9:30am
+
+
+Button: Book a School Tour
+(link to our booking form)
+	
+
+	Not started
+	Not started
+	Start the Conversation
+	
+
+If you would like to learn more about St Kevin’s, we invite you to get in touch.
+
+
+Our team is always happy to answer questions and provide further information about our school.
+
+
+Button: Enrolment Enquiry
+(Initial enquiry form)
+
+
+Button: Request a Prospectus
+(Information request form)
+	
+
+	Not started
+	Not started
+	The Enrolment Process
+	When you are ready to apply, you can complete our enrolment form online.
+
+
+Once submitted, our office team will guide you through the next steps of the enrolment process.
+
+
+Button: Begin Enrolment Application
+	
+
+	Not started
+	Not started
+	Transition to School
+	Starting school is an exciting milestone for every child.
+
+
+Our transition program, which runs across three mornings over three weeks in November, helps children become familiar with the school, meet their teachers and begin forming friendships before their first day.
+
+
+	
+
+	Not started
+	Not started
+	Every Child Known
+	At St Kevin’s every child is known, supported and encouraged to flourish. We look forward to welcoming new families into our community.
+	
+
+	Not started
+	Not started
+	Contact Us
+	
+
+	
+
+	
+
+	
+
+	
+
+	We would love to hear from you.
+Whether you have a question, would like to visit the school, or simply want to learn more about St Kevin’s, our team is here to help.
+	
+
+	Not started
+	Not started
+	Get in Touch
+	Phone
+(03) 9709 8600
+
+
+Email
+administration@skhamptonpark.catholic.edu.au
+
+
+Address
+120 Hallam Rd
+Hampton Park VIC 3976
+
+
+Include Google Maps location
+	
+
+	Not started
+	Not started
+	School Office Hours
+	Our school office is open during the following hours.
+
+
+Monday to Friday
+8:00am – 4:00pm
+	
+
+	Not started
+	Not started
+	Send Us a Message
+	
+
+If you have a question or would like more information, you are welcome to contact us using the enquiry form.
+
+
+Button: General Enquiry Form
+	
+
+	Not started
+	Not started
+	Visit Our School
+	We always welcome families who would like to see St Kevin’s in action.
+
+
+School tours run throughout the year and provide the opportunity to explore our learning spaces and meet members of our community.
+
+
+Button: Book a School Tour
+	
+
+	Not started
+	Not started
+	Stay Connected
+	Follow along with life at St Kevin’s through our school communications and social media.
+
+
+(Icons linking to Facebook and Schoolzine Newsletter)
+	
+
+	Not started
+	Not started
+	
+
+	
+
+	
+
+	
+
+	
+
+	Policies
+	
+
+	
+
+	
+
+	
+
+	Policies & Compliance
+	School Policies
+
+
+St Kevin’s Primary School operates within the policies and governance frameworks of Melbourne Archdiocese Catholic Schools (MACS).
+The policies that guide our work in areas such as child safety, wellbeing and governance can be accessed below.
+
+
+We then need to embed the policies list that is maintained by Safesmart.
+	
+
+	Not started
+	Not started
+	
+
+	https://safesmartsolutions.com.au/portal/St%20Kevin's%20Primary%20School%20-%20Hampton%20Park/882a137f3d/policy
+	
+
+	Not started
+	Not started
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	Photo Link
+	
+
+	
+
+	
+
+	
+
+	
+
+	https://ggmhstudio.picflow.com/nForma-StKevinsPrimary
+	Filename now visible for each photo for school to to make reference (Steve 22/5/26)
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	VIDEO Link
+	
+
+	
+
+	
+
+	
+
+	
+
+	https://drive.google.com/drive/folders/1CNXk2oE5IwRBjh3dlKfGEUnkcyRVOlof?usp=sharing
+	Interviews are now available (Steve- 02/06/26)
+	Back to Hampton Pk
+	Not started
+	
+
+	
+
+	
+
+	Not started
+	Not started
+		
+
+	
+
+	
+
+	
+
+	HOME PAGE
+	
+
+	
+
+	
+
+	
+
+	
+
+	Arrival
+	text / image
+	NA
+	In progress
+	
+
+	Hamburger menu
+	links
+	NA
+	In progress
+	
+
+	MACS logo
+	link
+	NA
+	In progress
+	
+
+	Quotes
+	text and image
+	NA
+	In progress
+	
+
+	Belonging
+	text and image and video link
+	NA
+	In progress
+	
+
+	Learning with purpose
+	text and image and video link
+	NA
+	In progress
+	
+
+	Faith
+	text and image and video link
+	NA
+	In progress
+	
+
+	Community
+	text and image and video link
+	NA
+	In progress
+	
+
+	Th St Kevin's Effect
+	text and image and video link
+	NA
+	In progress
+	
+
+	Enrol
+	text and image
+	NA
+	In progress
+	
+
+	Quick links
+	text and image and link
+	NA
+	In progress
+	ABOUT US
+	
+
+	
+
+	
+
+	
+
+	About St Kevin's
+	
+
+	Text and image
+	NA
+	In progress
+	Our Story
+	
+
+	Text and image
+	NA
+	In progress
+	Our Mission
+	
+
+	Text and image
+	NA
+	In progress
+	Our Vision
+	
+
+	Text and image
+	NA
+	In progress
+	Our Principal
+	
+
+	Text and video
+	NA
+	In progress
+	Our People
+	Foundation Team
+	Text and video
+	NA
+	In progress
+	
+
+	Junior Team
+	Text and video
+	NA
+	In progress
+	
+
+	Middle Team
+	Text and video
+	NA
+	In progress
+	
+
+	Senior Team
+	Text and video
+	NA
+	In progress
+	
+
+	Specialist Teachers
+	Text and video
+	NA
+	In progress
+	
+
+	Support Staff
+	Text and video
+	NA
+	In progress
+	Our Parish Connection
+	
+
+	Text and image
+	NA
+	In progress
+	ABOUT US
+	
+
+	
+
+	
+
+	
+
+	Learning with purpose
+	
+
+	Text and video
+	Not started
+	In progress
+	Faith and formation
+	
+
+	Text and image
+	Not started
+	In progress
+	Belonging and wellbeing
+	
+
+	Text and image
+	Not started
+	In progress
+	Teaching that inspires
+	
+
+	Text and image
+	Not started
+	In progress
+	Learning for every child
+	
+
+	Text and image
+	Not started
+	In progress
+	Learning beyond the classroom
+	
+
+	Text and images
+	Not started
+	In progress
+	COMMUNITY
+	
+
+	
+
+	
+
+	
+
+	Community
+	
+
+	Text and video
+	Not started
+	In progress
+	A welcoming community
+	
+
+	Text and image
+	Not started
+	In progress
+	Partnership with families
+	
+
+	Text and image
+	Not started
+	In progress
+	Celebrating together
+	
+
+	Text and image
+	Not started
+	In progress
+	Faith in community
+	
+
+	Text and video
+	Not started
+	In progress
+	The St Kevin's Spirit
+	
+
+	Text and video
+	Not started
+	In progress
+	ENROLMENTS
+	
+
+	
+
+	
+
+	
+
+	ENROLMENTS
+	
+
+	Text and image
+	Not started
+	Not started
+	Visit us
+	
+
+	Text and Image and link
+	Not started
+	Not started
+	Start the Conversation
+	
+
+	Text and Image and link
+	Not started
+	Not started
+	The enrolment process
+	
+
+	Text and Image and link
+	Not started
+	Not started
+	Transition to school
+	
+
+	Text and image
+	Not started
+	Not started
+	Every child known
+	
+
+	Text and image
+	Not started
+	Not started
+	CONTACTS
+	
+
+	
+
+	
+
+	
+
+	Contact Us
+	
+
+	Text and Image
+	Not started
+	In progress
+	Get in touch
+	
+
+	Text and Image and Link
+	Not started
+	In progress
+	School Office Hours
+	
+
+	Text
+	Not started
+	In progress
+	Send us a message
+	
+
+	Text and Image and Link
+	Not started
+	In progress
+	Visit our school
+	
+
+	Text and Image and Link
+	Not started
+	In progress
+	Stay connected
+	
+
+	Text and Image and Link
+	Not started
+	In progress
+	POLICIES
+	
+
+	
+
+	
+
+	
+
+	Policies
+	
+
+	Links
+	Not started
+	In progress

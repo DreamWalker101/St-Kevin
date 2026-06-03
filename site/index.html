@@ -1,597 +1,349 @@
 <!DOCTYPE html>
-<html class="light" lang="en">
-    <head>
-        <meta charset="utf-8"/>
-        <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-        <title>nWorks - Connecting Beyond Boundaries</title>
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com" rel="preconnect"/>
-        <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-        <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;family=Inter:wght@100..900&amp;family=Space+Grotesk:wght@300..700&amp;display=swap" rel="stylesheet"/>
-        <!-- Icons -->
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-        <script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                "tertiary-fixed-dim": "#b1c5ff",
-                "on-error": "#ffffff",
-                "surface-tint": "#466800",
-                "on-background": "#1b1c1c",
-                "tertiary": "#1357c9",
-                "on-secondary-fixed-variant": "#474747",
-                "surface-container": "#f0eded",
-                "surface-bright": "#fbf9f8",
-                "surface-variant": "#e4e2e1",
-                "on-surface-variant": "#434938",
-                "primary-fixed-dim": "#a1d74a",
-                "on-secondary-fixed": "#1b1c1c",
-                "secondary-fixed-dim": "#c8c6c6",
-                "surface-container-low": "#f6f3f2",
-                "tertiary-fixed": "#dae2ff",
-                "primary-fixed": "#bcf464",
-                "on-error-container": "#93000a",
-                "inverse-surface": "#303030",
-                "surface-container-lowest": "#ffffff",
-                "error": "#ba1a1a",
-                "on-tertiary": "#ffffff",
-                "surface-dim": "#dcd9d9",
-                "outline": "#737a66",
-                "on-primary-fixed-variant": "#334f00",
-                "on-secondary-container": "#656464",
-                "surface": "#fbf9f8",
-                "on-tertiary-fixed": "#001947",
-                "inverse-primary": "#a1d74a",
-                "background": "#fbf9f8",
-                "on-tertiary-container": "#2562d4",
-                "tertiary-container": "#e2e8ff",
-                "surface-container-highest": "#e4e2e1",
-                "surface-container-high": "#eae8e7",
-                "on-primary-fixed": "#121f00",
-                "inverse-on-surface": "#f3f0f0",
-                "secondary-fixed": "#e4e2e1",
-                "secondary": "#5f5e5e",
-                "on-primary-container": "#4d7300",
-                "on-secondary": "#ffffff",
-                "on-primary": "#ffffff",
-                "on-surface": "#1b1c1c",
-                "primary-container": "#c2fa69",
-                "secondary-container": "#e4e2e1",
-                "primary": "#466800",
-                "outline-variant": "#c3c9b2",
-                "on-tertiary-fixed-variant": "#00419f",
-                "error-container": "#ffdad6"
-            },
-            "borderRadius": {
-                "DEFAULT": "1rem",
-                "lg": "2rem",
-                "xl": "3rem",
-                "full": "9999px"
-            },
-            "fontFamily": {
-                "headline": ["Plus Jakarta Sans"],
-                "body": ["Inter"],
-                "label": ["Space Grotesk"]
-            }
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>St Kevin's Primary School, Hampton Park</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-navy':    '#051E42',
+            'burgundy-red': '#8A2232',
+            'warm-cream':   '#FBF9F7',
+            'cloud-grey':   '#F4F6F8',
+            'border-mist':  '#E2E6EA',
+            'slate-text':   '#6B7280',
+            'navy-tint':    '#0A2D5C',
+            'red-soft':     '#F4E3E6',
           },
-        },
+          fontFamily: {
+            'montserrat': ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            'inter':      ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            'script':     ['Dancing Script', 'cursive'],
+          },
+          maxWidth: { 'content': '1200px' },
+          borderRadius: { 'card': '12px', 'image': '16px' },
+          boxShadow: { 'soft': '0 8px 24px rgba(0, 0, 0, 0.08)' },
+        }
       }
-    </script>
-        <style>.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; } .kinetic-oval { border-radius: 50% / 15%; } .footer-organic-shape { border-radius: 45% 45% 0 0 / 100% 100% 0 0; } .no-line-rule { border: none !important; } .tonal-transition-low { background-color: rgba(251, 249, 248, 0.8); } .back-to-top-btn { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; background-color: #A3E635;  /* lime-400 equivalent */ border-radius: 50%; position: absolute; right: 40px; bottom: 40px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); }</style>
-    </head>
-    <body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary-container">
-        <!-- Header / TopNavBar -->
-        <header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl no-line-rule tonal-transition-low">
-            <nav class="flex justify-between items-center px-10 py-6 max-w-[1440px] mx-auto">
-                <div class="text-3xl font-black tracking-tighter text-zinc-900 dark:text-white font-headline">nWorks</div>
-                <div class="hidden md:flex items-center gap-10">
-                    <a class="font-headline text-sm font-bold tracking-tight text-[#466800] border-b-2 border-[#C2FA69] pb-1" href="#features">Features</a>
-                    <a class="font-headline text-sm font-semibold tracking-tight text-zinc-600 hover:text-zinc-900 transition-all duration-300" href="#process">Process</a>
-                    <a class="font-headline text-sm font-semibold tracking-tight text-zinc-600 hover:text-zinc-900 transition-all duration-300" href="#benefits">Benefits</a>
-                    <a class="font-headline text-sm font-semibold tracking-tight text-zinc-600 hover:text-zinc-900 transition-all duration-300" href="#testimonials">Testimonials</a>
-                    <a class="font-headline text-sm font-semibold tracking-tight text-zinc-600 hover:text-zinc-900 transition-all duration-300" href="#faq">FAQ</a>
-                </div>
-                <button class="bg-primary-container text-on-primary-container px-8 py-3 rounded-full font-headline text-sm font-bold active:scale-95 transition-transform hover:opacity-80 transition-all duration-300">
-                    Let's Talksss
-</button>
-            </nav>
-        </header>
-        <main class="pt-32">
-            <!-- Hero Section -->
-            <section class="px-10 max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center overflow-visible">
-                <div class="relative z-10">
-                    <div class="inline-flex items-center gap-2 bg-secondary-container px-4 py-2 rounded-full mb-6">
-                        <span class="animate-pulse bg-primary h-2 rounded-full text-lime-400 w-2"></span>
-                        <span class="font-label text-xs font-bold uppercase tracking-widest text-secondary">New Experience</span>
-                    </div>
-                    <h1 id="hero-heading" class="!text-5xl font-black font-headline leading-[0.9] mb-8 text-violet-400 tracking-tighter md:text-8xl">Simplify Workforce Operations with Smart Rostering, Compliance & Reporting Tools</h1>
-                    <p id="hero-sub" class="text-xl text-secondary max-w-md mb-10 leading-relaxed">Manage teams, schedules, compliance, and audits—faster, smarter, all in one place.</p>
-                    <div class="flex items-center gap-6">
-                        <button id="hero-cta" class="bg-on-background text-surface rounded-full px-10 py-5 font-headline font-bold text-lg hover:scale-105 transition-transform">Book a Demo</button>
-                        <div class="flex -space-x-4">
-                            <div id="hero-stat-num" class="w-12 h-12 rounded-full border-4 border-background bg-primary-container flex items-center justify-center font-bold text-on-primary-container text-xs">50+</div>
-                            <span id="hero-stat-label" class="pl-8 font-label text-xs font-bold text-zinc-500 uppercase tracking-widest self-center">Clients Secured</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="relative">
-                    <!-- Kinetic Oval Images -->
-                    <div class="relative w-full aspect-square flex items-center justify-center">
-                        <div class="absolute inset-0 bg-primary-container kinetic-oval rotate-[-6deg] opacity-20"></div>
-                        <div class="relative z-10 w-[85%] aspect-[4/5] overflow-hidden rounded-[4rem] transform rotate-[3deg] shadow-2xl">
-                            <img id="hero-img" class="w-full h-full object-cover" data-alt="vibrant abstract digital interface design with flowing organic shapes and neon green accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUCjJDQFcc4QzZAzcKIFAPTdENKercvv_NhUSg8DRc-IFvO-sAOFeG_87Dt_5I3gInxgC_RqUZ4YldGsg08SEMFpGGF0vz1bILN7Bx25FPELIc8Nu_Ik9v5uNX-ke0KZHVSHQVNOBe20UCADMyFmmjc6h6SVrSQkKsERsvERcItVhIoZZI98DlQb9qaHLuZZbTjl5gcvVhIPtvesnICovNv_JEvWEpImvoTQ1b2bccYFlNtVY55b6uNHDJuz1EXy9EY0xl3fIKrqJk"/>
-                        </div>
-                        <!-- Overlapping Floating UI Elements -->
-                        <div class="absolute -left-10 bottom-20 bg-white p-6 rounded-xl shadow-xl w-64 transform -rotate-12 z-20">
-                            <div class="flex items-center gap-4 mb-4">
-                                <div class="w-10 h-10 rounded-full bg-tertiary-container flex items-center justify-center">
-                                    <span class="material-symbols-outlined text-tertiary">group</span>
-                                </div>
-                                <div>
-                                    <p class="text-[10px] font-label font-bold text-secondary uppercase">Community</p>
-                                    <p class="font-bold text-sm">Design Network</p>
-                                </div>
-                            </div>
-                            <div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
-                                <div class="h-full bg-primary w-3/4"></div>
-                            </div>
-                        </div>
-                        <div class="absolute -right-6 top-10 bg-primary-container p-4 rounded-full flex items-center gap-3 shadow-lg z-20 animate-bounce">
-                            <span class="material-symbols-outlined">trending_up</span>
-                            <span class="font-bold text-sm">+8% Growth</span>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Personalizing Experience -->
-            <section class="mt-40 px-10 max-w-[1440px] mx-auto">
-                <div class="bg-surface-container-low rounded-xl p-20 flex flex-col lg:flex-row gap-20 items-center overflow-hidden relative">
-                    <div class="w-full lg:w-1/2">
-                        <h2 class="!text-5xl font-black font-headline leading-tight mb-8 tracking-tighter md:text-6xl">From scheduling to audits,<br/><span class="text-primary italic">nWorks powers confident performance.</span></h2>
-                        <p class="text-lg text-secondary mb-12 leading-relaxed max-w-md">Simplify scheduling, compliance, reporting, and more with one seamless solution.<br/>nWorks brings every aspect of workforce management into a single, unified platform.</p>
-                        <div class="flex flex-wrap gap-4">
-                            <div class="px-6 py-3 bg-white rounded-full font-label text-sm font-bold shadow-sm">Smart Rostering</div>
-                            <div class="px-6 py-3 bg-white rounded-full font-label text-sm font-bold shadow-sm">Compliance Tracking</div>
-                            <div class="px-6 py-3 bg-white rounded-full font-label text-sm font-bold shadow-sm">Real-time Reports</div>
-                        </div>
-                    </div>
-                    <div class="w-full lg:w-1/2 relative">
-                        <div class="bg-white p-8 relative rounded-[3rem] shadow-2xl z-10">
-                            <div class="flex justify-between items-center mb-10">
-                                <div class="font-headline font-bold text-xl">My Feed</div>
-                                <span class="material-symbols-outlined text-secondary">more_horiz</span>
-                            </div>
-                            <div class="space-y-8">
-                                <div class="flex gap-4">
-                                    <div class="w-14 h-14 rounded-full bg-zinc-100 overflow-hidden flex-shrink-0">
-                                        <img class="w-full h-full object-cover" data-alt="portrait of a man with dark hair and a clean-shaven face" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzTpMrg1kX96SDb7uXkie3-23rxFZE6UbYZ9c566oW9T1aR1y5_ymAAk-JXeNPZja7xAfdfzxzqVT3hf0hZvduOyVjy4db5VRTfsFJsWJ_nm6K8y_91AlZFN2sA4rBvZnztmtUDhf2JwfgudQwTznc48Kvx8I56jTq357I0OaKwlNC1Pk0ugpwQqVe6u1XOuURd0JcvOHzuMjo0Ol7ezkV79Iwd3OC9u4pBqNNzUVD5I-w1ROLw7ulINLpYXycik5RUYsnKll8SBOs"/>
-                                    </div>
-                                    <div class="flex-1">
-                                        <div class="h-4 bg-zinc-100 rounded-full w-1/3 mb-3"></div>
-                                        <div class="h-20 bg-zinc-50 rounded-2xl w-full"></div>
-                                    </div>
-                                </div>
-                                <div class="flex gap-4">
-                                    <div class="w-14 h-14 rounded-full bg-zinc-100 overflow-hidden flex-shrink-0">
-                                        <img class="w-full h-full object-cover" data-alt="portrait of a woman with a natural look and neutral background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDs6On-lDEDvjqd-MITrE0IpsxXy3TSepAtmtfa_UO3Y3rkpkFxhnvpMpMcKfdWv3lk61Qf-UplHdF_ScjttQW8FDgB0h0rs7M_2-Ub030gM_Kxs0xSIkhS1Y8lffjqYvZGNG2DkGvb0seq_ShXkA6F4G520Oz6kt9CP3aJyU3Wcm4OQX3KosC-m6auBDdv9X1swrfww0kS_n_Rq0oAvW72Ps6rDAzC2mTJJ0A2zIoIkLw1iIMnRFMyu8JAppnlUXoTMXaspA7x4Niu"/>
-                                    </div>
-                                    <div class="flex-1">
-                                        <div class="h-4 bg-zinc-100 rounded-full w-1/4 mb-3"></div>
-                                        <div class="h-32 bg-zinc-50 rounded-2xl w-full overflow-hidden">
-                                            <img class="w-full h-full object-cover opacity-50" data-alt="modern office space with colleagues working in a bright environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBVmATy_fblMBy-Jlj9pRqSowcCml7pK8TGfFiXv4_U5AzXLMdTR-qDG4vdj2KKajNA659E6-7OhzXqkXMCt8f05yefz9ssnnC9tC2aqPYBj1dWfrz3c5cHjBR_Ew157xHJVdrpd7NZmBMMGNP1OZtN18alS7OyRiEPHKFoV5AwRaqkll1JP066a_JZYKX8tMFGfoObiG-L5xGdUbicvyPXQTmwmIweUQscxuHYWY2TRzd0r2yRDe8WKXn9UN5J1Ai85OAMJP6QQVe"/>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Decorative Background Shapes -->
-                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-tertiary opacity-5 rounded-full blur-[100px]"></div>
-                    </div>
-                </div>
-            </section>
-            <!-- App Benefits Cards -->
-            <section id="features" class="mt-20 px-10 max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-surface-container-high duration-500 group p-12 rounded-xl transition-colors hover:bg-primary-container">
-                    <div class="w-16 h-16 rounded-full bg-white flex items-center justify-center mb-8 shadow-sm">
-                        <span class="material-symbols-outlined text-primary text-3xl">dashboard</span>
-                    </div>
-                    <h3 id="feat-1-title" class="font-headline text-2xl font-bold mb-4">Unified Dashboard</h3>
-                    <p id="feat-1-desc" class="text-secondary group-hover:text-on-primary-container">Access staffing, compliance, incidents, and performance in one powerful, intuitive dashboard.</p>
-                </div>
-                <div class="bg-primary-container rounded-xl p-12">
-                    <div class="w-16 h-16 rounded-full bg-white flex items-center justify-center mb-8 shadow-sm">
-                        <span class="material-symbols-outlined text-primary text-3xl">event_repeat</span>
-                    </div>
-                    <h3 id="feat-2-title" class="font-headline text-2xl font-bold mb-4">Smart Rostering & Compliance</h3>
-                    <p id="feat-2-desc" class="text-on-primary-container">Automate complex scheduling with intelligent rostering that considers availability and certifications.</p>
-                </div>
-                <div class="bg-surface-container-high rounded-xl p-12 hover:bg-primary-container transition-colors duration-500 group">
-                    <div class="w-16 h-16 rounded-full bg-white flex items-center justify-center mb-8 shadow-sm">
-                        <span class="material-symbols-outlined text-primary text-3xl">assessment</span>
-                    </div>
-                    <h3 id="feat-3-title" class="font-headline text-2xl font-bold mb-4">Reports, Audits & Communication</h3>
-                    <p id="feat-3-desc" class="text-secondary group-hover:text-on-primary-container">Track labor usage, log incidents, and keep your team informed—all from one platform.</p>
-                </div>
-            </section>
-            <!-- Service Highlights (Horizontal Bento) -->
-            <section class="mt-40 bg-zinc-950 text-white py-32 rounded-t-[4rem]">
-                <div class="px-10 max-w-[1440px] mx-auto">
-                    <div class="max-w-3xl mb-20">
-                        <h2 class="font-headline text-5xl md:text-7xl font-black tracking-tighter leading-tight mb-8">
-                    <span id="cap-heading">Unlock Advanced Capabilities</span><br/> <span id="cap-subheading" class="text-primary-container">Take your workforce management beyond the basics</span></h2>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <!-- Feature 1 -->
-                        <div class="bg-zinc-900 rounded-xl p-8 aspect-square flex flex-col justify-between group overflow-hidden relative">
-                            <div class="z-10">
-                                <h4 id="cap-1-title" class="font-headline text-xl font-bold mb-2">Smart Alerts</h4>
-                                <p id="cap-1-desc" class="text-zinc-500 text-sm">Proactive flagging of issues.</p>
-                            </div>
-                            <div class="z-10 flex justify-end">
-                                <div class="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center group-hover:bg-primary-container group-hover:text-on-primary-container transition-colors">
-                                    <span class="material-symbols-outlined">notifications</span>
-                                </div>
-                            </div>
-                            <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-primary-container/10 rounded-full blur-3xl transition-opacity group-hover:opacity-100 opacity-0"></div>
-                        </div>
-                        <!-- Feature 2 -->
-                        <div class="bg-primary rounded-xl p-8 aspect-square flex flex-col justify-between group">
-                            <div>
-                                <h4 id="cap-2-title" class="font-headline text-xl font-bold mb-2">Seamless Integrations</h4>
-                                <p id="cap-2-desc" class="text-white/60 text-sm">Connect with HR & payroll.</p>
-                            </div>
-                            <div class="flex justify-end">
-                                <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-primary transition-colors">
-                                    <span class="material-symbols-outlined">sync</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Feature 3 -->
-                        <div class="bg-zinc-900 rounded-xl p-8 aspect-square flex flex-col justify-between group">
-                            <div>
-                                <h4 id="cap-3-title" class="font-headline text-xl font-bold mb-2">Automated Reporting</h4>
-                                <p id="cap-3-desc" class="text-zinc-500 text-sm">Real-time insights delivered.</p>
-                            </div>
-                            <div class="flex justify-end">
-                                <div class="w-12 h-12 rounded-full bg-zinc-800 flex items-center justify-center group-hover:bg-primary-container group-hover:text-on-primary-container transition-colors">
-                                    <span class="material-symbols-outlined">auto_graph</span>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Feature 4 -->
-                        <div class="bg-tertiary rounded-xl p-8 aspect-square flex flex-col justify-between group">
-                            <div>
-                                <h4 id="cap-4-title" class="font-headline text-xl font-bold mb-2">Financial Forecasting</h4>
-                                <p id="cap-4-desc" class="text-white/60 text-sm">Predict labor costs accurately.</p>
-                            </div>
-                            <div class="flex justify-end">
-                                <div class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white group-hover:text-tertiary transition-colors">
-                                    <span class="material-symbols-outlined">trending_up</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Key Metrics Row -->
-                    <div class="mt-32 grid grid-cols-2 md:grid-cols-4 gap-12 border-t border-zinc-800 pt-20">
-                        <div>
-                            <div id="stat-1-num" class="font-headline text-6xl font-black mb-2">500+</div>
-                            <div id="stat-1-label" class="font-label text-zinc-500 uppercase tracking-widest text-xs">Worksites Managed</div>
-                        </div>
-                        <div>
-                            <div id="stat-2-num" class="font-headline text-6xl font-black mb-2">8K+</div>
-                            <div id="stat-2-label" class="font-label text-zinc-500 uppercase tracking-widest text-xs">Active Users</div>
-                        </div>
-                        <div>
-                            <div id="stat-3-num" class="font-headline text-6xl font-black mb-2">120K+</div>
-                            <div id="stat-3-label" class="font-label text-zinc-500 uppercase tracking-widest text-xs">Shifts per Month</div>
-                        </div>
-                        <div>
-                            <div id="stat-4-num" class="font-headline text-6xl font-black mb-2">50+</div>
-                            <div id="stat-4-label" class="font-label text-zinc-500 uppercase tracking-widest text-xs">Clients Secured</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Social Proof Gallery -->
-            <section id="testimonials" class="mt-40 px-10 max-w-[1440px] mx-auto text-center">
-                <h2 class="font-headline text-5xl md:text-6xl font-black tracking-tighter mb-20 max-w-3xl mx-auto">
-            Real stories from beloved clients<br/><span class="text-primary italic">See how businesses level up with nWorks</span></h2>
-                <div class="columns-1 md:columns-2 lg:columns-3 gap-8 space-y-8">
-                    <div class="rounded-xl overflow-hidden bg-surface-container aspect-square relative group">
-                        <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-8">
-                            <p class="font-headline text-xl font-bold text-white text-center">"nWorks transformed how we manage our workforce. Incredible!"</p>
-                        </div>
-                    </div>
-                    <div class="rounded-xl overflow-hidden bg-primary-container p-12 text-left">
-                        <div class="flex gap-1 mb-6">
-                            <span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">star</span>
-                            <span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">star</span>
-                        </div>
-                        <p id="testi-1-quote" class="font-headline text-2xl font-bold leading-tight mb-8">"nWorks changed the way we handle scheduling. It's truly revolutionary."</p>
-                        <div class="flex items-center gap-4">
-                            <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center">
-                                <span class="material-symbols-outlined text-primary">person</span>
-                            </div>
-                            <div>
-                                <div id="testi-1-name" class="font-bold">Finnian Graves</div>
-                                <div id="testi-1-role" class="text-sm opacity-60">Digital Marketing Strategist</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="rounded-xl overflow-hidden bg-surface-container aspect-[3/4] relative group">
-                        <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center p-8">
-                            <p class="font-headline text-xl font-bold text-white text-center">"Our compliance tracking is now automated and foolproof."</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Large Organic Oval Section -->
-            <section id="benefits" class="mt-40 px-10">
-                <div class="max-w-[1440px] mx-auto bg-primary-container kinetic-oval p-20 flex flex-col lg:flex-row gap-20 items-center overflow-hidden">
-                    <div class="w-full lg:w-1/2">
-                        <h2 class="font-headline text-5xl md:text-7xl font-black tracking-tighter leading-tight mb-8">
-                    <span id="benefits-heading">Why You'll Love Our Platform</span><br/><span id="benefits-subheading" class="bg-white px-4 italic rounded-full">Full Control, Zero Stress</span></h2>
-                        <p id="benefits-desc" class="text-on-primary-container text-xl leading-relaxed mb-12">
-                    nWorks brings everything into one smart, automated hub—giving you full control over workforce performance, compliance, and communication. </p>
-                        <div class="space-y-6">
-                            <div class="flex items-center gap-4 bg-white/30 backdrop-blur-md p-6 rounded-2xl">
-                                <span class="material-symbols-outlined text-primary">dashboard</span>
-                                <span id="benefit-1-text" class="font-bold">Live Workforce Insights</span>
-                            </div>
-                            <div class="flex items-center gap-4 bg-white/30 backdrop-blur-md p-6 rounded-2xl">
-                                <span class="material-symbols-outlined text-primary">verified_user</span>
-                                <span id="benefit-2-text" class="font-bold">Automated Compliance & Staff Management</span>
-                            </div>
-                            <div class="flex items-center gap-4 bg-white/30 backdrop-blur-md p-6 rounded-2xl">
-                                <span class="material-symbols-outlined text-primary">chat</span>
-                                <span id="benefit-3-text" class="font-bold">Built-in Chat Groups</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="w-full lg:w-1/2">
-                        <div class="relative">
-                            <img id="benefits-img" class="w-full rounded-[4rem] shadow-2xl" data-alt="high-quality smartphone screen mockup displaying a colorful social media profile interface" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCo0I_-aVsoPEFJy_eDJeRTHq51tgseRIfiZ7glQ8k1iAzcaSF1r0s6ZcyaEgvwd6ALUbkOiJF6ROnSPDA9-AcAqdpOm2ycS7iDkDZ-2sMV4kXabpp_kdSeRmQ2P8idTe1IdMEplpkPltWvr_PZJdn2iu5pzSL48nWkRJ7MqEyhgMfQJqiB3jbtfD04KemphKdkItpOzwX0qF6ej798Gcm-3wM7IAibHoiZY9Xa8ia8U_0gg0wSnGv-7PSchg_XqfGhqP23FqHsArJe"/>
-                            <div class="absolute -top-10 -right-10 bg-on-background text-white p-10 rounded-full animate-spin-slow flex items-center justify-center">
-                                <span class="material-symbols-outlined text-4xl">animation</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- Logo Cloud -->
-            <section class="mt-40 px-10 max-w-[1440px] mx-auto overflow-hidden">
-                <div class="flex justify-between items-center opacity-30 grayscale gap-20">
-                    <span class="text-4xl font-black tracking-tighter">Bili.</span>
-                    <span class="text-4xl font-black tracking-tighter">A|V</span>
-                    <span class="text-4xl font-black tracking-tighter">ROLFF LINS</span>
-                    <span class="text-4xl font-black tracking-tighter">HEXA</span>
-                    <span class="text-4xl font-black tracking-tighter">VANTAGE</span>
-                    <span class="hidden md:block text-4xl font-black tracking-tighter">EPIC.</span>
-                </div>
-            </section>
-            <!-- Latest News -->
-            <section class="mt-40 px-10 max-w-[1440px] mx-auto pb-40">
-                <div class="flex justify-between items-end mb-20">
-                    <h2 class="font-headline text-5xl md:text-6xl font-black tracking-tighter">
-                Frequently Asked <br/> <span class="text-primary italic">Questions</span></h2>
-                    <button class="bg-secondary-container text-secondary px-8 py-4 rounded-full font-bold hover:bg-on-background hover:text-white transition-colors">Contact Us</button>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <!-- FAQ 1 -->
-                    <div class="group">
-                        <div class="bg-surface-container-low rounded-3xl p-10">
-                            <h4 id="faq-1-q" class="font-headline text-2xl font-black leading-tight group-hover:text-primary transition-colors mb-4">How does nWorks simplify workforce scheduling?</h4>
-                            <p id="faq-1-a" class="text-secondary">nWorks uses intelligent rostering that considers staff availability, certifications, and legal compliance to automate complex scheduling while optimizing coverage.</p>
-                        </div>
-                    </div>
-                    <!-- FAQ 2 -->
-                    <div class="group">
-                        <div class="bg-surface-container-low rounded-3xl p-10">
-                            <h4 id="faq-2-q" class="font-headline text-2xl font-black leading-tight group-hover:text-primary transition-colors mb-4">Can nWorks help with compliance tracking?</h4>
-                            <p id="faq-2-a" class="text-secondary">Yes! nWorks provides automated compliance tracking with alerts for document expiry and role-specific access controls to ensure all staff meet requirements.</p>
-                        </div>
-                    </div>
-                    <!-- FAQ 3 -->
-                    <div class="group">
-                        <div class="bg-surface-container-low rounded-3xl p-10">
-                            <h4 id="faq-3-q" class="font-headline text-2xl font-black leading-tight group-hover:text-primary transition-colors mb-4">Does nWorks integrate with our existing systems?</h4>
-                            <p id="faq-3-a" class="text-secondary">Absolutely. nWorks offers seamless integrations with HR systems, payroll platforms, and compliance tools to streamline workflows across your organization.</p>
-                        </div>
-                    </div>
-                    <!-- FAQ 4 -->
-                    <div class="group">
-                        <div class="bg-surface-container-low rounded-3xl p-10">
-                            <h4 id="faq-4-q" class="font-headline text-2xl font-black leading-tight group-hover:text-primary transition-colors mb-4">Is there a trial available?</h4>
-                            <p id="faq-4-a" class="text-secondary">Yes, we offer a demo so you can experience how nWorks simplifies scheduling, compliance, and reporting before making any commitment.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- FAQ Section ID -->
-            <section id="faq" class="mt-40 px-10 max-w-[1440px] mx-auto pb-20">
-                <div class="text-center max-w-3xl mx-auto mb-16">
-                    <h2 class="font-headline text-4xl md:text-5xl font-black tracking-tighter mb-8">
-                <span id="cta-heading">Ready to Transform <span class="text-primary">Workforce Management?</span></span></h2>
-                    <p id="cta-desc" class="text-secondary text-lg">Experience how nWorks simplifies scheduling, compliance, and service delivery—bringing clarity and control to your operations.</p>
-                    <button id="cta-btn" class="mt-8 bg-on-background text-surface px-10 py-5 rounded-full font-headline font-bold text-lg hover:scale-105 transition-transform">Book a Demo</button>
-                </div>
-            </section>
-        </main>
-        <!-- Updated Footer based on reference image -->
-        <footer class="bg-zinc-950 text-white pt-24 relative overflow-hidden">
-            <div class="max-w-[1440px] mx-auto px-10">
-                <!-- Let's start now CTA Section -->
-                <div class="flex flex-col md:flex-row justify-between items-center mb-24 gap-8">
-                    <h2 class="text-[#A3E635] font-headline text-7xl font-black tracking-tighter">Let's start now</h2>
-                    <div class="flex gap-4">
-                        <a class="bg-zinc-900 block border border-zinc-800 hover:bg-zinc-800 px-6 py-3 rounded-xl transition-colors" href="#">
-                            <div class="flex items-center gap-3">
-                                <svg class="h-10 w-auto" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M3.18 23.76c.3.17.64.24.99.21l12.76-7.37-2.76-2.76-10.99 9.92zm-1.6-20.4C1.22 3.7 1 4.14 1 4.69v14.62c0 .55.22.99.58 1.33l.07.07 8.19-8.19v-.19L1.58 3.29l-.07.07zm18.24 9.31-2.61-1.51-2.94 2.94 2.94 2.94 2.63-1.52c.75-.43.75-1.14-.02-1.85zm-17.08 9.62l11.06-6.39-2.76-2.76-8.3 9.15z"/></svg>
-                                <span class="text-white text-sm font-bold">Google Play</span>
-                            </div>
-                        </a>
-                        <a class="block bg-zinc-900 border border-zinc-800 rounded-xl px-6 py-3 transition-colors hover:bg-zinc-800" href="#">
-                            <div class="flex items-center gap-3">
-                                <svg class="h-10 w-auto" viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-                                <span class="text-white text-sm font-bold">App Store</span>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-16 mb-24">
-                    <!-- Left Column: Contact -->
-                    <div>
-                        <p id="footer-tagline" class="text-zinc-400 text-sm mb-6 max-w-xs">Create profiles, connect with friends, or build networks &amp; community.</p>
-                        <a id="footer-email" class="text-[#A3E635] font-headline text-3xl font-bold mb-8 block" href="mailto:nworks@on5.io">nworks@on5.io</a>
-                        <div class="flex gap-4">
-                            <a class="bg-zinc-900 p-2 rounded-full text-zinc-400 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined text-sm">photo_camera</span></a>
-                            <a class="bg-zinc-900 p-2 rounded-full text-zinc-400 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined text-sm">alternate_email</span></a>
-                            <a class="bg-zinc-900 p-2 rounded-full text-zinc-400 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined text-sm">facebook</span></a>
-                            <a class="bg-zinc-900 p-2 rounded-full text-zinc-400 hover:text-white transition-colors" href="#"><span class="material-symbols-outlined text-sm">share</span></a>
-                        </div>
-                        <div class="mt-8 flex gap-6 text-xs text-zinc-500 font-bold uppercase tracking-widest">
-                            <a class="hover:text-[#A3E635]" href="#">Instagram</a>
-                            <a class="hover:text-[#A3E635]" href="#">Twitter</a>
-                            <a class="hover:text-[#A3E635]" href="#">Facebook</a>
-                            <a class="hover:text-[#A3E635]" href="#">LinkedIn</a>
-                        </div>
-                    </div>
-                    <!-- Middle Column: Useful Links -->
-                    <div class="md:pl-10">
-                        <h5 class="font-headline font-bold text-xl mb-8">Useful Links</h5>
-                        <ul class="space-y-4 text-zinc-400">
-                            <li>
-                                <a class="hover:text-[#A3E635] transition-colors text-sm" href="#">Overview</a>
-                            </li>
-                            <li>
-                                <a class="hover:text-[#A3E635] transition-colors text-sm" href="#">Community</a>
-                            </li>
-                            <li>
-                                <a class="hover:text-[#A3E635] transition-colors text-sm" href="#">Features</a>
-                            </li>
-                            <li>
-                                <a class="hover:text-[#A3E635] transition-colors text-sm" href="#">FAQs</a>
-                            </li>
-                            <li>
-                                <a class="hover:text-[#A3E635] transition-colors text-sm" href="#">Getting Started</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <!-- Right Column: Subscribe -->
-                    <div>
-                        <h5 class="font-headline font-bold text-xl mb-8">Subscribe</h5>
-                        <p class="text-zinc-400 text-sm mb-8">Our expertise, as well as our passion for web design, sets us apart from other agencies.</p>
-                        <div class="relative max-w-xs">
-                            <input class="w-full bg-transparent border-b border-zinc-700 py-3 focus:outline-none focus:border-[#A3E635] transition-colors text-sm" placeholder="Get news &amp; updates" type="email"/>
-                            <button class="absolute right-0 top-1/2 -translate-y-1/2 text-[#A3E635]">
-                                <span class="material-symbols-outlined">arrow_forward</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Bottom Bar -->
-                <div class="border-t border-zinc-900 py-10 flex flex-col md:flex-row justify-between items-center text-xs text-zinc-500 tracking-wide">
-                    <p id="footer-copyright">&copy; 2024 nWorks by On5.io. All Rights Reserved.</p>
-                </div>
-            </div>
-            <!-- Organic Lime Green Shape with Logo -->
-            <div class="footer-organic-shape bg-[#A3E635] w-[110%] -ml-[5%] h-[400px] mt-10 relative flex items-center justify-center overflow-visible">
-                <div class="text-on-primary font-headline text-[12rem] font-black tracking-tighter leading-none select-none flex items-center gap-4">nWorks
-</div>
-                <button class="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                    <span class="material-symbols-outlined text-zinc-900">arrow_upward</span>
-                </button>
-            </div>
-        </footer>
-<script>
-(async function() {
-  try {
-    const res = await fetch('content.json');
-    if (!res.ok) return;
-    const c = await res.json();
-    function set(id, val) { const el = document.getElementById(id); if (el && val !== undefined) el.textContent = val; }
-    function setHref(id, href) { const el = document.getElementById(id); if (el && href) el.href = href; }
-    function setImg(id, src) { const el = document.getElementById(id); if (el && src) el.src = src; }
+    }
+  </script>
 
-    // Hero
-    set('hero-heading', c.hero?.heading);
-    set('hero-sub', c.hero?.subheading);
-    set('hero-cta', c.hero?.ctaLabel);
-    setImg('hero-img', c.hero?.image);
-    set('hero-stat-num', c.hero?.statNumber);
-    set('hero-stat-label', c.hero?.statLabel);
+  <style>
+    /* ── CSS Custom Properties ── */
+    :root {
+      --color-deep-navy:    #051E42;
+      --color-burgundy-red: #8A2232;
+      --color-pure-white:   #FFFFFF;
+      --color-warm-cream:   #FBF9F7;
+      --color-cloud-grey:   #F4F6F8;
+      --color-border-mist:  #E2E6EA;
+      --color-slate-text:   #6B7280;
+      --color-navy-tint:    #0A2D5C;
+      --color-red-soft:     #F4E3E6;
 
-    // Feature cards
-    if (c.features?.cards) {
-      c.features.cards.forEach((card, i) => {
-        set(`feat-${i+1}-title`, card.title);
-        set(`feat-${i+1}-desc`, card.description);
+      --font-montserrat:     'Montserrat', ui-sans-serif, system-ui, sans-serif;
+      --font-inter:          'Inter', ui-sans-serif, system-ui, sans-serif;
+      --font-dancing-script: 'Dancing Script', cursive;
+
+      --text-caption:    14px; --leading-caption:    1.6;
+      --text-body:       16px; --leading-body:       1.7;
+      --text-body-lg:    18px; --leading-body-lg:    1.7;
+      --text-tagline:    24px; --leading-tagline:    1.4;
+      --text-tagline-lg: 28px; --leading-tagline-lg: 1.4;
+      --text-heading-sm: 22px; --leading-heading-sm: 1.3;
+      --text-heading:    28px; --leading-heading:    1.25;
+      --text-heading-lg: 36px; --leading-heading-lg: 1.2;
+      --text-display:    48px; --leading-display:    1.1;
+      --text-display-lg: 56px; --leading-display-lg: 1.1;
+
+      --font-weight-regular:   400;
+      --font-weight-medium:    500;
+      --font-weight-semibold:  600;
+      --font-weight-bold:      700;
+      --font-weight-extrabold: 800;
+
+      --spacing-4:   4px;  --spacing-8:   8px;  --spacing-12:  12px;
+      --spacing-16:  16px; --spacing-24:  24px; --spacing-32:  32px;
+      --spacing-48:  48px; --spacing-64:  64px; --spacing-80:  80px;
+      --spacing-96:  96px; --spacing-120: 120px;
+
+      --max-width:               1200px;
+      --section-padding-desktop: 96px;
+      --section-padding-tablet:  64px;
+      --section-padding-mobile:  48px;
+
+      --radius-buttons:  8px;
+      --radius-cards:    12px;
+      --radius-inputs:   8px;
+      --radius-images:   16px;
+      --radius-circular: 50%;
+      --radius-pill:     999px;
+
+      --shadow-soft: 0 8px 24px rgba(0,0,0,0.08);
+
+      --transition-fast:   0.2s ease;
+      --transition-medium: 0.3s ease;
+
+      --z-nav-overlay:   9999;
+      --z-sticky-header: 1000;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: var(--font-inter);
+      color: var(--color-deep-navy);
+      background: var(--color-pure-white);
+    }
+
+    /* ── Header ── */
+    .sk-header {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: var(--z-sticky-header);
+      padding: 20px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background var(--transition-medium), box-shadow var(--transition-medium);
+    }
+    .sk-header.is-transparent { background: transparent; }
+    .sk-header.is-scrolled {
+      background: var(--color-pure-white);
+      box-shadow: 0 1px 0 var(--color-border-mist);
+    }
+
+    /* Hamburger */
+    .sk-hamburger {
+      display: flex; flex-direction: column; justify-content: center; gap: 5px;
+      width: 40px; height: 40px;
+      background: none; border: none; cursor: pointer; padding: 4px; flex-shrink: 0;
+    }
+    .sk-hamburger span {
+      display: block; height: 2px; border-radius: 2px;
+      transition: background var(--transition-medium);
+    }
+    .is-transparent .sk-hamburger span { background: var(--color-pure-white); }
+    .is-scrolled    .sk-hamburger span { background: var(--color-deep-navy); }
+
+    /* Centre logo */
+    .sk-header-logo {
+      position: absolute; left: 50%; transform: translateX(-50%);
+    }
+    .sk-logo-placeholder {
+      height: 48px; display: flex; align-items: center; gap: 8px;
+    }
+    .sk-logo-mark {
+      width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-montserrat); font-weight: var(--font-weight-bold); font-size: 15px;
+      transition: background var(--transition-medium), color var(--transition-medium), border-color var(--transition-medium);
+      border: 2px solid transparent;
+    }
+    .is-transparent .sk-logo-mark { background: rgba(255,255,255,0.15); color: #fff; border-color: rgba(255,255,255,0.4); }
+    .is-scrolled    .sk-logo-mark { background: var(--color-deep-navy); color: #fff; }
+
+    .sk-logo-text {
+      font-family: var(--font-montserrat); font-weight: var(--font-weight-bold);
+      font-size: 12px; line-height: 1.25; text-transform: uppercase; letter-spacing: 0.05em;
+      transition: color var(--transition-medium);
+    }
+    .is-transparent .sk-logo-text { color: var(--color-pure-white); }
+    .is-scrolled    .sk-logo-text { color: var(--color-deep-navy); }
+
+    /* Search */
+    .sk-search-btn {
+      width: 40px; height: 40px;
+      background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; transition: background var(--transition-fast); flex-shrink: 0;
+    }
+    .sk-search-btn:hover { background: rgba(255,255,255,0.12); }
+    .is-scrolled .sk-search-btn:hover { background: var(--color-cloud-grey); }
+    .sk-search-btn svg { transition: stroke var(--transition-medium); }
+    .is-transparent .sk-search-btn svg { stroke: var(--color-pure-white); }
+    .is-scrolled    .sk-search-btn svg { stroke: var(--color-deep-navy); }
+
+    /* ── Nav Overlay ── */
+    .sk-nav-overlay {
+      position: fixed; inset: 0; background: var(--color-deep-navy);
+      z-index: var(--z-nav-overlay);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity var(--transition-medium);
+    }
+    .sk-nav-overlay.is-open { opacity: 1; pointer-events: all; }
+
+    .sk-nav-overlay nav { display: flex; flex-direction: column; align-items: center; gap: 32px; }
+
+    .sk-nav-overlay nav a {
+      font-family: var(--font-montserrat); font-weight: var(--font-weight-bold);
+      font-size: clamp(28px, 5vw, 40px);
+      color: var(--color-pure-white); text-decoration: none;
+      letter-spacing: -0.01em; position: relative;
+      transition: color var(--transition-fast);
+    }
+    .sk-nav-overlay nav a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 2px; background: var(--color-burgundy-red);
+      transition: width var(--transition-medium);
+    }
+    .sk-nav-overlay nav a:hover { color: rgba(255,255,255,0.75); }
+    .sk-nav-overlay nav a:hover::after { width: 100%; }
+
+    .sk-nav-close {
+      position: absolute; top: 24px; right: 24px;
+      width: 44px; height: 44px; background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-pure-white); font-size: 32px; line-height: 1;
+      border-radius: 50%; transition: background var(--transition-fast);
+    }
+    .sk-nav-close:hover { background: rgba(255,255,255,0.1); }
+
+    .sk-nav-footer {
+      position: absolute; bottom: 40px; left: 0; right: 0;
+      display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; padding: 0 24px;
+    }
+    .sk-nav-footer a {
+      font-family: var(--font-inter); font-size: var(--text-caption);
+      color: rgba(255,255,255,0.45); text-decoration: none;
+      transition: color var(--transition-fast);
+    }
+    .sk-nav-footer a:hover { color: rgba(255,255,255,0.85); }
+
+    @media (max-width: 640px) {
+      .sk-nav-footer { flex-direction: column; align-items: center; gap: 12px; bottom: 32px; }
+    }
+
+    /* ── DEV placeholder — remove when hero is built ── */
+    .dev-hero-placeholder {
+      height: 100vh;
+      background: var(--color-deep-navy);
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.3);
+      font-family: var(--font-inter); font-size: 13px;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════
+       HEADER
+  ════════════════════════════════════════ -->
+  <header class="sk-header is-transparent" id="sk-header">
+
+    <!-- Left: Hamburger -->
+    <button class="sk-hamburger" id="sk-hamburger-btn" aria-label="Open navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Centre: St Kevin's Logo -->
+    <div class="sk-header-logo">
+      <!--
+        When logos are available, replace placeholder with:
+        <img src="images/logo-sk-white.svg"  alt="St Kevin's Primary School" style="height:48px" class="sk-logo-white">
+        <img src="images/logo-sk-colour.svg" alt="St Kevin's Primary School" style="height:48px" class="sk-logo-colour">
+        (toggle visibility based on is-transparent / is-scrolled on header)
+      -->
+      <div class="sk-logo-placeholder">
+        <div class="sk-logo-mark">SK</div>
+        <div class="sk-logo-text">St Kevin's<br>Hampton Park</div>
+      </div>
+    </div>
+
+    <!-- Right: Search -->
+    <button class="sk-search-btn" aria-label="Search site">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="9.5" cy="9.5" r="7"/>
+        <line x1="14.5" y1="14.5" x2="21" y2="21"/>
+      </svg>
+    </button>
+
+  </header>
+
+  <!-- ════════════════════════════════════════
+       FULLSCREEN NAV OVERLAY
+  ════════════════════════════════════════ -->
+  <div class="sk-nav-overlay" id="sk-nav-overlay" role="dialog" aria-modal="true" aria-label="Site navigation">
+
+    <button class="sk-nav-close" id="sk-nav-close-btn" aria-label="Close navigation">&times;</button>
+
+    <nav>
+      <a href="about.html">About Us</a>
+      <a href="learning.html">Learning</a>
+      <a href="community.html">Community</a>
+      <a href="enrolments.html">Enrolments</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <div class="sk-nav-footer">
+      <a href="tel:0397098600">(03) 9709 8600</a>
+      <a href="mailto:administration@skhamptonpark.catholic.edu.au">administration@skhamptonpark.catholic.edu.au</a>
+    </div>
+
+  </div>
+
+  <!-- ════════════════════════════════════════
+       HERO — placeholder until section is built
+  ════════════════════════════════════════ -->
+  <div class="dev-hero-placeholder">
+    Hero section — coming next
+  </div>
+
+  <!-- ════════════════════════════════════════
+       HEADER + NAV JAVASCRIPT
+  ════════════════════════════════════════ -->
+  <script>
+    (function () {
+      const header  = document.getElementById('sk-header');
+      const overlay = document.getElementById('sk-nav-overlay');
+      const openBtn = document.getElementById('sk-hamburger-btn');
+      const closeBtn= document.getElementById('sk-nav-close-btn');
+
+      /* Transparent → white on scroll */
+      function onScroll() {
+        var scrolled = window.scrollY > 60;
+        header.classList.toggle('is-scrolled',    scrolled);
+        header.classList.toggle('is-transparent', !scrolled);
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      /* Open overlay */
+      openBtn.addEventListener('click', function () {
+        overlay.classList.add('is-open');
+        openBtn.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
       });
-    }
 
-    // Capabilities
-    set('cap-heading', c.capabilities?.heading);
-    set('cap-subheading', c.capabilities?.subheading);
-    if (c.capabilities?.cards) {
-      c.capabilities.cards.forEach((card, i) => {
-        set(`cap-${i+1}-title`, card.title);
-        set(`cap-${i+1}-desc`, card.description);
+      /* Close overlay */
+      function closeNav() {
+        overlay.classList.remove('is-open');
+        openBtn.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      closeBtn.addEventListener('click', closeNav);
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeNav();
       });
-    }
-    if (c.capabilities?.stats) {
-      c.capabilities.stats.forEach((stat, i) => {
-        set(`stat-${i+1}-num`, stat.number);
-        set(`stat-${i+1}-label`, stat.label);
+      overlay.querySelectorAll('nav a').forEach(function (a) {
+        a.addEventListener('click', closeNav);
       });
-    }
+    })();
+  </script>
 
-    // Testimonials
-    if (c.testimonials) {
-      set('testi-1-quote', c.testimonials[0]?.quote ? `"${c.testimonials[0].quote}"` : undefined);
-      set('testi-1-name', c.testimonials[0]?.name);
-      set('testi-1-role', c.testimonials[0]?.role);
-    }
-
-    // Benefits
-    setImg('benefits-img', c.benefits?.image);
-    set('benefits-heading', c.benefits?.heading);
-    set('benefits-subheading', c.benefits?.subheading);
-    set('benefits-desc', c.benefits?.description);
-    if (c.benefits?.items) {
-      c.benefits.items.forEach((item, i) => set(`benefit-${i+1}-text`, item.text));
-    }
-
-    // FAQ
-    if (c.faq) {
-      c.faq.forEach((item, i) => {
-        set(`faq-${i+1}-q`, item.question);
-        set(`faq-${i+1}-a`, item.answer);
-      });
-    }
-
-    // CTA
-    set('cta-heading', c.cta?.heading);
-    set('cta-desc', c.cta?.description);
-    set('cta-btn', c.cta?.ctaLabel);
-
-    // Footer
-    set('footer-tagline', c.footer?.tagline);
-    set('footer-copyright', c.footer?.copyright);
-    const emailEl = document.getElementById('footer-email');
-    if (emailEl && c.footer?.email) {
-      emailEl.textContent = c.footer.email;
-      emailEl.href = `mailto:${c.footer.email}`;
-    }
-  } catch(e) {
-    console.warn('content.json not loaded:', e);
-  }
-})();
-</script>
-    </body>
+</body>
 </html>
