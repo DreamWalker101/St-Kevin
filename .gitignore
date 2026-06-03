@@ -42,7 +42,9 @@ tmp/
 coverage/
 
 # Uploaded images (large binary files — don't commit)
-site/images/
+site/images/*
+!site/images/placeholder/
+!site/images/placeholder/.gitkeep
 
 # Stitch source exports (large HTML reference files)
 Downloads/
