@@ -39,8 +39,11 @@
     }
   </script>
 
-  <!-- GSAP -->
+  <!-- GSAP + ScrollTrigger -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/ScrollTrigger.min.js"></script>
+  <!-- Lenis smooth scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
 
 
   <style>
@@ -104,7 +107,7 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: auto; } /* Lenis handles smooth scroll */
     body {
       margin: 0;
       font-family: var(--font-inter);
@@ -482,7 +485,7 @@
       border: 1px solid rgba(255,255,255,0.12);
       border-radius: 12px;
       padding: 16px 18px;
-      min-width: 220px;
+      min-width: 240px;
       color: #fff;
       font-family: var(--font-inter);
       box-shadow: 0 8px 32px rgba(0,0,0,0.4);
@@ -541,11 +544,251 @@
     .sk-debug-panel.is-collapsed .sk-debug-body { display: none; }
     .sk-debug-panel.is-collapsed { padding-bottom: 14px; }
 
+    /* ── Wave Dividers ── */
+    .sk-wave-divider {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      display: block;
+    }
+    /* Burgundy: hero → white */
+    .sk-wave-divider--burg   { background: var(--color-pure-white); height: 120px; }
+    /* Navy: white → dark section */
+    .sk-wave-divider--navy   { background: var(--color-pure-white); height: 120px; }
+    /* Navy inverse: dark section → white */
+    .sk-wave-divider--navy-inv { background: var(--color-navy);     height: 120px; }
+
+    .sk-wave-svg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: block;
+      transform-origin: top center; /* scaleY anchors from flat top edge */
+    }
+
     /* ── Reduced motion ── */
     @media (prefers-reduced-motion: reduce) {
       .sk-nav-sidebar, .sk-nav-backdrop, .sk-search-panel {
         transition: visibility 0s, opacity 0.1s !important;
       }
+    }
+
+    /* ══════════════════════════════════════════════
+       SECTION 3 — QUOTES CAROUSEL
+    ══════════════════════════════════════════════ */
+    .sk-quotes {
+      background: var(--color-pure-white);
+      padding: clamp(72px, 10vw, 112px) clamp(24px, 5vw, 48px);
+      text-align: center;
+    }
+    .sk-quotes__track {
+      position: relative;
+      min-height: 300px;
+      max-width: 740px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .sk-quote-item {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.7s ease;
+      pointer-events: none;
+      padding: 16px 0;
+    }
+    .sk-quote-item.is-active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .sk-quote-text {
+      font-family: var(--font-dancing-script);
+      font-size: clamp(1.5rem, 3vw, 2.15rem);
+      line-height: 1.55;
+      color: var(--color-deep-navy);
+      max-width: 62ch;
+      margin: 0 0 1.5rem;
+      text-wrap: balance;
+    }
+    .sk-quote-text::before { content: '\201C'; }
+    .sk-quote-text::after  { content: '\201D'; }
+    .sk-quote-author {
+      font-family: var(--font-inter);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-burgundy-red);
+    }
+    .sk-quotes__dots {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: clamp(28px, 4vw, 40px);
+    }
+    .sk-quotes__dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--color-border-mist);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .sk-quotes__dot.is-active {
+      background: var(--color-burgundy-red);
+      transform: scale(1.5);
+    }
+    .sk-quotes__dot:focus-visible {
+      outline: 2px solid var(--color-burgundy-red);
+      outline-offset: 3px;
+    }
+
+    /* ══════════════════════════════════════════════
+       SECTION 4 — WELCOME BLOCK
+    ══════════════════════════════════════════════ */
+    .sk-welcome {
+      background: var(--color-pure-white);
+      padding: clamp(64px, 8vw, 96px) clamp(24px, 5vw, 48px) clamp(56px, 7vw, 80px);
+      text-align: center;
+    }
+    .sk-welcome__heading {
+      font-family: var(--font-montserrat);
+      font-size: clamp(2.25rem, 6vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--color-deep-navy);
+      line-height: 1.1;
+      text-transform: uppercase;
+      margin: 0 0 1.25rem;
+      text-wrap: balance;
+    }
+    .sk-welcome__tagline {
+      font-family: var(--font-dancing-script);
+      font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+      color: var(--color-burgundy-red);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* ══════════════════════════════════════════════
+       SECTIONS 5–8 — PINNED IMAGE SCROLL
+       Adapted from Codrops OnScrollPathAnimations /
+       gsap-pinned-image-mask-reveal pattern.
+       Left: 4 × 100vh scrollable items.
+       Right: pinned image column — clipPath wipe on scroll.
+    ══════════════════════════════════════════════ */
+    .sk-pillar {
+      display: flex;
+      gap: clamp(40px, 6vw, 80px);
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: clamp(20px, 4vw, 40px);
+    }
+
+    /* Left column — scrolls normally */
+    .sk-pillar__left {
+      display: flex;
+      flex-direction: column;
+      flex: 0 0 44%;
+      max-width: 480px;
+      min-width: 0;
+    }
+    .sk-pillar__item {
+      height: 100vh;
+      display: grid;
+      place-items: center;
+    }
+    .sk-pillar__body {
+      max-width: 400px;
+      width: 100%;
+    }
+    .sk-pillar__heading {
+      font-family: var(--font-montserrat);
+      font-size: clamp(1.875rem, 3.5vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      color: var(--color-deep-navy);
+      line-height: 1.1;
+      margin: 0 0 1.125rem;
+      text-wrap: balance;
+    }
+    .sk-pillar__text {
+      font-family: var(--font-inter);
+      font-size: clamp(1rem, 1.2vw, 1.0625rem);
+      line-height: 1.8;
+      color: #374151;
+      max-width: 50ch;
+      margin: 0 0 1.75rem;
+    }
+    .sk-pillar__tagline {
+      display: block;
+      font-family: var(--font-dancing-script);
+      font-size: clamp(1.25rem, 2vw, 1.5rem);
+      color: var(--color-burgundy-red);
+      line-height: 1.4;
+    }
+
+    /* Right column — pinned image stack */
+    .sk-pillar__right {
+      flex: 1;
+      height: 100vh;
+      position: relative;
+      min-width: 0;
+    }
+    .sk-pillar__img-wrap {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 100%;
+      height: clamp(340px, 72vh, 680px);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .sk-pillar__img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+
+    /* Mobile — stacked, interleaved by JS order */
+    @media (max-width: 768px) {
+      .sk-pillar {
+        flex-direction: column;
+        gap: 0;
+        padding-inline: 16px;
+      }
+      .sk-pillar__left,
+      .sk-pillar__right {
+        display: contents;
+      }
+      .sk-pillar__img-wrap {
+        position: static;
+        transform: none;
+        height: 300px;
+        max-height: none;
+        margin-bottom: 32px;
+        border-radius: 14px;
+        display: block;
+      }
+      .sk-pillar__item {
+        height: auto;
+        padding-block: 32px;
+        place-items: start;
+      }
+    }
+    @media (max-width: 480px) {
+      .sk-pillar__img-wrap { height: 250px; border-radius: 10px; }
     }
   </style>
 </head>
@@ -776,46 +1019,225 @@
 
 
   <!-- ════════════════════════════════
-       DEBUG PANEL (remove before launch)
+       SECTION 2: WAVE DIVIDER (Burgundy — morphs on scroll)
+       On-scroll SVG path morph: gentle rest → dramatic peak as divider
+       traverses the viewport. GSAP ScrollTrigger attr.d scrub.
+       Sections 9 + 11 use the same pattern (navy fill).
   ════════════════════════════════ -->
-  <div class="sk-debug-panel" id="sk-debug-panel" role="region" aria-label="Debug controls">
+  <div class="sk-wave-divider sk-wave-divider--burg"
+       id="sk-wave-divider-2"
+       aria-hidden="true">
+    <svg class="sk-wave-svg"
+         viewBox="0 0 1440 120"
+         preserveAspectRatio="none"
+         xmlns="http://www.w3.org/2000/svg">
+      <!--
+        Two states interpolated by GSAP ScrollTrigger (scrub 1.4):
+        dA — rest: soft 2-crest wave, ~40px amplitude
+        dB — peak: dramatic 3-crest wave, ~100px amplitude
+        Same command structure M C C L L Z so attr.d interpolation is clean.
+      -->
+      <path id="sk-wave-path-2"
+            d="M 0 0 L 1440 0 L 1440 62 C 1200 82 960 40 720 65 C 480 90 240 55 0 75 Z"
+            fill="#8A2232"/>
+    </svg>
+  </div>
+
+
+  <!-- ════════════════════════════════
+       SECTION 3: QUOTES CAROUSEL
+       6 parent quotes, 6-second auto-cycle, Dancing Script.
+       No images — pure typography section.
+  ════════════════════════════════ -->
+  <section class="sk-quotes" id="sk-quotes" aria-label="Voices from our community">
+
+    <div class="sk-quotes__track" aria-live="polite" aria-atomic="true">
+
+      <div class="sk-quote-item is-active">
+        <p class="sk-quote-text">St Kevin's welcomed my son without judgement, only genuine care and support.</p>
+        <span class="sk-quote-author">Julie M</span>
+      </div>
+
+      <div class="sk-quote-item">
+        <p class="sk-quote-text">St Kevin's is more than a school for our family, it is our extended family.</p>
+        <span class="sk-quote-author">Tash</span>
+      </div>
+
+      <div class="sk-quote-item">
+        <p class="sk-quote-text">Thanks to the nurturing environment and dedicated teachers at St Kevin's, my once very shy daughter has grown into a confident child.</p>
+        <span class="sk-quote-author">Karina Rogers</span>
+      </div>
+
+      <div class="sk-quote-item">
+        <p class="sk-quote-text">What we appreciate most about St Kevin's is its diversity and the way the school brings families together, creating a strong sense of belonging.</p>
+        <span class="sk-quote-author">Shanelle Fairweather</span>
+      </div>
+
+      <div class="sk-quote-item">
+        <p class="sk-quote-text">Kindness and love are everywhere at St Kevin's. You see it when you're learning, when you're playing, in church and in the hall.</p>
+        <span class="sk-quote-author">Blaze, Grade 3</span>
+      </div>
+
+      <div class="sk-quote-item">
+        <p class="sk-quote-text">St Kevin's is a welcoming school with caring teachers and a strong community that supports every child.</p>
+        <span class="sk-quote-author">Koreti Solo Sakopo</span>
+      </div>
+
+    </div>
+
+    <div class="sk-quotes__dots" role="tablist" aria-label="Navigate quotes">
+      <button class="sk-quotes__dot is-active" role="tab" aria-selected="true"  aria-label="Quote 1" data-qi="0"></button>
+      <button class="sk-quotes__dot"            role="tab" aria-selected="false" aria-label="Quote 2" data-qi="1"></button>
+      <button class="sk-quotes__dot"            role="tab" aria-selected="false" aria-label="Quote 3" data-qi="2"></button>
+      <button class="sk-quotes__dot"            role="tab" aria-selected="false" aria-label="Quote 4" data-qi="3"></button>
+      <button class="sk-quotes__dot"            role="tab" aria-selected="false" aria-label="Quote 5" data-qi="4"></button>
+      <button class="sk-quotes__dot"            role="tab" aria-selected="false" aria-label="Quote 6" data-qi="5"></button>
+    </div>
+
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTION 4: WELCOME BLOCK
+       Display heading + Dancing Script tagline.
+  ════════════════════════════════ -->
+  <section class="sk-welcome" id="sk-welcome" aria-label="Welcome to St Kevin's">
+    <h2 class="sk-welcome__heading">Welcome to St Kevin's</h2>
+    <p class="sk-welcome__tagline">A community where every child is known, supported and inspired to flourish</p>
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTIONS 5–8: PINNED IMAGE SCROLL
+       Codrops gsap-pinned-image-mask-reveal pattern adapted.
+       Left: 4 × 100vh scrollable content items.
+       Right: pinned image column — clipPath wipe top-to-bottom on scrub.
+       No background colour changes — white throughout.
+       Images: cosmos sample photos mapped per session 3 decisions.
+  ════════════════════════════════ -->
+  <section id="sk-pillar-wrapper" aria-label="Life at St Kevin's">
+
+    <div class="sk-pillar" id="sk-pillar">
+
+      <!-- Left — scrollable content blocks -->
+      <div class="sk-pillar__left">
+
+        <div class="sk-pillar__item" id="sk-belonging">
+          <div class="sk-pillar__body">
+            <h2 class="sk-pillar__heading">Belonging</h2>
+            <p  class="sk-pillar__text">Belonging sits at the heart of life at St Kevin's. When children feel known, safe and valued, they grow in confidence, curiosity and courage to learn.</p>
+            <span class="sk-pillar__tagline">Every child matters here.</span>
+          </div>
+        </div>
+
+        <div class="sk-pillar__item" id="sk-learning">
+          <div class="sk-pillar__body">
+            <h2 class="sk-pillar__heading">Learning with purpose</h2>
+            <p  class="sk-pillar__text">Learning at St Kevin's is both structured and meaningful, grounded in evidence-informed teaching and rich opportunities for inquiry. We form learners who think deeply and engage with the world around them.</p>
+            <span class="sk-pillar__tagline">Clear teaching. Curious minds. Deep thinking.</span>
+          </div>
+        </div>
+
+        <div class="sk-pillar__item" id="sk-faith">
+          <div class="sk-pillar__body">
+            <h2 class="sk-pillar__heading">Faith in action</h2>
+            <p  class="sk-pillar__text">Our Catholic faith shapes the spirit of our school and the way we care for one another. Through prayer, service and daily action, students learn to live the Gospel values of respect, compassion and love.</p>
+            <span class="sk-pillar__tagline">Guided by Christ in all we do.</span>
+          </div>
+        </div>
+
+        <div class="sk-pillar__item" id="sk-growing">
+          <div class="sk-pillar__body">
+            <h2 class="sk-pillar__heading">Growing together</h2>
+            <p  class="sk-pillar__text">St Kevin's is a welcoming and diverse community where families, staff and students work together. It is this partnership that creates the warmth, trust and shared purpose that define our school.</p>
+            <span class="sk-pillar__tagline">Together we shape the future.</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right — pinned image stack (data-order sets z-index: higher = shown first) -->
+      <div class="sk-pillar__right" id="sk-pillar-right">
+
+        <div class="sk-pillar__img-wrap" data-order="4">
+          <!-- Belonging: cosmos_1226555780 — warm, 3 kids writing -->
+          <img src="images/samples/cosmos_1226555780.jpeg"
+               alt="Students writing and learning together at St Kevin's"
+               loading="lazy">
+        </div>
+
+        <div class="sk-pillar__img-wrap" data-order="3">
+          <!-- Learning: cosmos_1113100871 — classroom moment -->
+          <img src="images/samples/cosmos_1113100871.jpeg"
+               alt="Engaged learning in a St Kevin's classroom"
+               loading="lazy">
+        </div>
+
+        <div class="sk-pillar__img-wrap" data-order="2">
+          <!-- Faith: cosmos_1074538081 — art/craft group -->
+          <img src="images/samples/cosmos_1074538081.jpeg"
+               alt="Students participating in creative and faith activities"
+               loading="lazy">
+        </div>
+
+        <div class="sk-pillar__img-wrap" data-order="1">
+          <!-- Growing Together: cosmos_226684284 — floor activity -->
+          <img src="images/samples/cosmos_226684284.jpeg"
+               alt="St Kevin's community — families and students together"
+               loading="lazy">
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ════════════════════════════════
+       DEBUG PANEL — Wave tuning (remove before launch)
+  ════════════════════════════════ -->
+  <div class="sk-debug-panel" id="sk-debug-panel" role="region" aria-label="Wave debug controls">
     <div class="sk-debug-panel-header">
-      <span class="sk-debug-panel-title">Debug</span>
+      <span class="sk-debug-panel-title">Wave — Dev</span>
       <button class="sk-debug-toggle" id="sk-debug-toggle-btn" aria-label="Collapse debug panel">▾</button>
     </div>
     <div class="sk-debug-body">
 
-      <!-- Hero overlay -->
+      <!-- SVG width -->
       <div class="sk-debug-row">
-        <span class="sk-debug-label">Overlay opacity</span>
-        <span class="sk-debug-value" id="sk-debug-overlay-val">60%</span>
+        <span class="sk-debug-label">Width</span>
+        <span class="sk-debug-value" id="dbg-wave-width-val">100%</span>
       </div>
-      <input type="range" class="sk-debug-slider" id="sk-debug-overlay-slider" min="0" max="100" value="60" aria-label="Hero overlay opacity">
+      <input type="range" class="sk-debug-slider" id="dbg-wave-width" min="100" max="140" value="100" aria-label="Wave SVG width">
 
-      <!-- SK logo size -->
+      <!-- Scroll drift: horizontal shift L→R as divider scrolls up -->
       <div class="sk-debug-row" style="margin-top:12px;">
-        <span class="sk-debug-label">SK logo size</span>
-        <span class="sk-debug-value" id="sk-debug-sk-logo-val">120px</span>
+        <span class="sk-debug-label">Scroll drift</span>
+        <span class="sk-debug-value" id="dbg-wave-drift-val">0px</span>
       </div>
-      <input type="range" class="sk-debug-slider" id="sk-debug-sk-logo-slider" min="24" max="180" value="120" aria-label="SK logo size">
+      <input type="range" class="sk-debug-slider" id="dbg-wave-drift" min="-160" max="160" value="0" aria-label="Horizontal drift on scroll">
 
-      <!-- MACS logo size -->
+      <!-- Divider height -->
       <div class="sk-debug-row" style="margin-top:12px;">
-        <span class="sk-debug-label">MACS logo size</span>
-        <span class="sk-debug-value" id="sk-debug-macs-logo-val">100px</span>
+        <span class="sk-debug-label">Height</span>
+        <span class="sk-debug-value" id="dbg-wave-height-val">120px</span>
       </div>
-      <input type="range" class="sk-debug-slider" id="sk-debug-macs-logo-slider" min="20" max="160" value="100" aria-label="MACS logo size">
+      <input type="range" class="sk-debug-slider" id="dbg-wave-height" min="60" max="260" value="120" aria-label="Wave divider height">
 
-      <!-- White logo toggle -->
-      <div class="sk-debug-row" style="margin-top:14px;">
-        <span class="sk-debug-label">White logos</span>
-        <button id="sk-debug-logo-white-btn" style="
-          padding: 4px 12px; border-radius: 6px; border: 1.5px solid rgba(255,255,255,0.25);
-          background: transparent; color: rgba(255,255,255,0.6); font-family: var(--font-inter);
-          font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
-          cursor: pointer; transition: background 0.18s, color 0.18s, border-color 0.18s;
-        ">OFF</button>
+      <!-- Amplitude (scaleY from top anchor) -->
+      <div class="sk-debug-row" style="margin-top:12px;">
+        <span class="sk-debug-label">Amplitude</span>
+        <span class="sk-debug-value" id="dbg-wave-amp-val">1.0×</span>
       </div>
+      <input type="range" class="sk-debug-slider" id="dbg-wave-amp" min="20" max="300" value="100" aria-label="Wave amplitude (scaleY)">
+
+      <!-- Fill opacity -->
+      <div class="sk-debug-row" style="margin-top:12px;">
+        <span class="sk-debug-label">Opacity</span>
+        <span class="sk-debug-value" id="dbg-wave-opacity-val">100%</span>
+      </div>
+      <input type="range" class="sk-debug-slider" id="dbg-wave-opacity" min="10" max="100" value="100" aria-label="Wave fill opacity">
 
     </div>
   </div>
@@ -1037,13 +1459,11 @@
   </script>
 
 
-  <!-- Debug panel controls -->
+  <!-- Debug panel — wave tuning controls -->
   <script>
   (function () {
-    var root       = document.documentElement;
-    var panel      = document.getElementById('sk-debug-panel');
-    var toggleBtn  = document.getElementById('sk-debug-toggle-btn');
-
+    var panel     = document.getElementById('sk-debug-panel');
+    var toggleBtn = document.getElementById('sk-debug-toggle-btn');
     if (!panel) return;
 
     /* ── Collapse / expand ── */
@@ -1053,52 +1473,294 @@
       toggleBtn.setAttribute('aria-label', collapsed ? 'Expand debug panel' : 'Collapse debug panel');
     });
 
-    /* ── Hero overlay opacity ── */
-    var overlaySlider = document.getElementById('sk-debug-overlay-slider');
-    var overlayVal    = document.getElementById('sk-debug-overlay-val');
-    function setOverlay(v) {
-      root.style.setProperty('--hero-overlay-opacity', (v / 100).toFixed(2));
-      overlayVal.textContent = v + '%';
-    }
-    overlaySlider.addEventListener('input', function () { setOverlay(parseInt(this.value, 10)); });
-    setOverlay(parseInt(overlaySlider.value, 10));
+    var wrappers = Array.prototype.slice.call(document.querySelectorAll('.sk-wave-divider'));
+    var svgs     = Array.prototype.slice.call(document.querySelectorAll('.sk-wave-svg'));
+    var paths    = Array.prototype.slice.call(document.querySelectorAll('.sk-wave-svg path'));
 
-    /* ── SK logo size ── */
-    var skLogoSlider = document.getElementById('sk-debug-sk-logo-slider');
-    var skLogoVal    = document.getElementById('sk-debug-sk-logo-val');
-    function setSkLogo(v) {
-      root.style.setProperty('--logo-sk-size', v + 'px');
-      skLogoVal.textContent = v + 'px';
-    }
-    skLogoSlider.addEventListener('input', function () { setSkLogo(parseInt(this.value, 10)); });
-    setSkLogo(120);
-
-    /* ── MACS logo size ── */
-    var macsLogoSlider = document.getElementById('sk-debug-macs-logo-slider');
-    var macsLogoVal    = document.getElementById('sk-debug-macs-logo-val');
-    var macsImg        = document.getElementById('sk-macs-logo');
-    function setMacsLogo(v) {
-      root.style.setProperty('--logo-macs-size', v + 'px');
-      if (macsImg) macsImg.style.height = v + 'px';
-      macsLogoVal.textContent = v + 'px';
-    }
-    macsLogoSlider.addEventListener('input', function () { setMacsLogo(parseInt(this.value, 10)); });
-    setMacsLogo(100);
-
-    /* ── White logo toggle ── */
-    var whiteBtn   = document.getElementById('sk-debug-logo-white-btn');
-    var whiteMacs  = document.getElementById('sk-macs-logo');
-    var logosWhite = false;
-    whiteBtn.addEventListener('click', function () {
-      logosWhite = !logosWhite;
-      document.body.classList.toggle('logos-white', logosWhite);
-      if (whiteMacs) whiteMacs.style.filter = logosWhite ? '' : 'none';
-      whiteBtn.textContent = logosWhite ? 'ON' : 'OFF';
-      whiteBtn.style.background    = logosWhite ? 'rgba(255,255,255,0.18)' : 'transparent';
-      whiteBtn.style.color         = logosWhite ? '#fff' : 'rgba(255,255,255,0.6)';
-      whiteBtn.style.borderColor   = logosWhite ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.25)';
+    /* ── Width: stretch SVG beyond 100% ── */
+    var widthSlider = document.getElementById('dbg-wave-width');
+    var widthVal    = document.getElementById('dbg-wave-width-val');
+    widthSlider.addEventListener('input', function () {
+      var v = parseInt(this.value, 10);
+      widthVal.textContent = v + '%';
+      svgs.forEach(function (svg) { svg.style.width = v + '%'; });
     });
 
+    /* ── Scroll drift: horizontal translate as divider scrolls through viewport ──
+       driftAmount px shift at progress=1 (divider exits top). Live-readable by
+       the onUpdate callback so slider changes take effect on next scroll tick. */
+    var driftSlider  = document.getElementById('dbg-wave-drift');
+    var driftVal     = document.getElementById('dbg-wave-drift-val');
+    var driftAmount  = 0;
+    driftSlider.addEventListener('input', function () {
+      driftAmount = parseInt(this.value, 10);
+      driftVal.textContent = (driftAmount > 0 ? '+' : '') + driftAmount + 'px';
+    });
+    svgs.forEach(function (svg) {
+      ScrollTrigger.create({
+        trigger: svg.parentElement,
+        start: 'top 100%',
+        end:   'bottom 0%',
+        onUpdate: function (self) {
+          gsap.set(svg, { x: self.progress * driftAmount });
+        }
+      });
+    });
+
+    /* ── Height: expand/contract the divider container ── */
+    var heightSlider = document.getElementById('dbg-wave-height');
+    var heightVal    = document.getElementById('dbg-wave-height-val');
+    heightSlider.addEventListener('input', function () {
+      var v = parseInt(this.value, 10);
+      heightVal.textContent = v + 'px';
+      wrappers.forEach(function (w) { w.style.height = v + 'px'; });
+    });
+
+    /* ── Amplitude: scaleY anchored at top so flat edge stays flush ── */
+    var ampSlider = document.getElementById('dbg-wave-amp');
+    var ampVal    = document.getElementById('dbg-wave-amp-val');
+    ampSlider.addEventListener('input', function () {
+      var v = parseInt(this.value, 10) / 100;
+      ampVal.textContent = v.toFixed(1) + '\xd7';
+      svgs.forEach(function (svg) { gsap.set(svg, { scaleY: v }); });
+      /* open overflow when scaled beyond container so full wave is visible */
+      wrappers.forEach(function (w) {
+        w.style.overflow = v > 1.05 ? 'visible' : 'hidden';
+      });
+    });
+
+    /* ── Fill opacity ── */
+    var opacitySlider = document.getElementById('dbg-wave-opacity');
+    var opacityVal    = document.getElementById('dbg-wave-opacity-val');
+    opacitySlider.addEventListener('input', function () {
+      var v = parseInt(this.value, 10);
+      opacityVal.textContent = v + '%';
+      paths.forEach(function (p) { p.style.opacity = v / 100; });
+    });
+
+  })();
+  </script>
+
+  <!-- Lenis smooth scroll + GSAP ScrollTrigger sync -->
+  <script>
+  (function () {
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (!reduced && typeof Lenis !== 'undefined') {
+      var lenis = new Lenis({
+        duration: 1.15,
+        easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }
+      });
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
+      gsap.ticker.lagSmoothing(0);
+    }
+  })();
+  </script>
+
+  <!-- Wave dividers: on-scroll SVG path morph (Codrops OnScrollPathAnimations pattern) -->
+  <script>
+  (function () {
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    gsap.registerPlugin(ScrollTrigger);
+
+    /*
+      Wave config array.
+      dA = resting state (gentle wave, enters viewport at bottom).
+      dB = peak state (dramatic wave, divider mid-viewport).
+      Paths share identical M C C L L Z command structure → GSAP attr.d
+      interpolates cleanly without MorphSVGPlugin.
+
+      Add Section 9 (navy) and Section 11 (navy-inv) entries here
+      when those HTML sections are built.
+    */
+    var WAVES = [
+      {
+        pathId:    'sk-wave-path-2',
+        wrapperId: 'sk-wave-divider-2',
+        /* Flat top (flush with hero), wave faces DOWN into the content below.
+           M L L C C Z structure matches across both states. */
+        dA: 'M 0 0 L 1440 0 L 1440 62 C 1200 82 960 40 720 65 C 480 90 240 55 0 75 Z',
+        dB: 'M 0 0 L 1440 0 L 1440 70 C 1260 10 960 112 720 14 C 480 110 200 12 0 92 Z'
+      }
+      /* Section 9:  { pathId: 'sk-wave-path-9',  wrapperId: 'sk-wave-divider-9',  dA: '...', dB: '...' } */
+      /* Section 11: { pathId: 'sk-wave-path-11', wrapperId: 'sk-wave-divider-11', dA: '...', dB: '...' } */
+    ];
+
+    WAVES.forEach(function (cfg) {
+      var path    = document.getElementById(cfg.pathId);
+      var wrapper = document.getElementById(cfg.wrapperId);
+      if (!path || !wrapper) return;
+
+      /* Pin the resting state before scroll kicks in */
+      gsap.set(path, { attr: { d: cfg.dA } });
+
+      if (reduced) return;
+
+      gsap.fromTo(path,
+        { attr: { d: cfg.dA } },
+        {
+          attr: { d: cfg.dB },
+          ease: 'none',
+          scrollTrigger: {
+            id:      cfg.pathId + '-morph',
+            trigger: wrapper,
+            start:   'top 90%',   /* morph begins as divider enters from bottom */
+            end:     'top 10%',   /* morph completes as divider exits through top */
+            scrub:   1.4          /* 1.4s lag — confident, editorial feel */
+          }
+        }
+      );
+    });
+  })();
+  </script>
+
+  <!-- Quotes carousel — 6-second auto-cycle, dot navigation, accessible -->
+  <script>
+  (function () {
+    var items   = document.querySelectorAll('.sk-quote-item');
+    var dots    = document.querySelectorAll('.sk-quotes__dot');
+    var current = 0;
+    var timer;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function show(idx) {
+      items[current].classList.remove('is-active');
+      dots[current].classList.remove('is-active');
+      dots[current].setAttribute('aria-selected', 'false');
+      current = (idx + items.length) % items.length;
+      items[current].classList.add('is-active');
+      dots[current].classList.add('is-active');
+      dots[current].setAttribute('aria-selected', 'true');
+    }
+
+    function tick() { show(current + 1); }
+
+    function resetTimer() {
+      clearInterval(timer);
+      if (!reduced) timer = setInterval(tick, 6000);
+    }
+
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        show(parseInt(dot.getAttribute('data-qi'), 10));
+        resetTimer();
+      });
+    });
+
+    resetTimer();
+  })();
+  </script>
+
+  <!-- Pillar pinned image scroll (Codrops gsap-pinned-image-mask-reveal adapted) -->
+  <script>
+  (function () {
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* Assign z-index from data-order so highest-order image sits on top */
+    document.querySelectorAll('.sk-pillar__img-wrap').forEach(function (el) {
+      var o = el.getAttribute('data-order');
+      if (o !== null) el.style.zIndex = o;
+    });
+
+    /* Mobile: interleave text items and image items using CSS order */
+    function layoutMobile() {
+      var isMob    = window.matchMedia('(max-width: 768px)').matches;
+      var textEls  = gsap.utils.toArray('.sk-pillar__item');
+      var imgEls   = gsap.utils.toArray('.sk-pillar__img-wrap');
+      if (isMob) {
+        textEls.forEach(function (el, i) { el.style.order = i * 2;     });
+        imgEls.forEach(function  (el, i) { el.style.order = i * 2 + 1; });
+      } else {
+        textEls.forEach(function (el) { el.style.order = ''; });
+        imgEls.forEach(function  (el) { el.style.order = ''; });
+      }
+    }
+    var resizeT;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeT);
+      resizeT = setTimeout(layoutMobile, 100);
+    }, { passive: true });
+    layoutMobile();
+
+    /* ── Desktop: pinned image + clipPath wipe ── */
+    var mm = gsap.matchMedia();
+
+    mm.add('(min-width: 769px)', function () {
+      var imgs = gsap.utils.toArray('.sk-pillar__img-wrap img');
+
+      gsap.set(imgs, {
+        clipPath:       'inset(0)',
+        objectPosition: '50% 30%'
+      });
+
+      var mainTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '#sk-pillar',
+          start:   'top top',
+          end:     'bottom bottom',
+          pin:     '#sk-pillar-right',
+          scrub:   true
+        }
+      });
+
+      imgs.forEach(function (_, i) {
+        var cur  = imgs[i];
+        var next = imgs[i + 1] || null;
+        var seg  = gsap.timeline();
+
+        if (next) {
+          seg
+            .to(cur, {
+              clipPath:       'inset(0px 0px 100%)',
+              objectPosition: '50% 60%',
+              duration:       1.5,
+              ease:           'none'
+            }, 0)
+            .to(next, {
+              objectPosition: '50% 40%',
+              duration:       1.5,
+              ease:           'none'
+            }, 0);
+        }
+
+        mainTl.add(seg);
+      });
+
+      /* Text entrance — each body block fades/rises as its item enters */
+      if (!reduced) {
+        gsap.utils.toArray('.sk-pillar__item').forEach(function (item) {
+          var h2      = item.querySelector('.sk-pillar__heading');
+          var p       = item.querySelector('.sk-pillar__text');
+          var tagline = item.querySelector('.sk-pillar__tagline');
+
+          gsap.timeline({
+            scrollTrigger: {
+              trigger:      item,
+              start:        'top 72%',
+              end:          'top 28%',
+              toggleActions: 'play none none reverse'
+            }
+          })
+          .fromTo(h2,
+            { y: 28, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.65, ease: 'expo.out' }
+          )
+          .fromTo(p,
+            { y: 20, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.6,  ease: 'expo.out' },
+            '-=0.4'
+          )
+          .fromTo(tagline,
+            { y: 14, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.55, ease: 'expo.out' },
+            '-=0.35'
+          );
+        });
+      }
+
+      return function () {};   /* cleanup — gsap.matchMedia handles it */
+    });
   })();
   </script>
 

@@ -107,6 +107,45 @@
 
 ---
 
+## Session 4 — 2026-06-04
+
+### Completed this session
+- ✅ Sections 3–8 — Quotes Carousel + Welcome Block + Pinned Image Scroll built → `site/index.html`
+- ✅ Section 3 — Quotes Carousel: 6-second auto-cycle, Dancing Script font, 6 parent quotes, dot navigation, fully accessible (aria-live, aria-selected, focus-visible)
+- ✅ Section 4 — Welcome Block: Montserrat 800 uppercase heading, Dancing Script tagline, client copy from CONTENT.md
+- ✅ Sections 5–8 — GSAP pinned image scroll: Codrops gsap-pinned-image-mask-reveal pattern adapted, 4 content blocks (Belonging / Learning / Faith / Growing Together), cosmos images, clipPath wipe on scrub, NO background colour transitions (user requirement), mobile interleaved layout via CSS order + JS
+- ✅ Text entrances: GSAP expo.out stagger per visible pillar item (h2 → p → tagline), triggered on viewport entry
+- ✅ Section 2 — Wave Divider (Burgundy) rebuilt as on-scroll morphing SVG path (Codrops OnScrollPathAnimations pattern) → `site/index.html`
+- ✅ Tape ribbon scrapped — replaced with single-path SVG, `viewBox="0 0 1440 120"`, `preserveAspectRatio="none"` for full-bleed scaling
+- ✅ Path morph: dA (rest, ~50px amplitude) → dB (peak, ~100px amplitude), identical M C C L L Z command structure for clean GSAP `attr.d` interpolation
+- ✅ GSAP ScrollTrigger `scrub: 1.4`, `start: 'top 90%', end: 'top 10%'` — morph happens as divider traverses the viewport, confident/editorial feel
+- ✅ WAVES config array in JS — Section 9 + 11 entries commented and ready to plug in when those sections are built
+- ✅ CSS wave divider system — three modifier classes: `--burg`, `--navy`, `--navy-inv` for all three transition types
+
+### In progress
+- Nothing in progress — clean stop
+
+### Resume here next session
+**Page:** Homepage (index.html)
+**Section:** Section 3 — Quotes Carousel
+**Search terms to find component:** `"quotes carousel auto-cycle vanilla js"` or `"testimonial slider no library"` or `"Dancing Script font carousel"`
+**Status:** Wave divider done. Next: Quotes Carousel — Dancing Script, 6-second auto-cycle, 6 quotes from CONTENT.md, white background.
+
+### Decisions made this session
+- **Codrops OnScrollPathAnimations pattern chosen** — on-scroll path morph replaces the previous twisted ribbon. User referenced https://github.com/codrops/OnScrollPathAnimations and the Codrops tutorial as the target aesthetic.
+- **All three wave dividers (Sec 2, 9, 11) will use this pattern** — same WAVES config array, different fill colors.
+- **dA → dB morph on scroll**: both states use identical SVG command structure so no MorphSVGPlugin required. GSAP standard `attr.d` tween handles it.
+- **No horizontal drift** — the old tape ribbon used GSAP x-translate across scroll. The new system uses pure path morphing. Cleaner, no oversized 2400px viewBox needed.
+
+### Problems to watch out for
+- All prior session problems still apply (images gitignored, Facebook href="#", debug panel to remove).
+- Section 9 and 11 wave dividers need their `dA`/`dB` paths designed when those sections are built — placeholder comments in the WAVES array in JS.
+
+### Files changed this session
+- `site/index.html` — wave divider system: CSS, HTML (Section 2), JS (WAVES morph config)
+
+---
+
 ## Session 3 — 2026-06-04
 
 ### Completed this session
