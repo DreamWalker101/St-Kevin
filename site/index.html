@@ -42,8 +42,6 @@
   <!-- GSAP -->
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
 
-  <!-- Lucide icons (no build step needed — UMD CDN) -->
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <style>
     /* ── CSS Custom Properties ── */
@@ -120,13 +118,14 @@
       z-index: var(--z-header);
       padding: 20px 24px;
       display: flex; align-items: center; justify-content: space-between;
-      transition: background var(--transition-medium), box-shadow var(--transition-medium);
+      transition: background var(--transition-medium), box-shadow var(--transition-medium), transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .sk-header.is-transparent { background: transparent; }
     .sk-header.is-scrolled {
       background: var(--color-pure-white);
       box-shadow: 0 1px 0 var(--color-border-mist);
     }
+    .sk-header.is-hidden { transform: translateY(-100%); }
 
     /* Hamburger */
     .sk-hamburger {
@@ -145,16 +144,35 @@
     .is-transparent .sk-hamburger span { background: var(--color-pure-white); }
     .is-scrolled    .sk-hamburger span { background: var(--color-deep-navy); }
 
-    /* Centre logo */
+    /* Centre logo — white version sits on top by default, colour fades in on scroll */
     .sk-header-logo {
-      position: absolute; left: 50%; transform: translateX(-50%);
+      position: absolute;
+      left: 50%; top: 16px;
+      transform: translateX(-50%);
+      transform-origin: top center;
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .is-scrolled .sk-header-logo {
+      transform: translateX(-50%) scale(0.7);
     }
     .sk-logo-img {
-      height: 48px; width: auto; display: block;
-      /* show colour logo always; white version needed for transparent state */
+      display: block;
+      height: var(--logo-sk-size, 120px); width: auto;
+      transition: opacity var(--transition-medium);
     }
-    /* When white version is supplied, add logo-sk-white.png and toggle:
-       .is-transparent .sk-logo-img → show white; .is-scrolled .sk-logo-img → show colour */
+    .sk-logo-colour {
+      position: absolute; top: 0; left: 0;
+      opacity: 0;
+    }
+    .sk-logo-white  { opacity: 1; }
+    .is-scrolled .sk-logo-white  { opacity: 0; }
+    .is-scrolled .sk-logo-colour { opacity: 1; }
+
+    .sk-sidebar-logo { transition: none; }
+
+    /* Manual white logo toggle (debug) */
+    .logos-white .sk-logo-colour { opacity: 0 !important; }
+    .logos-white .sk-logo-white  { opacity: 1 !important; }
 
     /* Search toggle */
     .sk-search-btn {
@@ -294,6 +312,13 @@
       .sk-nav-sidebar   { width: min(340px, 90vw); }
     }
 
+    /* Logo in sidebar */
+    .sk-sidebar-logo {
+      max-height: var(--logo-sidebar-size, 80px);
+      max-width: 100%;
+      width: auto; height: auto; display: block;
+    }
+
     /* Sidebar header row */
     .sk-sidebar-header {
       display: flex; align-items: center; gap: 16px;
@@ -315,11 +340,6 @@
     .sk-sidebar-close:hover {
       border-color: var(--color-deep-navy);
       background: var(--color-cloud-grey);
-    }
-
-    /* Logo in sidebar */
-    .sk-sidebar-logo {
-      height: 52px; width: auto; display: block;
     }
 
     /* Primary nav */
@@ -345,19 +365,16 @@
       color: var(--color-deep-navy);
       letter-spacing: -0.01em;
       line-height: 1.15;
+      display: inline-block;
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), color 0.28s;
     }
+    .sk-nav-item:hover .sk-nav-item-label { transform: translateX(6px); }
 
     /* Arrow — bare, no circle. Grows toward the right on hover. */
     .sk-nav-arrow {
       display: flex; align-items: center;
       color: var(--color-burgundy-red);
       flex-shrink: 0;
-    }
-    /* Lucide icon sizing — applied globally so data-lucide icons are consistent */
-    [data-lucide] {
-      width: 18px; height: 18px;
-      display: block; flex-shrink: 0;
-      stroke-width: 1.75;
     }
 .sk-nav-arrow-line {
       display: block; height: 2px; width: 0;
@@ -396,14 +413,8 @@
       background: transparent;
       color: #4B5563;
       text-decoration: none;
-      transition: background 0.22s ease, color 0.22s ease, transform 0.2s ease;
     }
-    .sk-social-btn:hover {
-      background: var(--color-deep-navy);
-      color: #fff;
-      transform: scale(1.1);
-    }
-    .sk-social-btn svg { display: block; }
+    .sk-social-btn svg { display: block; overflow: visible; }
 
     /* ── Hero ── */
     .sk-hero {
@@ -552,13 +563,10 @@
       <span></span>
     </button>
 
-    <!-- Centre: Logo -->
+    <!-- Centre: Logo (white over hero, colour when scrolled) -->
     <div class="sk-header-logo">
-      <img
-        src="images/logo-sk-colour.png"
-        alt="St Kevin's Primary School, Hampton Park"
-        class="sk-logo-img"
-      >
+      <img src="images/logo-sk-white.png"  alt="St Kevin's Primary School, Hampton Park" class="sk-logo-img sk-logo-white">
+      <img src="images/logo-sk-colour.png" alt=""                                          class="sk-logo-img sk-logo-colour" aria-hidden="true">
     </div>
 
     <!-- Right: Search -->
@@ -625,7 +633,7 @@
             <line x1="14" y1="2" x2="2" y2="14"/>
           </svg>
         </button>
-        <img src="images/logo-sk-colour.png" alt="St Kevin's Primary School, Hampton Park" class="sk-sidebar-logo">
+        <img src="images/logo-sk-macs-combined.png" alt="St Kevin's Primary School, Hampton Park" class="sk-sidebar-logo">
       </div>
 
       <!-- Primary navigation -->
@@ -698,17 +706,24 @@
       <div class="sk-sidebar-footer">
         <div class="sk-sidebar-socials">
 
-          <a href="tel:0397098600" class="sk-social-btn" aria-label="Call us: (03) 9709 8600">
-            <i data-lucide="phone"></i>
+          <!-- Phone — buzzes like a ringing phone -->
+          <a href="tel:0397098600" class="sk-social-btn sk-social-btn--phone" aria-label="Call us: (03) 9709 8600">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 5.5 5.5l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
           </a>
 
-          <a href="mailto:administration@skhamptonpark.catholic.edu.au" class="sk-social-btn" aria-label="Email us">
-            <i data-lucide="mail"></i>
+          <!-- Envelope — flap lifts open on hover -->
+          <a href="mailto:administration@skhamptonpark.catholic.edu.au" class="sk-social-btn sk-social-btn--mail" aria-label="Email us">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect class="env-body" x="2" y="4" width="20" height="16" rx="2"/>
+              <polyline class="env-flap" points="22,6 12,13 2,6"/>
+            </svg>
           </a>
 
-          <!-- Replace # with school's Facebook page URL when known -->
-          <a href="#" class="sk-social-btn" aria-label="Find us on Facebook" target="_blank" rel="noopener noreferrer">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <!-- Facebook — rattles side to side -->
+          <a href="#" class="sk-social-btn sk-social-btn--fb" aria-label="Find us on Facebook" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
             </svg>
           </a>
@@ -754,7 +769,7 @@
 
     <!-- MACS logo — bottom-left per client revision doc -->
     <div class="sk-hero-macs" aria-hidden="true">
-      <img src="images/macs-logo-white.png" alt="" height="44" style="display:block;height:44px;width:auto;">
+      <img src="images/macs-logo-white.png" alt="" id="sk-macs-logo" style="display:block;height:var(--logo-macs-size,44px);width:auto;transition:filter var(--transition-medium);">
     </div>
 
   </section>
@@ -770,17 +785,37 @@
     </div>
     <div class="sk-debug-body">
 
+      <!-- Hero overlay -->
       <div class="sk-debug-row">
         <span class="sk-debug-label">Overlay opacity</span>
         <span class="sk-debug-value" id="sk-debug-overlay-val">60%</span>
       </div>
-      <input
-        type="range"
-        class="sk-debug-slider"
-        id="sk-debug-overlay-slider"
-        min="0" max="100" value="60"
-        aria-label="Hero overlay opacity"
-      >
+      <input type="range" class="sk-debug-slider" id="sk-debug-overlay-slider" min="0" max="100" value="60" aria-label="Hero overlay opacity">
+
+      <!-- SK logo size -->
+      <div class="sk-debug-row" style="margin-top:12px;">
+        <span class="sk-debug-label">SK logo size</span>
+        <span class="sk-debug-value" id="sk-debug-sk-logo-val">120px</span>
+      </div>
+      <input type="range" class="sk-debug-slider" id="sk-debug-sk-logo-slider" min="24" max="180" value="120" aria-label="SK logo size">
+
+      <!-- MACS logo size -->
+      <div class="sk-debug-row" style="margin-top:12px;">
+        <span class="sk-debug-label">MACS logo size</span>
+        <span class="sk-debug-value" id="sk-debug-macs-logo-val">100px</span>
+      </div>
+      <input type="range" class="sk-debug-slider" id="sk-debug-macs-logo-slider" min="20" max="160" value="100" aria-label="MACS logo size">
+
+      <!-- White logo toggle -->
+      <div class="sk-debug-row" style="margin-top:14px;">
+        <span class="sk-debug-label">White logos</span>
+        <button id="sk-debug-logo-white-btn" style="
+          padding: 4px 12px; border-radius: 6px; border: 1.5px solid rgba(255,255,255,0.25);
+          background: transparent; color: rgba(255,255,255,0.6); font-family: var(--font-inter);
+          font-size: 11px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+          cursor: pointer; transition: background 0.18s, color 0.18s, border-color 0.18s;
+        ">OFF</button>
+      </div>
 
     </div>
   </div>
@@ -813,17 +848,27 @@
 
     var navOpen = false;
     var searchOpen = false;
+    var lastScrollY = 0;
+    var HIDE_AFTER = 140; // px from top before hide-on-scroll kicks in
 
     /* ── Set initial GSAP states ── */
     gsap.set(sidebar,     { x: '-100%' });
     gsap.set(backdrop,    { autoAlpha: 0 });
     gsap.set(searchPanel, { autoAlpha: 0, y: -8 });
 
-    /* ── Scroll: header transparent → white ── */
+    /* ── Scroll: transparent → white + hide on scroll down / show on scroll up ── */
     function onScroll() {
-      var scrolled = window.scrollY > 60;
+      var y = window.scrollY;
+      var scrolled = y > 60;
       header.classList.toggle('is-scrolled',    scrolled);
       header.classList.toggle('is-transparent', !scrolled);
+
+      if (y > HIDE_AFTER) {
+        header.classList.toggle('is-hidden', y > lastScrollY);
+      } else {
+        header.classList.remove('is-hidden');
+      }
+      lastScrollY = y;
     }
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
@@ -834,43 +879,46 @@
       hamburger.setAttribute('aria-expanded', 'true');
       document.body.style.overflow = 'hidden';
 
-      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var dur  = reducedMotion ? 0.01 : 0.48;
-      var ease = 'power3.out';
+      var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-      var tl = gsap.timeline();
+      var tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
 
-      tl.to(backdrop, { autoAlpha: 1, duration: reducedMotion ? 0.01 : 0.3, ease: 'power2.out' }, 0);
-      tl.to(sidebar,  { x: '0%', duration: dur, ease: ease }, 0);
+      /* Backdrop — slow luxurious fade so panel feels like it's emerging */
+      tl.to(backdrop, { autoAlpha: 1, duration: rm ? 0.01 : 0.65 }, 0);
 
-      if (sideImg && !reducedMotion) {
-        tl.from(sideImg, { scale: 1.06, duration: 0.9, ease: 'power2.out', clearProps: 'transform' }, 0);
+      /* Panel — the hero move: long deceleration makes it feel weighty */
+      tl.to(sidebar, { x: '0%', duration: rm ? 0.01 : 0.78 }, 0);
+
+      /* Photo panel — zooms out slowly, gives depth as panel arrives */
+      if (sideImg && !rm) {
+        tl.from(sideImg, {
+          scale: 1.1, duration: 1.1, ease: 'power3.out', clearProps: 'transform'
+        }, 0);
       }
 
+      /* Header row — waits for panel to be 50% in before appearing */
       tl.from(sideHead, {
-        autoAlpha: 0, x: -10,
-        duration: reducedMotion ? 0 : 0.28, ease: 'power2.out', clearProps: 'transform,opacity,visibility'
-      }, reducedMotion ? 0 : 0.18);
+        autoAlpha: 0, y: 8,
+        duration: rm ? 0 : 0.45, clearProps: 'all'
+      }, rm ? 0 : 0.32);
 
+      /* Nav items — cascade in with x+y float, unhurried stagger */
       tl.from(navItems, {
-        autoAlpha: 0, x: -18,
-        duration: reducedMotion ? 0 : 0.32,
-        stagger: reducedMotion ? 0 : 0.06,
-        ease: 'power2.out', clearProps: 'transform,opacity,visibility'
-      }, reducedMotion ? 0 : 0.22);
+        autoAlpha: 0, x: -22, y: 10,
+        duration: rm ? 0 : 0.55,
+        stagger: rm ? 0 : { each: 0.09 },
+        clearProps: 'all'
+      }, rm ? 0 : 0.38);
 
-      tl.from(secLinks, {
-        autoAlpha: 0, y: 10,
-        duration: reducedMotion ? 0 : 0.26,
-        stagger: reducedMotion ? 0 : 0.045,
-        ease: 'power2.out', clearProps: 'transform,opacity,visibility'
-      }, reducedMotion ? 0 : 0.52);
-
+      /* Footer icons — bloom in last, after all items have settled */
       tl.from(footerLinks, {
-        autoAlpha: 0, duration: reducedMotion ? 0 : 0.22, ease: 'power2.out', clearProps: 'opacity,visibility'
-      }, reducedMotion ? 0 : 0.68);
+        autoAlpha: 0, y: 8,
+        duration: rm ? 0 : 0.4,
+        stagger: rm ? 0 : { each: 0.07 },
+        ease: 'power3.out', clearProps: 'all'
+      }, rm ? 0 : 0.76);
 
-      tl.call(function() { closeBtn.focus(); });
+      tl.call(function () { closeBtn.focus(); });
     }
 
     /* ── Close sidebar ── */
@@ -879,12 +927,15 @@
       hamburger.setAttribute('aria-expanded', 'false');
       document.body.style.overflow = '';
 
-      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var dur = reducedMotion ? 0.01 : 0.38;
+      var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       var tl = gsap.timeline();
-      tl.to(sidebar,  { x: '-100%', duration: dur, ease: 'power3.in' }, 0);
-      tl.to(backdrop, { autoAlpha: 0, duration: reducedMotion ? 0.01 : 0.28, ease: 'power2.in' }, 0);
+
+      /* Panel — power4.inOut: builds then decelerates, feels intentional not abrupt */
+      tl.to(sidebar,  { x: '-100%', duration: rm ? 0.01 : 0.56, ease: 'power4.inOut' }, 0);
+
+      /* Backdrop lingers a beat behind the panel */
+      tl.to(backdrop, { autoAlpha: 0, duration: rm ? 0.01 : 0.42, ease: 'power2.in' }, rm ? 0 : 0.08);
     }
 
     /* ── Nav triggers ── */
@@ -985,41 +1036,110 @@
   })();
   </script>
 
-  <!-- Initialise Lucide icons after DOM is ready -->
-  <script>
-    if (typeof lucide !== 'undefined') {
-      lucide.createIcons();
-    }
-  </script>
 
-  <!-- Debug panel: hero overlay opacity control -->
+  <!-- Debug panel controls -->
   <script>
   (function () {
-    var root    = document.documentElement;
-    var panel   = document.getElementById('sk-debug-panel');
-    var slider  = document.getElementById('sk-debug-overlay-slider');
-    var valEl   = document.getElementById('sk-debug-overlay-val');
-    var toggleBtn = document.getElementById('sk-debug-toggle-btn');
+    var root       = document.documentElement;
+    var panel      = document.getElementById('sk-debug-panel');
+    var toggleBtn  = document.getElementById('sk-debug-toggle-btn');
 
-    if (!panel || !slider) return;
+    if (!panel) return;
 
-    function setOverlay(v) {
-      root.style.setProperty('--hero-overlay-opacity', (v / 100).toFixed(2));
-      valEl.textContent = v + '%';
-    }
-
-    slider.addEventListener('input', function () {
-      setOverlay(parseInt(this.value, 10));
-    });
-
+    /* ── Collapse / expand ── */
     toggleBtn.addEventListener('click', function () {
       var collapsed = panel.classList.toggle('is-collapsed');
       toggleBtn.textContent = collapsed ? '▸' : '▾';
       toggleBtn.setAttribute('aria-label', collapsed ? 'Expand debug panel' : 'Collapse debug panel');
     });
 
-    /* Apply initial value so the CSS var is set from JS */
-    setOverlay(parseInt(slider.value, 10));
+    /* ── Hero overlay opacity ── */
+    var overlaySlider = document.getElementById('sk-debug-overlay-slider');
+    var overlayVal    = document.getElementById('sk-debug-overlay-val');
+    function setOverlay(v) {
+      root.style.setProperty('--hero-overlay-opacity', (v / 100).toFixed(2));
+      overlayVal.textContent = v + '%';
+    }
+    overlaySlider.addEventListener('input', function () { setOverlay(parseInt(this.value, 10)); });
+    setOverlay(parseInt(overlaySlider.value, 10));
+
+    /* ── SK logo size ── */
+    var skLogoSlider = document.getElementById('sk-debug-sk-logo-slider');
+    var skLogoVal    = document.getElementById('sk-debug-sk-logo-val');
+    function setSkLogo(v) {
+      root.style.setProperty('--logo-sk-size', v + 'px');
+      skLogoVal.textContent = v + 'px';
+    }
+    skLogoSlider.addEventListener('input', function () { setSkLogo(parseInt(this.value, 10)); });
+    setSkLogo(120);
+
+    /* ── MACS logo size ── */
+    var macsLogoSlider = document.getElementById('sk-debug-macs-logo-slider');
+    var macsLogoVal    = document.getElementById('sk-debug-macs-logo-val');
+    var macsImg        = document.getElementById('sk-macs-logo');
+    function setMacsLogo(v) {
+      root.style.setProperty('--logo-macs-size', v + 'px');
+      if (macsImg) macsImg.style.height = v + 'px';
+      macsLogoVal.textContent = v + 'px';
+    }
+    macsLogoSlider.addEventListener('input', function () { setMacsLogo(parseInt(this.value, 10)); });
+    setMacsLogo(100);
+
+    /* ── White logo toggle ── */
+    var whiteBtn   = document.getElementById('sk-debug-logo-white-btn');
+    var whiteMacs  = document.getElementById('sk-macs-logo');
+    var logosWhite = false;
+    whiteBtn.addEventListener('click', function () {
+      logosWhite = !logosWhite;
+      document.body.classList.toggle('logos-white', logosWhite);
+      if (whiteMacs) whiteMacs.style.filter = logosWhite ? '' : 'none';
+      whiteBtn.textContent = logosWhite ? 'ON' : 'OFF';
+      whiteBtn.style.background    = logosWhite ? 'rgba(255,255,255,0.18)' : 'transparent';
+      whiteBtn.style.color         = logosWhite ? '#fff' : 'rgba(255,255,255,0.6)';
+      whiteBtn.style.borderColor   = logosWhite ? 'rgba(255,255,255,0.5)' : 'rgba(255,255,255,0.25)';
+    });
+
+  })();
+  </script>
+
+  <!-- Social icon micro-animations via GSAP -->
+  <script>
+  (function () {
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return;
+
+    /* ── Phone: tips like being answered, elastic settle ── */
+    var phoneBtn = document.querySelector('.sk-social-btn--phone');
+    if (phoneBtn) {
+      var phoneSvg = phoneBtn.querySelector('svg');
+      var phoneTl  = gsap.timeline({ paused: true });
+      phoneTl
+        .to(phoneSvg, { rotation: 18, duration: 0.18, ease: 'power2.out', transformOrigin: '50% 50%' })
+        .to(phoneSvg, { rotation: 0,  duration: 0.5,  ease: 'elastic.out(1, 0.5)' });
+      phoneBtn.addEventListener('mouseenter', function () { phoneTl.restart(); });
+    }
+
+    /* ── Envelope: flap path morphs open then closes ── */
+    var mailBtn = document.querySelector('.sk-social-btn--mail');
+    if (mailBtn) {
+      var flap   = mailBtn.querySelector('.env-flap');
+      var mailTl = gsap.timeline({ paused: true });
+      mailTl
+        .to(flap, { attr: { points: '22,5 12,2 2,5' }, duration: 0.2,  ease: 'power2.out' })
+        .to(flap, { attr: { points: '22,6 12,13 2,6' }, duration: 0.38, ease: 'power3.inOut' });
+      mailBtn.addEventListener('mouseenter', function () { mailTl.restart(); });
+    }
+
+    /* ── Facebook: floats up a few px then drops back with a soft bounce ── */
+    var fbBtn = document.querySelector('.sk-social-btn--fb');
+    if (fbBtn) {
+      var fbSvg = fbBtn.querySelector('svg');
+      var fbTl  = gsap.timeline({ paused: true });
+      fbTl
+        .to(fbSvg, { y: -4, duration: 0.2,  ease: 'power2.out' })
+        .to(fbSvg, { y:  0, duration: 0.45, ease: 'elastic.out(1, 0.45)' });
+      fbBtn.addEventListener('mouseenter', function () { fbTl.restart(); });
+    }
   })();
   </script>
 
