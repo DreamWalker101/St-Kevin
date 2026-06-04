@@ -54,3 +54,53 @@
 - `site/sections/contact/.gitkeep` — folder placeholder
 - `source-docs/` — all client source files moved here (xlsx, docx, txt, mockup jpgs, logo png)
 - Removed: `MASTER_CONTEXT.md`, `VSCODE_SETUP_GUIDE.md`, `PROGRESS.md` (stale nWork files), both zip archives, `extracted/`
+
+---
+
+## Session 2 — 2026-06-04
+
+### Completed this session
+- ✅ Sidebar redesigned — Zoox-style left panel (GSAP, Lucide icons) → `site/index.html`
+- ✅ Sidebar: bare growing arrow on hover (2px line + chevron slides right) → `site/index.html`
+- ✅ Sidebar: icon-only social footer in pill island (phone, email, Facebook inline SVG) → `site/index.html`
+- ✅ Sidebar: tall portrait image panel with rounded frame + GSAP scale on open → `site/index.html`
+- ✅ Sidebar: Policies added as 6th primary nav item, secondary links stripped → `site/index.html`
+- ✅ Hero section built — YouTube background video (`rVqR9num8Js`), navy overlay, MACS logo bottom-left → `site/index.html`
+- ✅ Debug panel — fixed bottom-right, slider to adjust overlay opacity live → `site/index.html`
+- ✅ Logo images processed — colour SK logo in header + sidebar, MACS logo converted to white → `site/images/`
+- ✅ Sample images copied to `site/images/samples/` for use across site build
+
+### In progress
+- Nothing in progress — clean stop
+
+### Resume here next session
+**Page:** Homepage (index.html)
+**Section:** Section 2 — Wave Divider (Burgundy) + Section 3 — Quotes Carousel
+**Search terms to find component:** `"SVG wave divider html css"` or `"quotes carousel auto-cycle vanilla js"` or `"testimonial slider no library"`
+**Status:** Hero done. Next is the wave divider SVG that transitions hero → welcome block, then the quotes carousel (Dancing Script, 6-second auto-cycle, 6 quotes).
+
+### Decisions made this session
+
+- **Hamburger menu only (confirmed):** No top nav bar at any breakpoint. Sidebar opens from left.
+- **YouTube embed for hero video:** Using iframe embed with `autoplay=1&mute=1&loop=1&playlist=ID&controls=0`. Cover sizing via `max(100%, calc(100vh * 16/9))`.
+- **Overlay uses CSS custom property:** `--hero-overlay-opacity` defaults to `0.60`. Debug panel sets it via JS so the value is live-adjustable without touching source.
+- **MACS logo placement:** Bottom-left of hero (per client revision doc). Using `St-Brigids-Gisborne-Horizontal-lock-up-COLOUR-1.png` converted to all-white via ImageMagick (`-channel RGB -evaluate set 100%`).
+- **SK colour logo in header:** `St-Kevins-vertical-lock-up-COLOUR-1.png` used directly. White version needed for transparent-header state — placeholder comment left in CSS for when client supplies it.
+- **Debug panel to be removed before launch:** The entire `<!-- DEBUG PANEL -->` block in index.html.
+- **Sidebar image:** `site/images/samples/cosmos_1616537391.jpeg` — client replaces with real school photo before launch.
+- **React component stagger effect attempted and reverted:** Tried to port the ReactBits StaggeredMenu pre-layer + text-cycling effect. Multiple z-index and GSAP conflicts. Reverted to the original working sidebar animation (GSAP `x: '-100%'` slide, `tl.from` stagger on items). Not worth re-attempting in vanilla JS without proper isolation — if this effect is wanted, consider implementing it fresh in a separate branch with careful testing.
+
+### Problems to watch out for
+- YouTube autoplay is blocked on some browsers unless the video is muted — the embed URL already includes `mute=1` so this is handled.
+- The hero iframe has `pointer-events: none` — clicking the hero area will not interact with the video player. Intentional.
+- White SK logo not yet available — header logo currently shows colour version over the dark hero. Looks acceptable but not ideal. Remind client to supply a white/reverse version.
+- Facebook `href="#"` in sidebar footer — replace with actual school Facebook URL when known.
+- Debug panel must be removed before going live — it's clearly marked with a comment but easy to forget.
+- `site/images/` is gitignored — logos and samples exist locally only. Will need to be uploaded to hosting separately.
+
+### Files changed this session
+- `site/index.html` — major rewrite: Zoox sidebar, GSAP animations, hero section, debug panel, logo swaps, overlay system
+- `site/images/logo-sk-colour.png` — copied from `source-docs/St-Kevins-vertical-lock-up-COLOUR-1.png`
+- `site/images/macs-logo-white.png` — generated from `sample pictures/St-Brigids-Gisborne-Horizontal-lock-up-COLOUR-1.png` (ImageMagick white conversion)
+- `site/images/samples/` — 7 sample images copied from `sample pictures/` folder
+- `PRODUCT.md` — created (required by /impeccable skill)

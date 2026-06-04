@@ -39,6 +39,12 @@
     }
   </script>
 
+  <!-- GSAP -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+
+  <!-- Lucide icons (no build step needed — UMD CDN) -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
   <style>
     /* ── CSS Custom Properties ── */
     :root {
@@ -60,7 +66,6 @@
       --text-body:       16px; --leading-body:       1.7;
       --text-body-lg:    18px; --leading-body-lg:    1.7;
       --text-tagline:    24px; --leading-tagline:    1.4;
-      --text-tagline-lg: 28px; --leading-tagline-lg: 1.4;
       --text-heading-sm: 22px; --leading-heading-sm: 1.3;
       --text-heading:    28px; --leading-heading:    1.25;
       --text-heading-lg: 36px; --leading-heading-lg: 1.2;
@@ -73,10 +78,9 @@
       --font-weight-bold:      700;
       --font-weight-extrabold: 800;
 
-      --spacing-4:   4px;  --spacing-8:   8px;  --spacing-12:  12px;
-      --spacing-16:  16px; --spacing-24:  24px; --spacing-32:  32px;
-      --spacing-48:  48px; --spacing-64:  64px; --spacing-80:  80px;
-      --spacing-96:  96px; --spacing-120: 120px;
+      --spacing-4:   4px;  --spacing-8:   8px;  --spacing-12: 12px;
+      --spacing-16: 16px;  --spacing-24: 24px;  --spacing-32: 32px;
+      --spacing-48: 48px;  --spacing-64: 64px;  --spacing-80: 80px;
 
       --max-width:               1200px;
       --section-padding-desktop: 96px;
@@ -95,8 +99,10 @@
       --transition-fast:   0.2s ease;
       --transition-medium: 0.3s ease;
 
-      --z-nav-overlay:   9999;
-      --z-sticky-header: 1000;
+      --z-search:      1100;
+      --z-header:      1000;
+      --z-backdrop:    9000;
+      --z-sidebar:     9100;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
@@ -111,7 +117,7 @@
     /* ── Header ── */
     .sk-header {
       position: fixed; top: 0; left: 0; right: 0;
-      z-index: var(--z-sticky-header);
+      z-index: var(--z-header);
       padding: 20px 24px;
       display: flex; align-items: center; justify-content: space-between;
       transition: background var(--transition-medium), box-shadow var(--transition-medium);
@@ -126,8 +132,12 @@
     .sk-hamburger {
       display: flex; flex-direction: column; justify-content: center; gap: 5px;
       width: 40px; height: 40px;
-      background: none; border: none; cursor: pointer; padding: 4px; flex-shrink: 0;
+      background: none; border: none; cursor: pointer; padding: 6px; flex-shrink: 0;
+      border-radius: 8px;
+      transition: background var(--transition-fast);
     }
+    .sk-hamburger:hover { background: rgba(255,255,255,0.12); }
+    .is-scrolled .sk-hamburger:hover { background: var(--color-cloud-grey); }
     .sk-hamburger span {
       display: block; height: 2px; border-radius: 2px;
       transition: background var(--transition-medium);
@@ -139,33 +149,21 @@
     .sk-header-logo {
       position: absolute; left: 50%; transform: translateX(-50%);
     }
-    .sk-logo-placeholder {
-      height: 48px; display: flex; align-items: center; gap: 8px;
+    .sk-logo-img {
+      height: 48px; width: auto; display: block;
+      /* show colour logo always; white version needed for transparent state */
     }
-    .sk-logo-mark {
-      width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-montserrat); font-weight: var(--font-weight-bold); font-size: 15px;
-      transition: background var(--transition-medium), color var(--transition-medium), border-color var(--transition-medium);
-      border: 2px solid transparent;
-    }
-    .is-transparent .sk-logo-mark { background: rgba(255,255,255,0.15); color: #fff; border-color: rgba(255,255,255,0.4); }
-    .is-scrolled    .sk-logo-mark { background: var(--color-deep-navy); color: #fff; }
+    /* When white version is supplied, add logo-sk-white.png and toggle:
+       .is-transparent .sk-logo-img → show white; .is-scrolled .sk-logo-img → show colour */
 
-    .sk-logo-text {
-      font-family: var(--font-montserrat); font-weight: var(--font-weight-bold);
-      font-size: 12px; line-height: 1.25; text-transform: uppercase; letter-spacing: 0.05em;
-      transition: color var(--transition-medium);
-    }
-    .is-transparent .sk-logo-text { color: var(--color-pure-white); }
-    .is-scrolled    .sk-logo-text { color: var(--color-deep-navy); }
-
-    /* Search */
+    /* Search toggle */
     .sk-search-btn {
       width: 40px; height: 40px;
       background: none; border: none; cursor: pointer;
       display: flex; align-items: center; justify-content: center;
-      border-radius: 50%; transition: background var(--transition-fast); flex-shrink: 0;
+      border-radius: 50%;
+      transition: background var(--transition-fast);
+      flex-shrink: 0;
     }
     .sk-search-btn:hover { background: rgba(255,255,255,0.12); }
     .is-scrolled .sk-search-btn:hover { background: var(--color-cloud-grey); }
@@ -173,73 +171,378 @@
     .is-transparent .sk-search-btn svg { stroke: var(--color-pure-white); }
     .is-scrolled    .sk-search-btn svg { stroke: var(--color-deep-navy); }
 
-    /* ── Nav Overlay ── */
-    .sk-nav-overlay {
-      position: fixed; inset: 0; background: var(--color-deep-navy);
-      z-index: var(--z-nav-overlay);
-      display: flex; flex-direction: column; align-items: center; justify-content: center;
-      opacity: 0; pointer-events: none;
-      transition: opacity var(--transition-medium);
+    /* ── Search Panel ── */
+    .sk-search-panel {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: var(--z-search);
+      background: var(--color-pure-white);
+      border-bottom: 1px solid var(--color-border-mist);
+      padding: 20px 24px;
+      visibility: hidden; opacity: 0;
+      /* GSAP controls visibility/opacity — do not set display:none */
     }
-    .sk-nav-overlay.is-open { opacity: 1; pointer-events: all; }
-
-    .sk-nav-overlay nav { display: flex; flex-direction: column; align-items: center; gap: 32px; }
-
-    .sk-nav-overlay nav a {
-      font-family: var(--font-montserrat); font-weight: var(--font-weight-bold);
-      font-size: clamp(28px, 5vw, 40px);
-      color: var(--color-pure-white); text-decoration: none;
-      letter-spacing: -0.01em; position: relative;
-      transition: color var(--transition-fast);
+    .sk-search-inner {
+      max-width: var(--max-width); margin: 0 auto;
+      display: flex; align-items: center; gap: 12px;
     }
-    .sk-nav-overlay nav a::after {
-      content: ''; position: absolute; bottom: -4px; left: 0;
-      width: 0; height: 2px; background: var(--color-burgundy-red);
-      transition: width var(--transition-medium);
+    .sk-search-form {
+      flex: 1; display: flex; align-items: center; gap: 0;
+      border: 1.5px solid var(--color-border-mist);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--color-cloud-grey);
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
     }
-    .sk-nav-overlay nav a:hover { color: rgba(255,255,255,0.75); }
-    .sk-nav-overlay nav a:hover::after { width: 100%; }
-
-    .sk-nav-close {
-      position: absolute; top: 24px; right: 24px;
-      width: 44px; height: 44px; background: none; border: none; cursor: pointer;
+    .sk-search-form:focus-within {
+      border-color: var(--color-deep-navy);
+      box-shadow: 0 0 0 3px rgba(5, 30, 66, 0.08);
+      background: #fff;
+    }
+    .sk-search-icon {
+      padding: 0 14px 0 16px; display: flex; align-items: center; flex-shrink: 0;
+    }
+    .sk-search-icon svg { display: block; }
+    .sk-search-input {
+      flex: 1; border: none; background: transparent; outline: none;
+      font-family: var(--font-inter); font-size: 16px; font-weight: 400;
+      color: var(--color-deep-navy); padding: 14px 0;
+      line-height: 1.4;
+    }
+    .sk-search-input::placeholder { color: var(--color-slate-text); }
+    .sk-search-submit {
+      padding: 10px 16px; margin: 4px;
+      background: var(--color-deep-navy); border: none; cursor: pointer;
+      border-radius: 7px;
+      font-family: var(--font-montserrat); font-size: 13px; font-weight: 700;
+      color: #fff; letter-spacing: 0.03em;
+      transition: background var(--transition-fast);
+    }
+    .sk-search-submit:hover { background: var(--color-navy-tint); }
+    .sk-search-close-btn {
+      width: 40px; height: 40px; flex-shrink: 0;
       display: flex; align-items: center; justify-content: center;
-      color: var(--color-pure-white); font-size: 32px; line-height: 1;
-      border-radius: 50%; transition: background var(--transition-fast);
+      background: none; border: none; cursor: pointer;
+      border-radius: 50%;
+      transition: background var(--transition-fast);
     }
-    .sk-nav-close:hover { background: rgba(255,255,255,0.1); }
-
-    .sk-nav-footer {
-      position: absolute; bottom: 40px; left: 0; right: 0;
-      display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; padding: 0 24px;
+    .sk-search-close-btn:hover { background: var(--color-cloud-grey); }
+    .sk-search-results {
+      max-width: var(--max-width); margin: 12px auto 0;
+      font-family: var(--font-inter); font-size: 14px;
+      color: var(--color-slate-text); min-height: 0;
     }
-    .sk-nav-footer a {
-      font-family: var(--font-inter); font-size: var(--text-caption);
-      color: rgba(255,255,255,0.45); text-decoration: none;
-      transition: color var(--transition-fast);
-    }
-    .sk-nav-footer a:hover { color: rgba(255,255,255,0.85); }
-
-    @media (max-width: 640px) {
-      .sk-nav-footer { flex-direction: column; align-items: center; gap: 12px; bottom: 32px; }
+    .sk-search-results.has-message {
+      padding: 8px 0 4px;
+      border-top: 1px solid var(--color-border-mist);
     }
 
-    /* ── DEV placeholder — remove when hero is built ── */
-    .dev-hero-placeholder {
-      height: 100vh;
+    /* ── Nav Backdrop ── */
+    .sk-nav-backdrop {
+      position: fixed; inset: 0;
+      background: rgba(5, 30, 66, 0.6);
+      z-index: var(--z-backdrop);
+      cursor: pointer;
+      visibility: hidden; opacity: 0;
+      /* GSAP drives visibility + opacity */
+    }
+
+    /* ── Nav Sidebar ── */
+    .sk-nav-sidebar {
+      position: fixed; top: 0; left: 0; bottom: 0;
+      width: min(620px, 95vw);
+      z-index: var(--z-sidebar);
+      background: #fff;
+      display: flex; flex-direction: row;
+      overflow: hidden;
+      box-shadow: 4px 0 40px rgba(5, 30, 66, 0.18);
+      transform: translateX(-100%);
+    }
+
+    /* Left scrollable content */
+    .sk-sidebar-content {
+      width: min(340px, 100%);
+      flex-shrink: 0;
+      display: flex; flex-direction: column;
+      overflow-y: auto; overflow-x: hidden;
+      scrollbar-width: none;
+    }
+    .sk-sidebar-content::-webkit-scrollbar { display: none; }
+
+    /* Right tall image panel — floats with padding so corners are visible */
+    .sk-sidebar-image {
+      flex: 1; min-width: 160px;
+      padding: 12px 12px 12px 0;
+      display: flex;
+    }
+    /* Frame provides the rounded corners + clips the GSAP scale */
+    .sk-sidebar-image-frame {
+      flex: 1;
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+    }
+    .sk-sidebar-image img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+      will-change: transform;
+    }
+
+    @media (max-width: 600px) {
+      .sk-sidebar-image { display: none; }
+      .sk-nav-sidebar   { width: min(340px, 90vw); }
+    }
+
+    /* Sidebar header row */
+    .sk-sidebar-header {
+      display: flex; align-items: center; gap: 16px;
+      padding: 20px 24px 0;
+      flex-shrink: 0;
+    }
+
+    /* Close button — square with rounded corners, bordered */
+    .sk-sidebar-close {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: none;
+      border: 1.5px solid var(--color-border-mist);
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-deep-navy);
+      transition: border-color var(--transition-fast), background var(--transition-fast);
+    }
+    .sk-sidebar-close:hover {
+      border-color: var(--color-deep-navy);
+      background: var(--color-cloud-grey);
+    }
+
+    /* Logo in sidebar */
+    .sk-sidebar-logo {
+      height: 52px; width: auto; display: block;
+    }
+
+    /* Primary nav */
+    .sk-sidebar-nav {
+      padding: 32px 24px 0;
+      display: flex; flex-direction: column; gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .sk-nav-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 0;
+      text-decoration: none;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: none; /* GSAP handles hover */
+    }
+
+    .sk-nav-item-label {
+      font-family: var(--font-montserrat);
+      font-size: clamp(22px, 4vw, 28px);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-deep-navy);
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+    }
+
+    /* Arrow — bare, no circle. Grows toward the right on hover. */
+    .sk-nav-arrow {
+      display: flex; align-items: center;
+      color: var(--color-burgundy-red);
+      flex-shrink: 0;
+    }
+    /* Lucide icon sizing — applied globally so data-lucide icons are consistent */
+    [data-lucide] {
+      width: 18px; height: 18px;
+      display: block; flex-shrink: 0;
+      stroke-width: 1.75;
+    }
+.sk-nav-arrow-line {
+      display: block; height: 2px; width: 0;
+      background: currentColor;
+      transition: width 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: left center;
+      border-radius: 2px;
+    }
+    .sk-nav-arrow-chevron {
+      display: flex; align-items: center;
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .sk-nav-item:hover .sk-nav-arrow-line   { width: 20px; }
+    .sk-nav-item:hover .sk-nav-arrow-chevron { transform: translateX(4px); }
+    .sk-nav-item:hover .sk-nav-item-label   { color: var(--color-burgundy-red); }
+
+
+    /* Sidebar footer — icon island */
+    .sk-sidebar-footer {
+      margin-top: auto;
+      padding: 20px 24px 28px;
+      border-top: 1px solid var(--color-border-mist);
+    }
+    /* The island: pill-shaped container grouping all icons */
+    .sk-sidebar-socials {
+      display: inline-flex; align-items: center;
+      background: var(--color-cloud-grey);
+      border-radius: 999px;
+      padding: 5px;
+      gap: 2px;
+    }
+    .sk-social-btn {
+      width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      background: transparent;
+      color: #4B5563;
+      text-decoration: none;
+      transition: background 0.22s ease, color 0.22s ease, transform 0.2s ease;
+    }
+    .sk-social-btn:hover {
       background: var(--color-deep-navy);
-      display: flex; align-items: center; justify-content: center;
-      color: rgba(255,255,255,0.3);
-      font-family: var(--font-inter); font-size: 13px;
-      letter-spacing: 0.08em; text-transform: uppercase;
+      color: #fff;
+      transform: scale(1.1);
+    }
+    .sk-social-btn svg { display: block; }
+
+    /* ── Hero ── */
+    .sk-hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      overflow: hidden;
+      background: var(--color-deep-navy);
+    }
+
+    /* YouTube iframe — covers like background-size: cover */
+    .sk-hero-video-wrap {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .sk-hero-video-wrap iframe {
+      position: absolute;
+      top: 50%; left: 50%;
+      /* Ensure 16:9 iframe always covers the container */
+      width: max(100%, calc(100vh * 16 / 9));
+      height: max(100%, calc(100vw * 9 / 16));
+      min-width: 100%; min-height: 100%;
+      transform: translate(-50%, -50%);
+      border: 0;
+      pointer-events: none;
+    }
+
+    /* Navy overlay — opacity controlled by CSS var for the debug panel */
+    .sk-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: var(--color-deep-navy);
+      opacity: var(--hero-overlay-opacity, 0.60);
+      pointer-events: none;
+      transition: opacity 0.15s ease;
+    }
+
+    /* MACS logo bottom-left (per client revision doc) */
+    .sk-hero-macs {
+      position: absolute;
+      bottom: 32px; left: 32px;
+      z-index: 2;
+    }
+    .sk-hero-macs-placeholder {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-family: var(--font-montserrat); font-size: 11px;
+      font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ── Debug panel (dev only) ── */
+    .sk-debug-panel {
+      position: fixed;
+      bottom: 24px; right: 24px;
+      z-index: 9999;
+      background: rgba(5, 30, 66, 0.92);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 16px 18px;
+      min-width: 220px;
+      color: #fff;
+      font-family: var(--font-inter);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+    }
+    .sk-debug-panel-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 14px;
+    }
+    .sk-debug-panel-title {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5);
+    }
+    .sk-debug-toggle {
+      background: none; border: none; cursor: pointer;
+      color: rgba(255,255,255,0.4); padding: 0;
+      font-size: 16px; line-height: 1;
+      transition: color 0.15s;
+    }
+    .sk-debug-toggle:hover { color: rgba(255,255,255,0.8); }
+    .sk-debug-row {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 10px; margin-bottom: 10px;
+    }
+    .sk-debug-label {
+      font-size: 12px; font-weight: 500;
+      color: rgba(255,255,255,0.7); white-space: nowrap;
+    }
+    .sk-debug-value {
+      font-size: 12px; font-weight: 700;
+      color: #fff; min-width: 32px; text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    .sk-debug-slider {
+      -webkit-appearance: none; appearance: none;
+      width: 100%; height: 4px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 2px; outline: none;
+      margin-bottom: 0;
+    }
+    .sk-debug-slider::-webkit-slider-thumb {
+      -webkit-appearance: none; appearance: none;
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--color-burgundy-red);
+      cursor: pointer;
+      border: 2px solid #fff;
+    }
+    .sk-debug-slider::-moz-range-thumb {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: var(--color-burgundy-red);
+      cursor: pointer;
+      border: 2px solid #fff;
+    }
+    .sk-debug-panel.is-collapsed .sk-debug-body { display: none; }
+    .sk-debug-panel.is-collapsed { padding-bottom: 14px; }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      .sk-nav-sidebar, .sk-nav-backdrop, .sk-search-panel {
+        transition: visibility 0s, opacity 0.1s !important;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- ════════════════════════════════════════
+  <!-- ════════════════════════════════
        HEADER
-  ════════════════════════════════════════ -->
+  ════════════════════════════════ -->
   <header class="sk-header is-transparent" id="sk-header">
 
     <!-- Left: Hamburger -->
@@ -249,22 +552,17 @@
       <span></span>
     </button>
 
-    <!-- Centre: St Kevin's Logo -->
+    <!-- Centre: Logo -->
     <div class="sk-header-logo">
-      <!--
-        When logos are available, replace placeholder with:
-        <img src="images/logo-sk-white.svg"  alt="St Kevin's Primary School" style="height:48px" class="sk-logo-white">
-        <img src="images/logo-sk-colour.svg" alt="St Kevin's Primary School" style="height:48px" class="sk-logo-colour">
-        (toggle visibility based on is-transparent / is-scrolled on header)
-      -->
-      <div class="sk-logo-placeholder">
-        <div class="sk-logo-mark">SK</div>
-        <div class="sk-logo-text">St Kevin's<br>Hampton Park</div>
-      </div>
+      <img
+        src="images/logo-sk-colour.png"
+        alt="St Kevin's Primary School, Hampton Park"
+        class="sk-logo-img"
+      >
     </div>
 
     <!-- Right: Search -->
-    <button class="sk-search-btn" aria-label="Search site">
+    <button class="sk-search-btn" id="sk-search-btn" aria-label="Search site" aria-expanded="false">
       <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
         <circle cx="9.5" cy="9.5" r="7"/>
         <line x1="14.5" y1="14.5" x2="21" y2="21"/>
@@ -273,76 +571,456 @@
 
   </header>
 
-  <!-- ════════════════════════════════════════
-       FULLSCREEN NAV OVERLAY
-  ════════════════════════════════════════ -->
-  <div class="sk-nav-overlay" id="sk-nav-overlay" role="dialog" aria-modal="true" aria-label="Site navigation">
 
-    <button class="sk-nav-close" id="sk-nav-close-btn" aria-label="Close navigation">&times;</button>
+  <!-- ════════════════════════════════
+       SEARCH PANEL
+  ════════════════════════════════ -->
+  <div class="sk-search-panel" id="sk-search-panel" role="search" aria-label="Site search">
+    <div class="sk-search-inner">
+      <form class="sk-search-form" id="sk-search-form" autocomplete="off">
+        <span class="sk-search-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 22 22" fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9.5" cy="9.5" r="7"/>
+            <line x1="14.5" y1="14.5" x2="21" y2="21"/>
+          </svg>
+        </span>
+        <input
+          type="search"
+          class="sk-search-input"
+          id="sk-search-input"
+          placeholder="Search St Kevin's…"
+          aria-label="Search"
+        >
+        <button type="submit" class="sk-search-submit">Search</button>
+      </form>
+      <button class="sk-search-close-btn" id="sk-search-close-btn" aria-label="Close search">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round">
+          <line x1="2" y1="2" x2="16" y2="16"/><line x1="16" y1="2" x2="2" y2="16"/>
+        </svg>
+      </button>
+    </div>
+    <div class="sk-search-results" id="sk-search-results" aria-live="polite"></div>
+  </div>
 
-    <nav>
-      <a href="about.html">About Us</a>
-      <a href="learning.html">Learning</a>
-      <a href="community.html">Community</a>
-      <a href="enrolments.html">Enrolments</a>
-      <a href="contact.html">Contact</a>
-    </nav>
 
-    <div class="sk-nav-footer">
-      <a href="tel:0397098600">(03) 9709 8600</a>
-      <a href="mailto:administration@skhamptonpark.catholic.edu.au">administration@skhamptonpark.catholic.edu.au</a>
+  <!-- ════════════════════════════════
+       NAV BACKDROP
+  ════════════════════════════════ -->
+  <div class="sk-nav-backdrop" id="sk-nav-backdrop"></div>
+
+
+  <!-- ════════════════════════════════
+       NAV SIDEBAR
+  ════════════════════════════════ -->
+  <aside class="sk-nav-sidebar" id="sk-nav-sidebar" role="dialog" aria-modal="true" aria-label="Site navigation">
+
+    <!-- Left: scrollable nav content -->
+    <div class="sk-sidebar-content">
+
+      <!-- Header row: close + logo -->
+      <div class="sk-sidebar-header">
+        <button class="sk-sidebar-close" id="sk-sidebar-close" aria-label="Close navigation">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="2" y1="2" x2="14" y2="14"/>
+            <line x1="14" y1="2" x2="2" y2="14"/>
+          </svg>
+        </button>
+        <img src="images/logo-sk-colour.png" alt="St Kevin's Primary School, Hampton Park" class="sk-sidebar-logo">
+      </div>
+
+      <!-- Primary navigation -->
+      <nav class="sk-sidebar-nav" aria-label="Primary navigation">
+
+        <a href="about.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">About Us</span>
+          <span class="sk-nav-arrow" aria-hidden="true">
+            <span class="sk-nav-arrow-line"></span>
+            <span class="sk-nav-arrow-chevron">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg>
+            </span>
+          </span>
+        </a>
+
+        <a href="learning.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">Learning</span>
+          <span class="sk-nav-arrow" aria-hidden="true">
+            <span class="sk-nav-arrow-line"></span>
+            <span class="sk-nav-arrow-chevron">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg>
+            </span>
+          </span>
+        </a>
+
+        <a href="community.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">Community</span>
+          <span class="sk-nav-arrow" aria-hidden="true">
+            <span class="sk-nav-arrow-line"></span>
+            <span class="sk-nav-arrow-chevron">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg>
+            </span>
+          </span>
+        </a>
+
+        <a href="enrolments.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">Enrolments</span>
+          <span class="sk-nav-arrow" aria-hidden="true">
+            <span class="sk-nav-arrow-line"></span>
+            <span class="sk-nav-arrow-chevron">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg>
+            </span>
+          </span>
+        </a>
+
+        <a href="contact.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">Contact</span>
+          <span class="sk-nav-arrow" aria-hidden="true">
+            <span class="sk-nav-arrow-line"></span>
+            <span class="sk-nav-arrow-chevron">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg>
+            </span>
+          </span>
+        </a>
+
+        <a href="policies.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">Policies</span>
+          <span class="sk-nav-arrow" aria-hidden="true">
+            <span class="sk-nav-arrow-line"></span>
+            <span class="sk-nav-arrow-chevron">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg>
+            </span>
+          </span>
+        </a>
+
+      </nav>
+
+
+      <!-- Footer: icon-only social/contact strip -->
+      <div class="sk-sidebar-footer">
+        <div class="sk-sidebar-socials">
+
+          <a href="tel:0397098600" class="sk-social-btn" aria-label="Call us: (03) 9709 8600">
+            <i data-lucide="phone"></i>
+          </a>
+
+          <a href="mailto:administration@skhamptonpark.catholic.edu.au" class="sk-social-btn" aria-label="Email us">
+            <i data-lucide="mail"></i>
+          </a>
+
+          <!-- Replace # with school's Facebook page URL when known -->
+          <a href="#" class="sk-social-btn" aria-label="Find us on Facebook" target="_blank" rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+
+        </div>
+      </div>
+
+    </div><!-- /sk-sidebar-content -->
+
+    <!-- Right: tall photo panel — floats with rounded corners -->
+    <div class="sk-sidebar-image" aria-hidden="true">
+      <div class="sk-sidebar-image-frame">
+        <img
+          src="images/samples/cosmos_1616537391.jpeg"
+          alt=""
+          loading="eager"
+        >
+      </div>
     </div>
 
+  </aside>
+
+
+  <!-- ════════════════════════════════
+       HERO
+  ════════════════════════════════ -->
+  <section class="sk-hero" id="sk-hero" aria-label="Hero">
+
+    <!-- YouTube background video (muted, looping, no controls) -->
+    <div class="sk-hero-video-wrap" aria-hidden="true">
+      <iframe
+        id="sk-hero-yt"
+        src="https://www.youtube.com/embed/rVqR9num8Js?autoplay=1&mute=1&loop=1&playlist=rVqR9num8Js&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_type=3&playsinline=1&enablejsapi=1"
+        allow="autoplay; encrypted-media"
+        allowfullscreen
+        title=""
+        tabindex="-1"
+      ></iframe>
+    </div>
+
+    <!-- Navy colour overlay — opacity driven by --hero-overlay-opacity CSS var -->
+    <div class="sk-hero-overlay" id="sk-hero-overlay" aria-hidden="true"></div>
+
+    <!-- MACS logo — bottom-left per client revision doc -->
+    <div class="sk-hero-macs" aria-hidden="true">
+      <img src="images/macs-logo-white.png" alt="" height="44" style="display:block;height:44px;width:auto;">
+    </div>
+
+  </section>
+
+
+  <!-- ════════════════════════════════
+       DEBUG PANEL (remove before launch)
+  ════════════════════════════════ -->
+  <div class="sk-debug-panel" id="sk-debug-panel" role="region" aria-label="Debug controls">
+    <div class="sk-debug-panel-header">
+      <span class="sk-debug-panel-title">Debug</span>
+      <button class="sk-debug-toggle" id="sk-debug-toggle-btn" aria-label="Collapse debug panel">▾</button>
+    </div>
+    <div class="sk-debug-body">
+
+      <div class="sk-debug-row">
+        <span class="sk-debug-label">Overlay opacity</span>
+        <span class="sk-debug-value" id="sk-debug-overlay-val">60%</span>
+      </div>
+      <input
+        type="range"
+        class="sk-debug-slider"
+        id="sk-debug-overlay-slider"
+        min="0" max="100" value="60"
+        aria-label="Hero overlay opacity"
+      >
+
+    </div>
   </div>
 
-  <!-- ════════════════════════════════════════
-       HERO — placeholder until section is built
-  ════════════════════════════════════════ -->
-  <div class="dev-hero-placeholder">
-    Hero section — coming next
-  </div>
 
-  <!-- ════════════════════════════════════════
-       HEADER + NAV JAVASCRIPT
-  ════════════════════════════════════════ -->
+  <!-- ════════════════════════════════
+       SCRIPTS
+  ════════════════════════════════ -->
   <script>
-    (function () {
-      const header  = document.getElementById('sk-header');
-      const overlay = document.getElementById('sk-nav-overlay');
-      const openBtn = document.getElementById('sk-hamburger-btn');
-      const closeBtn= document.getElementById('sk-nav-close-btn');
+  (function () {
 
-      /* Transparent → white on scroll */
-      function onScroll() {
-        var scrolled = window.scrollY > 60;
-        header.classList.toggle('is-scrolled',    scrolled);
-        header.classList.toggle('is-transparent', !scrolled);
+    /* ── Elements ── */
+    var header      = document.getElementById('sk-header');
+    var hamburger   = document.getElementById('sk-hamburger-btn');
+    var sidebar     = document.getElementById('sk-nav-sidebar');
+    var backdrop    = document.getElementById('sk-nav-backdrop');
+    var closeBtn    = document.getElementById('sk-sidebar-close');
+    var searchBtn   = document.getElementById('sk-search-btn');
+    var searchPanel = document.getElementById('sk-search-panel');
+    var searchClose = document.getElementById('sk-search-close-btn');
+    var searchInput = document.getElementById('sk-search-input');
+    var searchForm  = document.getElementById('sk-search-form');
+    var searchRes   = document.getElementById('sk-search-results');
+
+    var navItems    = sidebar.querySelectorAll('.sk-nav-item');
+    var secLinks    = sidebar.querySelectorAll('.sk-secondary-link');
+    var footerLinks = sidebar.querySelectorAll('.sk-social-btn');
+    var sideHead    = sidebar.querySelector('.sk-sidebar-header');
+    var sideImg     = sidebar.querySelector('.sk-sidebar-image img');
+
+    var navOpen = false;
+    var searchOpen = false;
+
+    /* ── Set initial GSAP states ── */
+    gsap.set(sidebar,     { x: '-100%' });
+    gsap.set(backdrop,    { autoAlpha: 0 });
+    gsap.set(searchPanel, { autoAlpha: 0, y: -8 });
+
+    /* ── Scroll: header transparent → white ── */
+    function onScroll() {
+      var scrolled = window.scrollY > 60;
+      header.classList.toggle('is-scrolled',    scrolled);
+      header.classList.toggle('is-transparent', !scrolled);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* ── Open sidebar ── */
+    function openNav() {
+      navOpen = true;
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var dur  = reducedMotion ? 0.01 : 0.48;
+      var ease = 'power3.out';
+
+      var tl = gsap.timeline();
+
+      tl.to(backdrop, { autoAlpha: 1, duration: reducedMotion ? 0.01 : 0.3, ease: 'power2.out' }, 0);
+      tl.to(sidebar,  { x: '0%', duration: dur, ease: ease }, 0);
+
+      if (sideImg && !reducedMotion) {
+        tl.from(sideImg, { scale: 1.06, duration: 0.9, ease: 'power2.out', clearProps: 'transform' }, 0);
       }
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
 
-      /* Open overlay */
-      openBtn.addEventListener('click', function () {
-        overlay.classList.add('is-open');
-        openBtn.setAttribute('aria-expanded', 'true');
-        document.body.style.overflow = 'hidden';
-      });
+      tl.from(sideHead, {
+        autoAlpha: 0, x: -10,
+        duration: reducedMotion ? 0 : 0.28, ease: 'power2.out', clearProps: 'transform,opacity,visibility'
+      }, reducedMotion ? 0 : 0.18);
 
-      /* Close overlay */
-      function closeNav() {
-        overlay.classList.remove('is-open');
-        openBtn.setAttribute('aria-expanded', 'false');
-        document.body.style.overflow = '';
+      tl.from(navItems, {
+        autoAlpha: 0, x: -18,
+        duration: reducedMotion ? 0 : 0.32,
+        stagger: reducedMotion ? 0 : 0.06,
+        ease: 'power2.out', clearProps: 'transform,opacity,visibility'
+      }, reducedMotion ? 0 : 0.22);
+
+      tl.from(secLinks, {
+        autoAlpha: 0, y: 10,
+        duration: reducedMotion ? 0 : 0.26,
+        stagger: reducedMotion ? 0 : 0.045,
+        ease: 'power2.out', clearProps: 'transform,opacity,visibility'
+      }, reducedMotion ? 0 : 0.52);
+
+      tl.from(footerLinks, {
+        autoAlpha: 0, duration: reducedMotion ? 0 : 0.22, ease: 'power2.out', clearProps: 'opacity,visibility'
+      }, reducedMotion ? 0 : 0.68);
+
+      tl.call(function() { closeBtn.focus(); });
+    }
+
+    /* ── Close sidebar ── */
+    function closeNav() {
+      navOpen = false;
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var dur = reducedMotion ? 0.01 : 0.38;
+
+      var tl = gsap.timeline();
+      tl.to(sidebar,  { x: '-100%', duration: dur, ease: 'power3.in' }, 0);
+      tl.to(backdrop, { autoAlpha: 0, duration: reducedMotion ? 0.01 : 0.28, ease: 'power2.in' }, 0);
+    }
+
+    /* ── Nav triggers ── */
+    hamburger.addEventListener('click', openNav);
+    closeBtn.addEventListener('click', closeNav);
+    backdrop.addEventListener('click', closeNav);
+
+    /* Close when a nav link is clicked */
+    navItems.forEach(function(a) { a.addEventListener('click', closeNav); });
+
+    /* Escape key closes sidebar or search */
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        if (navOpen) closeNav();
+        if (searchOpen) closeSearch();
       }
+    });
 
-      closeBtn.addEventListener('click', closeNav);
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeNav();
+    /* Basic focus trap inside sidebar */
+    sidebar.addEventListener('keydown', function(e) {
+      if (!navOpen || e.key !== 'Tab') return;
+      var focusable = Array.from(sidebar.querySelectorAll(
+        'button, a, input, [tabindex]:not([tabindex="-1"])'
+      )).filter(function(el) { return !el.disabled; });
+      if (!focusable.length) return;
+      var first = focusable[0];
+      var last  = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault(); last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault(); first.focus();
+      }
+    });
+
+
+    /* ── Open search ── */
+    function openSearch() {
+      searchOpen = true;
+      searchBtn.setAttribute('aria-expanded', 'true');
+
+      gsap.to(searchPanel, {
+        autoAlpha: 1, y: 0, duration: 0.28, ease: 'power2.out'
       });
-      overlay.querySelectorAll('nav a').forEach(function (a) {
-        a.addEventListener('click', closeNav);
+
+      /* Small delay so panel is visible before focus */
+      requestAnimationFrame(function() { searchInput.focus(); });
+    }
+
+    /* ── Close search ── */
+    function closeSearch() {
+      searchOpen = false;
+      searchBtn.setAttribute('aria-expanded', 'false');
+      searchInput.value = '';
+      searchRes.textContent = '';
+      searchRes.classList.remove('has-message');
+
+      gsap.to(searchPanel, {
+        autoAlpha: 0, y: -8, duration: 0.22, ease: 'power2.in'
       });
-    })();
+    }
+
+    searchBtn.addEventListener('click', function() {
+      if (searchOpen) closeSearch(); else openSearch();
+    });
+    searchClose.addEventListener('click', closeSearch);
+
+
+    /* ── Search form ── */
+    searchForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var q = searchInput.value.trim();
+      if (!q) return;
+
+      searchRes.classList.add('has-message');
+
+      /* Site content will be indexed when pages are built;
+         for now, show a friendly holding message. */
+      searchRes.innerHTML =
+        '<span style="color:#374151">No results found for “' +
+        escapeHtml(q) +
+        '” — full search will be available once all pages are live.</span>';
+    });
+
+    /* Clear results when user starts typing again */
+    searchInput.addEventListener('input', function() {
+      if (searchRes.classList.contains('has-message')) {
+        searchRes.textContent = '';
+        searchRes.classList.remove('has-message');
+      }
+    });
+
+    function escapeHtml(str) {
+      return str.replace(/[&<>"']/g, function(c) {
+        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+      });
+    }
+
+  })();
+  </script>
+
+  <!-- Initialise Lucide icons after DOM is ready -->
+  <script>
+    if (typeof lucide !== 'undefined') {
+      lucide.createIcons();
+    }
+  </script>
+
+  <!-- Debug panel: hero overlay opacity control -->
+  <script>
+  (function () {
+    var root    = document.documentElement;
+    var panel   = document.getElementById('sk-debug-panel');
+    var slider  = document.getElementById('sk-debug-overlay-slider');
+    var valEl   = document.getElementById('sk-debug-overlay-val');
+    var toggleBtn = document.getElementById('sk-debug-toggle-btn');
+
+    if (!panel || !slider) return;
+
+    function setOverlay(v) {
+      root.style.setProperty('--hero-overlay-opacity', (v / 100).toFixed(2));
+      valEl.textContent = v + '%';
+    }
+
+    slider.addEventListener('input', function () {
+      setOverlay(parseInt(this.value, 10));
+    });
+
+    toggleBtn.addEventListener('click', function () {
+      var collapsed = panel.classList.toggle('is-collapsed');
+      toggleBtn.textContent = collapsed ? '▸' : '▾';
+      toggleBtn.setAttribute('aria-label', collapsed ? 'Expand debug panel' : 'Collapse debug panel');
+    });
+
+    /* Apply initial value so the CSS var is set from JS */
+    setOverlay(parseInt(slider.value, 10));
+  })();
   </script>
 
 </body>
