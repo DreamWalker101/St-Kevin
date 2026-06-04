@@ -12,10 +12,11 @@ Gather everything that happened this session:
 - Exact search terms that worked well for finding UIverse/CodePen components
 - Any problems encountered and how they were solved
 - The next section to tackle in the next session
+- Any patterns or preferences the developer revealed about how they like things built
 
 ## 2. Update PROGRESS.md
 
-Open `PROGRESS.md` and update it with this exact structure:
+Open `PROGRESS.md` and append a new session block with this exact structure:
 
 ```
 ## Session [increment number] — [today's date]
@@ -37,6 +38,13 @@ Open `PROGRESS.md` and update it with this exact structure:
 ### Decisions made this session
 - [decision]: [why]
 (list any choices made about design, layout, content, or code)
+
+### Lessons learned this session
+- [pattern or insight]: [what to do differently / keep doing next time]
+(examples: "user prefers X over Y", "this approach caused Z bug — use W instead",
+"this library conflicted with GSAP — avoid", "client wants images larger than spec says")
+These accumulate into institutional knowledge. Future sessions should read these
+before starting work so they don't repeat the same mistakes or miss the same preferences.
 
 ### Problems to watch out for
 - [any gotchas or issues discovered]
