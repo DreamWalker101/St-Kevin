@@ -202,3 +202,45 @@
 - `site/images/logo-sk-macs-combined.png` — copied from `site/images/St-Kevins-vertical-lock-up-COLOUR-1 (1).png`
 - `site/images/macs-logo-colour.png` — copied from `sample pictures/St-Brigids-Gisborne-Horizontal-lock-up-COLOUR-1.png`
 - `site/images/samples/` — all 7 cosmos_ jpeg images present (previously session 2)
+
+---
+
+## Session 5 — 2026-06-06
+
+### Completed this session
+- ✅ about.html — Hero (60vh, `sk-hero--short`) + Wave Divider Burgundy (carried over from prior session context) → `site/about.html`
+- ✅ Footer logos — global update: height 110px, gap 60px via CSS vars (`--footer-logo-h`, `--footer-logo-gap`) → `site/index.html`, `site/about.html`
+- ✅ Section 3 — About St Kevin's Intro — centred Montserrat 800 heading + Inter body, Warm Cream bg → `site/about.html`
+- ✅ Sections 4–6 — Our Story / Our Mission / Our Vision — scroll-driven sticky panel (300vh track, sticky 100vh), Dancing Script headings, Inter body, GSAP ScrollTrigger slide progression, magnetic CTA, clip-path entrance, arrow + elastic spring animations → `site/about.html`
+
+### In progress
+- Nothing in progress — clean stop
+
+### Resume here next session
+**Page:** About Us (about.html)
+**Section:** Section 7 — Our Principal
+**Search terms to find component:** `"video thumbnail play button overlay html css"` or `"video card play button centred"` or `"principal message video card with text below"`
+**Status:** Not started — sections 3–6 done, Section 7 is next
+
+### Decisions made this session
+- **"Pure White bg" = Warm Cream globally:** Body background is `var(--color-warm-cream)` (`#FBF9F7`) on all pages. PAGES.md "Pure White" sections simply inherit the page background — no explicit white bg needed. All comment labels in about.html updated to reflect this.
+- **Sections 4–6 combined into one scroll-driven sticky component:** User brought in a CodePen scrolling story (3-slide sticky, scroll-driven) and adapted it rather than building 3 separate stacked text blocks.
+- **Image column kept in sections 4–6:** Despite PAGES.md saying "no images" for these sections, the chosen component has a right image column — placeholder dark grey divs used. Client can replace with real photos.
+- **CTA in sections 4–6 = "Book a Tour" → enrolments.html:** Chosen to give the story/mission/vision scroll a meaningful conversion action.
+- **Mobile (≤900px) for sections 4–6:** Sticky collapses to stacked single-column; dot pagination still works as tap navigation; magnetic CTA hover effect disabled.
+- **Footer logo sizes = 110px height, 60px gap:** Applied via CSS variable defaults in both files. Any future page copies the footer block and inherits the same values automatically.
+
+### Lessons learned this session
+- **CTA magnetic hover — disable on mobile:** `gsap.quickTo` magnetic tracking causes jarring jumps on touch devices. Guard with `window.matchMedia('(max-width: 900px)').matches`.
+- **clip-path entrance on pill buttons:** `inset(0 100% 0 0)` → `inset(0 0% 0 0)` is a clean left-to-right wipe with no extra markup. Works on `border-radius` elements without needing `round` suffix.
+- **Scroll-driven sticky + Lenis:** Set `position: sticky; top: 0` on the panel inside a `height: 300vh` wrapper — ScrollTrigger drives slide index via `onUpdate`. No need to fight Lenis; it syncs with ScrollTrigger already.
+- **Always Read about.html before Write:** The file was empty and Write failed because it had not been read. Always Read first even if the file was just created.
+
+### Problems to watch out for
+- All prior session problems still apply (images gitignored, Facebook href="#", debug panel to remove before launch).
+- Section 7 (Our Principal) requires a video thumbnail — if no real video yet, use the dark grey placeholder pattern with a play icon overlay.
+- The scroll-driven sticky section (4–6) needs `gsap.registerPlugin(ScrollTrigger)` — already called in the wave morph script block. Do not call it again in the SMV script or it will conflict.
+
+### Files changed this session
+- `site/index.html` — footer logo CSS vars updated (`--footer-logo-h: 110px`, `--footer-logo-gap: 60px`)
+- `site/about.html` — major build: Section 3 intro, Sections 4–6 scroll-driven sticky component (CSS + HTML + JS), footer logo vars aligned, comment labels updated from "Pure White" to "Warm Cream"
