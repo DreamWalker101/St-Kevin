@@ -41,8 +41,5 @@ mailpit-data/
 tmp/
 coverage/
 
-# Uploaded images (large binary files — don't commit)
-site/images/
-
 # Stitch source exports (large HTML reference files)
 Downloads/

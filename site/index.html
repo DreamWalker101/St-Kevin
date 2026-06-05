@@ -125,8 +125,10 @@
     }
     .sk-header.is-transparent { background: transparent; }
     .sk-header.is-scrolled {
-      background: var(--color-pure-white);
-      box-shadow: 0 1px 0 var(--color-border-mist);
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.07);
     }
     .sk-header.is-hidden { transform: translateY(-100%); }
 
@@ -147,35 +149,29 @@
     .is-transparent .sk-hamburger span { background: var(--color-pure-white); }
     .is-scrolled    .sk-hamburger span { background: var(--color-deep-navy); }
 
-    /* Centre logo — white version sits on top by default, colour fades in on scroll */
-    .sk-header-logo {
+    /* Two separate logos — hero (white, pre-scroll) and sticky (colour, post-scroll) */
+    .sk-logo-hero, .sk-logo-sticky {
       position: absolute;
-      left: 50%; top: 16px;
+      left: 50%;
       transform: translateX(-50%);
-      transform-origin: top center;
-      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-    .is-scrolled .sk-header-logo {
-      transform: translateX(-50%) scale(0.7);
-    }
-    .sk-logo-img {
       display: block;
-      height: var(--logo-sk-size, 120px); width: auto;
-      transition: opacity var(--transition-medium);
+      width: auto;
     }
-    .sk-logo-colour {
-      position: absolute; top: 0; left: 0;
-      opacity: 0;
+    /* Hero logo: white PNG, full-size, shown before scroll */
+    .sk-logo-hero {
+      height: var(--logo-hero-size, 90px);
+      top: var(--logo-hero-top, 16px);
     }
-    .sk-logo-white  { opacity: 1; }
-    .is-scrolled .sk-logo-white  { opacity: 0; }
-    .is-scrolled .sk-logo-colour { opacity: 1; }
+    .is-scrolled .sk-logo-hero { display: none; }
+    /* Sticky logo: colour PNG, smaller, shown when scrolled */
+    .sk-logo-sticky {
+      display: none;
+      height: var(--logo-sticky-size, 52px);
+      top: var(--logo-sticky-top, 12px);
+    }
+    .is-scrolled .sk-logo-sticky { display: block; }
 
     .sk-sidebar-logo { transition: none; }
-
-    /* Manual white logo toggle (debug) */
-    .logos-white .sk-logo-colour { opacity: 0 !important; }
-    .logos-white .sk-logo-white  { opacity: 1 !important; }
 
     /* Search toggle */
     .sk-search-btn {
@@ -324,9 +320,14 @@
 
     /* Sidebar header row */
     .sk-sidebar-header {
-      display: flex; align-items: center; gap: 16px;
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
       padding: 20px 24px 0;
       flex-shrink: 0;
+    }
+    /* Detach close button from flex flow so logo can truly centre */
+    .sk-sidebar-header .sk-sidebar-close {
+      position: absolute; left: 24px;
     }
 
     /* Close button — square with rounded corners, bordered */
@@ -428,23 +429,22 @@
       background: var(--color-deep-navy);
     }
 
-    /* YouTube iframe — covers like background-size: cover */
+    /* Background video — covers like background-size: cover */
     .sk-hero-video-wrap {
       position: absolute;
       inset: 0;
       overflow: hidden;
       pointer-events: none;
     }
-    .sk-hero-video-wrap iframe {
+    .sk-hero-video-wrap video {
       position: absolute;
       top: 50%; left: 50%;
-      /* Ensure 16:9 iframe always covers the container */
       width: max(100%, calc(100vh * 16 / 9));
       height: max(100%, calc(100vw * 9 / 16));
       min-width: 100%; min-height: 100%;
       transform: translate(-50%, -50%);
-      border: 0;
       pointer-events: none;
+      object-fit: cover;
     }
 
     /* Navy overlay — opacity controlled by CSS var for the debug panel */
@@ -553,11 +553,13 @@
       display: block;
     }
     /* Burgundy: hero → white */
-    .sk-wave-divider--burg   { background: var(--color-pure-white); height: 120px; }
+    .sk-wave-divider--burg   { background: var(--color-pure-white); height: 126px; }
     /* Navy: white → dark section */
     .sk-wave-divider--navy   { background: var(--color-pure-white); height: 120px; }
     /* Navy inverse: dark section → white */
     .sk-wave-divider--navy-inv { background: var(--color-navy);     height: 120px; }
+    /* Navy → Cream: pillar section into testimonials */
+    .sk-wave-divider--cream  { background: #FBF9F7; height: 126px; }
 
     .sk-wave-svg {
       position: absolute;
@@ -761,6 +763,12 @@
       display: block;
     }
 
+    /* Dark-bg state — applied via JS when section bg is navy or burgundy */
+    #sk-pillar-wrapper { transition: background-color 0s; } /* GSAP controls this */
+    #sk-pillar-wrapper.is-dark .sk-pillar__heading { color: #ffffff; }
+    #sk-pillar-wrapper.is-dark .sk-pillar__text    { color: rgba(255,255,255,0.78); }
+    #sk-pillar-wrapper.is-dark .sk-pillar__tagline { color: rgba(255,255,255,0.90); }
+
     /* Mobile — stacked, interleaved by JS order */
     @media (max-width: 768px) {
       .sk-pillar {
@@ -790,6 +798,360 @@
     @media (max-width: 480px) {
       .sk-pillar__img-wrap { height: 250px; border-radius: 10px; }
     }
+
+    /* ══════════════════════════════════════
+       WIPE BUTTON — sk-btn-wipe
+    ══════════════════════════════════════ */
+    .sk-btn-wipe {
+      --btn-color:        #051E42;
+      --btn-color-active: #0A2D5C;
+      font-family: var(--font-montserrat);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      min-height: 44px;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      border: 1.5px solid var(--btn-color);
+      border-radius: var(--radius-buttons);
+      transition: color 0.28s;
+      z-index: 1;
+      color: var(--btn-color);
+      background: transparent;
+      text-decoration: none;
+      line-height: 1;
+      white-space: nowrap;
+    }
+    .sk-btn-wipe::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      background: var(--btn-color);
+      height: 220px;
+      width: 280px;
+      border-radius: 50%;
+      top: 100%;
+      left: 100%;
+      transition: top 0.58s cubic-bezier(0.23, 1, 0.32, 1),
+                  left 0.58s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .sk-btn-wipe:hover { color: #fff; }
+    .sk-btn-wipe:hover::before { top: -55px; left: -55px; }
+    .sk-btn-wipe:active::before {
+      background: var(--btn-color-active);
+      transition: background 0s;
+    }
+    .sk-btn-wipe--accent {
+      --btn-color:        #8A2232;
+      --btn-color-active: #6d1a27;
+    }
+
+    /* ══════════════════════════════════════
+       SECTION 10 — THE ST KEVIN'S EFFECT
+    ══════════════════════════════════════ */
+    .sk-effect {
+      padding: 80px 24px 100px;
+      background: #FBF9F7;
+    }
+    .sk-effect__header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 72px;
+    }
+    .sk-effect__label {
+      font-family: 'Dancing Script', cursive;
+      color: #8A2232;
+      font-size: 22px;
+      display: block;
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+    .sk-effect__heading {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: clamp(28px, 4.5vw, 48px);
+      color: #051E42;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin: 0 0 20px;
+      line-height: 1.1;
+    }
+    .sk-effect__body {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      color: #6B7280;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    /* Testimonial component */
+    .sk-testimonial-wrapper {
+      max-width: var(--tst-img-w, 900px);
+      margin: 0 auto;
+    }
+    .sk-testimonial-container { padding: 2rem; }
+    .sk-testimonial-grid {
+      display: grid;
+      gap: 5rem;
+    }
+    @media (min-width: 768px) {
+      .sk-testimonial-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .sk-testimonial-image-container {
+      position: relative;
+      width: 100%;
+      height: var(--tst-img-h, 360px);
+      perspective: 1000px;
+    }
+    .sk-testimonial-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 10px 32px rgba(5,30,66,0.13);
+      transition: all 0.8s cubic-bezier(.4,2,.3,1);
+    }
+    .sk-testimonial-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .sk-testimonial-quote-wrap {
+      opacity: 1;
+    }
+    .sk-testimonial-quote-wrap.is-animating {
+      animation: skFadeQuote 0.35s ease-out both;
+    }
+    @keyframes skFadeQuote {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Floating decorative accent animations ── */
+    @keyframes skAccentUp {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-14px); }
+    }
+    @keyframes skAccentDown {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(12px); }
+    }
+    @keyframes skAccentSpin {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50%       { transform: translateY(-10px) rotate(20deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .sk-accent { animation: none !important; }
+    }
+
+    /* ── Testimonial section deco layer ── */
+    .sk-effect { position: relative; }
+    .sk-effect__deco {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .sk-effect__deco > svg { position: absolute; }
+    .sk-effect__header,
+    .sk-testimonial-wrapper { position: relative; z-index: 1; }
+
+    /* ── Pillar section deco layer ── */
+    .sk-pillar__deco {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: visible;
+      z-index: 5;
+    }
+    .sk-pillar__deco > svg { position: absolute; }
+    @media (max-width: 768px) {
+      .sk-pillar__deco { display: none; }
+    }
+    .sk-testimonial-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 26px;
+      color: #051E42;
+      margin: 0 0 6px;
+    }
+    .sk-testimonial-role {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: #8A2232;
+      font-style: italic;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin: 0 0 28px;
+    }
+    .sk-testimonial-quote {
+      font-family: 'Inter', sans-serif;
+      font-size: 18px;
+      color: #051E42;
+      line-height: 1.8;
+      margin: 0;
+    }
+    .sk-testimonial-arrows {
+      display: flex;
+      gap: 1rem;
+      padding-top: 2.5rem;
+    }
+    @media (min-width: 768px) {
+      .sk-testimonial-arrows { padding-top: 0; }
+    }
+    .sk-testimonial-arrow {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 1.5px solid rgba(5,30,66,0.3);
+      background: transparent;
+      color: #051E42;
+      transition: border-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+      flex-shrink: 0;
+      padding: 0;
+    }
+    .sk-testimonial-arrow svg { width: 18px; height: 18px; display: block; }
+    .sk-testimonial-arrow:hover {
+      border-color: #8A2232;
+      color: #8A2232;
+    }
+    #sk-testimonial-prev:hover { transform: translateX(-3px); }
+    #sk-testimonial-next:hover { transform: translateX(3px); }
+    @media (max-width: 767px) {
+      .sk-effect { padding: 60px 20px 64px; }
+      .sk-testimonial-container { padding: 1rem; }
+      .sk-testimonial-image-container { height: 18rem; }
+      .sk-testimonial-name { font-size: 22px; }
+      .sk-testimonial-role,
+      .sk-testimonial-quote { font-size: 15px; }
+    }
+
+    /* Light button variant — for use on dark backgrounds */
+    .sk-btn-wipe--light {
+      --btn-color:        #ffffff;
+      --btn-color-active: rgba(255,255,255,0.88);
+    }
+    .sk-btn-wipe--light:hover { color: var(--color-deep-navy); }
+    @media (prefers-reduced-motion: reduce) {
+      .sk-btn-wipe::before { transition: none; }
+      .sk-btn-wipe { transition: background 0.1s, color 0.1s, border-color 0.1s; }
+    }
+
+    /* ══════════════════════════════════════
+       SECTION 13 — ENROLMENTS CTA
+    ══════════════════════════════════════ */
+    .sk-enrol {
+      padding: 60px clamp(16px, 3vw, 48px) 80px;
+      background: var(--color-pure-white);
+    }
+    .sk-enrol__card {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: var(--color-deep-navy);
+      border-radius: 20px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 480px;
+    }
+    .sk-enrol__text {
+      padding: clamp(48px, 6vw, 88px) clamp(36px, 5vw, 72px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .sk-enrol__label {
+      font-family: var(--font-dancing-script);
+      color: rgba(255,255,255,0.68);
+      font-size: clamp(18px, 2vw, 22px);
+      display: block;
+      margin: 0 0 16px;
+      font-style: italic;
+    }
+    .sk-enrol__heading {
+      font-family: var(--font-montserrat);
+      font-weight: 800;
+      font-size: clamp(38px, 5vw, 68px);
+      color: var(--color-pure-white);
+      text-transform: uppercase;
+      letter-spacing: -0.025em;
+      line-height: 0.95;
+      margin: 0 0 24px;
+      text-wrap: balance;
+    }
+    .sk-enrol__body {
+      font-family: var(--font-inter);
+      font-size: clamp(15px, 1.4vw, 17px);
+      color: rgba(255,255,255,0.72);
+      line-height: 1.78;
+      margin: 0 0 40px;
+      max-width: 46ch;
+    }
+    .sk-enrol__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+    /* Visual / illustration column */
+    .sk-enrol__visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 55% 50%, #0A2D5C 0%, #051E42 68%);
+    }
+    .sk-enrol__deco {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    .sk-enrol__circle-img {
+      position: relative;
+      z-index: 1;
+      width: clamp(190px, 25vw, 270px);
+      height: clamp(190px, 25vw, 270px);
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 12px rgba(255,255,255,0.08),
+        0 0 0 26px rgba(255,255,255,0.045),
+        0 28px 56px rgba(0,0,0,0.4);
+      flex-shrink: 0;
+    }
+    .sk-enrol__circle-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+    }
+    @media (max-width: 768px) {
+      .sk-enrol__card { grid-template-columns: 1fr; }
+      .sk-enrol__text { padding: 52px 28px 44px; order: 2; }
+      .sk-enrol__visual { order: 1; min-height: 280px; }
+      .sk-enrol__circle-img {
+        width: 170px;
+        height: 160px;
+      }
+      .sk-enrol__heading { letter-spacing: -0.02em; }
+    }
   </style>
 </head>
 <body>
@@ -806,11 +1168,15 @@
       <span></span>
     </button>
 
-    <!-- Centre: Logo (white over hero, colour when scrolled) -->
-    <div class="sk-header-logo">
-      <img src="images/logo-sk-white.png"  alt="St Kevin's Primary School, Hampton Park" class="sk-logo-img sk-logo-white">
-      <img src="images/logo-sk-colour.png" alt=""                                          class="sk-logo-img sk-logo-colour" aria-hidden="true">
-    </div>
+    <!-- Hero logo — white PNG, visible before scroll -->
+    <img id="sk-logo-hero" src="images/logo-sk-white.png"
+         alt="St Kevin's Primary School, Hampton Park"
+         class="sk-logo-hero">
+    <!-- Sticky logo — colour PNG, visible when scrolled -->
+    <img id="sk-logo-sticky" src="images/logo-sk-colour.png"
+         alt="St Kevin's Primary School, Hampton Park"
+         class="sk-logo-sticky"
+         aria-hidden="true">
 
     <!-- Right: Search -->
     <button class="sk-search-btn" id="sk-search-btn" aria-label="Search site" aria-expanded="false">
@@ -995,16 +1361,19 @@
   ════════════════════════════════ -->
   <section class="sk-hero" id="sk-hero" aria-label="Hero">
 
-    <!-- YouTube background video (muted, looping, no controls) -->
+    <!-- Background video — autoplay, muted, no controls -->
     <div class="sk-hero-video-wrap" aria-hidden="true">
-      <iframe
-        id="sk-hero-yt"
-        src="https://www.youtube.com/embed/rVqR9num8Js?autoplay=1&mute=1&loop=1&playlist=rVqR9num8Js&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_type=3&playsinline=1&enablejsapi=1"
-        allow="autoplay; encrypted-media"
-        allowfullscreen
-        title=""
-        tabindex="-1"
-      ></iframe>
+      <video
+        id="sk-hero-video"
+        src="https://assets.mixkit.co/videos/35954/35954-720.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+        disablepictureinpicture
+        disableremoteplayback
+        preload="auto"
+      ></video>
     </div>
 
     <!-- Navy colour overlay — opacity driven by --hero-overlay-opacity CSS var -->
@@ -1012,7 +1381,7 @@
 
     <!-- MACS logo — bottom-left per client revision doc -->
     <div class="sk-hero-macs" aria-hidden="true">
-      <img src="images/macs-logo-white.png" alt="" id="sk-macs-logo" style="display:block;height:var(--logo-macs-size,44px);width:auto;transition:filter var(--transition-medium);">
+      <img src="images/macs-logo-white.png" alt="" id="sk-macs-logo" style="display:block;height:var(--logo-macs-size,90px);width:auto;transition:filter var(--transition-medium);">
     </div>
 
   </section>
@@ -1031,14 +1400,8 @@
          viewBox="0 0 1440 120"
          preserveAspectRatio="none"
          xmlns="http://www.w3.org/2000/svg">
-      <!--
-        Two states interpolated by GSAP ScrollTrigger (scrub 1.4):
-        dA — rest: soft 2-crest wave, ~40px amplitude
-        dB — peak: dramatic 3-crest wave, ~100px amplitude
-        Same command structure M C C L L Z so attr.d interpolation is clean.
-      -->
       <path id="sk-wave-path-2"
-            d="M 0 0 L 1440 0 L 1440 62 C 1200 82 960 40 720 65 C 480 90 240 55 0 75 Z"
+            d="M 0 0 L 1440 0 L 1440 14 C 1080 22 360 76 0 88 Z"
             fill="#8A2232"/>
     </svg>
   </div>
@@ -1112,7 +1475,7 @@
        Codrops gsap-pinned-image-mask-reveal pattern adapted.
        Left: 4 × 100vh scrollable content items.
        Right: pinned image column — clipPath wipe top-to-bottom on scrub.
-       No background colour changes — white throughout.
+       Background alternates: white → navy → burgundy → navy as images wipe in.
        Images: cosmos sample photos mapped per session 3 decisions.
   ════════════════════════════════ -->
   <section id="sk-pillar-wrapper" aria-label="Life at St Kevin's">
@@ -1187,6 +1550,50 @@
                loading="lazy">
         </div>
 
+        <!-- Floating accent marks around the image stack -->
+        <div class="sk-pillar__deco" aria-hidden="true">
+
+          <!-- Top-right: 3×3 dot grid -->
+          <svg class="sk-accent" style="top: 9%; right: 6px; animation: skAccentUp 9s ease-in-out infinite;" width="46" height="46" viewBox="0 0 46 46" fill="none">
+            <circle cx="6"  cy="6"  r="3" fill="rgba(255,255,255,0.18)"/>
+            <circle cx="23" cy="6"  r="3" fill="rgba(255,255,255,0.18)"/>
+            <circle cx="40" cy="6"  r="3" fill="rgba(255,255,255,0.18)"/>
+            <circle cx="6"  cy="23" r="3" fill="rgba(255,255,255,0.13)"/>
+            <circle cx="23" cy="23" r="3" fill="rgba(255,255,255,0.13)"/>
+            <circle cx="40" cy="23" r="3" fill="rgba(255,255,255,0.13)"/>
+            <circle cx="6"  cy="40" r="3" fill="rgba(255,255,255,0.08)"/>
+            <circle cx="23" cy="40" r="3" fill="rgba(255,255,255,0.08)"/>
+            <circle cx="40" cy="40" r="3" fill="rgba(255,255,255,0.08)"/>
+          </svg>
+
+          <!-- Mid-right: 6-point asterisk -->
+          <svg class="sk-accent" style="top: 45%; right: 4px; animation: skAccentSpin 14s ease-in-out infinite 2.5s;" width="44" height="44" viewBox="0 0 44 44" fill="none">
+            <line x1="22" y1="4"   x2="22" y2="40"  stroke="rgba(255,255,255,0.18)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="5"  y1="13"  x2="39" y2="31"  stroke="rgba(255,255,255,0.18)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="39" y1="13"  x2="5"  y2="31"  stroke="rgba(255,255,255,0.18)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+
+          <!-- Bottom-right: cross + small offset dot -->
+          <svg class="sk-accent" style="bottom: 13%; right: 8px; animation: skAccentDown 11s ease-in-out infinite 1.2s;" width="46" height="46" viewBox="0 0 46 46" fill="none">
+            <line x1="23" y1="6"  x2="23" y2="40" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="6"  y1="23" x2="40" y2="23" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="38" cy="8" r="3.5" fill="rgba(255,255,255,0.12)"/>
+          </svg>
+
+          <!-- Top-left of image area: diamond outline -->
+          <svg class="sk-accent" style="top: 17%; left: 8px; animation: skAccentUp 12s ease-in-out infinite 3.8s;" width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path d="M16 2 L30 16 L16 30 L2 16 Z" stroke="rgba(255,255,255,0.14)" stroke-width="1.6"/>
+          </svg>
+
+          <!-- Bottom-left: concentric circles -->
+          <svg class="sk-accent" style="bottom: 24%; left: 10px; animation: skAccentDown 8s ease-in-out infinite 5s;" width="34" height="34" viewBox="0 0 34 34" fill="none">
+            <circle cx="17" cy="17" r="14" stroke="rgba(255,255,255,0.10)" stroke-width="1.4"/>
+            <circle cx="17" cy="17" r="7"  stroke="rgba(255,255,255,0.14)" stroke-width="1.4"/>
+            <circle cx="17" cy="17" r="2.5" fill="rgba(255,255,255,0.18)"/>
+          </svg>
+
+        </div>
+
       </div>
 
     </div>
@@ -1194,50 +1601,215 @@
   </section>
 
 
+  <!-- Wave: navy pillar section → warm cream (same structure as hero wave) -->
+  <div class="sk-wave-divider sk-wave-divider--cream" aria-hidden="true">
+    <svg class="sk-wave-svg"
+         viewBox="0 0 1440 120"
+         preserveAspectRatio="none"
+         xmlns="http://www.w3.org/2000/svg">
+      <path d="M 0 0 L 1440 0 L 1440 14 C 1080 22 360 76 0 88 Z"
+            fill="#051E42"/>
+    </svg>
+  </div>
+
   <!-- ════════════════════════════════
-       DEBUG PANEL — Wave tuning (remove before launch)
+       SECTION 10 — THE ST KEVIN'S EFFECT
   ════════════════════════════════ -->
-  <div class="sk-debug-panel" id="sk-debug-panel" role="region" aria-label="Wave debug controls">
+  <section class="sk-effect" id="sk-effect" aria-label="The St Kevin's Effect">
+
+    <!-- Floating decorative marks — positioned around the section -->
+    <div class="sk-effect__deco" aria-hidden="true">
+
+      <!-- Top-left: 4×3 dot grid in navy -->
+      <svg class="sk-accent" style="top: 48px; left: clamp(14px, 4vw, 64px); animation: skAccentDown 11s ease-in-out infinite;" width="54" height="42" viewBox="0 0 54 42" fill="none">
+        <circle cx="6"  cy="6"  r="2.5" fill="rgba(5,30,66,0.09)"/>
+        <circle cx="22" cy="6"  r="2.5" fill="rgba(5,30,66,0.09)"/>
+        <circle cx="38" cy="6"  r="2.5" fill="rgba(5,30,66,0.09)"/>
+        <circle cx="54" cy="6"  r="2" fill="rgba(5,30,66,0.06)"/>
+        <circle cx="6"  cy="22" r="2.5" fill="rgba(5,30,66,0.09)"/>
+        <circle cx="22" cy="22" r="2.5" fill="rgba(5,30,66,0.09)"/>
+        <circle cx="38" cy="22" r="2.5" fill="rgba(5,30,66,0.09)"/>
+        <circle cx="54" cy="22" r="2" fill="rgba(5,30,66,0.06)"/>
+        <circle cx="6"  cy="38" r="2.5" fill="rgba(5,30,66,0.09)"/>
+        <circle cx="22" cy="38" r="2.5" fill="rgba(5,30,66,0.09)"/>
+        <circle cx="38" cy="38" r="2.5" fill="rgba(5,30,66,0.09)"/>
+        <circle cx="54" cy="38" r="2" fill="rgba(5,30,66,0.06)"/>
+      </svg>
+
+      <!-- Top-right: 6-point asterisk in navy -->
+      <svg class="sk-accent" style="top: 28px; right: clamp(14px, 5vw, 80px); animation: skAccentSpin 9s ease-in-out infinite 1.4s;" width="44" height="44" viewBox="0 0 44 44" fill="none">
+        <line x1="22" y1="4"   x2="22" y2="40"  stroke="rgba(5,30,66,0.10)" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="5"  y1="13"  x2="39" y2="31"  stroke="rgba(5,30,66,0.10)" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="39" y1="13"  x2="5"  y2="31"  stroke="rgba(5,30,66,0.10)" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+
+      <!-- Bottom-left: diamond outline in burgundy -->
+      <svg class="sk-accent" style="bottom: 72px; left: clamp(20px, 3vw, 52px); animation: skAccentUp 8s ease-in-out infinite 2.2s;" width="34" height="34" viewBox="0 0 34 34" fill="none">
+        <path d="M17 2 L32 17 L17 32 L2 17 Z" stroke="rgba(138,34,50,0.14)" stroke-width="1.6"/>
+      </svg>
+
+      <!-- Bottom-right: arc with endpoints in navy -->
+      <svg class="sk-accent" style="bottom: 56px; right: clamp(14px, 4vw, 60px); animation: skAccentDown 13s ease-in-out infinite 0.6s;" width="60" height="48" viewBox="0 0 60 48" fill="none">
+        <path d="M6 40 C 14 18 46 10 54 26" stroke="rgba(5,30,66,0.09)" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+        <circle cx="6"  cy="40" r="3.5" fill="rgba(5,30,66,0.09)"/>
+        <circle cx="54" cy="26" r="3.5" fill="rgba(5,30,66,0.09)"/>
+      </svg>
+
+      <!-- Mid-right edge: small cross in burgundy -->
+      <svg class="sk-accent" style="top: 46%; right: clamp(18px, 2.5vw, 36px); animation: skAccentSpin 16s ease-in-out infinite 3.2s;" width="26" height="26" viewBox="0 0 26 26" fill="none">
+        <line x1="13" y1="2"  x2="13" y2="24" stroke="rgba(138,34,50,0.13)" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="2"  y1="13" x2="24" y2="13" stroke="rgba(138,34,50,0.13)" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+
+      <!-- Mid-left: small circle outline in navy -->
+      <svg class="sk-accent" style="top: 40%; left: clamp(12px, 2vw, 28px); animation: skAccentUp 10s ease-in-out infinite 4.1s;" width="30" height="30" viewBox="0 0 30 30" fill="none">
+        <circle cx="15" cy="15" r="12" stroke="rgba(5,30,66,0.08)" stroke-width="1.5"/>
+        <circle cx="15" cy="15" r="5"  stroke="rgba(5,30,66,0.06)" stroke-width="1.2"/>
+      </svg>
+
+    </div>
+
+    <div class="sk-effect__header">
+      <span class="sk-effect__label">Community, Care &amp; Growth</span>
+      <h2 class="sk-effect__heading">The St Kevin's Effect</h2>
+      <p class="sk-effect__body">Over time, something special happens here. Through strong relationships, high expectations and genuine care, children grow into confident and compassionate young people.</p>
+    </div>
+
+    <div class="sk-testimonial-wrapper">
+      <div class="sk-testimonial-container">
+        <div class="sk-testimonial-grid">
+
+          <div class="sk-testimonial-image-container" id="sk-testimonial-images"></div>
+
+          <div class="sk-testimonial-content">
+            <div class="sk-testimonial-quote-wrap" id="sk-testimonial-quote-wrap">
+              <h3 class="sk-testimonial-name" id="sk-testimonial-name"></h3>
+              <p class="sk-testimonial-role" id="sk-testimonial-role"></p>
+              <p class="sk-testimonial-quote" id="sk-testimonial-quote"></p>
+            </div>
+            <div class="sk-testimonial-arrows">
+              <button class="sk-testimonial-arrow" id="sk-testimonial-prev" aria-label="Previous testimonial">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M18 12H6M11 7l-5 5 5 5"/>
+                </svg>
+              </button>
+              <button class="sk-testimonial-arrow" id="sk-testimonial-next" aria-label="Next testimonial">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 12h12M13 7l5 5-5 5"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTION 13 — ENROLMENTS CTA
+  ════════════════════════════════ -->
+  <section class="sk-enrol" id="sk-enrol" aria-label="Enrolments">
+    <div class="sk-enrol__card">
+
+      <!-- Text column -->
+      <div class="sk-enrol__text">
+        <span class="sk-enrol__label">Come and see for yourself</span>
+        <h2 class="sk-enrol__heading">Enrol&shy;ments</h2>
+        <p class="sk-enrol__body">The best way to experience St Kevin's is to visit and see the community in action. We warmly invite you to come and discover what makes our school such a special place to belong and learn.</p>
+        <div class="sk-enrol__buttons">
+          <a href="mailto:administration@skhamptonpark.catholic.edu.au"
+             class="sk-btn-wipe sk-btn-wipe--light">Enquire</a>
+          <a href="https://www.skhamptonpark.catholic.edu.au/enrolments"
+             class="sk-btn-wipe sk-btn-wipe--accent">Book a tour</a>
+        </div>
+      </div>
+
+      <!-- Visual column — decorative SVG + circular photo -->
+      <div class="sk-enrol__visual" aria-hidden="true">
+
+        <!-- Background decorative elements -->
+        <svg class="sk-enrol__deco" viewBox="0 0 500 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Concentric rings around image centre -->
+          <circle cx="250" cy="240" r="175" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+          <circle cx="250" cy="240" r="128" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+
+          <!-- Dots — white -->
+          <circle cx="88"  cy="96"  r="5"   fill="rgba(255,255,255,0.22)"/>
+          <circle cx="134" cy="46"  r="3"   fill="rgba(255,255,255,0.15)"/>
+          <circle cx="410" cy="120" r="4.5" fill="rgba(255,255,255,0.18)"/>
+          <circle cx="448" cy="360" r="3.5" fill="rgba(255,255,255,0.13)"/>
+          <circle cx="62"  cy="380" r="4"   fill="rgba(255,255,255,0.16)"/>
+          <circle cx="380" cy="430" r="2.5" fill="rgba(255,255,255,0.12)"/>
+
+          <!-- Dots — burgundy accent -->
+          <circle cx="390" cy="80"  r="5.5" fill="#8A2232" opacity="0.65"/>
+          <circle cx="60"  cy="290" r="4"   fill="#8A2232" opacity="0.55"/>
+          <circle cx="290" cy="448" r="3.5" fill="#8A2232" opacity="0.5"/>
+
+          <!-- Plus cross — top right -->
+          <rect x="430" y="194" width="14" height="3"  rx="1.5" fill="rgba(255,255,255,0.35)"/>
+          <rect x="435" y="189" width="3"  height="14" rx="1.5" fill="rgba(255,255,255,0.35)"/>
+
+          <!-- Plus cross — bottom left -->
+          <rect x="52"  y="310" width="12" height="3"  rx="1.5" fill="#8A2232" opacity="0.6"/>
+          <rect x="57"  y="305" width="3"  height="12" rx="1.5" fill="#8A2232" opacity="0.6"/>
+
+          <!-- Plus cross — mid left -->
+          <rect x="70"  y="178" width="10" height="2.5" rx="1.25" fill="rgba(255,255,255,0.2)"/>
+          <rect x="74"  y="174" width="2.5" height="10" rx="1.25" fill="rgba(255,255,255,0.2)"/>
+
+          <!-- Six-point asterisk — top centre (true 60° spacing, r=12) -->
+          <line x1="302" y1="52"  x2="302" y2="76"  stroke="rgba(255,255,255,0.28)" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="292" y1="58"  x2="312" y2="70"  stroke="rgba(255,255,255,0.28)" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="292" y1="70"  x2="312" y2="58"  stroke="rgba(255,255,255,0.28)" stroke-width="1.8" stroke-linecap="round"/>
+
+          <!-- Small diamond — lower right -->
+          <rect x="414" y="302" width="9" height="9" rx="1" fill="rgba(255,255,255,0.18)" transform="rotate(45 418.5 306.5)"/>
+
+          <!-- Loose arc — decorative curve bottom left -->
+          <path d="M 48 420 Q 80 390 110 420" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        </svg>
+
+        <!-- Circular photo -->
+        <div class="sk-enrol__circle-img">
+          <img src="images/samples/cosmos_1616537391.jpeg"
+               alt=""
+               loading="lazy">
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════
+       DEBUG PANEL — Logo tuning (remove before launch)
+  ════════════════════════════════ -->
+  <div class="sk-debug-panel" id="sk-debug-panel" role="region" aria-label="Testimonials debug controls">
     <div class="sk-debug-panel-header">
-      <span class="sk-debug-panel-title">Wave — Dev</span>
+      <span class="sk-debug-panel-title">Testimonials — Dev</span>
       <button class="sk-debug-toggle" id="sk-debug-toggle-btn" aria-label="Collapse debug panel">▾</button>
     </div>
     <div class="sk-debug-body">
 
-      <!-- SVG width -->
+      <!-- ·· Image container ·· -->
+      <div class="sk-debug-row" style="margin-bottom:6px;">
+        <span class="sk-debug-label" style="font-size:10px;opacity:.5;letter-spacing:.08em;text-transform:uppercase;">Image</span>
+      </div>
       <div class="sk-debug-row">
-        <span class="sk-debug-label">Width</span>
-        <span class="sk-debug-value" id="dbg-wave-width-val">100%</span>
-      </div>
-      <input type="range" class="sk-debug-slider" id="dbg-wave-width" min="100" max="140" value="100" aria-label="Wave SVG width">
-
-      <!-- Scroll drift: horizontal shift L→R as divider scrolls up -->
-      <div class="sk-debug-row" style="margin-top:12px;">
-        <span class="sk-debug-label">Scroll drift</span>
-        <span class="sk-debug-value" id="dbg-wave-drift-val">0px</span>
-      </div>
-      <input type="range" class="sk-debug-slider" id="dbg-wave-drift" min="-160" max="160" value="0" aria-label="Horizontal drift on scroll">
-
-      <!-- Divider height -->
-      <div class="sk-debug-row" style="margin-top:12px;">
         <span class="sk-debug-label">Height</span>
-        <span class="sk-debug-value" id="dbg-wave-height-val">120px</span>
+        <span class="sk-debug-value" id="dbg-tst-height-val">360px</span>
       </div>
-      <input type="range" class="sk-debug-slider" id="dbg-wave-height" min="60" max="260" value="120" aria-label="Wave divider height">
-
-      <!-- Amplitude (scaleY from top anchor) -->
-      <div class="sk-debug-row" style="margin-top:12px;">
-        <span class="sk-debug-label">Amplitude</span>
-        <span class="sk-debug-value" id="dbg-wave-amp-val">1.0×</span>
+      <input type="range" class="sk-debug-slider" id="dbg-tst-height" min="200" max="600" value="360" aria-label="Testimonial image height">
+      <div class="sk-debug-row" style="margin-top:10px;">
+        <span class="sk-debug-label">Max width</span>
+        <span class="sk-debug-value" id="dbg-tst-width-val">900px</span>
       </div>
-      <input type="range" class="sk-debug-slider" id="dbg-wave-amp" min="20" max="300" value="100" aria-label="Wave amplitude (scaleY)">
-
-      <!-- Fill opacity -->
-      <div class="sk-debug-row" style="margin-top:12px;">
-        <span class="sk-debug-label">Opacity</span>
-        <span class="sk-debug-value" id="dbg-wave-opacity-val">100%</span>
-      </div>
-      <input type="range" class="sk-debug-slider" id="dbg-wave-opacity" min="10" max="100" value="100" aria-label="Wave fill opacity">
+      <input type="range" class="sk-debug-slider" id="dbg-tst-width" min="400" max="1400" value="900" aria-label="Testimonial section max width">
 
     </div>
   </div>
@@ -1271,7 +1843,8 @@
     var navOpen = false;
     var searchOpen = false;
     var lastScrollY = 0;
-    var HIDE_AFTER = 140; // px from top before hide-on-scroll kicks in
+    var HIDE_AFTER      = 140; // px from top before hide-on-scroll kicks in
+    var STICKY_THRESHOLD = 60; // px of scroll before header turns white/sticky
 
     /* ── Set initial GSAP states ── */
     gsap.set(sidebar,     { x: '-100%' });
@@ -1281,7 +1854,7 @@
     /* ── Scroll: transparent → white + hide on scroll down / show on scroll up ── */
     function onScroll() {
       var y = window.scrollY;
-      var scrolled = y > 60;
+      var scrolled = y > STICKY_THRESHOLD;
       header.classList.toggle('is-scrolled',    scrolled);
       header.classList.toggle('is-transparent', !scrolled);
 
@@ -1473,70 +2046,19 @@
       toggleBtn.setAttribute('aria-label', collapsed ? 'Expand debug panel' : 'Collapse debug panel');
     });
 
-    var wrappers = Array.prototype.slice.call(document.querySelectorAll('.sk-wave-divider'));
-    var svgs     = Array.prototype.slice.call(document.querySelectorAll('.sk-wave-svg'));
-    var paths    = Array.prototype.slice.call(document.querySelectorAll('.sk-wave-svg path'));
-
-    /* ── Width: stretch SVG beyond 100% ── */
-    var widthSlider = document.getElementById('dbg-wave-width');
-    var widthVal    = document.getElementById('dbg-wave-width-val');
-    widthSlider.addEventListener('input', function () {
-      var v = parseInt(this.value, 10);
-      widthVal.textContent = v + '%';
-      svgs.forEach(function (svg) { svg.style.width = v + '%'; });
-    });
-
-    /* ── Scroll drift: horizontal translate as divider scrolls through viewport ──
-       driftAmount px shift at progress=1 (divider exits top). Live-readable by
-       the onUpdate callback so slider changes take effect on next scroll tick. */
-    var driftSlider  = document.getElementById('dbg-wave-drift');
-    var driftVal     = document.getElementById('dbg-wave-drift-val');
-    var driftAmount  = 0;
-    driftSlider.addEventListener('input', function () {
-      driftAmount = parseInt(this.value, 10);
-      driftVal.textContent = (driftAmount > 0 ? '+' : '') + driftAmount + 'px';
-    });
-    svgs.forEach(function (svg) {
-      ScrollTrigger.create({
-        trigger: svg.parentElement,
-        start: 'top 100%',
-        end:   'bottom 0%',
-        onUpdate: function (self) {
-          gsap.set(svg, { x: self.progress * driftAmount });
-        }
+    function makeSlider(sliderId, valId, cssProp) {
+      var slider = document.getElementById(sliderId);
+      var label  = document.getElementById(valId);
+      if (!slider) return;
+      slider.addEventListener('input', function () {
+        var v = parseInt(this.value, 10);
+        label.textContent = v + 'px';
+        document.documentElement.style.setProperty(cssProp, v + 'px');
       });
-    });
+    }
 
-    /* ── Height: expand/contract the divider container ── */
-    var heightSlider = document.getElementById('dbg-wave-height');
-    var heightVal    = document.getElementById('dbg-wave-height-val');
-    heightSlider.addEventListener('input', function () {
-      var v = parseInt(this.value, 10);
-      heightVal.textContent = v + 'px';
-      wrappers.forEach(function (w) { w.style.height = v + 'px'; });
-    });
-
-    /* ── Amplitude: scaleY anchored at top so flat edge stays flush ── */
-    var ampSlider = document.getElementById('dbg-wave-amp');
-    var ampVal    = document.getElementById('dbg-wave-amp-val');
-    ampSlider.addEventListener('input', function () {
-      var v = parseInt(this.value, 10) / 100;
-      ampVal.textContent = v.toFixed(1) + '\xd7';
-      svgs.forEach(function (svg) { gsap.set(svg, { scaleY: v }); });
-      /* open overflow when scaled beyond container so full wave is visible */
-      wrappers.forEach(function (w) {
-        w.style.overflow = v > 1.05 ? 'visible' : 'hidden';
-      });
-    });
-
-    /* ── Fill opacity ── */
-    var opacitySlider = document.getElementById('dbg-wave-opacity');
-    var opacityVal    = document.getElementById('dbg-wave-opacity-val');
-    opacitySlider.addEventListener('input', function () {
-      var v = parseInt(this.value, 10);
-      opacityVal.textContent = v + '%';
-      paths.forEach(function (p) { p.style.opacity = v / 100; });
-    });
+    makeSlider('dbg-tst-height', 'dbg-tst-height-val', '--tst-img-h');
+    makeSlider('dbg-tst-width',  'dbg-tst-width-val',  '--tst-img-w');
 
   })();
   </script>
@@ -1578,10 +2100,11 @@
       {
         pathId:    'sk-wave-path-2',
         wrapperId: 'sk-wave-divider-2',
-        /* Flat top (flush with hero), wave faces DOWN into the content below.
-           M L L C C Z structure matches across both states. */
-        dA: 'M 0 0 L 1440 0 L 1440 62 C 1200 82 960 40 720 65 C 480 90 240 55 0 75 Z',
-        dB: 'M 0 0 L 1440 0 L 1440 70 C 1260 10 960 112 720 14 C 480 110 200 12 0 92 Z'
+        /* dA — resting: diagonal wedge, thick left / thin right, gentle curve.
+           dB — peak: same endpoints, S-curve inflects so the wave breathes.
+           Both use identical M L L C Z structure for clean GSAP attr.d lerp. */
+        dA: 'M 0 0 L 1440 0 L 1440 14 C 1080 22 360 76 0 88 Z',
+        dB: 'M 0 0 L 1440 0 L 1440 14 C 1080 92 360 -8 0 88 Z'
       }
       /* Section 9:  { pathId: 'sk-wave-path-9',  wrapperId: 'sk-wave-divider-9',  dA: '...', dB: '...' } */
       /* Section 11: { pathId: 'sk-wave-path-11', wrapperId: 'sk-wave-divider-11', dA: '...', dB: '...' } */
@@ -1592,26 +2115,63 @@
       var wrapper = document.getElementById(cfg.wrapperId);
       if (!path || !wrapper) return;
 
-      /* Pin the resting state before scroll kicks in */
       gsap.set(path, { attr: { d: cfg.dA } });
 
       if (reduced) return;
 
-      gsap.fromTo(path,
-        { attr: { d: cfg.dA } },
-        {
-          attr: { d: cfg.dB },
-          ease: 'none',
-          scrollTrigger: {
-            id:      cfg.pathId + '-morph',
-            trigger: wrapper,
-            start:   'top 90%',   /* morph begins as divider enters from bottom */
-            end:     'top 10%',   /* morph completes as divider exits through top */
-            scrub:   1.4          /* 1.4s lag — confident, editorial feel */
-          }
+      /* Expand then compress: dA → dB → dA as divider passes through viewport */
+      var tl = gsap.timeline({
+        scrollTrigger: {
+          id:      cfg.pathId + '-morph',
+          trigger: wrapper,
+          start:   'top 100%',
+          end:     'bottom 0%',
+          scrub:   1.6
         }
-      );
+      });
+      tl.fromTo(path, { attr: { d: cfg.dA } }, { attr: { d: cfg.dB }, ease: 'sine.inOut' })
+        .to(path, { attr: { d: cfg.dA }, ease: 'sine.inOut' });
     });
+
+    /* ── Enrolments CTA — entrance animation ── */
+    (function () {
+      var enrol = document.getElementById('sk-enrol');
+      if (!enrol || reduced) return;
+
+      var textChildren = enrol.querySelectorAll(
+        '.sk-enrol__label, .sk-enrol__heading, .sk-enrol__body, .sk-enrol__buttons'
+      );
+      var imgEl = enrol.querySelector('.sk-enrol__image');
+
+      /* Text column: stagger children up from y:28 */
+      gsap.from(textChildren, {
+        y: 28,
+        opacity: 0,
+        duration: 0.7,
+        ease: 'power3.out',
+        stagger: 0.1,
+        scrollTrigger: {
+          trigger: enrol,
+          start: 'top 78%',
+          toggleActions: 'play none none none'
+        }
+      });
+
+      /* Image: clip-path reveal from bottom */
+      if (imgEl) {
+        gsap.from(imgEl, {
+          clipPath: 'inset(0 0 30% 0)',
+          duration: 1.1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: enrol,
+            start: 'top 78%',
+            toggleActions: 'play none none none'
+          }
+        });
+      }
+    })();
+
   })();
   </script>
 
@@ -1704,12 +2264,29 @@
         }
       });
 
+      /* Brand colors per section: start white, then alternate navy/burgundy */
+      var sectionBgs    = ['#ffffff', '#051E42', '#8A2232', '#051E42'];
+      var sectionDark   = [false, true, true, true];
+      var wrapper       = document.getElementById('sk-pillar-wrapper');
+      var headings      = gsap.utils.toArray('.sk-pillar__heading');
+      var bodies        = gsap.utils.toArray('.sk-pillar__text');
+      var taglines      = gsap.utils.toArray('.sk-pillar__tagline');
+
+      /* Set initial state */
+      gsap.set(wrapper, { backgroundColor: sectionBgs[0] });
+
       imgs.forEach(function (_, i) {
         var cur  = imgs[i];
         var next = imgs[i + 1] || null;
         var seg  = gsap.timeline();
 
         if (next) {
+          var nextBg   = sectionBgs[i + 1];
+          var isDark   = sectionDark[i + 1];
+          var textCol  = isDark ? '#ffffff' : '#051E42';
+          var bodyCol  = isDark ? 'rgba(255,255,255,0.78)' : '#374151';
+          var tagCol   = isDark ? 'rgba(255,255,255,0.90)' : '#8A2232';
+
           seg
             .to(cur, {
               clipPath:       'inset(0px 0px 100%)',
@@ -1721,7 +2298,16 @@
               objectPosition: '50% 40%',
               duration:       1.5,
               ease:           'none'
-            }, 0);
+            }, 0)
+            /* Background + text colors change mid-wipe */
+            .to(wrapper, {
+              backgroundColor: nextBg,
+              duration:        0.6,
+              ease:            'power2.inOut'
+            }, 0.6)
+            .to(headings[i + 1], { color: textCol, duration: 0.4 }, 0.6)
+            .to(bodies[i + 1],   { color: bodyCol, duration: 0.4 }, 0.6)
+            .to(taglines[i + 1], { color: tagCol,  duration: 0.4 }, 0.6);
         }
 
         mainTl.add(seg);
@@ -1791,6 +2377,128 @@
         .to(flap, { attr: { points: '22,6 12,13 2,6' }, duration: 0.38, ease: 'power3.inOut' });
       mailBtn.addEventListener('mouseenter', function () { mailTl.restart(); });
     }
+
+    /* ══════════════════════════════════════
+       SECTION 10 — Circular Testimonials
+    ══════════════════════════════════════ */
+    (function () {
+      var skTestimonials = [
+        {
+          quote: 'St Kevin\'s is more than a school for our family, it is our extended family.',
+          name: 'Tash',
+          role: 'Parent',
+          src: 'images/samples/cosmos_1616537391.jpeg'
+        },
+        {
+          quote: 'Thanks to the nurturing environment and dedicated teachers at St Kevin\'s, my once very shy daughter has grown into a confident child.',
+          name: 'Karina Rogers',
+          role: 'Parent',
+          src: 'images/samples/cosmos_1226555780.jpeg'
+        },
+        {
+          quote: 'What we appreciate most about St Kevin\'s is its diversity and the way the school brings families together, creating a strong sense of belonging.',
+          name: 'Shanelle Fairweather',
+          role: 'Parent',
+          src: 'images/samples/cosmos_1113100871.jpeg'
+        }
+      ];
+
+      var activeIndex   = 0;
+      var autoplayTimer = null;
+      var imageContainer = document.getElementById('sk-testimonial-images');
+      var nameEl         = document.getElementById('sk-testimonial-name');
+      var roleEl         = document.getElementById('sk-testimonial-role');
+      var quoteEl        = document.getElementById('sk-testimonial-quote');
+      var quoteWrap      = document.getElementById('sk-testimonial-quote-wrap');
+      var prevBtn        = document.getElementById('sk-testimonial-prev');
+      var nextBtn        = document.getElementById('sk-testimonial-next');
+
+      if (!imageContainer || !nameEl) return;
+
+      /* Build image elements */
+      skTestimonials.forEach(function (t, i) {
+        var img = document.createElement('img');
+        img.src = t.src;
+        img.alt = t.name;
+        img.className = 'sk-testimonial-img';
+        img.dataset.index = i;
+        imageContainer.appendChild(img);
+      });
+
+      var imgs = imageContainer.querySelectorAll('.sk-testimonial-img');
+
+      function calcGap() {
+        var w = imageContainer.offsetWidth || 480;
+        var minW = 480, maxW = 800, minG = 48, maxG = 72;
+        if (w <= minW) return minG;
+        if (w >= maxW) return maxG;
+        return minG + (maxG - minG) * ((w - minW) / (maxW - minW));
+      }
+
+      function getStyle(i) {
+        var gap     = calcGap();
+        var stickUp = gap * 0.8;
+        var n       = skTestimonials.length;
+        var isActive = i === activeIndex;
+        var isLeft   = (activeIndex - 1 + n) % n === i;
+        var isRight  = (activeIndex + 1) % n === i;
+
+        if (isActive) return { zIndex: 3, opacity: 1, pointerEvents: 'auto',
+          transform: 'translateX(0px) translateY(0px) scale(1) rotateY(0deg)' };
+        if (isLeft)   return { zIndex: 2, opacity: 1, pointerEvents: 'auto',
+          transform: 'translateX(-' + gap + 'px) translateY(-' + stickUp + 'px) scale(0.85) rotateY(15deg)' };
+        if (isRight)  return { zIndex: 2, opacity: 1, pointerEvents: 'auto',
+          transform: 'translateX(' + gap + 'px) translateY(-' + stickUp + 'px) scale(0.85) rotateY(-15deg)' };
+        return { zIndex: 1, opacity: 0, pointerEvents: 'none', transform: 'scale(0.75)' };
+      }
+
+      function render() {
+        var t = skTestimonials[activeIndex];
+        nameEl.textContent  = t.name;
+        roleEl.textContent  = t.role;
+        quoteEl.textContent = t.quote;
+
+        /* restart fade animation via class toggle */
+        quoteWrap.classList.remove('is-animating');
+        void quoteWrap.offsetWidth; /* reflow */
+        quoteWrap.classList.add('is-animating');
+
+        imgs.forEach(function (img, i) {
+          var s = getStyle(i);
+          img.style.zIndex       = s.zIndex;
+          img.style.opacity      = s.opacity;
+          img.style.pointerEvents = s.pointerEvents;
+          img.style.transform    = s.transform;
+        });
+      }
+
+      function stopAutoplay() {
+        if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
+      }
+
+      function goNext() {
+        activeIndex = (activeIndex + 1) % skTestimonials.length;
+        render();
+        stopAutoplay();
+      }
+      function goPrev() {
+        activeIndex = (activeIndex - 1 + skTestimonials.length) % skTestimonials.length;
+        render();
+        stopAutoplay();
+      }
+
+      nextBtn.addEventListener('click', goNext);
+      prevBtn.addEventListener('click', goPrev);
+      window.addEventListener('resize', render);
+
+      autoplayTimer = setInterval(function () {
+        activeIndex = (activeIndex + 1) % skTestimonials.length;
+        render();
+      }, 5000);
+
+      render();
+    })();
+
 
     /* ── Facebook: floats up a few px then drops back with a soft bounce ── */
     var fbBtn = document.querySelector('.sk-social-btn--fb');
