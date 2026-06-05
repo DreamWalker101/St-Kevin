@@ -3,7 +3,7 @@
 
 **Theme:** light with dark accent sections
 
-St Kevin's employs a warm, editorial, community-driven aesthetic that balances institutional authority with genuine approachability. The design grounds itself in deep navy and burgundy red — the school's core colours — against generous whitespace and warm cream surfaces. The layout borrows from editorial magazine design: full-bleed hero imagery, oversized circular image crops that break their containers, flowing script accent text, and organic wave dividers between sections. The overall feel is trustworthy, nurturing, and culturally rich — reflecting a diverse Catholic school community where belonging is the central message. Inspired by Green School's immersive, mission-driven storytelling layout.
+St Kevin's employs a warm, editorial, community-driven aesthetic that balances institutional authority with genuine approachability. The design grounds itself in deep navy and burgundy red — the school's core colours — against a warm cream page background (#FBF9F7) that gives the site its editorial warmth. The layout borrows from editorial magazine design: full-bleed hero imagery, oversized circular image crops that break their containers, flowing script accent text, and organic wave dividers between sections. The overall feel is trustworthy, nurturing, and culturally rich — reflecting a diverse Catholic school community where belonging is the central message. Inspired by Green School's immersive, mission-driven storytelling layout.
 
 ## Tokens — Colors
 
@@ -11,8 +11,8 @@ St Kevin's employs a warm, editorial, community-driven aesthetic that balances i
 |------|-------|-------|------|
 | Deep Navy | `#051E42` | `--color-deep-navy` | Primary brand colour for headers, navigation, footer, primary buttons, body text, and dark feature sections — the authoritative backbone of the entire UI |
 | Burgundy Red | `#8A2232` | `--color-burgundy-red` | Accent colour for CTAs, italic taglines, decorative wave dividers, hover states, and attention-drawing elements — used sparingly for maximum impact (10% of palette) |
-| Pure White | `#FFFFFF` | `--color-pure-white` | Primary page background and text on dark surfaces — the dominant surface colour providing clean, bright foundations |
-| Warm Cream | `#FBF9F7` | `--color-warm-cream` | Slightly warm alternative background for sections that need subtle differentiation from pure white without introducing colour — adds editorial warmth inspired by Green School's #f8f5f0 |
+| Pure White | `#FFFFFF` | `--color-pure-white` | Text and SVG fills on dark surfaces (navy, burgundy backgrounds). Not used as a page or section background. |
+| Warm Cream | `#FBF9F7` | `--color-warm-cream` | **Global page background.** All light sections use this value — body, nav sidebar, search panel, welcome section, enrolments CTA surround, and the pillar section first state. Gives the site its editorial warmth. |
 | Cloud Grey | `#F4F6F8` | `--color-cloud-grey` | Neutral section background for alternating content blocks, form areas, and secondary surfaces |
 | Border Mist | `#E2E6EA` | `--color-border-mist` | Default boundary and separator colour for hairline borders, input fields, card outlines, and dividers |
 | Slate Text | `#6B7280` | `--color-slate-text` | Secondary text colour for supporting copy, captions, metadata, and less prominent information |

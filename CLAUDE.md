@@ -54,8 +54,8 @@ The site replaces an existing WordPress site. Design is inspired by [Green Schoo
 |-------|-------|
 | Primary | Navy `#051E42` |
 | Accent | Burgundy Red `#8A2232` |
-| Background | White `#FFFFFF` |
-| Warm BG | Cream `#FBF9F7` |
+| Background | Warm Cream `#FBF9F7` ← global page background |
+| Pure White | `#FFFFFF` ← text/SVG on dark surfaces only |
 | Neutral BG | Light Grey `#F4F6F8` |
 | Border | Soft Grey `#E2E6EA` |
 | Secondary text | Muted Grey `#6B7280` |
