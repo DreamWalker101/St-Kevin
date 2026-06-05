@@ -32,10 +32,24 @@ curl_close($ch);
 
 sleep(2);
 
-// Step 2 — Copy site/* to repo root (replaces .cpanel.yml deploy step)
-$copy_output = shell_exec("/bin/cp -Rf {$repo_path}/site/* {$repo_path}/ 2>&1");
+// Step 2 — Copy site/* to repo root using PHP (shell_exec disabled on shared hosting)
+function copy_dir($src, $dst) {
+    $copied = 0;
+    foreach (new RecursiveIteratorIterator(new RecursiveDirectoryIterator($src, RecursiveDirectoryIterator::SKIP_DOTS), RecursiveIteratorIterator::SELF_FIRST) as $item) {
+        $target = $dst . DIRECTORY_SEPARATOR . substr($item->getPathname(), strlen($src) + 1);
+        if ($item->isDir()) {
+            if (!is_dir($target)) mkdir($target, 0755, true);
+        } else {
+            copy($item->getPathname(), $target);
+            $copied++;
+        }
+    }
+    return $copied;
+}
+
+$copied = copy_dir("{$repo_path}/site", $repo_path);
 
 echo json_encode([
-    'pull'   => json_decode($pull_response),
-    'copy'   => $copy_output ?: 'ok',
+    'pull'         => json_decode($pull_response),
+    'files_copied' => $copied,
 ], JSON_PRETTY_PRINT);
