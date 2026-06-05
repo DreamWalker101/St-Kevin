@@ -244,3 +244,47 @@
 ### Files changed this session
 - `site/index.html` — footer logo CSS vars updated (`--footer-logo-h: 110px`, `--footer-logo-gap: 60px`)
 - `site/about.html` — major build: Section 3 intro, Sections 4–6 scroll-driven sticky component (CSS + HTML + JS), footer logo vars aligned, comment labels updated from "Pure White" to "Warm Cream"
+
+---
+
+## Session 6 — 2026-06-06
+
+### Completed this session
+- ✅ learning.html — Section 1 Hero built from stub → `site/learning.html`
+  - Full-bleed `cosmos_1113100871.jpeg` (wide classroom, natural light, children at wooden tables)
+  - Navy overlay `#051E42` at `opacity: 0.60` — exact same CSS var as homepage hero (`--hero-overlay-opacity`)
+  - Centred "Learning with Purpose" h1 (Montserrat 800, `clamp(38px, 7vw, 82px)`) + Inter body text
+  - Burgundy decorative rule (36×2px) above heading — craft detail, not an eyebrow label
+  - Animated scroll dot indicator at bottom (looping, `power1.inOut`, `repeat: -1`)
+  - GSAP entrance: rule expands (`expo.out`) → heading rises → body follows → scroll dot fades in
+  - `prefers-reduced-motion` handled — elements visible without JS, no opacity-gating
+  - "Learning" marked active in sidebar nav (`is-active`, `aria-current="page"`)
+  - Burgundy wave divider below hero (same SVG path as index.html)
+  - Full shared header/nav/sidebar/search/click-spark/Lenis scripts included
+
+### In progress
+- Nothing in progress — clean stop
+
+### Resume here next session
+**Page:** Learning with Purpose (learning.html)
+**Section:** Section 2 — Intro body (centred text, warm cream/white bg)
+**Search terms to find component:** `"editorial lead paragraph typography section"` or `"centred intro text block school website"` or `"body text intro white background web design"`
+**Status:** Not started — hero done, wave divider in place. Section 2 is just a centred paragraph block, no image.
+
+### Decisions made this session
+- **`cosmos_1113100871.jpeg` for learning hero** — widest landscape shot, natural light, children at wooden tables, greenery through windows. Most cinematic of the 7 available samples. `object-position: center 28%` to show upper classroom area.
+- **Burgundy rule instead of eyebrow text** — avoids the "small caps label above every heading" AI scaffold pattern. Pure 36×2px graphic accent.
+- **Intro body copy source** — CONTENT.md has no dedicated intro paragraph for learning.html. Will use homepage "Learning with Purpose" section body: "Learning at St Kevin's is both structured and meaningful, grounded in evidence-informed teaching and rich opportunities for inquiry."
+- **Sections 3–7 component** — will reuse the `.sk-pillar` CSS already in index.html (alternating circular image + text). Extract and adapt rather than reinvent.
+
+### Lessons learned this session
+- **Pre-animation headless screenshot captures blank text** — `chromium-browser --headless` screenshots before GSAP fires. Fix: `--virtual-time-budget=4000` lets animations run first. Essential for verifying GSAP hero entrances.
+- **Mobile heading at 1× DPR can look truncated** — take mobile screenshots at 2× DPR to confirm true wrapping. 1× DPR screenshots can appear to cut off text that actually wraps correctly.
+
+### Problems to watch out for
+- Sections 3–7 reuse sample images from homepage — tune `object-position` per image so focal points (faces, group moments) stay visible inside the circle crop.
+- `.sk-pillar` CSS in index.html has `is-dark` variants for navy bg — learning.html sections are all light bg so only the light-mode variant is needed. Strip dark variants to keep the CSS lean.
+- Section 8 (Footer) must be a clean copy of index.html footer block — same CSS vars, same HTML structure. Keep in sync across pages.
+
+### Files changed this session
+- `site/learning.html` — built from stub: complete hero section (CSS + HTML + GSAP JS), burgundy wave divider, full shared header/nav/sidebar component

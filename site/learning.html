@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Learning with Purpose — St Kevin's Primary School, Hampton Park</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-navy':    '#051E42',
+            'burgundy-red': '#8A2232',
+            'warm-cream':   '#FBF9F7',
+            'cloud-grey':   '#F4F6F8',
+            'border-mist':  '#E2E6EA',
+            'slate-text':   '#6B7280',
+            'navy-tint':    '#0A2D5C',
+            'red-soft':     '#F4E3E6',
+          },
+          fontFamily: {
+            'montserrat': ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            'inter':      ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            'script':     ['Dancing Script', 'cursive'],
+          },
+          maxWidth: { 'content': '1200px' },
+          borderRadius: { 'card': '12px', 'image': '16px' },
+          boxShadow: { 'soft': '0 8px 24px rgba(0, 0, 0, 0.08)' },
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/ScrollTrigger.min.js"></script>
+  <!-- Lenis smooth scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+
+  <style>
+    /* ── CSS Custom Properties ── */
+    :root {
+      --color-deep-navy:    #051E42;
+      --color-burgundy-red: #8A2232;
+      --color-pure-white:   #FFFFFF;
+      --color-warm-cream:   #FBF9F7;
+      --color-cloud-grey:   #F4F6F8;
+      --color-border-mist:  #E2E6EA;
+      --color-slate-text:   #6B7280;
+      --color-navy-tint:    #0A2D5C;
+      --color-red-soft:     #F4E3E6;
+
+      --font-montserrat:     'Montserrat', ui-sans-serif, system-ui, sans-serif;
+      --font-inter:          'Inter', ui-sans-serif, system-ui, sans-serif;
+      --font-dancing-script: 'Dancing Script', cursive;
+
+      --text-body:       16px; --leading-body:    1.7;
+      --text-body-lg:    18px; --leading-body-lg: 1.7;
+
+      --font-weight-regular:   400;
+      --font-weight-medium:    500;
+      --font-weight-semibold:  600;
+      --font-weight-bold:      700;
+      --font-weight-extrabold: 800;
+
+      --max-width: 1200px;
+
+      --radius-pill: 999px;
+
+      --transition-fast:   0.2s ease;
+      --transition-medium: 0.3s ease;
+
+      --z-search:   1100;
+      --z-header:   1000;
+      --z-backdrop: 9000;
+      --z-sidebar:  9100;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: auto; }
+    body {
+      margin: 0;
+      font-family: var(--font-inter);
+      color: var(--color-deep-navy);
+      background: var(--color-warm-cream);
+    }
+
+    /* ── Header ── */
+    .sk-header {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: var(--z-header);
+      padding: 20px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background var(--transition-medium), box-shadow var(--transition-medium),
+                  transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .sk-header.is-transparent { background: transparent; }
+    .sk-header.is-scrolled {
+      background: rgba(251,249,247,0.96);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.07);
+    }
+    .sk-header.is-hidden { transform: translateY(-100%); }
+
+    /* Hamburger */
+    .sk-hamburger {
+      display: flex; flex-direction: column; justify-content: center; gap: 5px;
+      width: 40px; height: 40px;
+      background: none; border: none; cursor: pointer; padding: 6px; flex-shrink: 0;
+      border-radius: 8px;
+      transition: background var(--transition-fast);
+    }
+    .sk-hamburger:hover { background: rgba(255,255,255,0.12); }
+    .is-scrolled .sk-hamburger:hover { background: var(--color-cloud-grey); }
+    .sk-hamburger span {
+      display: block; height: 2px; border-radius: 2px;
+      transition: background var(--transition-medium);
+    }
+    .is-transparent .sk-hamburger span { background: var(--color-pure-white); }
+    .is-scrolled    .sk-hamburger span { background: var(--color-deep-navy); }
+
+    /* Dual logos */
+    .sk-logo-hero, .sk-logo-sticky {
+      position: absolute; left: 50%; transform: translateX(-50%);
+      display: block; width: auto;
+    }
+    .sk-logo-hero   { height: var(--logo-hero-size, 90px); top: var(--logo-hero-top, 16px); }
+    .is-scrolled .sk-logo-hero   { display: none; }
+    .sk-logo-sticky { display: none; height: var(--logo-sticky-size, 52px); top: var(--logo-sticky-top, 12px); }
+    .is-scrolled .sk-logo-sticky { display: block; }
+
+    /* Search toggle */
+    .sk-search-btn {
+      width: 40px; height: 40px;
+      background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      transition: background var(--transition-fast);
+      flex-shrink: 0;
+    }
+    .sk-search-btn:hover { background: rgba(255,255,255,0.12); }
+    .is-scrolled .sk-search-btn:hover { background: var(--color-cloud-grey); }
+    .sk-search-btn svg { transition: stroke var(--transition-medium); }
+    .is-transparent .sk-search-btn svg { stroke: var(--color-pure-white); }
+    .is-scrolled    .sk-search-btn svg { stroke: var(--color-deep-navy); }
+
+    /* ── Search Panel ── */
+    .sk-search-panel {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: var(--z-search);
+      background: var(--color-warm-cream);
+      border-bottom: 1px solid var(--color-border-mist);
+      padding: 20px 24px;
+      visibility: hidden; opacity: 0;
+    }
+    .sk-search-inner {
+      max-width: var(--max-width); margin: 0 auto;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .sk-search-form {
+      flex: 1; display: flex; align-items: center;
+      border: 1.5px solid var(--color-border-mist);
+      border-radius: 10px; overflow: hidden;
+      background: var(--color-cloud-grey);
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+    .sk-search-form:focus-within {
+      border-color: var(--color-deep-navy);
+      box-shadow: 0 0 0 3px rgba(5, 30, 66, 0.08);
+      background: var(--color-warm-cream);
+    }
+    .sk-search-icon { padding: 0 14px 0 16px; display: flex; align-items: center; flex-shrink: 0; }
+    .sk-search-icon svg { display: block; }
+    .sk-search-input {
+      flex: 1; border: none; background: transparent; outline: none;
+      font-family: var(--font-inter); font-size: 16px; font-weight: 400;
+      color: var(--color-deep-navy); padding: 14px 0; line-height: 1.4;
+    }
+    .sk-search-input::placeholder { color: var(--color-slate-text); }
+    .sk-search-submit {
+      padding: 10px 16px; margin: 4px;
+      background: var(--color-deep-navy); border: none; cursor: pointer;
+      border-radius: 7px;
+      font-family: var(--font-montserrat); font-size: 13px; font-weight: 700;
+      color: #fff; letter-spacing: 0.03em;
+      transition: background var(--transition-fast);
+    }
+    .sk-search-submit:hover { background: var(--color-navy-tint); }
+    .sk-search-close-btn {
+      width: 40px; height: 40px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: none; border: none; cursor: pointer;
+      border-radius: 50%;
+      transition: background var(--transition-fast);
+    }
+    .sk-search-close-btn:hover { background: var(--color-cloud-grey); }
+    .sk-search-results {
+      max-width: var(--max-width); margin: 12px auto 0;
+      font-family: var(--font-inter); font-size: 14px;
+      color: var(--color-slate-text); min-height: 0;
+    }
+    .sk-search-results.has-message {
+      padding: 8px 0 4px;
+      border-top: 1px solid var(--color-border-mist);
+    }
+
+    /* ── Nav Backdrop ── */
+    .sk-nav-backdrop {
+      position: fixed; inset: 0;
+      background: rgba(5, 30, 66, 0.6);
+      z-index: var(--z-backdrop);
+      cursor: pointer;
+      visibility: hidden; opacity: 0;
+    }
+
+    /* ── Nav Sidebar ── */
+    .sk-nav-sidebar {
+      position: fixed; top: 0; left: 0; bottom: 0;
+      width: min(620px, 95vw);
+      z-index: var(--z-sidebar);
+      background: var(--color-warm-cream);
+      display: flex; flex-direction: row;
+      overflow: hidden;
+      box-shadow: 4px 0 40px rgba(5, 30, 66, 0.18);
+      transform: translateX(-100%);
+    }
+    .sk-sidebar-content {
+      width: min(340px, 100%); flex-shrink: 0;
+      display: flex; flex-direction: column;
+      overflow-y: auto; overflow-x: hidden;
+      scrollbar-width: none;
+    }
+    .sk-sidebar-content::-webkit-scrollbar { display: none; }
+    .sk-sidebar-image {
+      flex: 1; min-width: 160px;
+      padding: 12px 12px 12px 0;
+      display: flex;
+    }
+    .sk-sidebar-image-frame {
+      flex: 1; border-radius: 18px; overflow: hidden; position: relative;
+    }
+    .sk-sidebar-image img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block; will-change: transform;
+    }
+    @media (max-width: 600px) {
+      .sk-sidebar-image { display: none; }
+      .sk-nav-sidebar   { width: min(340px, 90vw); }
+    }
+    .sk-sidebar-logo {
+      max-height: var(--logo-sidebar-size, 80px);
+      max-width: 100%; width: auto; height: auto; display: block;
+    }
+    .sk-sidebar-header {
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px 24px 0; flex-shrink: 0;
+    }
+    .sk-sidebar-header .sk-sidebar-close { position: absolute; left: 24px; }
+    .sk-sidebar-close {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: none; border: 1.5px solid var(--color-border-mist);
+      border-radius: 10px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-deep-navy);
+      transition: border-color var(--transition-fast), background var(--transition-fast);
+    }
+    .sk-sidebar-close:hover { border-color: var(--color-deep-navy); background: var(--color-cloud-grey); }
+    .sk-sidebar-nav {
+      padding: 32px 24px 0;
+      display: flex; flex-direction: column; gap: 4px;
+      flex-shrink: 0;
+    }
+    .sk-nav-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 0; text-decoration: none; cursor: pointer;
+      border-radius: 8px; transition: none;
+    }
+    .sk-nav-item-label {
+      font-family: var(--font-montserrat);
+      font-size: clamp(22px, 4vw, 28px);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-deep-navy);
+      letter-spacing: -0.01em; line-height: 1.15;
+      display: inline-block;
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), color 0.28s;
+    }
+    .sk-nav-item:hover .sk-nav-item-label { transform: translateX(6px); }
+    .sk-nav-item.is-active .sk-nav-item-label { color: var(--color-burgundy-red); }
+    .sk-nav-arrow {
+      display: flex; align-items: center;
+      color: var(--color-burgundy-red); flex-shrink: 0;
+    }
+    .sk-nav-arrow-line {
+      display: block; height: 2px; width: 0;
+      background: currentColor;
+      transition: width 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: left center; border-radius: 2px;
+    }
+    .sk-nav-arrow-chevron {
+      display: flex; align-items: center;
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .sk-nav-item:hover .sk-nav-arrow-line    { width: 20px; }
+    .sk-nav-item:hover .sk-nav-arrow-chevron { transform: translateX(4px); }
+    .sk-nav-item:hover .sk-nav-item-label    { color: var(--color-burgundy-red); }
+    .sk-sidebar-footer {
+      margin-top: auto;
+      padding: 20px 24px 28px;
+      border-top: 1px solid var(--color-border-mist);
+    }
+    .sk-sidebar-socials {
+      display: inline-flex; align-items: center;
+      background: var(--color-cloud-grey);
+      border-radius: 999px; padding: 5px; gap: 2px;
+    }
+    .sk-social-btn {
+      width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; background: transparent; color: #4B5563;
+      text-decoration: none;
+    }
+    .sk-social-btn svg { display: block; overflow: visible; }
+
+    /* ── Hero ── */
+    .sk-hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      overflow: hidden;
+      background: var(--color-deep-navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Background image */
+    .sk-hero-image {
+      position: absolute; inset: 0;
+      pointer-events: none;
+    }
+    .sk-hero-image img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 28%;
+      display: block;
+    }
+
+    /* Navy overlay — same opacity as homepage */
+    .sk-hero-overlay {
+      position: absolute; inset: 0;
+      background: var(--color-deep-navy);
+      opacity: var(--hero-overlay-opacity, 0.60);
+      pointer-events: none;
+    }
+
+    /* Hero text content */
+    .sk-hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 120px 24px 140px;
+      max-width: 820px;
+      width: 100%;
+    }
+
+    /* Burgundy accent rule — appears before heading */
+    .sk-hero-rule {
+      width: 36px; height: 2px;
+      background: var(--color-burgundy-red);
+      margin: 0 auto 32px;
+      border-radius: 2px;
+    }
+
+    .sk-hero-heading {
+      font-family: var(--font-montserrat);
+      font-size: clamp(38px, 7vw, 82px);
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.028em;
+      line-height: 1.03;
+      margin: 0 0 28px;
+      text-wrap: balance;
+    }
+
+    .sk-hero-body {
+      font-family: var(--font-inter);
+      font-size: clamp(16px, 1.8vw, 20px);
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.80);
+      line-height: 1.72;
+      max-width: 580px;
+      margin: 0 auto;
+    }
+
+    /* MACS logo */
+    .sk-hero-macs {
+      position: absolute; bottom: 32px; left: 32px; z-index: 2;
+    }
+
+    /* Scroll indicator */
+    .sk-hero-scroll {
+      position: absolute;
+      bottom: 36px; left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: 8px;
+    }
+    .sk-hero-scroll-track {
+      width: 1px; height: 44px;
+      background: rgba(255,255,255,0.18);
+      position: relative; overflow: hidden;
+      border-radius: 1px;
+    }
+    .sk-hero-scroll-dot {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 45%;
+      background: rgba(255,255,255,0.65);
+      border-radius: 1px;
+    }
+
+    /* ── Wave divider ── */
+    .sk-wave-divider {
+      display: block; line-height: 0;
+      overflow: hidden; pointer-events: none;
+    }
+    .sk-wave-divider--burg { background: #ffffff; }
+    .sk-wave-svg { display: block; width: 100%; height: auto; }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════
+       HEADER
+  ════════════════════════════════ -->
+  <header class="sk-header is-transparent" id="sk-header">
+
+    <button class="sk-hamburger" id="sk-hamburger-btn" aria-label="Open navigation" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <img id="sk-logo-hero" src="images/logo-sk-white.png"
+         alt="St Kevin's Primary School, Hampton Park"
+         class="sk-logo-hero">
+    <img id="sk-logo-sticky" src="images/logo-sk-colour.png"
+         alt="St Kevin's Primary School, Hampton Park"
+         class="sk-logo-sticky"
+         aria-hidden="true">
+
+    <button class="sk-search-btn" id="sk-search-btn" aria-label="Search site" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="9.5" cy="9.5" r="7"/>
+        <line x1="14.5" y1="14.5" x2="21" y2="21"/>
+      </svg>
+    </button>
+
+  </header>
+
+
+  <!-- ════════════════════════════════
+       SEARCH PANEL
+  ════════════════════════════════ -->
+  <div class="sk-search-panel" id="sk-search-panel" role="search" aria-label="Site search">
+    <div class="sk-search-inner">
+      <form class="sk-search-form" id="sk-search-form" autocomplete="off">
+        <span class="sk-search-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 22 22" fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9.5" cy="9.5" r="7"/>
+            <line x1="14.5" y1="14.5" x2="21" y2="21"/>
+          </svg>
+        </span>
+        <input
+          type="search"
+          class="sk-search-input"
+          id="sk-search-input"
+          placeholder="Search St Kevin's…"
+          aria-label="Search"
+        >
+        <button type="submit" class="sk-search-submit">Search</button>
+      </form>
+      <button class="sk-search-close-btn" id="sk-search-close-btn" aria-label="Close search">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round">
+          <line x1="2" y1="2" x2="16" y2="16"/><line x1="16" y1="2" x2="2" y2="16"/>
+        </svg>
+      </button>
+    </div>
+    <div class="sk-search-results" id="sk-search-results" aria-live="polite"></div>
+  </div>
+
+
+  <!-- ════════════════════════════════
+       NAV BACKDROP
+  ════════════════════════════════ -->
+  <div class="sk-nav-backdrop" id="sk-nav-backdrop"></div>
+
+
+  <!-- ════════════════════════════════
+       NAV SIDEBAR
+  ════════════════════════════════ -->
+  <aside class="sk-nav-sidebar" id="sk-nav-sidebar" role="dialog" aria-modal="true" aria-label="Site navigation">
+
+    <div class="sk-sidebar-content">
+
+      <div class="sk-sidebar-header">
+        <button class="sk-sidebar-close" id="sk-sidebar-close" aria-label="Close navigation">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="2" y1="2" x2="14" y2="14"/>
+            <line x1="14" y1="2" x2="2" y2="14"/>
+          </svg>
+        </button>
+        <img src="images/logo-sk-macs-combined.png" alt="St Kevin's Primary School, Hampton Park" class="sk-sidebar-logo">
+      </div>
+
+      <nav class="sk-sidebar-nav" aria-label="Primary navigation">
+
+        <a href="about.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">About Us</span>
+          <span class="sk-nav-arrow" aria-hidden="true">
+            <span class="sk-nav-arrow-line"></span>
+            <span class="sk-nav-arrow-chevron">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg>
+            </span>
+          </span>
+        </a>
+
+        <a href="learning.html" class="sk-nav-item is-active" aria-current="page">
+          <span class="sk-nav-item-label">Learning</span>
+          <span class="sk-nav-arrow" aria-hidden="true">
+            <span class="sk-nav-arrow-line"></span>
+            <span class="sk-nav-arrow-chevron">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg>
+            </span>
+          </span>
+        </a>
+
+        <a href="community.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">Community</span>
+          <span class="sk-nav-arrow" aria-hidden="true">
+            <span class="sk-nav-arrow-line"></span>
+            <span class="sk-nav-arrow-chevron">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg>
+            </span>
+          </span>
+        </a>
+
+        <a href="enrolments.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">Enrolments</span>
+          <span class="sk-nav-arrow" aria-hidden="true">
+            <span class="sk-nav-arrow-line"></span>
+            <span class="sk-nav-arrow-chevron">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg>
+            </span>
+          </span>
+        </a>
+
+        <a href="contact.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">Contact</span>
+          <span class="sk-nav-arrow" aria-hidden="true">
+            <span class="sk-nav-arrow-line"></span>
+            <span class="sk-nav-arrow-chevron">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg>
+            </span>
+          </span>
+        </a>
+
+        <a href="policies.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">Policies</span>
+          <span class="sk-nav-arrow" aria-hidden="true">
+            <span class="sk-nav-arrow-line"></span>
+            <span class="sk-nav-arrow-chevron">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg>
+            </span>
+          </span>
+        </a>
+
+      </nav>
+
+      <div class="sk-sidebar-footer">
+        <div class="sk-sidebar-socials">
+
+          <a href="tel:0397098600" class="sk-social-btn sk-social-btn--phone" aria-label="Call us: (03) 9709 8600">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 5.5 5.5l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </a>
+
+          <a href="mailto:administration@skhamptonpark.catholic.edu.au" class="sk-social-btn sk-social-btn--mail" aria-label="Email us">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect class="env-body" x="2" y="4" width="20" height="16" rx="2"/>
+              <polyline class="env-flap" points="22,6 12,13 2,6"/>
+            </svg>
+          </a>
+
+          <a href="#" class="sk-social-btn sk-social-btn--fb" aria-label="Find us on Facebook" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="sk-sidebar-image" aria-hidden="true">
+      <div class="sk-sidebar-image-frame">
+        <img src="images/samples/cosmos_1616537391.jpeg" alt="" loading="eager">
+      </div>
+    </div>
+
+  </aside>
+
+
+  <!-- ════════════════════════════════
+       SECTION 1: HERO
+       Full-bleed classroom image, navy overlay at 0.60, centered
+       "Learning with Purpose" heading + body text overlay.
+  ════════════════════════════════ -->
+  <section class="sk-hero" id="sk-hero" aria-label="Learning with Purpose">
+
+    <!-- Background image -->
+    <div class="sk-hero-image" aria-hidden="true">
+      <img
+        src="images/samples/cosmos_1113100871.jpeg"
+        alt="Children engaged in purposeful learning at St Kevin's"
+        loading="eager"
+        fetchpriority="high"
+      >
+    </div>
+
+    <!-- Navy overlay — matches homepage opacity 0.60 -->
+    <div class="sk-hero-overlay" aria-hidden="true"></div>
+
+    <!-- Centred text content -->
+    <div class="sk-hero-content">
+      <div class="sk-hero-rule" id="sk-hero-rule" aria-hidden="true"></div>
+      <h1 class="sk-hero-heading" id="sk-hero-heading">Learning with Purpose</h1>
+      <p class="sk-hero-body" id="sk-hero-body">
+        Learning at St Kevin's shapes both the mind and the heart. It is about forming young people who are curious, capable and ready to contribute to the world around them.
+      </p>
+    </div>
+
+    <!-- MACS logo — bottom-left -->
+    <div class="sk-hero-macs" aria-hidden="true">
+      <img src="images/macs-logo-white.png" alt="" style="display:block;height:var(--logo-macs-size,90px);width:auto;">
+    </div>
+
+    <!-- Scroll indicator — animated dot travels down the track -->
+    <div class="sk-hero-scroll" id="sk-hero-scroll" aria-hidden="true">
+      <div class="sk-hero-scroll-track">
+        <div class="sk-hero-scroll-dot" id="sk-hero-scroll-dot"></div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ════════════════════════════════
+       WAVE DIVIDER — Burgundy
+       Transitions hero into white content area.
+  ════════════════════════════════ -->
+  <div class="sk-wave-divider sk-wave-divider--burg" aria-hidden="true">
+    <svg class="sk-wave-svg" viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 0 0 L 1440 0 L 1440 14 C 1080 22 360 76 0 88 Z" fill="#8A2232"/>
+    </svg>
+  </div>
+
+
+  <!-- ════════════════════════════════
+       SCRIPTS
+  ════════════════════════════════ -->
+
+  <!-- Header, nav sidebar, search -->
+  <script>
+  (function () {
+
+    var header      = document.getElementById('sk-header');
+    var hamburger   = document.getElementById('sk-hamburger-btn');
+    var sidebar     = document.getElementById('sk-nav-sidebar');
+    var backdrop    = document.getElementById('sk-nav-backdrop');
+    var closeBtn    = document.getElementById('sk-sidebar-close');
+    var searchBtn   = document.getElementById('sk-search-btn');
+    var searchPanel = document.getElementById('sk-search-panel');
+    var searchClose = document.getElementById('sk-search-close-btn');
+    var searchInput = document.getElementById('sk-search-input');
+    var searchForm  = document.getElementById('sk-search-form');
+    var searchRes   = document.getElementById('sk-search-results');
+
+    var navItems    = sidebar.querySelectorAll('.sk-nav-item');
+    var footerLinks = sidebar.querySelectorAll('.sk-social-btn');
+    var sideHead    = sidebar.querySelector('.sk-sidebar-header');
+    var sideImg     = sidebar.querySelector('.sk-sidebar-image img');
+
+    var navOpen    = false;
+    var searchOpen = false;
+    var lastScrollY = 0;
+    var HIDE_AFTER       = 140;
+    var STICKY_THRESHOLD = 60;
+
+    gsap.set(sidebar,     { x: '-100%' });
+    gsap.set(backdrop,    { autoAlpha: 0 });
+    gsap.set(searchPanel, { autoAlpha: 0, y: -8 });
+
+    function onScroll() {
+      var y = window.scrollY;
+      var scrolled = y > STICKY_THRESHOLD;
+      header.classList.toggle('is-scrolled',    scrolled);
+      header.classList.toggle('is-transparent', !scrolled);
+      if (y > HIDE_AFTER) {
+        header.classList.toggle('is-hidden', y > lastScrollY);
+      } else {
+        header.classList.remove('is-hidden');
+      }
+      lastScrollY = y;
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    function openNav() {
+      navOpen = true;
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+      tl.to(backdrop, { autoAlpha: 1, duration: rm ? 0.01 : 0.65 }, 0);
+      tl.to(sidebar,  { x: '0%',      duration: rm ? 0.01 : 0.78 }, 0);
+      if (sideImg && !rm) {
+        tl.from(sideImg, { scale: 1.1, duration: 1.1, ease: 'power3.out', clearProps: 'transform' }, 0);
+      }
+      tl.from(sideHead,   { autoAlpha: 0, y: 8,           duration: rm ? 0 : 0.45, clearProps: 'all' }, rm ? 0 : 0.32);
+      tl.from(navItems,   { autoAlpha: 0, x: -22, y: 10,  duration: rm ? 0 : 0.55, stagger: rm ? 0 : { each: 0.09 }, clearProps: 'all' }, rm ? 0 : 0.38);
+      tl.from(footerLinks,{ autoAlpha: 0, y: 8,           duration: rm ? 0 : 0.4,  stagger: rm ? 0 : { each: 0.07 }, ease: 'power3.out', clearProps: 'all' }, rm ? 0 : 0.76);
+      tl.call(function () { closeBtn.focus(); });
+    }
+
+    function closeNav() {
+      navOpen = false;
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var tl = gsap.timeline();
+      tl.to(sidebar,  { x: '-100%', duration: rm ? 0.01 : 0.56, ease: 'power4.inOut' }, 0);
+      tl.to(backdrop, { autoAlpha: 0, duration: rm ? 0.01 : 0.42, ease: 'power2.in' }, rm ? 0 : 0.08);
+    }
+
+    hamburger.addEventListener('click', openNav);
+    closeBtn.addEventListener('click',  closeNav);
+    backdrop.addEventListener('click',  closeNav);
+    navItems.forEach(function(a) { a.addEventListener('click', closeNav); });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        if (navOpen)    closeNav();
+        if (searchOpen) closeSearch();
+      }
+    });
+
+    sidebar.addEventListener('keydown', function(e) {
+      if (!navOpen || e.key !== 'Tab') return;
+      var focusable = Array.from(sidebar.querySelectorAll(
+        'button, a, input, [tabindex]:not([tabindex="-1"])'
+      )).filter(function(el) { return !el.disabled; });
+      if (!focusable.length) return;
+      var first = focusable[0];
+      var last  = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) {
+        e.preventDefault(); last.focus();
+      } else if (!e.shiftKey && document.activeElement === last) {
+        e.preventDefault(); first.focus();
+      }
+    });
+
+    function openSearch() {
+      searchOpen = true;
+      searchBtn.setAttribute('aria-expanded', 'true');
+      gsap.to(searchPanel, { autoAlpha: 1, y: 0, duration: 0.28, ease: 'power2.out' });
+      requestAnimationFrame(function() { searchInput.focus(); });
+    }
+
+    function closeSearch() {
+      searchOpen = false;
+      searchBtn.setAttribute('aria-expanded', 'false');
+      searchInput.value = '';
+      searchRes.textContent = '';
+      searchRes.classList.remove('has-message');
+      gsap.to(searchPanel, { autoAlpha: 0, y: -8, duration: 0.22, ease: 'power2.in' });
+    }
+
+    searchBtn.addEventListener('click',  function() { if (searchOpen) closeSearch(); else openSearch(); });
+    searchClose.addEventListener('click', closeSearch);
+
+    searchForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var q = searchInput.value.trim();
+      if (!q) return;
+      searchRes.classList.add('has-message');
+      searchRes.innerHTML = '<span style="color:#374151">No results found for "' + escapeHtml(q) + '" — full search will be available once all pages are live.</span>';
+    });
+
+    searchInput.addEventListener('input', function() {
+      if (searchRes.classList.contains('has-message')) {
+        searchRes.textContent = '';
+        searchRes.classList.remove('has-message');
+      }
+    });
+
+    function escapeHtml(str) {
+      return str.replace(/[&<>"']/g, function(c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    }
+
+  })();
+  </script>
+
+  <!-- Hero entrance animation + scroll indicator loop -->
+  <script>
+  (function () {
+    var reduced  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var rule     = document.getElementById('sk-hero-rule');
+    var heading  = document.getElementById('sk-hero-heading');
+    var body     = document.getElementById('sk-hero-body');
+    var scroll   = document.getElementById('sk-hero-scroll');
+    var dot      = document.getElementById('sk-hero-scroll-dot');
+
+    if (reduced) return; /* all elements visible by default — no opacity gating */
+
+    /* Initial hidden states */
+    gsap.set(rule,    { scaleX: 0, transformOrigin: 'center' });
+    gsap.set(heading, { autoAlpha: 0, y: 38 });
+    gsap.set(body,    { autoAlpha: 0, y: 24 });
+    gsap.set(scroll,  { autoAlpha: 0 });
+
+    /* Entrance — weighted stagger, expo.out throughout */
+    gsap.timeline({ delay: 0.2 })
+      .to(rule, {
+        scaleX: 1, duration: 0.5, ease: 'expo.out'
+      })
+      .to(heading, {
+        autoAlpha: 1, y: 0, duration: 1.1, ease: 'expo.out'
+      }, '-=0.22')
+      .to(body, {
+        autoAlpha: 1, y: 0, duration: 0.9, ease: 'expo.out'
+      }, '-=0.58')
+      .to(scroll, {
+        autoAlpha: 1, duration: 0.55, ease: 'power2.out'
+      }, '-=0.25');
+
+    /* Scroll dot — travels top to bottom, loops with a pause at top */
+    gsap.fromTo(dot,
+      { y: '-100%' },
+      { y: '220%', duration: 1.55, ease: 'power1.inOut', repeat: -1, repeatDelay: 0.5 }
+    );
+
+  })();
+  </script>
+
+  <!-- Social icon micro-animations -->
+  <script>
+  (function () {
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return;
+
+    var phoneBtn = document.querySelector('.sk-social-btn--phone');
+    if (phoneBtn) {
+      var phoneSvg = phoneBtn.querySelector('svg');
+      var phoneTl  = gsap.timeline({ paused: true });
+      phoneTl
+        .to(phoneSvg, { rotation: 18, duration: 0.18, ease: 'power2.out', transformOrigin: '50% 50%' })
+        .to(phoneSvg, { rotation: 0,  duration: 0.5,  ease: 'elastic.out(1, 0.5)' });
+      phoneBtn.addEventListener('mouseenter', function () { phoneTl.restart(); });
+    }
+
+    var mailBtn = document.querySelector('.sk-social-btn--mail');
+    if (mailBtn) {
+      var flap   = mailBtn.querySelector('.env-flap');
+      var mailTl = gsap.timeline({ paused: true });
+      mailTl
+        .to(flap, { attr: { points: '22,5 12,2 2,5'  }, duration: 0.2,  ease: 'power2.out' })
+        .to(flap, { attr: { points: '22,6 12,13 2,6' }, duration: 0.38, ease: 'power3.inOut' });
+      mailBtn.addEventListener('mouseenter', function () { mailTl.restart(); });
+    }
+
+    var fbBtn = document.querySelector('.sk-social-btn--fb');
+    if (fbBtn) {
+      var fbSvg = fbBtn.querySelector('svg');
+      var fbTl  = gsap.timeline({ paused: true });
+      fbTl
+        .to(fbSvg, { y: -4, duration: 0.2,  ease: 'power2.out' })
+        .to(fbSvg, { y:  0, duration: 0.45, ease: 'elastic.out(1, 0.45)' });
+      fbBtn.addEventListener('mouseenter', function () { fbTl.restart(); });
+    }
+  })();
+  </script>
+
+  <!-- Lenis smooth scroll + GSAP ScrollTrigger sync -->
+  <script>
+  (function () {
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduced && typeof Lenis !== 'undefined') {
+      var lenis = new Lenis({
+        duration: 1.15,
+        easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }
+      });
+      gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
+      gsap.ticker.lagSmoothing(0);
+    }
+  })();
+  </script>
+
+  <!-- click spark -->
+  <canvas id="global-click-spark" style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:difference;z-index:9999;"></canvas>
+  <script>
+  (function(){
+    var canvas=document.getElementById("global-click-spark");
+    var ctx=canvas.getContext("2d");
+    var sparks=[];
+    var dpr=window.devicePixelRatio||1;
+    function resize(){canvas.width=window.innerWidth*dpr;canvas.height=window.innerHeight*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);}
+    resize();
+    window.addEventListener("resize",resize);
+    document.addEventListener("click",function(e){
+      var now=performance.now();
+      for(var i=0;i<10;i++){sparks.push({x:e.clientX,y:e.clientY,angle:(2*Math.PI*i)/10,startTime:now});}
+    });
+    function ease(t){return t*(2-t);}
+    function draw(ts){
+      ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
+      for(var i=sparks.length-1;i>=0;i--){
+        var s=sparks[i],el=ts-s.startTime;
+        if(el>=460){sparks.splice(i,1);continue;}
+        var p=el/460,e=ease(p),d=e*24,ll=12*(1-e);
+        var x1=s.x+d*Math.cos(s.angle),y1=s.y+d*Math.sin(s.angle);
+        var x2=s.x+(d+ll)*Math.cos(s.angle),y2=s.y+(d+ll)*Math.sin(s.angle);
+        ctx.strokeStyle="#ffffff";ctx.lineWidth=2;ctx.lineCap="round";
+        ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();
+      }
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+  })();
+  </script>
+
+</body>
+</html>
