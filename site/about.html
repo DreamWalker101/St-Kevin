@@ -8,7 +8,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@400;500&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -455,7 +455,7 @@
       line-height: 0;
       display: block;
     }
-    .sk-wave-divider--burg    { background: var(--color-deep-navy); height: 126px; }
+    .sk-wave-divider--burg    { background: #FBF9F7; height: 126px; }
     .sk-wave-divider--navy    { background: var(--color-warm-cream); height: 120px; }
     .sk-wave-divider--navy-inv { background: var(--color-navy);      height: 120px; }
     .sk-wave-divider--cream   { background: #FBF9F7; height: 126px; }
@@ -479,6 +479,7 @@
        SECTIONS 4–6 — STORY / MISSION / VISION
        Scroll-driven sticky panel, 3 slides × 100vh
     ══════════════════════════════════════════════ */
+    .sk-smv { background: var(--color-warm-cream); }
     .sk-smv__track { height: 300vh; position: relative; }
     .sk-smv__sticky {
       position: sticky; top: 0;
@@ -495,6 +496,7 @@
       position: relative;
       display: flex; flex-direction: column; justify-content: center;
       padding: 80px 64px;
+      background: var(--color-warm-cream);
       border-right: 1px solid rgba(5,30,66,0.1);
       min-width: 0;
     }
@@ -503,9 +505,9 @@
       display: flex; gap: 8px; z-index: 2;
     }
     .sk-smv__dot {
-      height: 4px; width: 24px;
+      height: 6px; width: 24px;
       border: 0; padding: 0; border-radius: 999px; cursor: pointer;
-      background: rgba(5,30,66,0.18);
+      background: rgba(5,30,66,0.32);
       transition: width 0.5s cubic-bezier(0.4,0,0.2,1), background 0.5s ease;
     }
     .sk-smv__dot.is-active { width: 48px; background: var(--color-deep-navy); }
@@ -528,10 +530,11 @@
     .sk-smv__body {
       margin: 0; max-width: 480px;
       font-family: var(--font-inter);
-      font-size: clamp(1rem, 1.5vw, 1.1rem);
-      line-height: 1.8;
+      font-size: clamp(1rem, 1.5vw, 1.075rem);
+      line-height: 1.82;
       color: var(--color-deep-navy);
-      opacity: 0.78;
+      opacity: 0.84;
+      text-wrap: pretty;
     }
     .sk-smv__cta-wrap {
       position: absolute; left: 64px; bottom: 64px; z-index: 2;
@@ -582,12 +585,22 @@
     }
     .sk-smv__img-slide {
       width: 100%; height: 100%;
-      display: flex; align-items: center; justify-content: center;
-      background: #374151;
+      overflow: hidden;
+      background: #2a3444;
+      position: relative;
     }
+    .sk-smv__img-photo {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);
+    }
+    .sk-smv__img-slide:hover .sk-smv__img-photo { transform: scale(1.03); }
     .sk-smv__img-label {
       font-family: var(--font-montserrat); font-size: 12px; font-weight: 600;
       color: rgba(255,255,255,0.4); letter-spacing: 0.1em; text-transform: uppercase;
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
     }
     @media (max-width: 900px) {
       .sk-smv__track { height: auto; }
@@ -605,35 +618,68 @@
     }
 
     /* ══════════════════════════════════════════════
-       SECTION 3 — ABOUT ST KEVIN'S INTRO
+       SECTION 3 — ABOUT ST KEVIN'S INTRO (bold editorial)
     ══════════════════════════════════════════════ */
     .sk-about-intro {
-      padding: clamp(64px, 8vw, 96px) clamp(24px, 5vw, 48px) clamp(56px, 7vw, 80px);
-      text-align: center;
+      padding: clamp(72px, 9vw, 120px) clamp(24px, 5vw, 80px);
+      background: var(--color-warm-cream);
+      overflow: hidden;
     }
     .sk-about-intro__inner {
-      max-width: 720px;
+      max-width: 1280px;
       margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 0.62fr;
+      gap: clamp(40px, 7vw, 96px);
+      align-items: center;
     }
     .sk-about-intro__heading {
       font-family: var(--font-montserrat);
-      font-size: clamp(2.25rem, 6vw, 4rem);
-      font-weight: 800;
-      letter-spacing: -0.025em;
+      font-size: clamp(3rem, 9.5vw, 7.25rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 0.94;
       color: var(--color-deep-navy);
-      line-height: 1.1;
       text-transform: uppercase;
-      margin: 0 0 1.5rem;
+      margin: 0 0 2rem;
       text-wrap: balance;
+    }
+    .sk-about-intro__rule {
+      width: 56px; height: 3px;
+      background: var(--color-burgundy-red);
+      border: none; border-radius: 2px;
+      display: block;
+    }
+    .sk-about-intro__right { padding-top: 0.25rem; }
+    .sk-about-intro__tagline {
+      font-family: var(--font-dancing-script);
+      font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+      font-weight: 700;
+      color: var(--color-burgundy-red);
+      line-height: 1.3;
+      margin: 0 0 1.5rem;
     }
     .sk-about-intro__body {
       font-family: var(--font-inter);
-      font-size: clamp(1rem, 1.8vw, 1.125rem);
+      font-size: clamp(1rem, 1.45vw, 1.075rem);
       font-weight: 400;
       color: var(--color-deep-navy);
-      line-height: 1.75;
+      line-height: 1.82;
       margin: 0;
-      opacity: 0.85;
+      max-width: 50ch;
+      opacity: 0.82;
+      text-wrap: pretty;
+    }
+    @media (max-width: 860px) {
+      .sk-about-intro__inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .sk-about-intro__heading {
+        font-size: clamp(2.75rem, 10.5vw, 4rem);
+        margin-bottom: 1.25rem;
+      }
+      .sk-about-intro__body { max-width: 58ch; }
     }
 
     /* ══════════════════════════════════════════════
@@ -802,6 +848,7 @@
     }
     .sk-footer__bottom-link:hover { color: rgba(255,255,255,0.65); }
     .sk-footer__bottom-sep { color: rgba(255,255,255,0.18); font-size: 10px; }
+
   </style>
 </head>
 <body>
@@ -1044,8 +1091,19 @@
   ════════════════════════════════ -->
   <section class="sk-about-intro" id="sk-about-intro" aria-label="About St Kevin's">
     <div class="sk-about-intro__inner">
-      <h2 class="sk-about-intro__heading">About St Kevin's</h2>
-      <p class="sk-about-intro__body">St Kevin's is a Christ-centred Catholic primary school where every child is known, valued and supported to flourish. In our diverse Hampton Park community, faith, learning and belonging come together to shape young people who grow in confidence, compassion and purpose.</p>
+
+      <!-- Left: display heading -->
+      <div class="sk-about-intro__left">
+        <h2 class="sk-about-intro__heading">About<br>St Kevin's</h2>
+        <div class="sk-about-intro__rule" aria-hidden="true"></div>
+      </div>
+
+      <!-- Right: accent tagline + body -->
+      <div class="sk-about-intro__right">
+        <p class="sk-about-intro__tagline">faith · learning · belonging</p>
+        <p class="sk-about-intro__body">St Kevin's is a Christ-centred Catholic primary school where every child is known, valued and supported to flourish. In our diverse Hampton Park community, faith, learning and belonging come together to shape young people who grow in confidence, compassion and purpose.</p>
+      </div>
+
     </div>
   </section>
 
@@ -1549,18 +1607,21 @@
     var SLIDES = [
       {
         heading: 'Our Story',
-        body:    "St Kevin’s has grown alongside the families of Hampton Park since 1988, becoming a vibrant and culturally rich community where many traditions and languages are celebrated. Our story continues to be shaped by the partnership between students, families, parish and staff who share a commitment to learning and faith.",
-        label:   'Our Story'
+        body:    "St Kevin's has grown alongside the families of Hampton Park since 1988, becoming a vibrant and culturally rich community where many traditions and languages are celebrated. Our story continues to be shaped by the partnership between students, families, parish and staff who share a commitment to learning and faith.",
+        label:   'Our Story',
+        image:   'https://picsum.photos/seed/skvstory/640/900'
       },
       {
         heading: 'Our Mission',
         body:    "We believe education is sacred work. Our mission is to nurture minds, hearts and spirits so that every child can grow into a person who lives with purpose, compassion and responsibility.",
-        label:   'Our Mission'
+        label:   'Our Mission',
+        image:   'https://picsum.photos/seed/skvmission/640/900'
       },
       {
         heading: 'Our Vision',
-        body:    "At St Kevin’s, learning prepares children not just for the next stage of schooling, but for life. We aim to develop curious, confident and compassionate learners who will contribute positively to their communities and the wider world.",
-        label:   'Our Vision'
+        body:    "At St Kevin's, learning prepares children not just for the next stage of schooling, but for life. We aim to develop curious, confident and compassionate learners who will contribute positively to their communities and the wider world.",
+        label:   'Our Vision',
+        image:   'https://picsum.photos/seed/skvvision/640/900'
       }
     ];
 
@@ -1589,12 +1650,24 @@
       div.className = 'sk-smv__copy' + (i === 0 ? ' is-active' : '');
       div.innerHTML = '<h2 class="sk-smv__heading">' + s.heading + '</h2>'
                     + '<p class="sk-smv__body">'    + s.body    + '</p>';
+      /* Pin first slide visible immediately — guards against CSS-transition race on first paint */
+      if (i === 0) { div.style.cssText = 'opacity:1;transform:none;pointer-events:auto;'; }
       copies.appendChild(div);
 
-      /* image slide (placeholder) */
+      /* image slide */
       var slide = document.createElement('div');
       slide.className = 'sk-smv__img-slide';
-      slide.innerHTML = '<span class="sk-smv__img-label">' + s.label + '</span>';
+      if (s.image) {
+        var img = document.createElement('img');
+        img.src = s.image;
+        img.alt = '';
+        img.className = 'sk-smv__img-photo';
+        img.loading = 'lazy';
+        img.decoding = 'async';
+        slide.appendChild(img);
+      } else {
+        slide.innerHTML = '<span class="sk-smv__img-label">' + s.label + '</span>';
+      }
       imgTrack.appendChild(slide);
     });
 
@@ -1607,6 +1680,7 @@
         d.setAttribute('aria-selected', i === idx ? 'true' : 'false');
       });
       document.querySelectorAll('.sk-smv__copy').forEach(function (c, i) {
+        c.style.cssText = ''; /* clear first-paint pin so CSS transitions run cleanly */
         c.classList.toggle('is-active', i === idx);
       });
       imgTrack.style.transform = 'translateY(-' + (idx * 100) + '%)';
@@ -1670,6 +1744,8 @@
 
   })();
   </script>
+
+
 
 </body>
 </html>

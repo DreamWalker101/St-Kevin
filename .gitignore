@@ -43,3 +43,4 @@ coverage/
 
 # Stitch source exports (large HTML reference files)
 Downloads/
+.gstack/

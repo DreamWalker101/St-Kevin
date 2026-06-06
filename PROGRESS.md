@@ -288,3 +288,87 @@
 
 ### Files changed this session
 - `site/learning.html` — built from stub: complete hero section (CSS + HTML + GSAP JS), burgundy wave divider, full shared header/nav/sidebar component
+
+---
+
+## Session 7 — 2026-06-06
+
+### Completed this session
+- ✅ index.html — Section 9 wave added (cream → navy, `--navy-inv` class, id=`sk-wave-divider-9`, wired in WAVES morph array)
+- ✅ index.html — Fixed `--navy-inv` CSS bug: `var(--color-navy)` was undefined → corrected to `var(--color-deep-navy)`
+- ✅ index.html — Section 11 wave: added IDs (`sk-wave-divider-11`, `sk-wave-path-11`), wired in WAVES morph array
+- ✅ index.html — Section 12 Video Grid built: 2×2 grid, 4 placeholder videos (Google sample bucket), hover-to-preview (muted), click-to-play/pause, GSAP scroll entrance, drop shadows with hover lift, SVG concentric-circle deco, category + duration badges, navy overlay with SK logo, play/pause icon toggle
+- ✅ context updated — footer (Section 14) confirmed already built in a prior session
+- ✅ SECTION_CHECKLIST.md created — track completion state across all pages
+
+### In progress
+- Nothing in progress — clean stop
+
+### Resume here next session
+**Page:** Learning with Purpose (`learning.html`)
+**Section:** Section 2 — Intro body (centred text paragraph, warm cream bg)
+**Status:** Not started — hero + wave divider done, this is a simple centred text block next.
+
+### Decisions made this session
+- **Section 9 wave fill = `#FBF9F7` (warm cream):** Container bg is deep navy. Creates warm cream shape at top of navy section — pillars colour receding as Effect section begins.
+- **Section 11 wave already existed** — just missing IDs. The comment "effect (navy) → enrolments (cream)" was accurate; only IDs were missing for GSAP scroll morph.
+- **Video Grid uses Google sample bucket MP4s:** Placeholder URLs (`ForBiggerBlazes`, `ForBiggerEscapes`, `ForBiggerFun`, `ElephantsDream`) — client replaces with real Drive/hosted videos before launch.
+- **Hover preview = muted:** School context — autoplay with sound on hover would be jarring. Click also plays muted for simplicity; client can enable sound in JS if needed.
+- **SVG deco = concentric rings:** Two sets — large navy rings top-right (opacity 0.045), smaller burgundy rings bottom-left (opacity 0.035). Echoes the circular motif from pillar and enrolments sections.
+
+### Problems to watch out for
+- Video Grid placeholder URLs are external (Google CDN) — they will stream fine in dev but should be replaced with hosted school videos before launch.
+- `logo-sk-white.png` used as overlay logo inside video cards — this is gitignored with all other `site/images/`. Ensure it uploads to hosting.
+- All prior session warnings still apply (Facebook href="#", debug panel removal, images not in git).
+
+### Files changed this session
+- `site/index.html` — Section 9 wave (CSS fix + HTML + WAVES JS), Section 11 IDs + WAVES JS, Section 12 Video Grid (CSS + HTML + JS)
+- `PROGRESS.md` — this update
+- `SECTION_CHECKLIST.md` — created (new file)
+
+---
+
+## Session 8 — 2026-06-06
+
+### Completed this session
+- ✅ index.html — Floating SVG accent decoratives added to Section 10 (testimonial): 6 marks (dot grid, asterisk, diamond, arc, cross, concentric rings) in navy/burgundy at 8–14% opacity with independent float animations (8–16s, staggered delays)
+- ✅ index.html — Floating SVG accent decoratives added to Section 5–8 (pillar right column): 5 marks (dot grid, asterisk, cross+dot, diamond, concentric target) in white at 10–18% opacity, hidden on mobile
+- ✅ about.html — About St Kevin's Intro (Section 3) redesigned: centred layout → editorial split grid (large 900-weight display heading left, tagline + body right), burgundy rule accent, responsive collapse
+- ✅ about.html — Story/Mission/Vision panel (Sections 4–6) polished: warm cream background added, dot indicator height/opacity bumped, body text opacity + line-height improved, image slides now have real sample photos with hover-zoom (`.sk-smv__img-photo`), label repositioned as overlay
+- ✅ site/images/ — tracked in git (removed from .gitignore), all logos + sample photos committed and pushed for cross-device sync
+- ✅ GPT image prompt written — sprite sheet brief for 20 illustrated school-themed icons (flat line-art, navy + burgundy, 4×5 grid, transparent bg)
+
+### In progress
+- Nothing in progress — clean stop
+
+### Resume here next session
+**Page:** About Us (`about.html`)
+**Section:** Section 7 — Our Principal (video thumbnail + text block, play button)
+**Search terms:** "video thumbnail play button card HTML CSS" / "principal bio section split layout"
+**Status:** Not started — Story/Mission/Vision (Sections 4–6) complete, Section 7 is next
+
+### Decisions made this session
+- **Floating SVG accents use CSS keyframe animation (not GSAP scrub):** Pillar section is GSAP-pinned, so CSS `@keyframes skAccentUp/Down/Spin` at different speeds/delays gives organic floating without coupling to the scrub timeline. Reduced-motion respected via `animation: none !important` on `.sk-accent`.
+- **Pillar accents = white at 18% opacity:** Background alternates white→navy→burgundy→navy. White is invisible on the first (white) panel — acceptable tradeoff; accents are most effective on the dark panels where visual interest is highest anyway.
+- **About Intro font-weight: 900:** Added `wght@900` to Google Fonts link to support the editorial display heading. Previously only 600/700/800 loaded.
+- **`.sk-wave-divider--burg` background fix:** Was `var(--color-deep-navy)` (wrong — makes it invisible on navy), corrected to `#FBF9F7` (warm cream) so the burg wave creates the correct cream-background container for the burgundy SVG shape.
+- **About Intro layout = split grid (1fr 0.62fr):** Moved from centred single-column to editorial two-column. Left: oversized display heading. Right: script tagline + body copy. Collapses to single column at 860px.
+- **Image illustrations deferred to PNG swap:** CTA visual column uses circular sample photo as placeholder. GPT image prompt provided for client to generate illustrated assets — will replace once received.
+
+### Lessons learned this session
+- **CSS animation + inline `transform` conflict:** Don't apply both `transform: translateY(-50%)` in `style=""` and a CSS `@keyframes` that also uses `transform` on the same element — the animation overrides the inline style entirely. Use percentage-based `top` instead of transform-centering.
+- **Pillar section deco z-index:** Images have `z-index: 1–4` from `data-order`. Deco layer must be `z-index: 5` to float above all images, but `pointer-events: none` ensures it never blocks interaction.
+- **generative_ui_agents repo (evaluated this session):** Not applicable to this stack. All 7 projects require React + Next.js + npm + Python backend. Our constraint (static HTML, Tailwind CDN, cPanel) makes them incompatible.
+
+### Problems to watch out for
+- Debug panel (Testimonials dev sliders) is still in the HTML — remove before handing to client.
+- Facebook link in footer still `href="#"` — needs real URL.
+- Placeholder videos in Section 12 are external Google CDN — must be replaced with school-hosted videos before launch.
+- GPT illustrated PNG prompt was written but not yet generated/integrated — follow up with client.
+
+### Files changed this session
+- `site/index.html` — floating SVG accents: `@keyframes`, `.sk-effect__deco`, `.sk-pillar__deco` CSS + all HTML accent elements
+- `site/about.html` — About Intro redesign (split grid, 900-weight heading, burgundy rule), SMV panel polish (bg, dots, body text, image hover-zoom), wave divider bg fix
+- `.gitignore` — removed `site/images/` exclusion, added `.gstack/`
+- `PROGRESS.md` — Sessions 7 + 8 written
+- `SECTION_CHECKLIST.md` — created (full cross-page section tracker)
