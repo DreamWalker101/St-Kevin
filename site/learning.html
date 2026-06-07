@@ -19,8 +19,8 @@
           colors: {
             'deep-navy':    '#051E42',
             'burgundy-red': '#8A2232',
-            'warm-cream':   '#FBF9F7',
-            'cloud-grey':   '#F4F6F8',
+            'warm-cream':   '#F6F3EE',
+            'cloud-grey':   'hsl(38, 18%, 93.5%)',
             'border-mist':  '#E2E6EA',
             'slate-text':   '#6B7280',
             'navy-tint':    '#0A2D5C',
@@ -44,6 +44,8 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/ScrollTrigger.min.js"></script>
   <!-- Lenis smooth scroll -->
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <!-- Shared layout styles -->
+  <link rel="stylesheet" href="css/sk-layout.css">
 
   <style>
     /* ── CSS Custom Properties ── */
@@ -51,8 +53,8 @@
       --color-deep-navy:    #051E42;
       --color-burgundy-red: #8A2232;
       --color-pure-white:   #FFFFFF;
-      --color-warm-cream:   #FBF9F7;
-      --color-cloud-grey:   #F4F6F8;
+      --color-warm-cream:   #F6F3EE;
+      --color-cloud-grey:   hsl(38, 18%, 93.5%);
       --color-border-mist:  #E2E6EA;
       --color-slate-text:   #6B7280;
       --color-navy-tint:    #0A2D5C;
@@ -119,8 +121,8 @@
       border-radius: 8px;
       transition: background var(--transition-fast);
     }
-    .sk-hamburger:hover { background: rgba(255,255,255,0.12); }
-    .is-scrolled .sk-hamburger:hover { background: var(--color-cloud-grey); }
+    .sk-hamburger:hover { background: transparent; }
+    .is-scrolled .sk-hamburger:hover { background: transparent; }
     .sk-hamburger span {
       display: block; height: 2px; border-radius: 2px;
       transition: background var(--transition-medium);
@@ -393,6 +395,10 @@
       margin: 0 0 28px;
       text-wrap: balance;
     }
+    /* Hero heading: add base delay so chars animate after page settles */
+    .sk-hero-heading .scroll-text-char {
+      transition-delay: calc(0.35s + var(--char-index, 0) * 28ms);
+    }
 
     .sk-hero-body {
       font-family: var(--font-inter);
@@ -435,193 +441,226 @@
       display: block; line-height: 0;
       overflow: hidden; pointer-events: none;
     }
-    .sk-wave-divider--burg { background: #ffffff; }
+    .sk-wave-divider--burg { background: var(--color-warm-cream); }
     .sk-wave-svg { display: block; width: 100%; height: auto; }
+
+    /* ═══════════════════════════════════════════════
+       INTRO QUOTE
+    ═══════════════════════════════════════════════ */
+    .sk-intro {
+      background: var(--color-warm-cream);
+      padding: clamp(80px, 11vw, 140px) clamp(24px, 6vw, 80px) clamp(88px, 12vw, 152px);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .sk-intro__bg-q {
+      position: absolute;
+      top: -0.12em; left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-dancing-script);
+      font-size: clamp(14rem, 28vw, 28rem);
+      line-height: 0.8;
+      color: var(--color-burgundy-red);
+      opacity: 0.034;
+      user-select: none; pointer-events: none;
+      white-space: nowrap;
+    }
+    .sk-intro__inner {
+      position: relative;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .sk-intro__rule {
+      width: 24px; height: 2px;
+      background: var(--color-burgundy-red);
+      border-radius: 2px;
+      margin: 0 auto 40px;
+    }
+    blockquote.sk-intro__quote {
+      margin: 0; padding: 0;
+      font-family: var(--font-dancing-script);
+      font-size: clamp(1.9rem, 3.9vw, 3.1rem);
+      font-weight: 700;
+      color: var(--color-deep-navy);
+      line-height: 1.46;
+    }
+    .sk-intro__sub {
+      margin: 28px auto 0;
+      font-family: var(--font-inter);
+      font-size: clamp(15px, 1.3vw, 17px);
+      line-height: 1.82;
+      color: rgba(5,30,66,0.60);
+      max-width: 500px;
+    }
+
+    /* ═══════════════════════════════════════════════
+       LEARNING ALTERNATING SECTIONS
+    ═══════════════════════════════════════════════ */
+    .sk-learn {
+      background: var(--color-warm-cream);
+      padding: clamp(72px, 9vw, 116px) clamp(24px, 5vw, 64px);
+      position: relative;
+      overflow: hidden;
+    }
+    .sk-learn--grey { background: var(--color-cloud-grey); }
+
+    .sk-learn__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      gap: clamp(48px, 7vw, 100px);
+    }
+    .sk-learn--img-left  .sk-learn__inner { flex-direction: row-reverse; }
+    .sk-learn--img-right .sk-learn__inner { flex-direction: row; }
+
+    .sk-learn__text {
+      flex: 1;
+      min-width: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .sk-learn__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-dancing-script);
+      font-size: clamp(17px, 1.85vw, 23px);
+      font-weight: 400;
+      color: var(--color-burgundy-red);
+      line-height: 1.45;
+      margin: 0 0 10px;
+    }
+    .sk-learn__eyebrow::before {
+      content: '';
+      display: block;
+      width: 18px;
+      height: 1.5px;
+      background: var(--color-burgundy-red);
+      border-radius: 2px;
+      opacity: 0.55;
+      flex-shrink: 0;
+    }
+    .sk-learn__heading {
+      font-family: var(--font-montserrat);
+      font-size: clamp(23px, 2.8vw, 37px);
+      font-weight: 700;
+      color: var(--color-deep-navy);
+      letter-spacing: -0.025em;
+      line-height: 1.17;
+      margin: 0 0 20px;
+    }
+    .sk-learn__body {
+      font-family: var(--font-inter);
+      font-size: clamp(15px, 1.25vw, 17px);
+      line-height: 1.82;
+      color: rgba(5,30,66,0.62);
+      margin: 0;
+      max-width: 440px;
+    }
+    .sk-learn--grey .sk-learn__body {
+      color: rgba(5,30,66,0.68);
+    }
+
+    .sk-learn__media {
+      flex: 0 0 44%;
+      position: relative;
+    }
+    .sk-learn__orbit {
+      position: relative;
+      width: 116%;
+    }
+    .sk-learn--img-left  .sk-learn__orbit { margin-left:  -16%; }
+    .sk-learn--img-right .sk-learn__orbit { margin-right: -16%; }
+
+    .sk-learn__frame {
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 2px rgba(255,255,255,0.90),
+        0 0 0 3.5px rgba(5,30,66,0.065),
+        0 24px 72px rgba(5,30,66,0.12),
+        0 8px 24px rgba(5,30,66,0.05);
+      position: relative;
+      will-change: clip-path;
+      transition: box-shadow 0.65s cubic-bezier(0.16,1,0.3,1);
+    }
+    .sk-learn__frame img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      display: block;
+      transition: transform 0.95s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    .sk-learn__acc {
+      position: absolute;
+      pointer-events: none;
+      overflow: visible;
+      opacity: 0;
+    }
+
+    @media (hover: hover) {
+      .sk-learn__orbit {
+        transition: transform 0.75s cubic-bezier(0.16,1,0.3,1);
+      }
+      .sk-learn:hover .sk-learn__orbit {
+        transform: translateY(-7px);
+      }
+      .sk-learn__media:hover .sk-learn__frame {
+        box-shadow:
+          0 0 0 2px rgba(255,255,255,0.92),
+          0 0 0 3.5px rgba(5,30,66,0.10),
+          0 32px 88px rgba(5,30,66,0.16),
+          0 12px 32px rgba(5,30,66,0.07);
+      }
+      .sk-learn__media:hover .sk-learn__frame img {
+        transform: scale(1.045);
+      }
+    }
+
+    @keyframes skLrnUp {
+      0%, 100% { transform: translateY(0);    }
+      50%       { transform: translateY(-9px); }
+    }
+    @keyframes skLrnDown {
+      0%, 100% { transform: translateY(0);   }
+      50%       { transform: translateY(9px); }
+    }
+    @keyframes skLrnSpin {
+      0%   { transform: rotate(0deg);   }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes skLrnPulse {
+      0%, 100% { transform: scale(1);    }
+      50%       { transform: scale(1.14); }
+    }
+
+    @media (max-width: 780px) {
+      .sk-learn--img-left  .sk-learn__inner,
+      .sk-learn--img-right .sk-learn__inner {
+        flex-direction: column;
+        gap: 40px;
+      }
+      .sk-learn__media {
+        order: 0;
+        width: 100%; flex: none;
+        max-width: 280px;
+        margin: 0 auto;
+      }
+      .sk-learn__orbit { width: 100% !important; margin: 0 !important; }
+      .sk-learn__text  { order: 1; }
+      .sk-learn__body  { max-width: 100%; }
+    }
+
+
   </style>
 </head>
 <body>
 
-  <!-- ════════════════════════════════
-       HEADER
-  ════════════════════════════════ -->
-  <header class="sk-header is-transparent" id="sk-header">
-
-    <button class="sk-hamburger" id="sk-hamburger-btn" aria-label="Open navigation" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <img id="sk-logo-hero" src="images/logo-sk-white.png"
-         alt="St Kevin's Primary School, Hampton Park"
-         class="sk-logo-hero">
-    <img id="sk-logo-sticky" src="images/logo-sk-colour.png"
-         alt="St Kevin's Primary School, Hampton Park"
-         class="sk-logo-sticky"
-         aria-hidden="true">
-
-    <button class="sk-search-btn" id="sk-search-btn" aria-label="Search site" aria-expanded="false">
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="9.5" cy="9.5" r="7"/>
-        <line x1="14.5" y1="14.5" x2="21" y2="21"/>
-      </svg>
-    </button>
-
-  </header>
-
-
-  <!-- ════════════════════════════════
-       SEARCH PANEL
-  ════════════════════════════════ -->
-  <div class="sk-search-panel" id="sk-search-panel" role="search" aria-label="Site search">
-    <div class="sk-search-inner">
-      <form class="sk-search-form" id="sk-search-form" autocomplete="off">
-        <span class="sk-search-icon" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 22 22" fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="9.5" cy="9.5" r="7"/>
-            <line x1="14.5" y1="14.5" x2="21" y2="21"/>
-          </svg>
-        </span>
-        <input
-          type="search"
-          class="sk-search-input"
-          id="sk-search-input"
-          placeholder="Search St Kevin's…"
-          aria-label="Search"
-        >
-        <button type="submit" class="sk-search-submit">Search</button>
-      </form>
-      <button class="sk-search-close-btn" id="sk-search-close-btn" aria-label="Close search">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round">
-          <line x1="2" y1="2" x2="16" y2="16"/><line x1="16" y1="2" x2="2" y2="16"/>
-        </svg>
-      </button>
-    </div>
-    <div class="sk-search-results" id="sk-search-results" aria-live="polite"></div>
-  </div>
-
-
-  <!-- ════════════════════════════════
-       NAV BACKDROP
-  ════════════════════════════════ -->
-  <div class="sk-nav-backdrop" id="sk-nav-backdrop"></div>
-
-
-  <!-- ════════════════════════════════
-       NAV SIDEBAR
-  ════════════════════════════════ -->
-  <aside class="sk-nav-sidebar" id="sk-nav-sidebar" role="dialog" aria-modal="true" aria-label="Site navigation">
-
-    <div class="sk-sidebar-content">
-
-      <div class="sk-sidebar-header">
-        <button class="sk-sidebar-close" id="sk-sidebar-close" aria-label="Close navigation">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <line x1="2" y1="2" x2="14" y2="14"/>
-            <line x1="14" y1="2" x2="2" y2="14"/>
-          </svg>
-        </button>
-        <img src="images/logo-sk-macs-combined.png" alt="St Kevin's Primary School, Hampton Park" class="sk-sidebar-logo">
-      </div>
-
-      <nav class="sk-sidebar-nav" aria-label="Primary navigation">
-
-        <a href="about.html" class="sk-nav-item">
-          <span class="sk-nav-item-label">About Us</span>
-          <span class="sk-nav-arrow" aria-hidden="true">
-            <span class="sk-nav-arrow-line"></span>
-            <span class="sk-nav-arrow-chevron">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg>
-            </span>
-          </span>
-        </a>
-
-        <a href="learning.html" class="sk-nav-item is-active" aria-current="page">
-          <span class="sk-nav-item-label">Learning</span>
-          <span class="sk-nav-arrow" aria-hidden="true">
-            <span class="sk-nav-arrow-line"></span>
-            <span class="sk-nav-arrow-chevron">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg>
-            </span>
-          </span>
-        </a>
-
-        <a href="community.html" class="sk-nav-item">
-          <span class="sk-nav-item-label">Community</span>
-          <span class="sk-nav-arrow" aria-hidden="true">
-            <span class="sk-nav-arrow-line"></span>
-            <span class="sk-nav-arrow-chevron">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg>
-            </span>
-          </span>
-        </a>
-
-        <a href="enrolments.html" class="sk-nav-item">
-          <span class="sk-nav-item-label">Enrolments</span>
-          <span class="sk-nav-arrow" aria-hidden="true">
-            <span class="sk-nav-arrow-line"></span>
-            <span class="sk-nav-arrow-chevron">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg>
-            </span>
-          </span>
-        </a>
-
-        <a href="contact.html" class="sk-nav-item">
-          <span class="sk-nav-item-label">Contact</span>
-          <span class="sk-nav-arrow" aria-hidden="true">
-            <span class="sk-nav-arrow-line"></span>
-            <span class="sk-nav-arrow-chevron">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg>
-            </span>
-          </span>
-        </a>
-
-        <a href="policies.html" class="sk-nav-item">
-          <span class="sk-nav-item-label">Policies</span>
-          <span class="sk-nav-arrow" aria-hidden="true">
-            <span class="sk-nav-arrow-line"></span>
-            <span class="sk-nav-arrow-chevron">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg>
-            </span>
-          </span>
-        </a>
-
-      </nav>
-
-      <div class="sk-sidebar-footer">
-        <div class="sk-sidebar-socials">
-
-          <a href="tel:0397098600" class="sk-social-btn sk-social-btn--phone" aria-label="Call us: (03) 9709 8600">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 5.5 5.5l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-            </svg>
-          </a>
-
-          <a href="mailto:administration@skhamptonpark.catholic.edu.au" class="sk-social-btn sk-social-btn--mail" aria-label="Email us">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect class="env-body" x="2" y="4" width="20" height="16" rx="2"/>
-              <polyline class="env-flap" points="22,6 12,13 2,6"/>
-            </svg>
-          </a>
-
-          <a href="#" class="sk-social-btn sk-social-btn--fb" aria-label="Find us on Facebook" target="_blank" rel="noopener noreferrer">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-            </svg>
-          </a>
-
-        </div>
-      </div>
-
-    </div>
-
-    <div class="sk-sidebar-image" aria-hidden="true">
-      <div class="sk-sidebar-image-frame">
-        <img src="images/samples/cosmos_1616537391.jpeg" alt="" loading="eager">
-      </div>
-    </div>
-
-  </aside>
+  <!-- Header injected by js/sk-layout.js -->
+  <div id="sk-layout-header"></div>
 
 
   <!-- ════════════════════════════════
@@ -644,13 +683,9 @@
     <!-- Navy overlay — matches homepage opacity 0.60 -->
     <div class="sk-hero-overlay" aria-hidden="true"></div>
 
-    <!-- Centred text content -->
+    <!-- Centred heading -->
     <div class="sk-hero-content">
-      <div class="sk-hero-rule" id="sk-hero-rule" aria-hidden="true"></div>
-      <h1 class="sk-hero-heading" id="sk-hero-heading">Learning with Purpose</h1>
-      <p class="sk-hero-body" id="sk-hero-body">
-        Learning at St Kevin's shapes both the mind and the heart. It is about forming young people who are curious, capable and ready to contribute to the world around them.
-      </p>
+      <h1 class="sk-hero-heading" id="sk-hero-heading"><span class="scroll-text-reveal" data-text="Learning with Purpose">Learning with Purpose</span></h1>
     </div>
 
     <!-- MACS logo — bottom-left -->
@@ -680,279 +715,353 @@
 
 
   <!-- ════════════════════════════════
+       SECTION 2: INTRO QUOTE
+  ════════════════════════════════ -->
+  <section class="sk-intro" aria-label="Introduction">
+    <span class="sk-intro__bg-q" aria-hidden="true">"</span>
+    <div class="sk-intro__inner">
+      <div class="sk-intro__rule" id="sk-intro-rule" aria-hidden="true"></div>
+      <blockquote class="sk-intro__quote" id="sk-intro-quote">
+        Learning at St Kevin's shapes both the mind and the heart.
+      </blockquote>
+      <p class="sk-intro__sub" id="sk-intro-sub">It is about forming young people who are curious, capable and ready to contribute to the world around them.</p>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTION 3: FAITH AND FORMATION
+       Image LEFT · text right · white bg
+  ════════════════════════════════ -->
+  <section class="sk-learn sk-learn--img-left" id="sk-faith" aria-label="Faith and Formation">
+    <div class="sk-learn__inner">
+
+      <div class="sk-learn__text">
+        <span class="sk-learn__eyebrow">Faith &amp; Formation</span>
+        <h2 class="sk-learn__heading"><span class="scroll-text-reveal" data-text="Faith shapes the way we see the world.">Faith shapes the way we see the world.</span></h2>
+        <p class="sk-learn__body">Through prayer, Religious Education and service, students grow in their relationship with God and in their understanding of what it means to live with compassion, justice and hope.</p>
+      </div>
+
+      <div class="sk-learn__media">
+        <div class="sk-learn__orbit">
+          <div class="sk-learn__frame" id="sk-faith-frame">
+            <img src="images/samples/cosmos_1074538081.jpeg" alt="Students engaged in prayer and faith activities at St Kevin's" loading="lazy">
+          </div>
+
+          <!-- 3×3 dot grid — top right -->
+          <svg class="sk-learn__acc" width="46" height="46" viewBox="0 0 46 46" fill="none" style="top:-9%;right:-6%;animation:skLrnUp 9s ease-in-out infinite;" aria-hidden="true">
+            <circle cx="6"  cy="6"  r="2.8" fill="rgba(5,30,66,0.12)"/>
+            <circle cx="23" cy="6"  r="2.8" fill="rgba(5,30,66,0.09)"/>
+            <circle cx="40" cy="6"  r="2.8" fill="rgba(138,34,50,0.14)"/>
+            <circle cx="6"  cy="23" r="2.8" fill="rgba(5,30,66,0.09)"/>
+            <circle cx="23" cy="23" r="2.8" fill="rgba(5,30,66,0.07)"/>
+            <circle cx="40" cy="23" r="2.8" fill="rgba(138,34,50,0.10)"/>
+            <circle cx="6"  cy="40" r="2.8" fill="rgba(5,30,66,0.07)"/>
+            <circle cx="23" cy="40" r="2.8" fill="rgba(5,30,66,0.05)"/>
+            <circle cx="40" cy="40" r="2.8" fill="rgba(138,34,50,0.07)"/>
+          </svg>
+
+          <!-- Burgundy cross + dot — bottom left -->
+          <svg class="sk-learn__acc" width="36" height="36" viewBox="0 0 36 36" fill="none" style="bottom:-7%;left:-5%;animation:skLrnDown 11s ease-in-out infinite 1.8s;" aria-hidden="true">
+            <line x1="18" y1="4"  x2="18" y2="32" stroke="rgba(138,34,50,0.22)" stroke-width="2"   stroke-linecap="round"/>
+            <line x1="4"  y1="18" x2="32" y2="18" stroke="rgba(138,34,50,0.22)" stroke-width="2"   stroke-linecap="round"/>
+            <circle cx="30" cy="6" r="3" fill="rgba(138,34,50,0.15)"/>
+          </svg>
+
+          <!-- Spinning asterisk — mid right -->
+          <svg class="sk-learn__acc" width="36" height="36" viewBox="0 0 36 36" fill="none" style="top:42%;right:-7%;animation:skLrnSpin 18s linear infinite;" aria-hidden="true">
+            <line x1="18" y1="3"  x2="18" y2="33" stroke="rgba(138,34,50,0.18)" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="3"  y1="11" x2="33" y2="25" stroke="rgba(138,34,50,0.18)" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="33" y1="11" x2="3"  y2="25" stroke="rgba(138,34,50,0.18)" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTION 4: BELONGING AND WELLBEING
+       Text left · image RIGHT · cloud grey bg
+  ════════════════════════════════ -->
+  <section class="sk-learn sk-learn--img-right sk-learn--grey" id="sk-belonging" aria-label="Belonging and Wellbeing">
+    <div class="sk-learn__inner">
+
+      <div class="sk-learn__text">
+        <span class="sk-learn__eyebrow">Belonging &amp; Wellbeing</span>
+        <h2 class="sk-learn__heading"><span class="scroll-text-reveal" data-text="Every child deserves to feel known.">Every child deserves to feel known.</span></h2>
+        <p class="sk-learn__body">Strong relationships create the foundation for learning. When students feel safe and valued, confidence grows and the joy of learning begins to flourish.</p>
+      </div>
+
+      <div class="sk-learn__media">
+        <div class="sk-learn__orbit">
+          <div class="sk-learn__frame" id="sk-belonging-frame">
+            <img src="images/samples/cosmos_1226555780.jpeg" alt="Students sharing a warm moment together at St Kevin's" loading="lazy">
+          </div>
+
+          <!-- Diamond outline — top left -->
+          <svg class="sk-learn__acc" width="34" height="34" viewBox="0 0 34 34" fill="none" style="top:-8%;left:-7%;animation:skLrnUp 12s ease-in-out infinite 3.2s;" aria-hidden="true">
+            <path d="M17 2 L32 17 L17 32 L2 17 Z" stroke="rgba(138,34,50,0.20)" stroke-width="1.6"/>
+          </svg>
+
+          <!-- Concentric circles — bottom right -->
+          <svg class="sk-learn__acc" width="44" height="44" viewBox="0 0 44 44" fill="none" style="bottom:-8%;right:-5%;animation:skLrnPulse 8s ease-in-out infinite;" aria-hidden="true">
+            <circle cx="22" cy="22" r="19" stroke="rgba(5,30,66,0.09)" stroke-width="1.5"/>
+            <circle cx="22" cy="22" r="11" stroke="rgba(5,30,66,0.13)" stroke-width="1.5"/>
+            <circle cx="22" cy="22" r="3.5" fill="rgba(138,34,50,0.22)"/>
+          </svg>
+
+          <!-- 2×3 dot grid — top right -->
+          <svg class="sk-learn__acc" width="36" height="24" viewBox="0 0 36 24" fill="none" style="top:-5%;right:-5%;animation:skLrnDown 10s ease-in-out infinite 2s;" aria-hidden="true">
+            <circle cx="5"  cy="5"  r="2.2" fill="rgba(5,30,66,0.10)"/>
+            <circle cx="18" cy="5"  r="2.2" fill="rgba(5,30,66,0.08)"/>
+            <circle cx="31" cy="5"  r="2.2" fill="rgba(138,34,50,0.13)"/>
+            <circle cx="5"  cy="19" r="2.2" fill="rgba(5,30,66,0.08)"/>
+            <circle cx="18" cy="19" r="2.2" fill="rgba(5,30,66,0.06)"/>
+            <circle cx="31" cy="19" r="2.2" fill="rgba(138,34,50,0.09)"/>
+          </svg>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTION 5: TEACHING THAT INSPIRES
+       Image LEFT · text right · white bg
+  ════════════════════════════════ -->
+  <section class="sk-learn sk-learn--img-left" id="sk-teaching" aria-label="Teaching that Inspires">
+    <div class="sk-learn__inner">
+
+      <div class="sk-learn__text">
+        <span class="sk-learn__eyebrow">Teaching that Inspires</span>
+        <h2 class="sk-learn__heading"><span class="scroll-text-reveal" data-text="Great teaching sparks curiosity.">Great teaching sparks curiosity.</span></h2>
+        <p class="sk-learn__body">Our teachers combine clear instruction with opportunities to question, explore and create. Learning is purposeful, engaging and designed to build confidence and a love of discovery.</p>
+      </div>
+
+      <div class="sk-learn__media">
+        <div class="sk-learn__orbit">
+          <div class="sk-learn__frame" id="sk-teaching-frame">
+            <img src="images/samples/cosmos_1263936189.jpeg" alt="A teacher working with students in an inspired learning moment" loading="lazy">
+          </div>
+
+          <!-- Spinning asterisk — top right -->
+          <svg class="sk-learn__acc" width="40" height="40" viewBox="0 0 40 40" fill="none" style="top:-8%;right:-6%;animation:skLrnSpin 15s linear infinite 4s;" aria-hidden="true">
+            <line x1="20" y1="3"  x2="20" y2="37" stroke="rgba(138,34,50,0.19)" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="3"  y1="12" x2="37" y2="28" stroke="rgba(138,34,50,0.19)" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="37" y1="12" x2="3"  y2="28" stroke="rgba(138,34,50,0.19)" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+
+          <!-- Burgundy arc — bottom left -->
+          <svg class="sk-learn__acc" width="52" height="28" viewBox="0 0 52 28" fill="none" style="bottom:-7%;left:-5%;animation:skLrnDown 9s ease-in-out infinite 0.6s;" aria-hidden="true">
+            <path d="M4 24 Q26 2 48 24" stroke="rgba(138,34,50,0.22)" stroke-width="2" stroke-linecap="round" fill="none"/>
+          </svg>
+
+          <!-- 2-col dot grid — mid left -->
+          <svg class="sk-learn__acc" width="24" height="40" viewBox="0 0 24 40" fill="none" style="top:30%;left:-6%;animation:skLrnUp 13s ease-in-out infinite 5s;" aria-hidden="true">
+            <circle cx="5"  cy="5"  r="2" fill="rgba(5,30,66,0.09)"/>
+            <circle cx="19" cy="5"  r="2" fill="rgba(138,34,50,0.13)"/>
+            <circle cx="5"  cy="20" r="2" fill="rgba(5,30,66,0.07)"/>
+            <circle cx="19" cy="20" r="2" fill="rgba(138,34,50,0.10)"/>
+            <circle cx="5"  cy="35" r="2" fill="rgba(5,30,66,0.05)"/>
+            <circle cx="19" cy="35" r="2" fill="rgba(138,34,50,0.07)"/>
+          </svg>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTION 6: LEARNING FOR EVERY CHILD
+       Text left · image RIGHT · cloud grey bg
+  ════════════════════════════════ -->
+  <section class="sk-learn sk-learn--img-right sk-learn--grey" id="sk-every-child" aria-label="Learning for Every Child">
+    <div class="sk-learn__inner">
+
+      <div class="sk-learn__text">
+        <span class="sk-learn__eyebrow">Learning for Every Child</span>
+        <h2 class="sk-learn__heading"><span class="scroll-text-reveal" data-text="Every learner is different. Every learner matters.">Every learner is different. Every learner matters.</span></h2>
+        <p class="sk-learn__body">Our teachers support and challenge each student based on where they are in their learning journey. This ensures every child can grow with confidence and experience success.</p>
+      </div>
+
+      <div class="sk-learn__media">
+        <div class="sk-learn__orbit">
+          <div class="sk-learn__frame" id="sk-every-frame">
+            <img src="images/samples/cosmos_226684284.jpeg" alt="A student receiving personalised encouragement and support at St Kevin's" loading="lazy">
+          </div>
+
+          <!-- Cross + dot — top left -->
+          <svg class="sk-learn__acc" width="44" height="44" viewBox="0 0 44 44" fill="none" style="top:-9%;left:-6%;animation:skLrnDown 10s ease-in-out infinite 2.4s;" aria-hidden="true">
+            <line x1="22" y1="6"  x2="22" y2="38" stroke="rgba(138,34,50,0.18)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="6"  y1="22" x2="38" y2="22" stroke="rgba(138,34,50,0.18)" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="37" cy="7" r="3.5" fill="rgba(138,34,50,0.14)"/>
+          </svg>
+
+          <!-- Concentric circles — bottom right -->
+          <svg class="sk-learn__acc" width="38" height="38" viewBox="0 0 38 38" fill="none" style="bottom:-7%;right:-5%;animation:skLrnPulse 11s ease-in-out infinite 3s;" aria-hidden="true">
+            <circle cx="19" cy="19" r="16" stroke="rgba(5,30,66,0.09)"  stroke-width="1.4"/>
+            <circle cx="19" cy="19" r="9"  stroke="rgba(5,30,66,0.12)"  stroke-width="1.4"/>
+            <circle cx="19" cy="19" r="3"  fill="rgba(138,34,50,0.22)"/>
+          </svg>
+
+          <!-- Spinning 6-point star — mid right -->
+          <svg class="sk-learn__acc" width="30" height="30" viewBox="0 0 30 30" fill="none" style="top:48%;right:-7%;animation:skLrnSpin 20s linear infinite 1s;" aria-hidden="true">
+            <line x1="15" y1="2"  x2="15" y2="28" stroke="rgba(138,34,50,0.17)" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="2"  y1="9"  x2="28" y2="21" stroke="rgba(138,34,50,0.17)" stroke-width="1.6" stroke-linecap="round"/>
+            <line x1="28" y1="9"  x2="2"  y2="21" stroke="rgba(138,34,50,0.17)" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTION 7: LEARNING BEYOND THE CLASSROOM
+       Image LEFT · text right · white bg
+  ════════════════════════════════ -->
+  <section class="sk-learn sk-learn--img-left" id="sk-beyond" aria-label="Learning Beyond the Classroom">
+    <div class="sk-learn__inner">
+
+      <div class="sk-learn__text">
+        <span class="sk-learn__eyebrow">Beyond the Classroom</span>
+        <h2 class="sk-learn__heading"><span class="scroll-text-reveal" data-text="Education shaped by experience.">Education shaped by experience.</span></h2>
+        <p class="sk-learn__body">Learning extends beyond the classroom through projects, excursions, service and creative opportunities. Students discover the excitement of applying their learning in the real world.</p>
+      </div>
+
+      <div class="sk-learn__media">
+        <div class="sk-learn__orbit">
+          <div class="sk-learn__frame" id="sk-beyond-frame">
+            <img src="images/samples/cosmos_547543300.jpeg" alt="Students on excursion discovering learning beyond the classroom" loading="lazy">
+          </div>
+
+          <!-- Spinning asterisk — top right -->
+          <svg class="sk-learn__acc" width="42" height="42" viewBox="0 0 42 42" fill="none" style="top:-8%;right:-6%;animation:skLrnSpin 16s linear infinite 2s;" aria-hidden="true">
+            <line x1="21" y1="4"  x2="21" y2="38" stroke="rgba(138,34,50,0.18)" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="4"  y1="13" x2="38" y2="29" stroke="rgba(138,34,50,0.18)" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="38" y1="13" x2="4"  y2="29" stroke="rgba(138,34,50,0.18)" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+
+          <!-- Burgundy concentric circles — bottom left -->
+          <svg class="sk-learn__acc" width="44" height="44" viewBox="0 0 44 44" fill="none" style="bottom:-8%;left:-6%;animation:skLrnPulse 9s ease-in-out infinite 4.5s;" aria-hidden="true">
+            <circle cx="22" cy="22" r="19" stroke="rgba(138,34,50,0.10)" stroke-width="1.5"/>
+            <circle cx="22" cy="22" r="11" stroke="rgba(138,34,50,0.13)" stroke-width="1.5"/>
+            <circle cx="22" cy="22" r="3.5" fill="rgba(138,34,50,0.16)"/>
+          </svg>
+
+          <!-- 3×2 dot grid — top left -->
+          <svg class="sk-learn__acc" width="38" height="26" viewBox="0 0 38 26" fill="none" style="top:-6%;left:-5%;animation:skLrnDown 14s ease-in-out infinite 6s;" aria-hidden="true">
+            <circle cx="6"  cy="6"  r="2.5" fill="rgba(5,30,66,0.11)"/>
+            <circle cx="19" cy="6"  r="2.5" fill="rgba(5,30,66,0.09)"/>
+            <circle cx="32" cy="6"  r="2.5" fill="rgba(138,34,50,0.14)"/>
+            <circle cx="6"  cy="20" r="2.5" fill="rgba(5,30,66,0.09)"/>
+            <circle cx="19" cy="20" r="2.5" fill="rgba(5,30,66,0.07)"/>
+            <circle cx="32" cy="20" r="2.5" fill="rgba(138,34,50,0.10)"/>
+          </svg>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <div id="sk-layout-footer"></div>
+
+
+  <!-- ════════════════════════════════
        SCRIPTS
   ════════════════════════════════ -->
 
-  <!-- Header, nav sidebar, search -->
-  <script>
-  (function () {
-
-    var header      = document.getElementById('sk-header');
-    var hamburger   = document.getElementById('sk-hamburger-btn');
-    var sidebar     = document.getElementById('sk-nav-sidebar');
-    var backdrop    = document.getElementById('sk-nav-backdrop');
-    var closeBtn    = document.getElementById('sk-sidebar-close');
-    var searchBtn   = document.getElementById('sk-search-btn');
-    var searchPanel = document.getElementById('sk-search-panel');
-    var searchClose = document.getElementById('sk-search-close-btn');
-    var searchInput = document.getElementById('sk-search-input');
-    var searchForm  = document.getElementById('sk-search-form');
-    var searchRes   = document.getElementById('sk-search-results');
-
-    var navItems    = sidebar.querySelectorAll('.sk-nav-item');
-    var footerLinks = sidebar.querySelectorAll('.sk-social-btn');
-    var sideHead    = sidebar.querySelector('.sk-sidebar-header');
-    var sideImg     = sidebar.querySelector('.sk-sidebar-image img');
-
-    var navOpen    = false;
-    var searchOpen = false;
-    var lastScrollY = 0;
-    var HIDE_AFTER       = 140;
-    var STICKY_THRESHOLD = 60;
-
-    gsap.set(sidebar,     { x: '-100%' });
-    gsap.set(backdrop,    { autoAlpha: 0 });
-    gsap.set(searchPanel, { autoAlpha: 0, y: -8 });
-
-    function onScroll() {
-      var y = window.scrollY;
-      var scrolled = y > STICKY_THRESHOLD;
-      header.classList.toggle('is-scrolled',    scrolled);
-      header.classList.toggle('is-transparent', !scrolled);
-      if (y > HIDE_AFTER) {
-        header.classList.toggle('is-hidden', y > lastScrollY);
-      } else {
-        header.classList.remove('is-hidden');
-      }
-      lastScrollY = y;
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-
-    function openNav() {
-      navOpen = true;
-      hamburger.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-      var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
-      tl.to(backdrop, { autoAlpha: 1, duration: rm ? 0.01 : 0.65 }, 0);
-      tl.to(sidebar,  { x: '0%',      duration: rm ? 0.01 : 0.78 }, 0);
-      if (sideImg && !rm) {
-        tl.from(sideImg, { scale: 1.1, duration: 1.1, ease: 'power3.out', clearProps: 'transform' }, 0);
-      }
-      tl.from(sideHead,   { autoAlpha: 0, y: 8,           duration: rm ? 0 : 0.45, clearProps: 'all' }, rm ? 0 : 0.32);
-      tl.from(navItems,   { autoAlpha: 0, x: -22, y: 10,  duration: rm ? 0 : 0.55, stagger: rm ? 0 : { each: 0.09 }, clearProps: 'all' }, rm ? 0 : 0.38);
-      tl.from(footerLinks,{ autoAlpha: 0, y: 8,           duration: rm ? 0 : 0.4,  stagger: rm ? 0 : { each: 0.07 }, ease: 'power3.out', clearProps: 'all' }, rm ? 0 : 0.76);
-      tl.call(function () { closeBtn.focus(); });
-    }
-
-    function closeNav() {
-      navOpen = false;
-      hamburger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-      var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var tl = gsap.timeline();
-      tl.to(sidebar,  { x: '-100%', duration: rm ? 0.01 : 0.56, ease: 'power4.inOut' }, 0);
-      tl.to(backdrop, { autoAlpha: 0, duration: rm ? 0.01 : 0.42, ease: 'power2.in' }, rm ? 0 : 0.08);
-    }
-
-    hamburger.addEventListener('click', openNav);
-    closeBtn.addEventListener('click',  closeNav);
-    backdrop.addEventListener('click',  closeNav);
-    navItems.forEach(function(a) { a.addEventListener('click', closeNav); });
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        if (navOpen)    closeNav();
-        if (searchOpen) closeSearch();
-      }
-    });
-
-    sidebar.addEventListener('keydown', function(e) {
-      if (!navOpen || e.key !== 'Tab') return;
-      var focusable = Array.from(sidebar.querySelectorAll(
-        'button, a, input, [tabindex]:not([tabindex="-1"])'
-      )).filter(function(el) { return !el.disabled; });
-      if (!focusable.length) return;
-      var first = focusable[0];
-      var last  = focusable[focusable.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault(); last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault(); first.focus();
-      }
-    });
-
-    function openSearch() {
-      searchOpen = true;
-      searchBtn.setAttribute('aria-expanded', 'true');
-      gsap.to(searchPanel, { autoAlpha: 1, y: 0, duration: 0.28, ease: 'power2.out' });
-      requestAnimationFrame(function() { searchInput.focus(); });
-    }
-
-    function closeSearch() {
-      searchOpen = false;
-      searchBtn.setAttribute('aria-expanded', 'false');
-      searchInput.value = '';
-      searchRes.textContent = '';
-      searchRes.classList.remove('has-message');
-      gsap.to(searchPanel, { autoAlpha: 0, y: -8, duration: 0.22, ease: 'power2.in' });
-    }
-
-    searchBtn.addEventListener('click',  function() { if (searchOpen) closeSearch(); else openSearch(); });
-    searchClose.addEventListener('click', closeSearch);
-
-    searchForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var q = searchInput.value.trim();
-      if (!q) return;
-      searchRes.classList.add('has-message');
-      searchRes.innerHTML = '<span style="color:#374151">No results found for "' + escapeHtml(q) + '" — full search will be available once all pages are live.</span>';
-    });
-
-    searchInput.addEventListener('input', function() {
-      if (searchRes.classList.contains('has-message')) {
-        searchRes.textContent = '';
-        searchRes.classList.remove('has-message');
-      }
-    });
-
-    function escapeHtml(str) {
-      return str.replace(/[&<>"']/g, function(c) {
-        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
-      });
-    }
-
-  })();
-  </script>
-
-  <!-- Hero entrance animation + scroll indicator loop -->
-  <script>
-  (function () {
-    var reduced  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var rule     = document.getElementById('sk-hero-rule');
-    var heading  = document.getElementById('sk-hero-heading');
-    var body     = document.getElementById('sk-hero-body');
-    var scroll   = document.getElementById('sk-hero-scroll');
-    var dot      = document.getElementById('sk-hero-scroll-dot');
-
-    if (reduced) return; /* all elements visible by default — no opacity gating */
-
-    /* Initial hidden states */
-    gsap.set(rule,    { scaleX: 0, transformOrigin: 'center' });
-    gsap.set(heading, { autoAlpha: 0, y: 38 });
-    gsap.set(body,    { autoAlpha: 0, y: 24 });
-    gsap.set(scroll,  { autoAlpha: 0 });
-
-    /* Entrance — weighted stagger, expo.out throughout */
-    gsap.timeline({ delay: 0.2 })
-      .to(rule, {
-        scaleX: 1, duration: 0.5, ease: 'expo.out'
-      })
-      .to(heading, {
-        autoAlpha: 1, y: 0, duration: 1.1, ease: 'expo.out'
-      }, '-=0.22')
-      .to(body, {
-        autoAlpha: 1, y: 0, duration: 0.9, ease: 'expo.out'
-      }, '-=0.58')
-      .to(scroll, {
-        autoAlpha: 1, duration: 0.55, ease: 'power2.out'
-      }, '-=0.25');
-
-    /* Scroll dot — travels top to bottom, loops with a pause at top */
-    gsap.fromTo(dot,
-      { y: '-100%' },
-      { y: '220%', duration: 1.55, ease: 'power1.inOut', repeat: -1, repeatDelay: 0.5 }
-    );
-
-  })();
-  </script>
-
-  <!-- Social icon micro-animations -->
+  <!-- Intro quote + learning section scroll animations -->
   <script>
   (function () {
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) return;
 
-    var phoneBtn = document.querySelector('.sk-social-btn--phone');
-    if (phoneBtn) {
-      var phoneSvg = phoneBtn.querySelector('svg');
-      var phoneTl  = gsap.timeline({ paused: true });
-      phoneTl
-        .to(phoneSvg, { rotation: 18, duration: 0.18, ease: 'power2.out', transformOrigin: '50% 50%' })
-        .to(phoneSvg, { rotation: 0,  duration: 0.5,  ease: 'elastic.out(1, 0.5)' });
-      phoneBtn.addEventListener('mouseenter', function () { phoneTl.restart(); });
+    if (reduced) {
+      document.querySelectorAll('.sk-learn__acc').forEach(function (el) { el.style.opacity = '1'; });
+      return;
     }
 
-    var mailBtn = document.querySelector('.sk-social-btn--mail');
-    if (mailBtn) {
-      var flap   = mailBtn.querySelector('.env-flap');
-      var mailTl = gsap.timeline({ paused: true });
-      mailTl
-        .to(flap, { attr: { points: '22,5 12,2 2,5'  }, duration: 0.2,  ease: 'power2.out' })
-        .to(flap, { attr: { points: '22,6 12,13 2,6' }, duration: 0.38, ease: 'power3.inOut' });
-      mailBtn.addEventListener('mouseenter', function () { mailTl.restart(); });
-    }
-
-    var fbBtn = document.querySelector('.sk-social-btn--fb');
-    if (fbBtn) {
-      var fbSvg = fbBtn.querySelector('svg');
-      var fbTl  = gsap.timeline({ paused: true });
-      fbTl
-        .to(fbSvg, { y: -4, duration: 0.2,  ease: 'power2.out' })
-        .to(fbSvg, { y:  0, duration: 0.45, ease: 'elastic.out(1, 0.45)' });
-      fbBtn.addEventListener('mouseenter', function () { fbTl.restart(); });
-    }
-  })();
-  </script>
-
-  <!-- Lenis smooth scroll + GSAP ScrollTrigger sync -->
-  <script>
-  (function () {
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!reduced && typeof Lenis !== 'undefined') {
-      var lenis = new Lenis({
-        duration: 1.15,
-        easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }
-      });
-      gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
-      gsap.ticker.lagSmoothing(0);
-    }
-  })();
-  </script>
-
-  <!-- click spark -->
-  <canvas id="global-click-spark" style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:difference;z-index:9999;"></canvas>
-  <script>
-  (function(){
-    var canvas=document.getElementById("global-click-spark");
-    var ctx=canvas.getContext("2d");
-    var sparks=[];
-    var dpr=window.devicePixelRatio||1;
-    function resize(){canvas.width=window.innerWidth*dpr;canvas.height=window.innerHeight*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);}
-    resize();
-    window.addEventListener("resize",resize);
-    document.addEventListener("click",function(e){
-      var now=performance.now();
-      for(var i=0;i<10;i++){sparks.push({x:e.clientX,y:e.clientY,angle:(2*Math.PI*i)/10,startTime:now});}
-    });
-    function ease(t){return t*(2-t);}
-    function draw(ts){
-      ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
-      for(var i=sparks.length-1;i>=0;i--){
-        var s=sparks[i],el=ts-s.startTime;
-        if(el>=460){sparks.splice(i,1);continue;}
-        var p=el/460,e=ease(p),d=e*24,ll=12*(1-e);
-        var x1=s.x+d*Math.cos(s.angle),y1=s.y+d*Math.sin(s.angle);
-        var x2=s.x+(d+ll)*Math.cos(s.angle),y2=s.y+(d+ll)*Math.sin(s.angle);
-        ctx.strokeStyle="#ffffff";ctx.lineWidth=2;ctx.lineCap="round";
-        ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();
+    /* Intro — staggered fade + slide up */
+    gsap.from(['#sk-intro-rule', '#sk-intro-quote', '#sk-intro-sub'], {
+      autoAlpha: 0,
+      y: 22,
+      duration: 1.0,
+      ease: 'expo.out',
+      stagger: 0.18,
+      scrollTrigger: {
+        trigger: '.sk-intro',
+        start: 'top 82%',
+        once: true
       }
-      requestAnimationFrame(draw);
-    }
-    requestAnimationFrame(draw);
+    });
+
+    /* Each alternating section — cinematic circle reveal + text stagger */
+    document.querySelectorAll('.sk-learn').forEach(function (section) {
+      var frame   = section.querySelector('.sk-learn__frame');
+      var eyebrow = section.querySelector('.sk-learn__eyebrow');
+      var heading = section.querySelector('.sk-learn__heading');
+      var body    = section.querySelector('.sk-learn__body');
+      var accs    = section.querySelectorAll('.sk-learn__acc');
+
+      gsap.fromTo(frame,
+        { clipPath: 'circle(0% at 50% 50%)' },
+        {
+          clipPath: 'circle(55% at 50% 50%)',
+          duration: 1.3,
+          ease: 'expo.out',
+          scrollTrigger: {
+            trigger: section,
+            start: 'top 76%',
+            once: true
+          }
+        }
+      );
+
+      gsap.from([eyebrow, heading, body], {
+        autoAlpha: 0,
+        y: 28,
+        duration: 0.9,
+        ease: 'expo.out',
+        stagger: 0.13,
+        delay: 0.12,
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 76%',
+          once: true
+        }
+      });
+
+      /* Accent marks fade in after circle reveal is underway */
+      gsap.to(accs, {
+        opacity: 1,
+        duration: 0.7,
+        ease: 'expo.out',
+        stagger: 0.12,
+        delay: 0.55,
+        scrollTrigger: {
+          trigger: section,
+          start: 'top 76%',
+          once: true
+        }
+      });
+    });
+
   })();
   </script>
+
+  <!-- Shared layout JS (nav, footer, Lenis, click spark) -->
+  <script src="js/sk-layout.js"></script>
 
 </body>
 </html>

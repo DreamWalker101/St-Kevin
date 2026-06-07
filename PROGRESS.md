@@ -372,3 +372,8 @@
 - `.gitignore` — removed `site/images/` exclusion, added `.gstack/`
 - `PROGRESS.md` — Sessions 7 + 8 written
 - `SECTION_CHECKLIST.md` — created (full cross-page section tracker)
+
+---
+
+## Session 9 — 2026-06-07
+- **learning.html:** Page COMPLETE — all 8 sections built and polished (hero text reveal, intro quote, 5 alternating circular-image sections with GSAP circle reveal, brand-coloured SVG accents, scroll-text-reveal on all headings). Next: community.html (Section 1 — Hero).
