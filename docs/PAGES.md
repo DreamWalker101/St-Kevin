@@ -82,9 +82,9 @@ Each circular image is 110–120% of its column width. Parent has `overflow: hid
 | 1 | Hero | Hero Section | Full-bleed, shorter (60vh) | Image + gradient overlay | No text on hero |
 | 2 | Wave divider | Wave Divider (Burgundy) | Full-width SVG | #8A2232 → #FFFFFF | |
 | 3 | About St Kevin's Intro | Custom | Centred text block | Pure White | "ABOUT ST KEVIN'S" display heading + body paragraph |
-| 4 | Our Story | Custom | Centred, script heading | Warm Cream #FBF9F7 | Dancing Script heading, Inter body |
-| 5 | Our Mission | Custom | Centred, script heading | Warm Cream #FBF9F7 | Same pattern as Our Story |
-| 6 | Our Vision | Custom | Centred, script heading | Warm Cream #FBF9F7 | Same pattern |
+| 4 | Our Story | Custom | Centred, script heading | Warm Cream #F6F3EE | Dancing Script heading, Inter body |
+| 5 | Our Mission | Custom | Centred, script heading | Warm Cream #F6F3EE | Same pattern as Our Story |
+| 6 | Our Vision | Custom | Centred, script heading | Warm Cream #F6F3EE | Same pattern |
 | 7 | Our Principal | Custom | Video thumbnail + text below | Pure White | Play button on video, italic sign-off |
 | 8 | Wave divider | Wave Divider (Navy) | Full-width SVG | #FFFFFF → #051E42 | |
 | 9 | Our People Intro | Dark Feature Section | Centred heading + body | Deep Navy #051E42 | "OUR PEOPLE" display heading |
@@ -95,7 +95,7 @@ Each circular image is 110–120% of its column width. Parent has `overflow: hid
 | 14 | Wave divider | Wave Divider (Navy) | Full-width SVG | #051E42 → #FFFFFF | Transitions out to light |
 | 15 | Specialist Teachers | Circular Image + text | Image left, text right | Pure White | Back to light background |
 | 16 | Support Staff | Circular Image + text | Image right, text left | Pure White | Alternates |
-| 17 | Our Parish Connection | Split layout | Image left, text right | Warm Cream #FBF9F7 | Church interior photo |
+| 17 | Our Parish Connection | Split layout | Image left, text right | Warm Cream #F6F3EE | Church interior photo |
 | 18 | Footer | Footer | Same as homepage | Deep Navy #051E42 | |
 
 ### Our People — Team Block Pattern
@@ -115,9 +115,9 @@ Each team block contains:
 | 1 | Hero | Hero Section | Full-bleed with text overlay | Image/video + overlay | "Learning with Purpose" heading overlay |
 | 2 | Intro body | Custom | Centred text | Pure White | Body paragraph below hero |
 | 3 | Faith and Formation | Oversized Circular Image + text | Image left, text right | Pure White | Bold heading as lead sentence |
-| 4 | Belonging and Wellbeing | Oversized Circular Image + text | Text left, image right | Cloud Grey #F4F6F8 | Alternating bg for variety |
+| 4 | Belonging and Wellbeing | Oversized Circular Image + text | Text left, image right | Cloud Grey #F0EDE5 | Alternating bg for variety |
 | 5 | Teaching that Inspires | Oversized Circular Image + text | Image left, text right | Pure White | |
-| 6 | Learning for Every Child | Oversized Circular Image + text | Text left, image right | Cloud Grey #F4F6F8 | |
+| 6 | Learning for Every Child | Oversized Circular Image + text | Text left, image right | Cloud Grey #F0EDE5 | |
 | 7 | Learning Beyond the Classroom | Oversized Circular Image + text | Image left, text right | Pure White | |
 | 8 | Footer | Footer | Same as all pages | Deep Navy #051E42 | |
 
@@ -130,9 +130,9 @@ Each team block contains:
 | 1 | Hero | Hero Section | Full-bleed | Image + overlay | Community-themed hero |
 | 2 | Intro | Custom | Centred text | Pure White | Short intro paragraph |
 | 3 | A Welcoming Community | Oversized Circular Image + text | Image right, text left | Pure White | |
-| 4 | Partnerships with Families | Oversized Circular Image + text | Text left, image right | Warm Cream #FBF9F7 | |
+| 4 | Partnerships with Families | Oversized Circular Image + text | Text left, image right | Warm Cream #F6F3EE | |
 | 5 | Celebrating Together | Oversized Circular Image + text | Image right, text left | Pure White | |
-| 6 | Faith in Community | Oversized Circular Image + text | Text left, image right | Warm Cream #FBF9F7 | |
+| 6 | Faith in Community | Oversized Circular Image + text | Text left, image right | Warm Cream #F6F3EE | |
 | 7 | The St Kevin's Spirit | Dark Feature Section | Centred text, full-width | Deep Navy #051E42 | Emotional closing section |
 | 8 | Footer | Footer | Same | Deep Navy #051E42 | |
 
@@ -144,11 +144,11 @@ Each team block contains:
 |---|---------|-----------|--------|------------|-------|
 | 1 | Hero | Hero Section | Full-bleed, shorter | Image + overlay | Warm, inviting image |
 | 2 | Intro + Pathway | Custom | Centred text + visual pathway | Pure White | Visit → Enquire → Enrol → Begin visual steps |
-| 3 | Visit Us | Content Card (Light) | Card with text + button | Cloud Grey #F4F6F8 | "Book a School Tour" button |
+| 3 | Visit Us | Content Card (Light) | Card with text + button | Cloud Grey #F0EDE5 | "Book a School Tour" button |
 | 4 | Start the Conversation | Content Card (Light) | Card with text + 2 buttons | Pure White | Enquiry + Prospectus buttons |
-| 5 | The Enrolment Process | Content Card (Light) | Card with text + button | Cloud Grey #F4F6F8 | "Begin Enrolment Application" button |
+| 5 | The Enrolment Process | Content Card (Light) | Card with text + button | Cloud Grey #F0EDE5 | "Begin Enrolment Application" button |
 | 6 | Transition to School | Oversized Circular Image + text | Image right, text left | Pure White | Warm photo of young children |
-| 7 | Every Child Known | CTA-style closing | Centred text | Warm Cream #FBF9F7 | Emotional closing statement |
+| 7 | Every Child Known | CTA-style closing | Centred text | Warm Cream #F6F3EE | Emotional closing statement |
 | 8 | Footer | Footer | Same | Deep Navy #051E42 | |
 
 ---
@@ -160,9 +160,9 @@ Each team block contains:
 | 1 | Hero | Hero Section (shorter) | Full-bleed | Image + overlay | School entrance or welcoming image |
 | 2 | Intro | Custom | Centred text | Pure White | |
 | 3 | Get in Touch | Split layout | Contact details left, Google Maps right | Pure White | Phone, email, address |
-| 4 | School Office Hours | Custom | Simple centred text block | Cloud Grey #F4F6F8 | Mon–Fri 8am–4pm |
+| 4 | School Office Hours | Custom | Simple centred text block | Cloud Grey #F0EDE5 | Mon–Fri 8am–4pm |
 | 5 | Send Us a Message | Custom | Contact form or button | Pure White | "General Enquiry Form" button |
-| 6 | Visit Our School | CTA | Text + button | Warm Cream #FBF9F7 | "Book a School Tour" button |
+| 6 | Visit Our School | CTA | Text + button | Warm Cream #F6F3EE | "Book a School Tour" button |
 | 7 | Stay Connected | Custom | Social icons + text | Pure White | Facebook + Schoolzine icons |
 | 8 | Footer | Footer | Same | Deep Navy #051E42 | |
 

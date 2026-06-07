@@ -19,8 +19,8 @@
           colors: {
             'deep-navy':    '#051E42',
             'burgundy-red': '#8A2232',
-            'warm-cream':   '#FBF9F7',
-            'cloud-grey':   '#F4F6F8',
+            'warm-cream':   '#F6F3EE',
+            'cloud-grey':   '#F0EDE5',
             'border-mist':  '#E2E6EA',
             'slate-text':   '#6B7280',
             'navy-tint':    '#0A2D5C',
@@ -44,6 +44,8 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/ScrollTrigger.min.js"></script>
   <!-- Lenis smooth scroll -->
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <!-- Shared layout styles -->
+  <link rel="stylesheet" href="css/sk-layout.css">
 
 
   <style>
@@ -52,8 +54,8 @@
       --color-deep-navy:    #051E42;
       --color-burgundy-red: #8A2232;
       --color-pure-white:   #FFFFFF;
-      --color-warm-cream:   #FBF9F7;
-      --color-cloud-grey:   #F4F6F8;
+      --color-warm-cream:   #F6F3EE;
+      --color-cloud-grey:   #F0EDE5;
       --color-border-mist:  #E2E6EA;
       --color-slate-text:   #6B7280;
       --color-navy-tint:    #0A2D5C;
@@ -140,8 +142,8 @@
       border-radius: 8px;
       transition: background var(--transition-fast);
     }
-    .sk-hamburger:hover { background: rgba(255,255,255,0.12); }
-    .is-scrolled .sk-hamburger:hover { background: var(--color-cloud-grey); }
+    .sk-hamburger:hover { background: transparent; }
+    .is-scrolled .sk-hamburger:hover { background: transparent; }
     .sk-hamburger span {
       display: block; height: 2px; border-radius: 2px;
       transition: background var(--transition-medium);
@@ -150,23 +152,10 @@
     .is-scrolled    .sk-hamburger span { background: var(--color-deep-navy); }
 
     /* Two separate logos — hero (white, pre-scroll) and sticky (colour, post-scroll) */
-    .sk-logo-hero, .sk-logo-sticky {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      display: block;
-      width: auto;
-    }
-    .sk-logo-hero {
-      height: var(--logo-hero-size, 90px);
-      top: var(--logo-hero-top, 16px);
-    }
+    .sk-logo-hero, .sk-logo-sticky { display: block; width: auto; }
+    .sk-logo-hero { height: var(--logo-hero-size, 90px); }
     .is-scrolled .sk-logo-hero { display: none; }
-    .sk-logo-sticky {
-      display: none;
-      height: var(--logo-sticky-size, 52px);
-      top: var(--logo-sticky-top, 12px);
-    }
+    .sk-logo-sticky { display: none; height: var(--logo-sticky-size, 52px); }
     .is-scrolled .sk-logo-sticky { display: block; }
 
     .sk-sidebar-logo { transition: none; }
@@ -296,7 +285,6 @@
       width: 100%; height: 100%;
       object-fit: cover; object-position: center top;
       display: block;
-      will-change: transform;
     }
 
     @media (max-width: 600px) {
@@ -455,10 +443,10 @@
       line-height: 0;
       display: block;
     }
-    .sk-wave-divider--burg    { background: #FBF9F7; height: 126px; }
+    .sk-wave-divider--burg    { background: var(--color-warm-cream); height: 126px; }
     .sk-wave-divider--navy    { background: var(--color-warm-cream); height: 120px; }
     .sk-wave-divider--navy-inv { background: var(--color-navy);      height: 120px; }
-    .sk-wave-divider--cream   { background: #FBF9F7; height: 126px; }
+    .sk-wave-divider--cream   { background: var(--color-warm-cream); height: 126px; }
 
     .sk-wave-svg {
       position: absolute;
@@ -473,6 +461,7 @@
       .sk-nav-sidebar, .sk-nav-backdrop, .sk-search-panel {
         transition: visibility 0s, opacity 0.1s !important;
       }
+      .sk-smv__copy { transition: opacity 0.1s !important; transform: none !important; }
     }
 
     /* ══════════════════════════════════════════════
@@ -547,8 +536,6 @@
       font-family: var(--font-montserrat); font-weight: 700;
       font-size: 13px; letter-spacing: 0.07em; text-transform: uppercase;
       position: relative; overflow: hidden;
-      will-change: transform;
-      clip-path: inset(0 100% 0 0);
     }
     .sk-smv__cta::before {
       content: ''; position: absolute; inset: 0;
@@ -561,7 +548,6 @@
     .sk-smv__cta-arrow {
       position: relative; z-index: 1;
       display: inline-block; font-size: 1.15em; line-height: 1;
-      will-change: transform;
     }
     .sk-smv__right {
       position: relative;
@@ -574,8 +560,8 @@
     }
     .sk-smv__frame {
       position: relative;
-      width: 52%; height: 72vh;
-      max-width: 320px; min-width: 260px;
+      width: 80%; height: 72vh;
+      max-width: 88%; min-width: 240px;
       border-radius: 16px; overflow: hidden;
       box-shadow: 0 28px 70px rgba(5,30,66,0.16);
     }
@@ -614,7 +600,7 @@
       .sk-smv__copy-wrap { height: 280px; margin-top: 32px; }
       .sk-smv__cta-wrap { position: relative; left: auto; bottom: auto; margin-top: 32px; }
       .sk-smv__right { min-height: 44vh; padding: 28px; }
-      .sk-smv__frame { height: 38vh; width: 56%; min-width: 200px; }
+      .sk-smv__frame { height: 38vh; width: 80%; min-width: 200px; max-width: 88%; }
     }
 
     /* ══════════════════════════════════════════════
@@ -849,195 +835,141 @@
     .sk-footer__bottom-link:hover { color: rgba(255,255,255,0.65); }
     .sk-footer__bottom-sep { color: rgba(255,255,255,0.18); font-size: 10px; }
 
+
+    /* ══════════════════════════════════════════════
+       SECTION 7 — OUR PRINCIPAL
+    ══════════════════════════════════════════════ */
+    /* ── Section 7: Our Principal ── */
+    .sk-principal { background: var(--color-warm-cream); padding: clamp(64px, 9vw, 112px) clamp(24px, 5vw, 80px); }
+    .sk-principal__card {
+      max-width: 1160px; margin: 0 auto;
+      display: grid; grid-template-columns: 42% 1fr;
+      border-radius: 24px; overflow: hidden;
+      box-shadow: 0 28px 88px rgba(5,30,66,0.13);
+    }
+    .sk-principal__media {
+      position: relative; overflow: hidden;
+      background: var(--color-deep-navy);
+      cursor: pointer; margin: 0; min-height: 540px;
+    }
+    .sk-principal__poster {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);
+    }
+    .sk-principal__media:hover .sk-principal__poster { transform: scale(1.04); }
+    .sk-principal__play {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: rgba(5,30,66,0.18); transition: background 0.3s ease;
+    }
+    .sk-principal__media:hover .sk-principal__play { background: rgba(5,30,66,0.3); }
+    .sk-principal__play-btn {
+      width: 72px; height: 72px; border-radius: 50%; background: var(--color-burgundy-red);
+      display: flex; align-items: center; justify-content: center; border: none; cursor: pointer;
+      box-shadow: 0 8px 32px rgba(138,34,50,0.5);
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), box-shadow 0.35s ease;
+    }
+    .sk-principal__play-btn:hover { transform: scale(1.1); box-shadow: 0 14px 42px rgba(138,34,50,0.65); }
+    .sk-principal__play-btn:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+    .sk-principal__panel {
+      background: var(--color-deep-navy);
+      padding: clamp(48px, 7vw, 80px) clamp(40px, 6vw, 72px);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .sk-principal__heading {
+      font-family: var(--font-montserrat); font-size: clamp(2.25rem, 4vw, 3.25rem);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.0;
+      color: #fff; text-transform: uppercase;
+      margin: 0 0 clamp(10px, 1.5vw, 16px); text-wrap: balance;
+    }
+    .sk-principal__name {
+      font-family: var(--font-inter); font-size: clamp(0.9rem, 1.2vw, 1rem);
+      font-weight: 500; color: rgba(255,255,255,0.5);
+      letter-spacing: 0.03em; margin: 0 0 clamp(32px, 5vw, 52px);
+    }
+    .sk-principal__body {
+      font-family: var(--font-inter); font-size: clamp(1rem, 1.35vw, 1.05rem);
+      line-height: 1.88; color: rgba(255,255,255,0.82);
+      max-width: 50ch; text-wrap: pretty; margin: 0 0 clamp(28px, 4vw, 40px);
+    }
+    .sk-principal__signoff {
+      font-family: var(--font-dancing-script); font-size: clamp(1.15rem, 1.9vw, 1.45rem);
+      font-weight: 700; color: rgba(255,255,255,0.48); font-style: italic;
+    }
+    @media (max-width: 860px) {
+      .sk-principal__card { grid-template-columns: 1fr; border-radius: 16px; }
+      .sk-principal__media { min-height: 300px; aspect-ratio: 4/3; }
+      .sk-principal__panel { padding: 40px 32px 48px; }
+    }
+
+    /* ══════════════════════════════════════════════
+       SECTION 9 — OUR PEOPLE INTRO
+    ══════════════════════════════════════════════ */
+    .sk-people-intro {
+      background: var(--color-deep-navy);
+      padding: clamp(80px, 12vw, 140px) clamp(24px, 5vw, 48px) clamp(72px, 10vw, 120px);
+      text-align: center; overflow: hidden; position: relative;
+    }
+    .sk-people-intro::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.048) 1px, transparent 1px);
+      background-size: 36px 36px; pointer-events: none;
+    }
+    .sk-people-intro__inner { position: relative; z-index: 1; }
+    .sk-people-intro__heading {
+      font-family: var(--font-montserrat); font-size: clamp(3rem, 10vw, 6rem);
+      font-weight: 800; letter-spacing: -0.04em; line-height: 0.88;
+      color: #fff; text-transform: uppercase;
+      margin: 0 0 clamp(16px, 3vw, 28px); text-wrap: balance;
+    }
+    .sk-people-intro__script {
+      display: block; font-family: var(--font-dancing-script);
+      font-size: clamp(1.3rem, 2.8vw, 2rem); font-weight: 700;
+      color: #8A2232; line-height: 1.45;
+      margin-bottom: clamp(28px, 5vw, 48px); font-style: italic;
+    }
+    .sk-people-intro__divider { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: clamp(20px, 3vw, 32px); }
+    .sk-people-intro__divider-line { flex: 1; max-width: 80px; height: 1px; background: rgba(138,34,50,0.5); }
+    .sk-people-intro__divider-dot { width: 7px; height: 7px; border: 1.5px solid rgba(138,34,50,0.8); transform: rotate(45deg); flex-shrink: 0; display: block; }
+    .sk-people-intro__body {
+      font-family: var(--font-inter); font-size: clamp(1rem, 1.5vw, 1.1rem);
+      line-height: 1.84; color: rgba(255,255,255,0.78);
+      max-width: 58ch; margin: 0 auto; text-wrap: pretty;
+    }
+
+    /* ══════════════════════════════════════════════
+       SECTIONS 10-13 — TEAM BLOCKS
+    ══════════════════════════════════════════════ */
+    .sk-team { background: var(--color-deep-navy); display: grid; grid-template-columns: 1fr 1fr; height: clamp(560px, 74vh, 860px); position: relative; overflow: hidden; }
+    .sk-team__visual { position: relative; overflow: hidden; }
+    .sk-team__img { display: block; position: absolute; top: -30%; left: 0; right: 0; bottom: -30%; width: 100%; object-fit: cover; will-change: transform; }
+    .sk-team__content { display: flex; flex-direction: column; justify-content: center; padding: clamp(48px, 7vw, 88px) clamp(32px, 5vw, 72px); }
+    .sk-team__level { font-family: var(--font-montserrat); font-size: 11px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #8A2232; display: inline-flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    .sk-team__level::before { content: ''; display: inline-block; width: 22px; height: 1.5px; background: #8A2232; flex-shrink: 0; }
+    .sk-team__heading { font-family: var(--font-montserrat); font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; color: #fff; text-transform: uppercase; margin: 0 0 clamp(16px, 2.5vw, 24px); text-wrap: balance; }
+    .sk-team__body { font-family: var(--font-inter); font-size: clamp(0.95rem, 1.35vw, 1.05rem); line-height: 1.82; color: rgba(255,255,255,0.78); max-width: 46ch; text-wrap: pretty; margin: 0 0 clamp(20px, 3vw, 28px); }
+    .sk-team__quotes { list-style: none; padding: 0; margin: 0 0 clamp(20px, 3vw, 28px); display: flex; flex-direction: column; gap: 10px; }
+    .sk-team__quote { font-family: var(--font-dancing-script); font-size: clamp(1rem, 1.5vw, 1.2rem); font-weight: 600; color: rgba(255,255,255,0.65); font-style: italic; line-height: 1.5; padding-left: 20px; position: relative; }
+    .sk-team__quote::before { content: "\201C"; position: absolute; left: 0; top: -3px; font-family: var(--font-dancing-script); font-size: 1.45em; color: #8A2232; line-height: 1; font-style: normal; }
+    .sk-team__caption { font-family: var(--font-dancing-script); font-size: clamp(1.05rem, 1.7vw, 1.35rem); font-weight: 700; color: #8A2232; font-style: italic; line-height: 1.4; }
+    .sk-team--burg { background: #8A2232; }
+    .sk-team--burg .sk-team__level { color: #ffffff; }
+    .sk-team--burg .sk-team__level::before { background: #ffffff; }
+    .sk-team--burg .sk-team__quote::before { color: rgba(255,255,255,0.7); }
+    .sk-team--burg .sk-team__caption { color: #ffffff; }
+    @media (max-width: 800px) {
+      .sk-team { grid-template-columns: 1fr; height: auto; }
+      .sk-team__visual { height: 62vw; min-height: 260px; }
+      .sk-team__img { transform: none !important; }
+      .sk-team__content { padding: 40px 24px 48px; }
+      .sk-team__body { max-width: 100%; }
+    }
+
   </style>
 </head>
 <body>
 
-  <!-- ════════════════════════════════
-       HEADER
-  ════════════════════════════════ -->
-  <header class="sk-header is-transparent" id="sk-header">
-
-    <button class="sk-hamburger" id="sk-hamburger-btn" aria-label="Open navigation" aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <img id="sk-logo-hero" src="images/logo-sk-white.png"
-         alt="St Kevin's Primary School, Hampton Park"
-         class="sk-logo-hero">
-    <img id="sk-logo-sticky" src="images/logo-sk-colour.png"
-         alt="St Kevin's Primary School, Hampton Park"
-         class="sk-logo-sticky"
-         aria-hidden="true">
-
-    <button class="sk-search-btn" id="sk-search-btn" aria-label="Search site" aria-expanded="false">
-      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="9.5" cy="9.5" r="7"/>
-        <line x1="14.5" y1="14.5" x2="21" y2="21"/>
-      </svg>
-    </button>
-
-  </header>
-
-
-  <!-- ════════════════════════════════
-       SEARCH PANEL
-  ════════════════════════════════ -->
-  <div class="sk-search-panel" id="sk-search-panel" role="search" aria-label="Site search">
-    <div class="sk-search-inner">
-      <form class="sk-search-form" id="sk-search-form" autocomplete="off">
-        <span class="sk-search-icon" aria-hidden="true">
-          <svg width="18" height="18" viewBox="0 0 22 22" fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="9.5" cy="9.5" r="7"/>
-            <line x1="14.5" y1="14.5" x2="21" y2="21"/>
-          </svg>
-        </span>
-        <input
-          type="search"
-          class="sk-search-input"
-          id="sk-search-input"
-          placeholder="Search St Kevin's…"
-          aria-label="Search"
-        >
-        <button type="submit" class="sk-search-submit">Search</button>
-      </form>
-      <button class="sk-search-close-btn" id="sk-search-close-btn" aria-label="Close search">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round">
-          <line x1="2" y1="2" x2="16" y2="16"/><line x1="16" y1="2" x2="2" y2="16"/>
-        </svg>
-      </button>
-    </div>
-    <div class="sk-search-results" id="sk-search-results" aria-live="polite"></div>
-  </div>
-
-
-  <!-- ════════════════════════════════
-       NAV BACKDROP
-  ════════════════════════════════ -->
-  <div class="sk-nav-backdrop" id="sk-nav-backdrop"></div>
-
-
-  <!-- ════════════════════════════════
-       NAV SIDEBAR
-  ════════════════════════════════ -->
-  <aside class="sk-nav-sidebar" id="sk-nav-sidebar" role="dialog" aria-modal="true" aria-label="Site navigation">
-
-    <div class="sk-sidebar-content">
-
-      <div class="sk-sidebar-header">
-        <button class="sk-sidebar-close" id="sk-sidebar-close" aria-label="Close navigation">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-            <line x1="2" y1="2" x2="14" y2="14"/>
-            <line x1="14" y1="2" x2="2" y2="14"/>
-          </svg>
-        </button>
-        <img src="images/logo-sk-macs-combined.png" alt="St Kevin's Primary School, Hampton Park" class="sk-sidebar-logo">
-      </div>
-
-      <nav class="sk-sidebar-nav" aria-label="Primary navigation">
-
-        <a href="about.html" class="sk-nav-item">
-          <span class="sk-nav-item-label">About Us</span>
-          <span class="sk-nav-arrow" aria-hidden="true">
-            <span class="sk-nav-arrow-line"></span>
-            <span class="sk-nav-arrow-chevron">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg>
-            </span>
-          </span>
-        </a>
-
-        <a href="learning.html" class="sk-nav-item">
-          <span class="sk-nav-item-label">Learning</span>
-          <span class="sk-nav-arrow" aria-hidden="true">
-            <span class="sk-nav-arrow-line"></span>
-            <span class="sk-nav-arrow-chevron">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg>
-            </span>
-          </span>
-        </a>
-
-        <a href="community.html" class="sk-nav-item">
-          <span class="sk-nav-item-label">Community</span>
-          <span class="sk-nav-arrow" aria-hidden="true">
-            <span class="sk-nav-arrow-line"></span>
-            <span class="sk-nav-arrow-chevron">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg>
-            </span>
-          </span>
-        </a>
-
-        <a href="enrolments.html" class="sk-nav-item">
-          <span class="sk-nav-item-label">Enrolments</span>
-          <span class="sk-nav-arrow" aria-hidden="true">
-            <span class="sk-nav-arrow-line"></span>
-            <span class="sk-nav-arrow-chevron">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg>
-            </span>
-          </span>
-        </a>
-
-        <a href="contact.html" class="sk-nav-item">
-          <span class="sk-nav-item-label">Contact</span>
-          <span class="sk-nav-arrow" aria-hidden="true">
-            <span class="sk-nav-arrow-line"></span>
-            <span class="sk-nav-arrow-chevron">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg>
-            </span>
-          </span>
-        </a>
-
-        <a href="policies.html" class="sk-nav-item">
-          <span class="sk-nav-item-label">Policies</span>
-          <span class="sk-nav-arrow" aria-hidden="true">
-            <span class="sk-nav-arrow-line"></span>
-            <span class="sk-nav-arrow-chevron">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg>
-            </span>
-          </span>
-        </a>
-
-      </nav>
-
-      <div class="sk-sidebar-footer">
-        <div class="sk-sidebar-socials">
-
-          <a href="tel:0397098600" class="sk-social-btn sk-social-btn--phone" aria-label="Call us: (03) 9709 8600">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 5.5 5.5l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-            </svg>
-          </a>
-
-          <a href="mailto:administration@skhamptonpark.catholic.edu.au" class="sk-social-btn sk-social-btn--mail" aria-label="Email us">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect class="env-body" x="2" y="4" width="20" height="16" rx="2"/>
-              <polyline class="env-flap" points="22,6 12,13 2,6"/>
-            </svg>
-          </a>
-
-          <a href="#" class="sk-social-btn sk-social-btn--fb" aria-label="Find us on Facebook" target="_blank" rel="noopener noreferrer">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-            </svg>
-          </a>
-
-        </div>
-      </div>
-
-    </div><!-- /sk-sidebar-content -->
-
-    <div class="sk-sidebar-image" aria-hidden="true">
-      <div class="sk-sidebar-image-frame">
-        <img
-          src="images/samples/cosmos_1616537391.jpeg"
-          alt=""
-          loading="eager"
-        >
-      </div>
-    </div>
-
-  </aside>
+  <!-- Header injected by js/sk-layout.js -->
+  <div id="sk-layout-header"></div>
 
 
   <!-- ════════════════════════════════
@@ -1146,29 +1078,140 @@
        SECTION 7 — OUR PRINCIPAL
        Video thumbnail + text · Warm Cream bg
   ════════════════════════════════ -->
-  <!-- TODO -->
+  <section class="sk-principal" id="sk-principal" aria-label="Our Principal">
+    <div class="sk-principal__card">
+
+      <figure class="sk-principal__media">
+        <img class="sk-principal__poster"
+             src="images/samples/cosmos_1616537391.jpeg"
+             alt="Jason Micallef, Principal of St Kevin's Primary School"
+             loading="lazy">
+        <div class="sk-principal__play">
+          <button class="sk-principal__play-btn" aria-label="Play principal's welcome video">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <path d="M8.5 6.5L17 11L8.5 15.5V6.5Z" fill="white"/>
+            </svg>
+          </button>
+        </div>
+      </figure>
+
+      <div class="sk-principal__panel">
+        <h2 class="sk-principal__heading">Our<br>Principal</h2>
+        <p class="sk-principal__name">Jason Micallef &middot; Principal</p>
+        <p class="sk-principal__body">Welcome to St Kevin's. Our school is a place where children are supported to grow academically, socially and spiritually, surrounded by a community that believes deeply in their potential. What I value most about our school is the way people care for one another. When families, teachers and students work together with trust and purpose, remarkable things happen.</p>
+        <p class="sk-principal__signoff"><em>— Jason Micallef | Principal</em></p>
+      </div>
+
+    </div>
+  </section>
 
 
   <!-- ════════════════════════════════
-       WAVE DIVIDER (Navy: white → deep navy)
-       Add id="sk-wave-divider-8" when building Section 9
+       WAVE DIVIDER 8 (cream → navy)
   ════════════════════════════════ -->
-  <!-- TODO -->
+  <div class="sk-wave-divider sk-wave-divider--navy" id="sk-wave-divider-8" aria-hidden="true">
+    <svg class="sk-wave-svg" viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M 0 120 L 1440 120 L 1440 88 C 1080 76 360 22 0 14 Z" fill="#051E42"/>
+    </svg>
+  </div>
 
 
   <!-- ════════════════════════════════
        SECTION 9 — OUR PEOPLE INTRO
-       Deep Navy bg · centred heading + body
   ════════════════════════════════ -->
-  <!-- TODO -->
+  <section class="sk-people-intro" id="sk-people-intro" aria-label="Our People">
+    <div class="sk-people-intro__inner">
+      <h2 class="sk-people-intro__heading">Our<br>People</h2>
+      <span class="sk-people-intro__script">The heartbeat of St Kevin's</span>
+      <div class="sk-people-intro__divider" aria-hidden="true">
+        <span class="sk-people-intro__divider-line"></span>
+        <span class="sk-people-intro__divider-dot"></span>
+        <span class="sk-people-intro__divider-line"></span>
+      </div>
+      <p class="sk-people-intro__body">Our staff share a deep commitment to the growth and wellbeing of every child. Working together across Foundation (Prep), Junior (Gr 1 &amp; 2), Middle (Gr 3 &amp; 4) and Senior levels (Gr 5 &amp; 6), our teachers and support staff create learning environments where students feel safe, challenged and inspired.</p>
+    </div>
+  </section>
 
 
   <!-- ════════════════════════════════
-       SECTIONS 10–13 — TEAM BLOCKS
-       Deep Navy bg · alternating circular image + text
-       Foundation / Junior / Middle / Senior
+       SECTION 10 — FOUNDATION TEAM
   ════════════════════════════════ -->
-  <!-- TODO -->
+  <section class="sk-team sk-team--foundation" id="sk-team-foundation" aria-label="Foundation Team">
+    <div class="sk-team__content">
+      <span class="sk-team__level">Foundation &middot; Prep</span>
+      <h2 class="sk-team__heading">Foundation</h2>
+      <p class="sk-team__body">Our Foundation team welcomes children into their first year of school with warmth, patience and a deep understanding of early learning. They create safe and joyful classrooms where curiosity, confidence and independence begin to grow.</p>
+      <ul class="sk-team__quotes" aria-label="Things you might hear them say">
+        <li class="sk-team__quote">Let's try that again together.</li>
+        <li class="sk-team__quote">You can do hard things.</li>
+        <li class="sk-team__quote">Who would like to share their thinking?</li>
+      </ul>
+      <p class="sk-team__caption"><em>First stories. First friendships. First days of school.</em></p>
+    </div>
+    <div class="sk-team__visual" data-parallax-img>
+      <img class="sk-team__img" src="images/samples/cosmos_1074538081.jpeg" alt="Foundation team" loading="lazy">
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       SECTION 11 — JUNIOR TEAM
+  ════════════════════════════════ -->
+  <section class="sk-team sk-team--junior sk-team--burg" id="sk-team-junior" aria-label="Junior Team">
+    <div class="sk-team__visual" data-parallax-img>
+      <img class="sk-team__img" src="images/samples/cosmos_1226555780.jpeg" alt="Junior team" loading="lazy">
+    </div>
+    <div class="sk-team__content">
+      <span class="sk-team__level">Junior &middot; Years 1 &amp; 2</span>
+      <h2 class="sk-team__heading">Junior<br>Team</h2>
+      <p class="sk-team__body">Our Junior team helps students build strong foundations in literacy, numeracy and learning habits that will carry them through their schooling. These classrooms are full of questions, discovery and the excitement that comes when children begin to realise what they are capable of.</p>
+      <ul class="sk-team__quotes" aria-label="Things you might hear them say">
+        <li class="sk-team__quote">Tell me how you figured that out.</li>
+        <li class="sk-team__quote">That's a great strategy.</li>
+        <li class="sk-team__quote">Who noticed something interesting?</li>
+      </ul>
+      <p class="sk-team__caption"><em>The moment when learning starts to click.</em></p>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       SECTION 12 — MIDDLE TEAM
+  ════════════════════════════════ -->
+  <section class="sk-team sk-team--middle" id="sk-team-middle" aria-label="Middle Team">
+    <div class="sk-team__content">
+      <span class="sk-team__level">Middle &middot; Years 3 &amp; 4</span>
+      <h2 class="sk-team__heading">Middle<br>Team</h2>
+      <p class="sk-team__body">The Middle team supports students as their confidence and independence grow. Learning becomes deeper and more collaborative as students explore ideas, ask thoughtful questions and begin to see themselves as capable learners.</p>
+      <ul class="sk-team__quotes" aria-label="Things you might hear them say">
+        <li class="sk-team__quote">Convince me.</li>
+        <li class="sk-team__quote">What makes you think that?</li>
+        <li class="sk-team__quote">Let's dig a little deeper.</li>
+      </ul>
+      <p class="sk-team__caption"><em>Questions get bigger. Thinking gets deeper.</em></p>
+    </div>
+    <div class="sk-team__visual" data-parallax-img>
+      <img class="sk-team__img" src="images/samples/cosmos_1226555780.jpeg" alt="Middle team" loading="lazy">
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       SECTION 13 — SENIOR TEAM
+  ════════════════════════════════ -->
+  <section class="sk-team sk-team--senior sk-team--burg" id="sk-team-senior" aria-label="Senior Team">
+    <div class="sk-team__visual" data-parallax-img>
+      <img class="sk-team__img" src="images/samples/cosmos_1263936189.jpeg" alt="Senior team" loading="lazy">
+    </div>
+    <div class="sk-team__content">
+      <span class="sk-team__level">Senior &middot; Years 5 &amp; 6</span>
+      <h2 class="sk-team__heading">Senior<br>Team</h2>
+      <p class="sk-team__body">Our Senior team prepares students for the transition to secondary school while nurturing leadership, responsibility and strong learning habits. Students are challenged to think critically, take ownership of their learning and contribute positively to the school community.</p>
+      <ul class="sk-team__quotes" aria-label="Things you might hear them say">
+        <li class="sk-team__quote">Show me your reasoning.</li>
+        <li class="sk-team__quote">What could you try next?</li>
+        <li class="sk-team__quote">How can we make this even better?</li>
+      </ul>
+      <p class="sk-team__caption"><em>Growing into confident learners and leaders.</em></p>
+    </div>
+  </section>
 
 
   <!-- ════════════════════════════════
@@ -1192,340 +1235,16 @@
   <!-- TODO -->
 
 
-  <!-- Wave: sections → footer (cream → navy) -->
-  <div class="sk-wave-divider sk-wave-divider--navy" aria-hidden="true">
-    <svg class="sk-wave-svg"
-         viewBox="0 0 1440 120"
-         preserveAspectRatio="none"
-         xmlns="http://www.w3.org/2000/svg">
-      <path d="M 0 0 L 1440 0 L 1440 14 C 1080 22 360 76 0 88 Z"
-            fill="#051E42"/>
-    </svg>
-  </div>
-
-
-  <!-- ════════════════════════════════
-       SECTION 18 — FOOTER
-  ════════════════════════════════ -->
-  <footer class="sk-footer" id="sk-footer" aria-label="Site footer">
-
-    <svg class="sk-footer__deco" viewBox="0 0 1440 560" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <circle cx="64"  cy="72"  r="2.8" fill="rgba(255,255,255,0.04)"/>
-      <circle cx="96"  cy="72"  r="2.8" fill="rgba(255,255,255,0.04)"/>
-      <circle cx="128" cy="72"  r="2.8" fill="rgba(255,255,255,0.04)"/>
-      <circle cx="64"  cy="104" r="2.8" fill="rgba(255,255,255,0.04)"/>
-      <circle cx="96"  cy="104" r="2.8" fill="rgba(255,255,255,0.04)"/>
-      <circle cx="128" cy="104" r="2.8" fill="rgba(255,255,255,0.04)"/>
-      <circle cx="64"  cy="136" r="2.8" fill="rgba(255,255,255,0.04)"/>
-      <circle cx="96"  cy="136" r="2.8" fill="rgba(255,255,255,0.04)"/>
-      <circle cx="128" cy="136" r="2.8" fill="rgba(255,255,255,0.04)"/>
-      <circle cx="1312" cy="444" r="2.4" fill="rgba(255,255,255,0.033)"/>
-      <circle cx="1344" cy="444" r="2.4" fill="rgba(255,255,255,0.033)"/>
-      <circle cx="1376" cy="444" r="2.4" fill="rgba(255,255,255,0.033)"/>
-      <circle cx="1312" cy="476" r="2.4" fill="rgba(255,255,255,0.033)"/>
-      <circle cx="1344" cy="476" r="2.4" fill="rgba(255,255,255,0.033)"/>
-      <circle cx="1376" cy="476" r="2.4" fill="rgba(255,255,255,0.033)"/>
-      <circle cx="1420" cy="88"  r="5"   fill="#8A2232" opacity="0.22"/>
-      <circle cx="38"   cy="480" r="4"   fill="#8A2232" opacity="0.18"/>
-      <rect x="1378" y="180" width="16"  height="2.5" rx="1.25" fill="rgba(255,255,255,0.09)"/>
-      <rect x="1385" y="173" width="2.5" height="16"  rx="1.25" fill="rgba(255,255,255,0.09)"/>
-      <rect x="54"   y="370" width="12" height="2"  rx="1" fill="#8A2232" opacity="0.28"/>
-      <rect x="59"   y="365" width="2"  height="12" rx="1" fill="#8A2232" opacity="0.28"/>
-      <path d="M 1298 530 Q 1350 502 1402 530" stroke="rgba(255,255,255,0.055)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-    </svg>
-
-    <div class="sk-footer__inner">
-
-      <p class="sk-footer__tagline">A community where every child is known, supported and inspired to flourish</p>
-
-      <div class="sk-footer__rule" aria-hidden="true"></div>
-
-      <div class="sk-footer__logos">
-        <a href="/" class="sk-footer__logo-link" aria-label="Melbourne Archdiocese Catholic Schools">
-          <img src="images/macs-logo-white.png"
-               alt="Melbourne Archdiocese Catholic Schools"
-               class="sk-footer__logo-img sk-footer__logo-img--macs"
-               loading="lazy">
-        </a>
-        <a href="/" class="sk-footer__logo-link" aria-label="St Kevin's Primary School Hampton Park">
-          <img src="images/logo-sk-white.png"
-               alt="St Kevin's Primary School Hampton Park"
-               class="sk-footer__logo-img sk-footer__logo-img--sk"
-               loading="lazy">
-        </a>
-      </div>
-
-      <div class="sk-footer__cols">
-
-        <div class="sk-footer__col">
-          <h3 class="sk-footer__col-head">Contact Us</h3>
-          <address class="sk-footer__address">
-            <div class="sk-footer__contact-row">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
-              </svg>
-              <span>120 Hallam Rd, Hampton Park VIC 3976</span>
-            </div>
-            <div class="sk-footer__contact-row">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.95-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-              </svg>
-              <a href="tel:0397098600">(03) 9709 8600</a>
-            </div>
-            <div class="sk-footer__contact-row">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
-              </svg>
-              <a href="mailto:administration@skhamptonpark.catholic.edu.au">administration@<wbr>skhamptonpark.catholic.edu.au</a>
-            </div>
-          </address>
-          <p class="sk-footer__hours">Monday to Friday &nbsp;&middot;&nbsp; 8:00am – 4:00pm</p>
-        </div>
-
-        <div class="sk-footer__col">
-          <h3 class="sk-footer__col-head">Quick Links</h3>
-          <nav class="sk-footer__nav" aria-label="Footer navigation">
-            <a href="contact.html"    class="sk-footer__link">Contact</a>
-            <a href="enrolments.html" class="sk-footer__link">Enrolments</a>
-            <a href="enrolments.html" class="sk-footer__link">School Tours</a>
-            <a href="#"               class="sk-footer__link">Newsletter</a>
-            <a href="#"               class="sk-footer__link">Annual Report</a>
-            <a href="policies.html"   class="sk-footer__link">Policies &amp; Compliance</a>
-          </nav>
-        </div>
-
-        <div class="sk-footer__col">
-          <h3 class="sk-footer__col-head">Stay Connected</h3>
-          <p class="sk-footer__about">St Kevin's is a Christ-centred Catholic primary school in Hampton Park, Melbourne. Part of the Melbourne Archdiocese Catholic Schools community.</p>
-          <div class="sk-footer__social">
-            <a href="https://www.facebook.com/skhamptonpark"
-               class="sk-footer__social-btn sk-footer__social-btn--fb"
-               aria-label="St Kevin's on Facebook"
-               target="_blank"
-               rel="noopener noreferrer">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-              </svg>
-            </a>
-            <a href="https://www.skhamptonpark.catholic.edu.au"
-               class="sk-footer__social-btn sk-footer__social-btn--web"
-               aria-label="St Kevin's website"
-               target="_blank"
-               rel="noopener noreferrer">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-              </svg>
-            </a>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="sk-footer__bottom">
-        <p class="sk-footer__copy">© 2026 St Kevin's Primary School Hampton Park</p>
-        <div class="sk-footer__bottom-links">
-          <a href="policies.html" class="sk-footer__bottom-link">Policies</a>
-          <span class="sk-footer__bottom-sep" aria-hidden="true">·</span>
-          <a href="contact.html"  class="sk-footer__bottom-link">Contact</a>
-          <span class="sk-footer__bottom-sep" aria-hidden="true">·</span>
-          <a href="https://www.skhamptonpark.catholic.edu.au" class="sk-footer__bottom-link" target="_blank" rel="noopener noreferrer">skhamptonpark.catholic.edu.au</a>
-        </div>
-      </div>
-
-    </div>
-  </footer>
+  <!-- Footer injected by js/sk-layout.js -->
+  <div id="sk-layout-footer"></div>
 
 
   <!-- ════════════════════════════════
        SCRIPTS
   ════════════════════════════════ -->
-  <script>
-  (function () {
 
-    var header      = document.getElementById('sk-header');
-    var hamburger   = document.getElementById('sk-hamburger-btn');
-    var sidebar     = document.getElementById('sk-nav-sidebar');
-    var backdrop    = document.getElementById('sk-nav-backdrop');
-    var closeBtn    = document.getElementById('sk-sidebar-close');
-    var searchBtn   = document.getElementById('sk-search-btn');
-    var searchPanel = document.getElementById('sk-search-panel');
-    var searchClose = document.getElementById('sk-search-close-btn');
-    var searchInput = document.getElementById('sk-search-input');
-    var searchForm  = document.getElementById('sk-search-form');
-    var searchRes   = document.getElementById('sk-search-results');
-
-    var navItems    = sidebar.querySelectorAll('.sk-nav-item');
-    var footerLinks = sidebar.querySelectorAll('.sk-social-btn');
-    var sideHead    = sidebar.querySelector('.sk-sidebar-header');
-    var sideImg     = sidebar.querySelector('.sk-sidebar-image img');
-
-    var navOpen    = false;
-    var searchOpen = false;
-    var lastScrollY = 0;
-    var HIDE_AFTER       = 140;
-    var STICKY_THRESHOLD = 60;
-
-    gsap.set(sidebar,     { x: '-100%' });
-    gsap.set(backdrop,    { autoAlpha: 0 });
-    gsap.set(searchPanel, { autoAlpha: 0, y: -8 });
-
-    function onScroll() {
-      var y = window.scrollY;
-      var scrolled = y > STICKY_THRESHOLD;
-      header.classList.toggle('is-scrolled',    scrolled);
-      header.classList.toggle('is-transparent', !scrolled);
-
-      if (y > HIDE_AFTER) {
-        header.classList.toggle('is-hidden', y > lastScrollY);
-      } else {
-        header.classList.remove('is-hidden');
-      }
-      lastScrollY = y;
-    }
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-
-    function openNav() {
-      navOpen = true;
-      hamburger.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-
-      var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
-
-      tl.to(backdrop, { autoAlpha: 1, duration: rm ? 0.01 : 0.65 }, 0);
-      tl.to(sidebar,  { x: '0%',     duration: rm ? 0.01 : 0.78 }, 0);
-
-      if (sideImg && !rm) {
-        tl.from(sideImg, { scale: 1.1, duration: 1.1, ease: 'power3.out', clearProps: 'transform' }, 0);
-      }
-
-      tl.from(sideHead, {
-        autoAlpha: 0, y: 8,
-        duration: rm ? 0 : 0.45, clearProps: 'all'
-      }, rm ? 0 : 0.32);
-
-      tl.from(navItems, {
-        autoAlpha: 0, x: -22, y: 10,
-        duration: rm ? 0 : 0.55,
-        stagger: rm ? 0 : { each: 0.09 },
-        clearProps: 'all'
-      }, rm ? 0 : 0.38);
-
-      tl.from(footerLinks, {
-        autoAlpha: 0, y: 8,
-        duration: rm ? 0 : 0.4,
-        stagger: rm ? 0 : { each: 0.07 },
-        ease: 'power3.out', clearProps: 'all'
-      }, rm ? 0 : 0.76);
-
-      tl.call(function () { closeBtn.focus(); });
-    }
-
-    function closeNav() {
-      navOpen = false;
-      hamburger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-
-      var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var tl = gsap.timeline();
-
-      tl.to(sidebar,  { x: '-100%', duration: rm ? 0.01 : 0.56, ease: 'power4.inOut' }, 0);
-      tl.to(backdrop, { autoAlpha: 0, duration: rm ? 0.01 : 0.42, ease: 'power2.in' }, rm ? 0 : 0.08);
-    }
-
-    hamburger.addEventListener('click', openNav);
-    closeBtn.addEventListener('click',  closeNav);
-    backdrop.addEventListener('click',  closeNav);
-    navItems.forEach(function(a) { a.addEventListener('click', closeNav); });
-
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape') {
-        if (navOpen)    closeNav();
-        if (searchOpen) closeSearch();
-      }
-    });
-
-    sidebar.addEventListener('keydown', function(e) {
-      if (!navOpen || e.key !== 'Tab') return;
-      var focusable = Array.from(sidebar.querySelectorAll(
-        'button, a, input, [tabindex]:not([tabindex="-1"])'
-      )).filter(function(el) { return !el.disabled; });
-      if (!focusable.length) return;
-      var first = focusable[0];
-      var last  = focusable[focusable.length - 1];
-      if (e.shiftKey && document.activeElement === first) {
-        e.preventDefault(); last.focus();
-      } else if (!e.shiftKey && document.activeElement === last) {
-        e.preventDefault(); first.focus();
-      }
-    });
-
-    function openSearch() {
-      searchOpen = true;
-      searchBtn.setAttribute('aria-expanded', 'true');
-      gsap.to(searchPanel, { autoAlpha: 1, y: 0, duration: 0.28, ease: 'power2.out' });
-      requestAnimationFrame(function() { searchInput.focus(); });
-    }
-
-    function closeSearch() {
-      searchOpen = false;
-      searchBtn.setAttribute('aria-expanded', 'false');
-      searchInput.value = '';
-      searchRes.textContent = '';
-      searchRes.classList.remove('has-message');
-      gsap.to(searchPanel, { autoAlpha: 0, y: -8, duration: 0.22, ease: 'power2.in' });
-    }
-
-    searchBtn.addEventListener('click', function() {
-      if (searchOpen) closeSearch(); else openSearch();
-    });
-    searchClose.addEventListener('click', closeSearch);
-
-    searchForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      var q = searchInput.value.trim();
-      if (!q) return;
-      searchRes.classList.add('has-message');
-      searchRes.innerHTML =
-        '<span style="color:#374151">No results found for "' +
-        escapeHtml(q) +
-        '" — full search will be available once all pages are live.</span>';
-    });
-
-    searchInput.addEventListener('input', function() {
-      if (searchRes.classList.contains('has-message')) {
-        searchRes.textContent = '';
-        searchRes.classList.remove('has-message');
-      }
-    });
-
-    function escapeHtml(str) {
-      return str.replace(/[&<>"']/g, function(c) {
-        return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
-      });
-    }
-
-  })();
-  </script>
-
-
-  <!-- Lenis smooth scroll + GSAP ScrollTrigger sync -->
-  <script>
-  (function () {
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    if (!reduced && typeof Lenis !== 'undefined') {
-      var lenis = new Lenis({
-        duration: 1.15,
-        easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }
-      });
-      lenis.on('scroll', ScrollTrigger.update);
-      gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
-      gsap.ticker.lagSmoothing(0);
-    }
-  })();
-  </script>
+  <!-- Shared layout JS (nav, footer, Lenis, click spark) -->
+  <script src="js/sk-layout.js"></script>
 
   <!-- Wave divider: burgundy morph on scroll -->
   <script>
@@ -1566,38 +1285,6 @@
   })();
   </script>
 
-  <!-- click spark -->
-  <canvas id="global-click-spark" style="position:fixed;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:difference;z-index:9999;"></canvas>
-  <script>
-  (function(){
-    var canvas=document.getElementById("global-click-spark");
-    var ctx=canvas.getContext("2d");
-    var sparks=[];
-    var dpr=window.devicePixelRatio||1;
-    function resize(){canvas.width=window.innerWidth*dpr;canvas.height=window.innerHeight*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);}
-    resize();
-    window.addEventListener("resize",resize);
-    document.addEventListener("click",function(e){
-      var now=performance.now();
-      for(var i=0;i<10;i++){sparks.push({x:e.clientX,y:e.clientY,angle:(2*Math.PI*i)/10,startTime:now});}
-    });
-    function ease(t){return t*(2-t);}
-    function draw(ts){
-      ctx.clearRect(0,0,window.innerWidth,window.innerHeight);
-      for(var i=sparks.length-1;i>=0;i--){
-        var s=sparks[i],el=ts-s.startTime;
-        if(el>=460){sparks.splice(i,1);continue;}
-        var p=el/460,e=ease(p),d=e*24,ll=12*(1-e);
-        var x1=s.x+d*Math.cos(s.angle),y1=s.y+d*Math.sin(s.angle);
-        var x2=s.x+(d+ll)*Math.cos(s.angle),y2=s.y+(d+ll)*Math.sin(s.angle);
-        ctx.strokeStyle="#ffffff";ctx.lineWidth=2;ctx.lineCap="round";
-        ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();
-      }
-      requestAnimationFrame(draw);
-    }
-    requestAnimationFrame(draw);
-  })();
-  </script>
 
 
   <!-- Sections 4–6: Story / Mission / Vision scrolling panel -->
@@ -1630,7 +1317,6 @@
     var imgTrack = document.getElementById('sk-smv-imgs');
     var track    = document.getElementById('sk-smv-track');
     var cta      = document.getElementById('sk-smv-cta');
-    var arrow    = cta ? cta.querySelector('.sk-smv__cta-arrow') : null;
     var active   = 0;
 
     /* ── Build DOM ── */
@@ -1700,52 +1386,115 @@
       });
     }
 
-    /* ── CTA: entrance reveal ── */
-    if (cta && typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
-      gsap.set(cta, { clipPath: 'inset(0 100% 0 0)' });
-      ScrollTrigger.create({
-        trigger: '#sk-smv',
-        start:   'top 70%',
-        once:    true,
-        onEnter: function () {
-          gsap.to(cta, { clipPath: 'inset(0 0% 0 0)', duration: 0.85, ease: 'expo.out' });
-        }
-      });
-    }
 
-    /* ── CTA: magnetic hover ── */
-    if (cta && typeof gsap !== 'undefined' && !isMobile) {
-      var quickX = gsap.quickTo(cta, 'x', { duration: 0.5, ease: 'power3.out' });
-      var quickY = gsap.quickTo(cta, 'y', { duration: 0.5, ease: 'power3.out' });
 
-      cta.addEventListener('mousemove', function (e) {
-        var r  = cta.getBoundingClientRect();
-        var dx = (e.clientX - (r.left + r.width  / 2)) * 0.32;
-        var dy = (e.clientY - (r.top  + r.height / 2)) * 0.32;
-        quickX(dx); quickY(dy);
-      });
-
-      cta.addEventListener('mouseenter', function () {
-        if (arrow) gsap.to(arrow, { x: 5, duration: 0.35, ease: 'expo.out' });
-      });
-
-      cta.addEventListener('mouseleave', function () {
-        gsap.to(cta, { x: 0, y: 0, duration: 0.9, ease: 'elastic.out(1, 0.38)' });
-        if (arrow) gsap.to(arrow, { x: 0, duration: 0.6, ease: 'elastic.out(1, 0.5)' });
-      });
-
-      cta.addEventListener('mousedown', function () {
-        gsap.to(cta, { scale: 0.95, duration: 0.13, ease: 'power2.out' });
-      });
-      cta.addEventListener('mouseup', function () {
-        gsap.to(cta, { scale: 1, duration: 0.55, ease: 'elastic.out(1, 0.4)' });
-      });
-    }
 
   })();
   </script>
 
 
+
+  <!-- Section 7: Our Principal entrance -->
+  <script>
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var section = document.getElementById('sk-principal');
+    if (!section || typeof gsap === 'undefined') return;
+    var media   = section.querySelector('.sk-principal__media');
+    var panel   = section.querySelector('.sk-principal__panel');
+    var heading = panel.querySelector('.sk-principal__heading');
+    var name    = panel.querySelector('.sk-principal__name');
+    var body    = panel.querySelector('.sk-principal__body');
+    var signoff = panel.querySelector('.sk-principal__signoff');
+    gsap.timeline({
+      scrollTrigger: { trigger: section, start: 'top 78%', toggleActions: 'play none none none' }
+    })
+    .fromTo(media,   { x: -32, opacity: 0 }, { x: 0, opacity: 1, duration: 0.9, ease: 'expo.out' })
+    .fromTo(panel,   { x:  32, opacity: 0 }, { x: 0, opacity: 1, duration: 0.9, ease: 'expo.out' }, '-=0.75')
+    .fromTo(heading, { y: 24,  opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: 'expo.out' }, '-=0.5')
+    .fromTo(name,    { y: 14,  opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: 'expo.out' }, '-=0.4')
+    .fromTo(body,    { y: 20,  opacity: 0 }, { y: 0, opacity: 1, duration: 0.65, ease: 'expo.out' }, '-=0.35')
+    .fromTo(signoff, { y: 12,  opacity: 0 }, { y: 0, opacity: 1, duration: 0.5,  ease: 'expo.out' }, '-=0.3');
+  })();
+  </script>
+
+  <!-- Section 9: Our People Intro entrance -->
+  <script>
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var section = document.getElementById('sk-people-intro');
+    if (!section || typeof gsap === 'undefined') return;
+    var heading = section.querySelector('.sk-people-intro__heading');
+    var script  = section.querySelector('.sk-people-intro__script');
+    var divider = section.querySelector('.sk-people-intro__divider');
+    var body    = section.querySelector('.sk-people-intro__body');
+    gsap.set(divider, { opacity: 0, y: 10 });
+    gsap.timeline({
+      scrollTrigger: { trigger: section, start: 'top 72%', toggleActions: 'play none none none' }
+    })
+    .fromTo(heading, { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 1.05, ease: 'expo.out' })
+    .fromTo(script,  { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7,  ease: 'expo.out' }, '-=0.6')
+    .to(divider,     { opacity: 1, y: 0, duration: 0.55, ease: 'expo.out' }, '-=0.35')
+    .fromTo(body,    { y: 22, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7,  ease: 'expo.out' }, '-=0.3');
+  })();
+  </script>
+
+  <!-- Sections 10-13: Team block parallax -->
+  <script>
+  (function () {
+    var isMobile = window.matchMedia('(max-width: 800px)').matches;
+    if (isMobile) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var wraps = Array.prototype.slice.call(document.querySelectorAll('[data-parallax-img]'));
+    var imgs  = wraps.map(function (w) { return w.querySelector('.sk-team__img'); });
+    if (!wraps.length || typeof gsap === 'undefined') return;
+    gsap.ticker.add(function () {
+      var vh = window.innerHeight;
+      for (var i = 0; i < wraps.length; i++) {
+        var rect = wraps[i].getBoundingClientRect();
+        var progress = (vh - rect.top) / (vh + rect.height);
+        progress = Math.max(0, Math.min(1, progress));
+        var shift = (0.5 - progress) * 30;
+        if (imgs[i]) imgs[i].style.transform = 'translateY(' + shift.toFixed(2) + '%)';
+      }
+    });
+  })();
+  </script>
+
+  <!-- Sections 10-13: Team block content entrance animations -->
+  <script>
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+    var teams = [
+      { id: 'sk-team-foundation', xDir: -1 },
+      { id: 'sk-team-junior',     xDir:  1 },
+      { id: 'sk-team-middle',     xDir: -1 },
+      { id: 'sk-team-senior',     xDir:  1 },
+    ];
+
+    teams.forEach(function (cfg) {
+      var section = document.getElementById(cfg.id);
+      if (!section) return;
+      var content = section.querySelector('.sk-team__content');
+      var level   = content.querySelector('.sk-team__level');
+      var heading = content.querySelector('.sk-team__heading');
+      var body    = content.querySelector('.sk-team__body');
+      var quotes  = content.querySelectorAll('.sk-team__quote');
+      var caption = content.querySelector('.sk-team__caption');
+
+      gsap.timeline({
+        scrollTrigger: { trigger: section, start: 'top 75%', toggleActions: 'play none none none' }
+      })
+      .fromTo(level,   { x: cfg.xDir * 20, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6,  ease: 'expo.out' })
+      .fromTo(heading, { x: cfg.xDir * 32, opacity: 0 }, { x: 0, opacity: 1, duration: 0.85, ease: 'expo.out' }, '-=0.35')
+      .fromTo(body,    { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.65, ease: 'expo.out' }, '-=0.45')
+      .fromTo(quotes,  { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: 'expo.out', stagger: 0.1 }, '-=0.35')
+      .fromTo(caption, { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5,  ease: 'expo.out' }, '-=0.2');
+    });
+  })();
+  </script>
 
 </body>
 </html>

@@ -1,49 +1,80 @@
 # /resume — Session Resume Command
 
-When the developer types `/resume`, do the following exactly:
-
-## 1. Read all context files in order
-
-Read these files silently before saying anything:
-1. `CLAUDE.md` — project brief, tech stack, client, rules
-2. `docs/DESIGN_SYSTEM.md` — brand tokens, components, CSS variables
-3. `docs/CONTENT.md` — all approved copy
-4. `docs/PAGES.md` — section order and layout specs
-5. `PROGRESS.md` — what's been done, what's next
-
-## 2. Scan completed section files
-
-Look inside `site/sections/` and note which files exist to confirm actual completion state matches PROGRESS.md.
-
-## 3. Reply with a crisp briefing — nothing else
-
-Use exactly this format:
+Behaviour depends on how the command is called.
 
 ---
-**Session Resume — St Kevin's Hampton Park**
 
-**Last session:** [date from PROGRESS.md]
-**Completed so far:** [count] sections across [count] pages
+## `/resume [page]` — Resume a specific page
 
-**Done:**
-[bullet list of completed sections with ✅]
+Called as: `/resume about`, `/resume learning`, `/resume community`, `/resume index`, etc.
+
+### 1. Read silently (in order)
+1. `docs/progress-[page].md` — this session's page-specific progress (primary source)
+2. `CLAUDE.md` — project brief and working rules
+3. The relevant page section in `docs/PAGES.md` for that page only
+
+Do not load the master `PROGRESS.md` or other page progress files.
+
+### 2. Reply with this exact format — nothing else
+
+---
+**Resume — [Page Name]**
+
+**Last session:** [date from progress file]
+**Completed so far:** [bullet list with ✅]
 
 **Resume here:**
-- Page: [page name]
 - Section: [number + name]
-- Status: [exact status from PROGRESS.md]
+- Status: [exact status from progress file]
 - Search for: "[exact search terms]"
 
 **Open decisions:** [any unresolved choices, or "None"]
 
-**Ready.** Paste the component code when you find it and I'll build the section.
+**Ready.**
 
 ---
 
-## Rules for this command
-
-- Do not ask any clarifying questions
+### Rules for page resume
+- Do not ask clarifying questions
+- Do not repeat CLAUDE.md back to the developer
 - Do not summarise the entire project history
-- Do not repeat content from CLAUDE.md back at the developer
-- Just brief, confirm ready, and wait for the component code
-- If PROGRESS.md is empty or doesn't exist, say: "No previous progress found. Starting fresh — beginning with Homepage Hero." then announce Section 1 using the standard section announcement format from CLAUDE.md
+- If `docs/progress-[page].md` doesn't exist: say "No progress found for [page]. Starting fresh — announcing Section 1." then announce Section 1 using the standard section announcement format.
+
+---
+
+## `/resume site` — Full site overview
+
+Called as: `/resume site` or `/resume` with no argument.
+
+### 1. Read silently (in order)
+1. `PROGRESS.md` — master progress (primary source)
+2. `CLAUDE.md` — project brief
+
+Do not load individual page progress files.
+
+### 2. Reply with this exact format — nothing else
+
+---
+**Resume — Full Site**
+
+**Last session:** [date from PROGRESS.md]
+
+**Page status:**
+- index.html: [done / in progress at Section X / not started]
+- about.html: [same]
+- learning.html: [same]
+- community.html: [same]
+- enrolments.html: [same]
+- contact.html: [same]
+- policies.html: [same]
+
+**Active pages:** [which pages are currently being worked on, and next section for each]
+
+**Ready.**
+
+---
+
+### Rules for site resume
+- Do not ask clarifying questions
+- Keep it concise — one line per page
+- If PROGRESS.md is empty or doesn't exist: say "No progress found. Starting fresh — beginning with Homepage Hero."
