@@ -1,10 +1,10 @@
 # St Kevin's Hampton Park — CLAUDE.md
 
 > This is the master project brief. Claude Code reads this file automatically at the start of every session.
-> For detailed specs, see the `docs/` folder:
-> - `docs/DESIGN_SYSTEM.md` — Full design tokens, components, do's/don'ts, CSS variables, Tailwind config
-> - `docs/CONTENT.md` — All page copy organised by page and section
-> - `docs/PAGES.md` — Page-by-page section breakdown, component mapping, and build order
+> For detailed specs, see the `_dev/docs/` folder:
+> - `_dev/docs/DESIGN_SYSTEM.md` — Full design tokens, components, do's/don'ts, CSS variables, Tailwind config
+> - `_dev/docs/CONTENT.md` — All page copy organised by page and section
+> - `_dev/docs/PAGES.md` — Page-by-page section breakdown, component mapping, and build order
 
 ---
 
@@ -63,7 +63,7 @@ The site replaces an existing WordPress site. Design is inspired by [Green Schoo
 | Body font | Inter (400–500) |
 | Script accent | Dancing Script (400–700) |
 
-**Full design system with all tokens, components, CSS variables, and Tailwind config → `docs/DESIGN_SYSTEM.md`**
+**Full design system with all tokens, components, CSS variables, and Tailwind config → `_dev/docs/DESIGN_SYSTEM.md`**
 
 ---
 
@@ -72,10 +72,15 @@ The site replaces an existing WordPress site. Design is inspired by [Green Schoo
 ```
 st-kevins/
 ├── CLAUDE.md                    ← This file (project brief)
-├── docs/
-│   ├── DESIGN_SYSTEM.md         ← Design tokens, components, CSS vars
-│   ├── CONTENT.md               ← All page copy
-│   └── PAGES.md                 ← Page sections, components, build order
+├── _dev/                        ← Planning/docs — GitHub only, never deployed
+│   ├── docs/
+│   │   ├── DESIGN_SYSTEM.md     ← Design tokens, components, CSS vars
+│   │   ├── CONTENT.md           ← All page copy
+│   │   └── PAGES.md             ← Page sections, components, build order
+│   ├── source-docs/             ← Original client documents
+│   ├── sample-pictures/         ← Reference images
+│   ├── PROGRESS.md              ← Master session log
+│   └── SECTION_CHECKLIST.md     ← Build status
 ├── site/
 │   ├── index.html               ← Homepage
 │   ├── about.html               ← About Us
@@ -113,9 +118,9 @@ Policies page is linked from footer only, not in main nav.
 
 ## Working Rules
 
-1. **Read `docs/DESIGN_SYSTEM.md` before writing any HTML** — it has exact CSS variables, Tailwind config, component specs, and copy-paste SVG dividers.
-2. **Read `docs/CONTENT.md` for all copy** — never invent placeholder text when real copy exists.
-3. **Read `docs/PAGES.md` for section order** — every page has a defined section sequence. Follow it exactly.
+1. **Read `_dev/docs/DESIGN_SYSTEM.md` before writing any HTML** — it has exact CSS variables, Tailwind config, component specs, and copy-paste SVG dividers.
+2. **Read `_dev/docs/CONTENT.md` for all copy** — never invent placeholder text when real copy exists.
+3. **Read `_dev/docs/PAGES.md` for section order** — every page has a defined section sequence. Follow it exactly.
 4. **Keep everything in one file per page** — HTML, CSS (Tailwind + `<style>` custom), and JS all in the same .html file.
 5. **Never install npm packages** or add a build step.
 6. **Tailwind CDN** for utility classes, `<style>` block for custom properties and component-specific CSS.

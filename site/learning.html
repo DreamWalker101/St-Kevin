@@ -131,10 +131,7 @@
     .is-scrolled    .sk-hamburger span { background: var(--color-deep-navy); }
 
     /* Dual logos */
-    .sk-logo-hero, .sk-logo-sticky {
-      position: absolute; left: 50%; transform: translateX(-50%);
-      display: block; width: auto;
-    }
+    .sk-logo-hero, .sk-logo-sticky { display: block; width: auto; }
     .sk-logo-hero   { height: var(--logo-hero-size, 90px); top: var(--logo-hero-top, 16px); }
     .is-scrolled .sk-logo-hero   { display: none; }
     .sk-logo-sticky { display: none; height: var(--logo-sticky-size, 52px); top: var(--logo-sticky-top, 12px); }
@@ -654,6 +651,86 @@
       .sk-learn__body  { max-width: 100%; }
     }
 
+    /* ── Mobile overrides ── */
+
+    @supports (height: 100dvh) {
+      .sk-hero { min-height: 100dvh; }
+    }
+
+    @media (max-width: 767px) {
+      .sk-hero-content {
+        padding: 100px 20px 100px;
+      }
+
+      .sk-hero-macs img {
+        --logo-macs-size: 68px;
+      }
+      .sk-hero-macs {
+        bottom: 20px;
+        left: 16px;
+      }
+
+      .sk-learn {
+        padding-top: clamp(48px, 8vw, 72px);
+        padding-bottom: clamp(48px, 8vw, 72px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sk-hero-content {
+        padding: 88px 16px 88px;
+      }
+
+      :root {
+        --logo-macs-size: 56px;
+      }
+
+      .sk-hero-macs {
+        bottom: 16px;
+        left: 12px;
+      }
+
+      .sk-hero-scroll {
+        display: none;
+      }
+
+      .sk-learn {
+        padding-top: 48px;
+        padding-bottom: 48px;
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .sk-learn__inner {
+        gap: 32px;
+      }
+
+      .sk-learn__media {
+        max-width: 240px;
+      }
+
+      .sk-intro__rule {
+        margin-bottom: 28px;
+      }
+    }
+
+    @media (max-width: 375px) {
+      .sk-hero-content {
+        padding: 80px 14px 80px;
+      }
+
+      .sk-learn__media {
+        max-width: 200px;
+      }
+
+      .sk-learn__heading {
+        font-size: clamp(20px, 6vw, 28px);
+      }
+
+      .sk-learn__eyebrow {
+        font-size: clamp(15px, 4.5vw, 18px);
+      }
+    }
 
   </style>
 </head>

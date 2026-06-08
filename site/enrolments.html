@@ -1,0 +1,1691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enrolments — St Kevin's Primary School, Hampton Park</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-navy':    '#051E42',
+            'burgundy-red': '#8A2232',
+            'warm-cream':   '#F6F3EE',
+            'cloud-grey':   '#F0EDE5',
+            'border-mist':  '#E2E6EA',
+            'slate-text':   '#6B7280',
+            'navy-tint':    '#0A2D5C',
+            'red-soft':     '#F4E3E6',
+          },
+          fontFamily: {
+            'montserrat': ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            'inter':      ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            'script':     ['Dancing Script', 'cursive'],
+          },
+          maxWidth: { 'content': '1200px' },
+          borderRadius: { 'card': '12px', 'image': '16px' },
+          boxShadow: { 'soft': '0 8px 24px rgba(0, 0, 0, 0.08)' },
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/ScrollTrigger.min.js"></script>
+  <!-- Lenis smooth scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <!-- Shared layout styles -->
+  <link rel="stylesheet" href="css/sk-layout.css">
+
+  <style>
+    :root {
+      --color-deep-navy:    #051E42;
+      --color-burgundy-red: #8A2232;
+      --color-pure-white:   #FFFFFF;
+      --color-warm-cream:   #F6F3EE;
+      --color-cloud-grey:   #F0EDE5;
+      --color-border-mist:  #E2E6EA;
+      --color-slate-text:   #6B7280;
+      --color-navy-tint:    #0A2D5C;
+      --color-red-soft:     #F4E3E6;
+
+      --font-montserrat:     'Montserrat', ui-sans-serif, system-ui, sans-serif;
+      --font-inter:          'Inter', ui-sans-serif, system-ui, sans-serif;
+      --font-dancing-script: 'Dancing Script', cursive;
+
+      --section-padding-desktop: 96px;
+      --section-padding-mobile:  48px;
+      --max-width: 1200px;
+      --radius-buttons: 8px;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-inter);
+      color: var(--color-deep-navy);
+      background: var(--color-warm-cream);
+      overflow-x: hidden;
+      font-kerning: normal;
+      font-optical-sizing: auto;
+    }
+
+    .sk-nav-item.is-active .sk-nav-item-label {
+      color: var(--color-burgundy-red);
+    }
+
+    .sk-hero {
+      position: relative;
+      min-height: 60vh;
+      overflow: hidden;
+      background: var(--color-deep-navy);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .sk-hero--short {
+      min-height: 60vh;
+    }
+
+    .sk-hero-image {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .sk-hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 34%;
+      display: block;
+    }
+
+    .sk-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(5,30,66,0.60);
+      pointer-events: none;
+    }
+
+    .sk-hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 980px;
+      padding: 0 24px 18vh;
+      text-align: center;
+    }
+
+    .sk-hero-h1 {
+      font-family: var(--font-montserrat);
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 800;
+      line-height: 0.98;
+      letter-spacing: -0.02em;
+      color: var(--color-pure-white);
+      margin: 0;
+      text-wrap: balance;
+    }
+
+    .sk-hero-h1 span {
+      display: block;
+    }
+
+    .sk-hero-macs {
+      position: absolute;
+      left: 32px;
+      bottom: 32px;
+      z-index: 2;
+    }
+
+    .sk-hero-macs img {
+      display: block;
+      height: 90px;
+      width: auto;
+    }
+
+    .sk-hero-scroll {
+      position: absolute;
+      left: 50%;
+      bottom: 32px;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .sk-hero-scroll-dot {
+      width: 3px;
+      height: 24px;
+      border-radius: var(--radius-pill, 999px);
+      background: var(--color-deep-navy);
+    }
+
+    .sk-wave-divider {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      display: block;
+    }
+
+    .sk-wave-divider--burg {
+      background: var(--color-warm-cream);
+      height: 126px;
+    }
+
+    .sk-wave-divider--navy {
+      background: var(--color-cloud-grey);
+      height: 120px;
+    }
+
+    .sk-wave-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      transform-origin: top center;
+    }
+
+    .sk-enrol-intro {
+      background: var(--color-warm-cream);
+      padding: var(--section-padding-desktop) 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sk-enrol-intro__inner {
+      max-width: 760px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sk-enrol-intro__deco {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      opacity: 0.72;
+    }
+
+    .sk-enrol-intro__body {
+      font-family: var(--font-inter);
+      font-size: clamp(1.0625rem, 2vw, 1.25rem);
+      line-height: 1.8;
+      color: var(--color-deep-navy);
+      opacity: 0.85;
+      margin: 0 0 64px;
+      text-wrap: pretty;
+    }
+
+    .sk-pathway {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      flex-wrap: wrap;
+      row-gap: 24px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .sk-pathway__step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      flex: 1;
+      min-width: 120px;
+    }
+
+    .sk-pathway__num {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--color-deep-navy);
+      color: var(--color-pure-white);
+      font-family: var(--font-montserrat);
+      font-weight: 700;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 24px rgba(5,30,66,0.12);
+    }
+
+    .sk-pathway > .sk-pathway__step:nth-child(1) .sk-pathway__num,
+    .sk-pathway > .sk-pathway__step:nth-child(5) .sk-pathway__num {
+      background: var(--color-burgundy-red);
+      box-shadow: 0 10px 24px rgba(138,34,50,0.14);
+    }
+
+    .sk-pathway__label {
+      font-family: var(--font-montserrat);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--color-deep-navy);
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .sk-pathway__arrow {
+      color: var(--color-burgundy-red);
+      font-size: 22px;
+      padding: 0 4px;
+      margin-top: -24px;
+      flex-shrink: 0;
+    }
+
+    .sk-enrol-step {
+      padding: var(--section-padding-desktop) 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sk-enrol-step--grey { background: var(--color-cloud-grey); }
+    .sk-enrol-step--cream { background: var(--color-warm-cream); }
+
+    .sk-enrol-step__deco {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .sk-enrol-step__deco svg {
+      position: absolute;
+      width: min(52vw, 560px);
+      height: auto;
+      right: max(-160px, -9vw);
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.72;
+    }
+
+    .sk-enrol-step--cream .sk-enrol-step__deco svg {
+      left: max(-160px, -9vw);
+      right: auto;
+      transform: translateY(-50%) scaleX(-1);
+    }
+
+    .sk-enrol-step__card {
+      max-width: 760px;
+      margin: 0 auto;
+      background: var(--color-pure-white);
+      border: 1px solid var(--color-border-mist);
+      border-radius: 12px;
+      padding: 48px;
+      box-shadow: 0 18px 54px rgba(5,30,66,0.09);
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+    }
+
+    .sk-enrol-step__card::before {
+      content: '';
+      position: absolute;
+      inset: 0 0 auto;
+      height: 5px;
+      background: linear-gradient(90deg, var(--color-burgundy-red), var(--color-deep-navy));
+    }
+
+    .sk-enrol-step__label {
+      display: inline-flex;
+      align-items: center;
+      min-height: 28px;
+      padding: 0 11px;
+      border-radius: 999px;
+      background: var(--color-red-soft);
+      font-family: var(--font-montserrat);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-burgundy-red);
+      margin: 0 0 16px;
+    }
+
+    .sk-enrol-step__heading {
+      font-family: var(--font-montserrat);
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--color-deep-navy);
+      margin: 0 0 20px;
+      text-wrap: balance;
+    }
+
+    .sk-enrol-step__body {
+      font-family: var(--font-inter);
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--color-deep-navy);
+      opacity: 0.82;
+      margin: 0 0 12px;
+      text-wrap: pretty;
+    }
+
+    .sk-enrol-step__dates {
+      font-family: var(--font-inter);
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--color-slate-text);
+      margin: 0 0 32px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .sk-enrol-step__actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .sk-btn-wipe {
+      --btn-color: #051E42;
+      --btn-color-active: #0A2D5C;
+      font-family: var(--font-montserrat);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      min-height: 44px;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      border: 1.5px solid var(--btn-color);
+      border-radius: var(--radius-buttons);
+      transition: color 0.28s, transform 0.12s cubic-bezier(0.16,1,0.3,1);
+      z-index: 1;
+      color: var(--btn-color);
+      background: transparent;
+      text-decoration: none;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .sk-btn-wipe:active { transform: scale(0.96); }
+    .sk-btn-wipe::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      background: var(--btn-color);
+      height: 220px;
+      width: max(280px, calc(100% + 110px));
+      border-radius: 50%;
+      top: 100%;
+      left: 100%;
+      transition: top 0.58s cubic-bezier(0.23, 1, 0.32, 1),
+                  left 0.58s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    .sk-btn-wipe:hover { color: var(--color-pure-white); }
+    .sk-btn-wipe:hover::before { top: -88px; left: -55px; }
+    .sk-btn-wipe:active::before {
+      background: var(--btn-color-active);
+      transition: background 0s;
+    }
+
+    .sk-btn-wipe:focus-visible {
+      outline: 3px solid rgba(138,34,50,0.35);
+      outline-offset: 3px;
+    }
+
+    .sk-btn-wipe--accent {
+      --btn-color: #8A2232;
+      --btn-color-active: #6d1a27;
+    }
+
+    .sk-btn-wipe--light {
+      --btn-color: #FFFFFF;
+      --btn-color-active: rgba(255,255,255,0.88);
+      color: #FFFFFF;
+      border-color: rgba(255,255,255,0.45);
+    }
+    .sk-btn-wipe--light:hover { color: var(--color-deep-navy); }
+
+    .sk-pillar {
+      background: var(--color-warm-cream);
+      padding: var(--section-padding-desktop) 24px;
+      overflow: hidden;
+    }
+
+    .sk-pillar__wrap {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 0.88fr) minmax(0, 1fr);
+      gap: clamp(44px, 7vw, 96px);
+      align-items: center;
+    }
+
+    .sk-pillar__text { max-width: 520px; }
+
+    .sk-pillar__heading {
+      font-family: var(--font-montserrat);
+      font-size: clamp(2rem, 3.2vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--color-deep-navy);
+      line-height: 1.12;
+      margin: 0 0 22px;
+      text-wrap: balance;
+    }
+
+    .sk-pillar__body {
+      font-family: var(--font-inter);
+      font-size: clamp(1rem, 1.22vw, 1.075rem);
+      line-height: 1.8;
+      color: var(--color-deep-navy);
+      opacity: 0.84;
+      margin: 0 0 26px;
+      text-wrap: pretty;
+    }
+
+    .sk-pillar__tagline {
+      display: block;
+      font-family: var(--font-dancing-script);
+      font-size: clamp(1.45rem, 2.7vw, 2rem);
+      color: var(--color-burgundy-red);
+      line-height: 1.35;
+      font-style: italic;
+    }
+
+    .sk-pillar__media {
+      margin: 0;
+      min-width: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .sk-pillar__circle {
+      width: min(118%, 690px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow: var(--shadow-soft, 0 8px 24px rgba(0,0,0,0.08));
+      flex-shrink: 0;
+    }
+
+    .sk-pillar__img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 50%;
+      transform: scale(1.01);
+    }
+
+    .sk-enrol-closing {
+      padding: 60px clamp(16px, 3vw, 48px) 80px;
+      background: var(--color-warm-cream);
+    }
+
+    .sk-enrol-closing__card {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: var(--color-deep-navy);
+      border-radius: 20px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 460px;
+    }
+
+    .sk-enrol-closing__text {
+      padding: clamp(48px, 6vw, 88px) clamp(36px, 5vw, 72px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .sk-enrol-closing__label {
+      font-family: var(--font-dancing-script);
+      color: rgba(255,255,255,0.65);
+      font-size: clamp(18px, 2vw, 22px);
+      display: block;
+      margin: 0 0 16px;
+      font-style: italic;
+    }
+
+    .sk-enrol-closing__heading {
+      font-family: var(--font-montserrat);
+      font-weight: 800;
+      font-size: clamp(2rem, 4.5vw, 3.25rem);
+      letter-spacing: -0.02em;
+      line-height: 1.08;
+      color: var(--color-pure-white);
+      margin: 0 0 20px;
+      text-wrap: balance;
+    }
+
+    .sk-enrol-closing__body {
+      font-family: var(--font-inter);
+      font-size: clamp(1rem, 1.4vw, 1.0625rem);
+      line-height: 1.78;
+      color: rgba(255,255,255,0.72);
+      margin: 0 0 36px;
+      max-width: 46ch;
+      text-wrap: pretty;
+    }
+
+    .sk-enrol-closing__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      margin-bottom: 28px;
+    }
+
+    .sk-enrol-closing__tagline {
+      font-family: var(--font-dancing-script);
+      font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+      color: rgba(255,255,255,0.5);
+      font-style: italic;
+      display: block;
+    }
+
+    .sk-enrol-closing__visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 55% 50%, #0A2D5C 0%, #051E42 68%);
+    }
+
+    .sk-enrol-closing__deco {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+
+    .sk-enrol-closing__circle-img {
+      position: relative;
+      z-index: 1;
+      width: clamp(190px, 25vw, 270px);
+      height: clamp(190px, 25vw, 270px);
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 12px rgba(255,255,255,0.08),
+        0 0 0 26px rgba(255,255,255,0.045),
+        0 28px 56px rgba(0,0,0,0.4);
+      flex-shrink: 0;
+    }
+
+    .sk-enrol-closing__circle-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+    }
+
+        #global-click-spark {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      mix-blend-mode: difference;
+      z-index: 9999;
+    }
+
+    @media (max-width: 768px) {
+      .sk-hero {
+        min-height: 60vh;
+      }
+
+      .sk-hero-content {
+        padding: 0 24px 22vh;
+      }
+
+      .sk-hero-h1 {
+        max-width: 100%;
+        margin: 0 auto;
+        font-size: clamp(2rem, 10vw, 2.65rem);
+        line-height: 1.02;
+        overflow-wrap: break-word;
+        word-break: normal;
+        white-space: normal;
+      }
+
+      .sk-hero-macs {
+        left: 20px;
+        bottom: 24px;
+      }
+
+      .sk-hero-macs img {
+        height: 64px;
+      }
+
+      .sk-enrol-intro,
+      .sk-enrol-step,
+      .sk-pillar,
+      .sk-enrol-closing {
+        padding: var(--section-padding-mobile) 16px;
+      }
+
+      .sk-enrol-intro__inner,
+      .sk-enrol-step__card,
+      .sk-pillar__text {
+        max-width: 18rem;
+      }
+
+      .sk-enrol-closing__card {
+        grid-template-columns: 1fr;
+      }
+
+      .sk-enrol-closing__text {
+        padding: 52px 28px 44px;
+        order: 2;
+      }
+
+      .sk-enrol-closing__visual {
+        order: 1;
+        min-height: 240px;
+      }
+
+      .sk-enrol-closing__circle-img {
+        width: 160px;
+        height: 160px;
+      }
+
+      .sk-enrol-intro__body {
+        font-size: 1rem;
+        margin-bottom: 44px;
+      }
+
+      .sk-pathway {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 14px;
+      }
+
+      .sk-pathway__arrow {
+        transform: rotate(90deg);
+        margin: 0;
+      }
+
+      .sk-enrol-step__card {
+        padding: 32px 24px;
+      }
+
+      .sk-enrol-step__actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .sk-enrol-step__deco svg {
+        width: 420px;
+        right: -260px;
+      }
+
+      .sk-enrol-step--cream .sk-enrol-step__deco svg {
+        left: -260px;
+      }
+
+      .sk-btn-wipe {
+        width: 100%;
+        white-space: normal;
+        text-align: center;
+      }
+
+      .sk-pillar__wrap {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .sk-pillar__text {
+        width: 100%;
+        margin: 0 auto;
+      }
+
+      .sk-pillar__heading {
+        font-size: clamp(1.55rem, 7.2vw, 1.85rem);
+      }
+
+      .sk-pillar__body {
+        font-size: 1rem;
+      }
+
+      .sk-pillar__circle {
+        width: min(100%, 420px);
+      }
+    }
+
+    /* ── Character-by-character heading reveal ── */
+    .scroll-text-word {
+      display: inline-flex;
+      overflow: hidden;
+      vertical-align: bottom;
+    }
+    .scroll-text-char {
+      display: inline-block;
+      transform: translateY(108%);
+      opacity: 0;
+      transition:
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity   0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      transition-delay: calc(var(--char-index, 0) * 28ms);
+      will-change: transform, opacity;
+    }
+    .scroll-text-reveal.is-visible .scroll-text-char {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-text-char {
+        transition: none !important;
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+      }
+    }
+
+    /* iOS Safari: use dynamic viewport height for hero */
+    @supports (min-height: 100dvh) {
+      .sk-hero,
+      .sk-hero--short {
+        min-height: 60dvh;
+      }
+    }
+
+    /* ── Small phone overrides (≤480px) ── */
+    @media (max-width: 480px) {
+      /* Undo the overly-narrow 18rem cap set at ≤768px */
+      .sk-enrol-intro__inner,
+      .sk-enrol-step__card,
+      .sk-pillar__text {
+        max-width: 100%;
+      }
+
+      /* Reduce hero bottom padding so h1 isn't pushed too high */
+      .sk-hero-content {
+        padding: 0 20px 18vh;
+      }
+
+      /* Closing card: remove min-height that forces excessive height in 1-col layout */
+      .sk-enrol-closing__card {
+        min-height: unset;
+      }
+
+      /* Closing CTA buttons: stack to column, full-width touch targets */
+      .sk-enrol-closing__buttons {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .sk-enrol-closing__buttons .sk-btn-wipe {
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Closing text panel: tighten horizontal padding at small widths */
+      .sk-enrol-closing__text {
+        padding: 40px 20px 36px;
+      }
+    }
+
+    /* ── Very small phone overrides (≤375px) ── */
+    @media (max-width: 375px) {
+      /* Further reduce hero bottom padding on 320–375px devices */
+      .sk-hero-content {
+        padding: 0 16px 15vh;
+      }
+
+      /* Tighten card padding so content isn't cramped */
+      .sk-enrol-step__card {
+        padding: 24px 16px;
+      }
+
+      /* Reduce intro section side padding to match card */
+      .sk-enrol-intro {
+        padding: var(--section-padding-mobile) 12px;
+      }
+
+      /* Pathway steps: allow step labels to wrap rather than overflow */
+      .sk-pathway__step {
+        min-width: 80px;
+      }
+
+      .sk-pathway__label {
+        font-size: 11px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .sk-pathway { flex-direction: row; flex-wrap: nowrap; gap: 0; row-gap: 0; padding: 0 4px; }
+      .sk-pathway__step { min-width: 0; flex: 1; gap: 6px; }
+      .sk-pathway__num { width: 40px; height: 40px; font-size: 14px; }
+      .sk-pathway__label { font-size: 10px; letter-spacing: 0.02em; }
+      .sk-pathway__arrow { transform: none; margin: 0; margin-top: -14px; font-size: 14px; padding: 0 2px; flex-shrink: 0; }
+    }
+
+    @media (max-width: 767px) {
+      .sk-wave-divider--burg,
+      .sk-wave-divider--navy,
+      .sk-wave-divider--cream { height: 72px; }
+    }
+    @media (max-width: 480px) {
+      .sk-wave-divider--burg,
+      .sk-wave-divider--navy,
+      .sk-wave-divider--cream { height: 60px; }
+    }
+
+    /* ── Transition to School — deco & shadow lift ── */
+    @keyframes skAccentUp {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-14px); }
+    }
+    @keyframes skAccentDown {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(12px); }
+    }
+    @keyframes skAccentSpin {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50%       { transform: translateY(-10px) rotate(20deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .sk-accent { animation: none !important; }
+    }
+
+    .sk-accent { position: absolute; pointer-events: none; }
+
+    .sk-pillar__deco {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .sk-pillar__deco > svg { position: absolute; }
+    @media (max-width: 768px) {
+      .sk-pillar__deco { display: none; }
+    }
+
+    #sk-transition-school { position: relative; overflow: hidden; }
+
+    #sk-transition-school .sk-pillar__media { position: relative; }
+
+    #sk-transition-school .sk-pillar__media::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: min(118%, 690px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: rgba(138,34,50,0.18);
+      transform: translate(calc(-50% + 20px), calc(-50% + 16px)) scale(1.12);
+      filter: blur(22px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    #sk-transition-school .sk-pillar__circle {
+      position: relative;
+      z-index: 1;
+      box-shadow:
+        0 2px 4px rgba(5,30,66,0.05),
+        0 10px 28px rgba(5,30,66,0.11),
+        0 32px 56px rgba(5,30,66,0.09);
+    }
+
+    .sk-pillar__accent {
+      display: block;
+      width: 36px;
+      height: 3px;
+      background: var(--color-burgundy-red);
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header class="sk-header is-transparent" id="sk-header">
+    <button class="sk-hamburger" id="sk-hamburger-btn" aria-label="Open navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html" class="sk-header__logo-link" aria-label="St Kevin's Primary School — Home">
+      <img id="sk-logo-hero" src="images/logo-sk-white.png" alt="St Kevin's Primary School, Hampton Park" class="sk-logo-hero">
+      <img id="sk-logo-sticky" src="images/logo-sk-colour.png" alt="" class="sk-logo-sticky" aria-hidden="true">
+    </a>
+    <button class="sk-search-btn" id="sk-search-btn" aria-label="Search site" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="9.5" cy="9.5" r="7"/><line x1="14.5" y1="14.5" x2="21" y2="21"/>
+      </svg>
+    </button>
+  </header>
+
+  <div class="sk-search-panel" id="sk-search-panel" role="search" aria-label="Site search">
+    <div class="sk-search-inner">
+      <form class="sk-search-form" id="sk-search-form" autocomplete="off">
+        <span class="sk-search-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 22 22" fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9.5" cy="9.5" r="7"/><line x1="14.5" y1="14.5" x2="21" y2="21"/>
+          </svg>
+        </span>
+        <input type="search" class="sk-search-input" id="sk-search-input" placeholder="Search St Kevin's..." aria-label="Search">
+        <button type="submit" class="sk-search-submit">Search</button>
+      </form>
+      <button class="sk-search-close-btn" id="sk-search-close-btn" aria-label="Close search">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="2" y1="2" x2="16" y2="16"/><line x1="16" y1="2" x2="2" y2="16"/>
+        </svg>
+      </button>
+    </div>
+    <div class="sk-search-results" id="sk-search-results" aria-live="polite"></div>
+  </div>
+
+  <div class="sk-nav-backdrop" id="sk-nav-backdrop"></div>
+
+  <nav class="sk-nav-sidebar" id="sk-nav-sidebar" aria-label="Site navigation">
+    <div class="sk-sidebar-content">
+      <div class="sk-sidebar-header">
+        <button class="sk-sidebar-close" id="sk-sidebar-close" aria-label="Close navigation">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <line x1="2" y1="2" x2="14" y2="14"/><line x1="14" y1="2" x2="2" y2="14"/>
+          </svg>
+        </button>
+        <img src="images/logo-sk-macs-combined.png" alt="St Kevin's Primary School, Hampton Park" class="sk-sidebar-logo">
+      </div>
+      <div class="sk-sidebar-nav" aria-label="Primary navigation">
+        <a href="about.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">About Us</span>
+          <span class="sk-nav-arrow" aria-hidden="true"><span class="sk-nav-arrow-line"></span><span class="sk-nav-arrow-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg></span></span>
+        </a>
+        <a href="learning.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">Learning</span>
+          <span class="sk-nav-arrow" aria-hidden="true"><span class="sk-nav-arrow-line"></span><span class="sk-nav-arrow-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg></span></span>
+        </a>
+        <a href="community.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">Community</span>
+          <span class="sk-nav-arrow" aria-hidden="true"><span class="sk-nav-arrow-line"></span><span class="sk-nav-arrow-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg></span></span>
+        </a>
+        <a href="enrolments.html" class="sk-nav-item is-active" aria-current="page">
+          <span class="sk-nav-item-label">Enrolments</span>
+          <span class="sk-nav-arrow" aria-hidden="true"><span class="sk-nav-arrow-line"></span><span class="sk-nav-arrow-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg></span></span>
+        </a>
+        <a href="contact.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">Contact</span>
+          <span class="sk-nav-arrow" aria-hidden="true"><span class="sk-nav-arrow-line"></span><span class="sk-nav-arrow-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg></span></span>
+        </a>
+        <a href="policies.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">Policies</span>
+          <span class="sk-nav-arrow" aria-hidden="true"><span class="sk-nav-arrow-line"></span><span class="sk-nav-arrow-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg></span></span>
+        </a>
+      </div>
+      <div class="sk-sidebar-footer">
+        <div class="sk-sidebar-socials">
+          <a href="tel:0397098600" class="sk-social-btn sk-social-btn--phone" aria-label="Call us: (03) 9709 8600">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 5.5 5.5l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </a>
+          <a href="mailto:administration@skhamptonpark.catholic.edu.au" class="sk-social-btn sk-social-btn--mail" aria-label="Email us">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect class="env-body" x="2" y="4" width="20" height="16" rx="2"/>
+              <polyline class="env-flap" points="22,6 12,13 2,6"/>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/skhamptonpark" class="sk-social-btn sk-social-btn--fb" aria-label="Find us on Facebook" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="sk-sidebar-image" aria-hidden="true">
+      <div class="sk-sidebar-image-frame">
+        <img src="images/samples/cosmos_1616537391.jpeg" alt="" loading="eager">
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="sk-hero sk-hero--short" id="sk-hero" aria-label="Enrolments hero">
+      <div class="sk-hero-image" aria-hidden="true">
+        <img src="images/samples/cosmos_1616537391.jpeg" alt="">
+      </div>
+      <div class="sk-hero-overlay" aria-hidden="true"></div>
+      <div class="sk-hero-content">
+        <h1 class="sk-hero-h1"><span class="scroll-text-reveal" data-text="Join Our">Join Our</span><span class="scroll-text-reveal" data-text="Community">Community</span></h1>
+      </div>
+      <div class="sk-hero-macs" aria-hidden="true">
+        <img src="images/macs-logo-white.png" alt="">
+      </div>
+    </section>
+
+    <div class="sk-wave-divider sk-wave-divider--burg" id="sk-wave-divider-2" aria-hidden="true">
+      <svg class="sk-wave-svg" viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path id="sk-wave-path-2" d="M 0 0 L 1440 0 L 1440 14 C 1080 22 360 76 0 88 Z" fill="#8A2232"/>
+      </svg>
+    </div>
+
+    <section class="sk-enrol-intro" id="sk-enrol-intro" aria-label="Enrolment pathway">
+      <svg class="sk-enrol-intro__deco" viewBox="0 0 1200 420" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="104" cy="88" r="2.6" fill="#051E42" opacity="0.12"/>
+        <circle cx="136" cy="88" r="2.6" fill="#051E42" opacity="0.12"/>
+        <circle cx="168" cy="88" r="2.6" fill="#051E42" opacity="0.12"/>
+        <circle cx="104" cy="120" r="2.6" fill="#051E42" opacity="0.09"/>
+        <circle cx="136" cy="120" r="2.6" fill="#051E42" opacity="0.09"/>
+        <circle cx="168" cy="120" r="2.6" fill="#051E42" opacity="0.09"/>
+        <circle cx="1018" cy="118" r="118" stroke="#051E42" stroke-width="1.1" opacity="0.08"/>
+        <circle cx="1018" cy="118" r="74" stroke="#8A2232" stroke-width="1" opacity="0.12"/>
+        <circle cx="1084" cy="286" r="5" fill="#8A2232" opacity="0.32"/>
+        <circle cx="956" cy="326" r="3.5" fill="#051E42" opacity="0.22"/>
+      </svg>
+      <div class="sk-enrol-intro__inner">
+        <p class="sk-enrol-intro__body">Choosing a school is an important decision for every family. We would love to welcome you to St Kevin's and help you discover what makes our community special.</p>
+        <ol class="sk-pathway" aria-label="Enrolment pathway steps">
+          <li class="sk-pathway__step"><span class="sk-pathway__num">1</span><span class="sk-pathway__label">Visit</span></li>
+          <li class="sk-pathway__arrow" aria-hidden="true">→</li>
+          <li class="sk-pathway__step"><span class="sk-pathway__num">2</span><span class="sk-pathway__label">Enquire</span></li>
+          <li class="sk-pathway__arrow" aria-hidden="true">→</li>
+          <li class="sk-pathway__step"><span class="sk-pathway__num">3</span><span class="sk-pathway__label">Enrol</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="sk-enrol-step sk-enrol-step--grey" id="sk-visit-us" aria-label="Visit Us">
+      <div class="sk-enrol-step__deco" aria-hidden="true">
+        <svg viewBox="0 0 560 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="280" cy="280" r="230" stroke="#051E42" stroke-width="1.2" opacity="0.10"/>
+          <circle cx="280" cy="280" r="156" stroke="#8A2232" stroke-width="1" opacity="0.16"/>
+          <circle cx="280" cy="280" r="82" stroke="#051E42" stroke-width="0.8" opacity="0.08"/>
+          <circle cx="430" cy="124" r="5" fill="#8A2232" opacity="0.38"/>
+          <circle cx="112" cy="368" r="4" fill="#051E42" opacity="0.20"/>
+        </svg>
+      </div>
+      <article class="sk-enrol-step__card">
+        <p class="sk-enrol-step__label">Step 1</p>
+        <h2 class="sk-enrol-step__heading"><span class="scroll-text-reveal" data-text="Visit Us">Visit Us</span></h2>
+        <p class="sk-enrol-step__body">The best way to experience St Kevin's is to visit. Throughout the year we offer school tours and open days where families can see learning in action and explore our school.</p>
+        <ul class="sk-enrol-step__dates" aria-label="Upcoming opportunities">
+          <li>Open Days — March 18, April 1, April 29, May 13</li>
+          <li>School Tours — Most Wednesdays at 9:30am</li>
+        </ul>
+        <div class="sk-enrol-step__actions">
+          <a class="sk-btn-wipe sk-btn-wipe--accent" href="#">Book a School Tour</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="sk-enrol-step sk-enrol-step--cream" id="sk-start-conversation" aria-label="Start the Conversation">
+      <div class="sk-enrol-step__deco" aria-hidden="true">
+        <svg viewBox="0 0 560 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="280" cy="280" r="230" stroke="#051E42" stroke-width="1.2" opacity="0.10"/>
+          <circle cx="280" cy="280" r="156" stroke="#8A2232" stroke-width="1" opacity="0.16"/>
+          <circle cx="280" cy="280" r="82" stroke="#051E42" stroke-width="0.8" opacity="0.08"/>
+          <circle cx="430" cy="124" r="5" fill="#8A2232" opacity="0.38"/>
+          <circle cx="112" cy="368" r="4" fill="#051E42" opacity="0.20"/>
+        </svg>
+      </div>
+      <article class="sk-enrol-step__card">
+        <p class="sk-enrol-step__label">Step 2</p>
+        <h2 class="sk-enrol-step__heading"><span class="scroll-text-reveal" data-text="Start the Conversation">Start the Conversation</span></h2>
+        <p class="sk-enrol-step__body">If you would like to learn more about St Kevin's, we invite you to get in touch. Our team is always happy to answer questions and provide further information about our school.</p>
+        <div class="sk-enrol-step__actions">
+          <a class="sk-btn-wipe sk-btn-wipe--accent" href="#">Enrolment Enquiry</a>
+          <a class="sk-btn-wipe" href="#">Request a Prospectus</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="sk-enrol-step sk-enrol-step--grey" id="sk-enrol-process" aria-label="The Enrolment Process">
+      <div class="sk-enrol-step__deco" aria-hidden="true">
+        <svg viewBox="0 0 560 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="280" cy="280" r="230" stroke="#051E42" stroke-width="1.2" opacity="0.10"/>
+          <circle cx="280" cy="280" r="156" stroke="#8A2232" stroke-width="1" opacity="0.16"/>
+          <circle cx="280" cy="280" r="82" stroke="#051E42" stroke-width="0.8" opacity="0.08"/>
+          <circle cx="430" cy="124" r="5" fill="#8A2232" opacity="0.38"/>
+          <circle cx="112" cy="368" r="4" fill="#051E42" opacity="0.20"/>
+        </svg>
+      </div>
+      <article class="sk-enrol-step__card">
+        <p class="sk-enrol-step__label">Step 3</p>
+        <h2 class="sk-enrol-step__heading"><span class="scroll-text-reveal" data-text="The Enrolment Process">The Enrolment Process</span></h2>
+        <p class="sk-enrol-step__body">When you are ready to apply, you can complete our enrolment form online. Once submitted, our office team will guide you through the next steps of the enrolment process.</p>
+        <div class="sk-enrol-step__actions">
+          <a class="sk-btn-wipe sk-btn-wipe--accent" href="#">Begin Enrolment Application</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="sk-pillar" id="sk-transition-school" aria-label="Transition to School">
+      <div class="sk-pillar__deco" aria-hidden="true">
+        <!-- top-right: concentric rings -->
+        <svg class="sk-accent" style="top: 8%; right: 3%; animation: skAccentDown 9s ease-in-out infinite;" width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="15" stroke="rgba(5,30,66,0.08)" stroke-width="1.5"/>
+          <circle cx="18" cy="18" r="8"  stroke="rgba(5,30,66,0.11)" stroke-width="1.5"/>
+          <circle cx="18" cy="18" r="2.5" fill="rgba(138,34,50,0.16)"/>
+        </svg>
+        <!-- bottom-left: dot grid -->
+        <svg class="sk-accent" style="bottom: 10%; left: 2%; animation: skAccentUp 11s ease-in-out infinite 2s;" width="46" height="46" viewBox="0 0 46 46" fill="none">
+          <circle cx="6"  cy="6"  r="2.8" fill="rgba(5,30,66,0.10)"/>
+          <circle cx="23" cy="6"  r="2.8" fill="rgba(5,30,66,0.10)"/>
+          <circle cx="40" cy="6"  r="2.8" fill="rgba(5,30,66,0.10)"/>
+          <circle cx="6"  cy="23" r="2.8" fill="rgba(5,30,66,0.07)"/>
+          <circle cx="23" cy="23" r="2.8" fill="rgba(5,30,66,0.07)"/>
+          <circle cx="40" cy="23" r="2.8" fill="rgba(5,30,66,0.07)"/>
+          <circle cx="6"  cy="40" r="2.8" fill="rgba(5,30,66,0.04)"/>
+          <circle cx="23" cy="40" r="2.8" fill="rgba(5,30,66,0.04)"/>
+          <circle cx="40" cy="40" r="2.8" fill="rgba(5,30,66,0.04)"/>
+        </svg>
+        <!-- top-left: diamond -->
+        <svg class="sk-accent" style="top: 14%; left: 2%; animation: skAccentUp 13s ease-in-out infinite 4s;" width="30" height="30" viewBox="0 0 30 30" fill="none">
+          <path d="M15 2 L28 15 L15 28 L2 15 Z" stroke="rgba(138,34,50,0.14)" stroke-width="1.5"/>
+        </svg>
+        <!-- mid-right: asterisk -->
+        <svg class="sk-accent" style="top: 50%; right: 2%; animation: skAccentSpin 14s ease-in-out infinite 1.5s;" width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <line x1="20" y1="4"  x2="20" y2="36" stroke="rgba(5,30,66,0.11)" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="4"  y1="12" x2="36" y2="28" stroke="rgba(5,30,66,0.11)" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="36" y1="12" x2="4"  y2="28" stroke="rgba(5,30,66,0.11)" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="sk-pillar__wrap">
+        <article class="sk-pillar__text">
+          <span class="sk-pillar__accent" aria-hidden="true"></span>
+          <h2 class="sk-pillar__heading"><span class="scroll-text-reveal" data-text="Transition to School">Transition to School</span></h2>
+          <p class="sk-pillar__body">Starting school is an exciting milestone for every child. Our transition program, which runs across three mornings over three weeks in November, helps children become familiar with the school, meet their teachers and begin forming friendships before their first day.</p>
+          <span class="sk-pillar__tagline">A warm welcome before day one.</span>
+        </article>
+        <figure class="sk-pillar__media">
+          <div class="sk-pillar__circle">
+            <img class="sk-pillar__img" src="images/samples/cosmos_226684284.jpeg" alt="Children collaborating on a classroom floor activity" loading="lazy">
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <section class="sk-enrol-closing" id="sk-every-child-known" aria-label="Every Child Known">
+      <div class="sk-enrol-closing__card">
+        <div class="sk-enrol-closing__text">
+          <span class="sk-enrol-closing__label">Every child known</span>
+          <h2 class="sk-enrol-closing__heading"><span class="scroll-text-reveal" data-text="Begin Your Journey Here">Begin Your<br>Journey Here</span></h2>
+          <p class="sk-enrol-closing__body">At St Kevin's every child is known, supported and encouraged to flourish. We look forward to welcoming your family into our community.</p>
+          <div class="sk-enrol-closing__buttons">
+            <a class="sk-btn-wipe sk-btn-wipe--accent" href="#">Book a School Tour</a>
+            <a class="sk-btn-wipe sk-btn-wipe--light" href="contact.html">Enquire Now</a>
+          </div>
+          <span class="sk-enrol-closing__tagline">Come and discover St Kevin's.</span>
+        </div>
+        <div class="sk-enrol-closing__visual" aria-hidden="true">
+          <svg class="sk-enrol-closing__deco" viewBox="0 0 500 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="250" cy="240" r="175" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+            <circle cx="250" cy="240" r="128" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+            <circle cx="88"  cy="96"  r="5"   fill="rgba(255,255,255,0.22)"/>
+            <circle cx="134" cy="46"  r="3"   fill="rgba(255,255,255,0.15)"/>
+            <circle cx="410" cy="120" r="4.5" fill="rgba(255,255,255,0.18)"/>
+            <circle cx="448" cy="360" r="3.5" fill="rgba(255,255,255,0.13)"/>
+            <circle cx="62"  cy="380" r="4"   fill="rgba(255,255,255,0.16)"/>
+            <circle cx="380" cy="430" r="2.5" fill="rgba(255,255,255,0.12)"/>
+            <circle cx="390" cy="80"  r="5.5" fill="#8A2232" opacity="0.65"/>
+            <circle cx="60"  cy="290" r="4"   fill="#8A2232" opacity="0.55"/>
+            <circle cx="290" cy="448" r="3.5" fill="#8A2232" opacity="0.5"/>
+            <rect x="430" y="194" width="14" height="3"  rx="1.5" fill="rgba(255,255,255,0.35)"/>
+            <rect x="435" y="189" width="3"  height="14" rx="1.5" fill="rgba(255,255,255,0.35)"/>
+            <rect x="52"  y="310" width="12" height="3"  rx="1.5" fill="#8A2232" opacity="0.6"/>
+            <rect x="57"  y="305" width="3"  height="12" rx="1.5" fill="#8A2232" opacity="0.6"/>
+            <line x1="302" y1="52"  x2="302" y2="76"  stroke="rgba(255,255,255,0.28)" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="292" y1="58"  x2="312" y2="70"  stroke="rgba(255,255,255,0.28)" stroke-width="1.8" stroke-linecap="round"/>
+            <line x1="292" y1="70"  x2="312" y2="58"  stroke="rgba(255,255,255,0.28)" stroke-width="1.8" stroke-linecap="round"/>
+            <rect x="414" y="302" width="9" height="9" rx="1" fill="rgba(255,255,255,0.18)" transform="rotate(45 418.5 306.5)"/>
+            <path d="M 48 420 Q 80 390 110 420" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+          </svg>
+          <div class="sk-enrol-closing__circle-img">
+            <img src="images/samples/cosmos_1616537391.jpeg" alt="" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="sk-footer" id="sk-footer" aria-label="Site footer">
+    <svg class="sk-footer__deco" viewBox="0 0 1440 560" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="64" cy="72" r="2.8" fill="rgba(255,255,255,0.04)"/>
+      <circle cx="96" cy="72" r="2.8" fill="rgba(255,255,255,0.04)"/>
+      <circle cx="128" cy="72" r="2.8" fill="rgba(255,255,255,0.04)"/>
+      <circle cx="1312" cy="444" r="2.4" fill="rgba(255,255,255,0.033)"/>
+      <circle cx="1344" cy="444" r="2.4" fill="rgba(255,255,255,0.033)"/>
+      <circle cx="1376" cy="444" r="2.4" fill="rgba(255,255,255,0.033)"/>
+      <circle cx="1420" cy="88" r="5" fill="#8A2232" opacity="0.22"/>
+      <circle cx="38" cy="480" r="4" fill="#8A2232" opacity="0.18"/>
+      <path d="M 1298 530 Q 1350 502 1402 530" stroke="rgba(255,255,255,0.055)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    </svg>
+    <div class="sk-footer__inner">
+      <p class="sk-footer__tagline">A community where every child is known, supported and inspired to flourish</p>
+      <div class="sk-footer__rule" aria-hidden="true"></div>
+      <div class="sk-footer__logos">
+        <a href="https://www.macs.edu.au" class="sk-footer__logo-link" aria-label="Melbourne Archdiocese Catholic Schools — opens in new tab" target="_blank" rel="noopener noreferrer">
+          <img src="images/macs-logo-white.png" alt="Melbourne Archdiocese Catholic Schools" class="sk-footer__logo-img sk-footer__logo-img--macs" loading="lazy">
+        </a>
+        <a href="index.html" class="sk-footer__logo-link" aria-label="St Kevin's Primary School — Home">
+          <img src="images/logo-sk-white.png" alt="St Kevin's Primary School Hampton Park" class="sk-footer__logo-img sk-footer__logo-img--sk" loading="lazy">
+        </a>
+      </div>
+      <div class="sk-footer__cols">
+        <div class="sk-footer__col">
+          <h3 class="sk-footer__col-head">Contact Us</h3>
+          <address class="sk-footer__address">
+            <div class="sk-footer__contact-row">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>120 Hallam Rd, Hampton Park VIC 3976</span>
+            </div>
+            <div class="sk-footer__contact-row">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.95-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <a href="tel:0397098600">(03) 9709 8600</a>
+            </div>
+            <div class="sk-footer__contact-row">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:administration@skhamptonpark.catholic.edu.au">administration@<wbr>skhamptonpark.catholic.edu.au</a>
+            </div>
+          </address>
+          <p class="sk-footer__hours">Monday to Friday &nbsp;&middot;&nbsp; 8:00am – 4:00pm</p>
+        </div>
+        <div class="sk-footer__col">
+          <h3 class="sk-footer__col-head">Quick Links</h3>
+          <nav class="sk-footer__nav" aria-label="Footer navigation">
+            <a href="contact.html" class="sk-footer__link">Contact</a>
+            <a href="enrolments.html" class="sk-footer__link">Enrolments</a>
+            <a href="enrolments.html" class="sk-footer__link">School Tours</a>
+            <a href="#" class="sk-footer__link">Newsletter</a>
+            <a href="#" class="sk-footer__link">Annual Report</a>
+            <a href="policies.html" class="sk-footer__link">Policies &amp; Compliance</a>
+          </nav>
+        </div>
+        <div class="sk-footer__col">
+          <h3 class="sk-footer__col-head">Stay Connected</h3>
+          <p class="sk-footer__about">St Kevin's is a Christ-centred Catholic primary school in Hampton Park, Melbourne. Part of the Melbourne Archdiocese Catholic Schools community.</p>
+          <div class="sk-footer__social">
+            <a href="https://www.facebook.com/skhamptonpark" class="sk-footer__social-btn sk-footer__social-btn--fb" aria-label="St Kevin's on Facebook" target="_blank" rel="noopener noreferrer">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://www.skhamptonpark.catholic.edu.au" class="sk-footer__social-btn sk-footer__social-btn--web" aria-label="St Kevin's website" target="_blank" rel="noopener noreferrer">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="sk-footer__bottom">
+        <p class="sk-footer__copy">© 2026 St Kevin's Primary School Hampton Park</p>
+        <div class="sk-footer__bottom-links">
+          <a href="policies.html" class="sk-footer__bottom-link">Policies</a>
+          <span class="sk-footer__bottom-sep" aria-hidden="true">·</span>
+          <a href="contact.html" class="sk-footer__bottom-link">Contact</a>
+          <span class="sk-footer__bottom-sep" aria-hidden="true">·</span>
+          <a href="https://www.skhamptonpark.catholic.edu.au" class="sk-footer__bottom-link" target="_blank" rel="noopener noreferrer">skhamptonpark.catholic.edu.au</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <canvas id="global-click-spark"></canvas>
+
+  <script>
+  (function () {
+    'use strict';
+
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var skipEntrances = Boolean(window.location.hash);
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (!reduced && typeof Lenis !== 'undefined') {
+      var lenis = new Lenis({
+        autoRaf: false,
+        duration: 1.15,
+        easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }
+      });
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
+      gsap.ticker.lagSmoothing(0);
+    }
+
+    var header = document.getElementById('sk-header');
+    var hamburger = document.getElementById('sk-hamburger-btn');
+    var sidebar = document.getElementById('sk-nav-sidebar');
+    var backdrop = document.getElementById('sk-nav-backdrop');
+    var closeBtn = document.getElementById('sk-sidebar-close');
+    var searchBtn = document.getElementById('sk-search-btn');
+    var searchPanel = document.getElementById('sk-search-panel');
+    var searchClose = document.getElementById('sk-search-close-btn');
+    var searchInput = document.getElementById('sk-search-input');
+    var searchForm = document.getElementById('sk-search-form');
+    var searchRes = document.getElementById('sk-search-results');
+    var navItems = sidebar.querySelectorAll('.sk-nav-item');
+    var footerLinks = sidebar.querySelectorAll('.sk-social-btn');
+    var sideHead = sidebar.querySelector('.sk-sidebar-header');
+    var sideImg = sidebar.querySelector('.sk-sidebar-image img');
+    var navOpen = false;
+    var searchOpen = false;
+    var lastScrollY = 0;
+
+    gsap.set(sidebar, { x: '-100%' });
+    gsap.set(backdrop, { autoAlpha: 0 });
+    gsap.set(searchPanel, { autoAlpha: 0, y: -8 });
+
+    function onScroll() {
+      var y = window.scrollY;
+      var scrolled = y > 60;
+      header.classList.toggle('is-scrolled', scrolled);
+      header.classList.toggle('is-transparent', !scrolled);
+      if (y > 140) {
+        header.classList.toggle('is-hidden', y > lastScrollY);
+      } else {
+        header.classList.remove('is-hidden');
+      }
+      lastScrollY = y;
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    function openNav() {
+      navOpen = true;
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      var tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+      tl.to(backdrop, { autoAlpha: 1, duration: reduced ? 0.01 : 0.65 }, 0);
+      tl.to(sidebar, { x: '0%', duration: reduced ? 0.01 : 0.78 }, 0);
+      if (sideImg && !reduced) {
+        tl.from(sideImg, { scale: 1.1, duration: 1.1, ease: 'power3.out', clearProps: 'transform' }, 0);
+      }
+      tl.from(sideHead, { autoAlpha: 0, y: 8, duration: reduced ? 0 : 0.45, clearProps: 'all' }, reduced ? 0 : 0.32);
+      tl.from(navItems, { autoAlpha: 0, x: -22, y: 10, duration: reduced ? 0 : 0.55, stagger: reduced ? 0 : { each: 0.09 }, clearProps: 'all' }, reduced ? 0 : 0.38);
+      tl.from(footerLinks, { autoAlpha: 0, y: 8, duration: reduced ? 0 : 0.4, stagger: reduced ? 0 : { each: 0.07 }, ease: 'power3.out', clearProps: 'all' }, reduced ? 0 : 0.76);
+      tl.call(function () { closeBtn.focus(); });
+    }
+
+    function closeNav() {
+      navOpen = false;
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      var tl = gsap.timeline();
+      tl.to(sidebar, { x: '-100%', duration: reduced ? 0.01 : 0.56, ease: 'power4.inOut' }, 0);
+      tl.to(backdrop, { autoAlpha: 0, duration: reduced ? 0.01 : 0.42, ease: 'power2.in' }, reduced ? 0 : 0.08);
+    }
+
+    hamburger.addEventListener('click', openNav);
+    closeBtn.addEventListener('click', closeNav);
+    backdrop.addEventListener('click', closeNav);
+    navItems.forEach(function (a) { a.addEventListener('click', closeNav); });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        if (navOpen) closeNav();
+        if (searchOpen) closeSearch();
+      }
+    });
+
+    sidebar.addEventListener('keydown', function (event) {
+      if (!navOpen || event.key !== 'Tab') return;
+      var focusable = Array.from(sidebar.querySelectorAll('button, a, input, [tabindex]:not([tabindex="-1"])')).filter(function (el) { return !el.disabled; });
+      if (!focusable.length) return;
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+
+    function openSearch() {
+      searchOpen = true;
+      searchBtn.setAttribute('aria-expanded', 'true');
+      gsap.to(searchPanel, { autoAlpha: 1, y: 0, duration: 0.28, ease: 'power2.out' });
+      requestAnimationFrame(function () { searchInput.focus(); });
+    }
+
+    function closeSearch() {
+      searchOpen = false;
+      searchBtn.setAttribute('aria-expanded', 'false');
+      searchInput.value = '';
+      searchRes.textContent = '';
+      searchRes.classList.remove('has-message');
+      gsap.to(searchPanel, { autoAlpha: 0, y: -8, duration: 0.22, ease: 'power2.in' });
+    }
+
+    searchBtn.addEventListener('click', function () {
+      if (searchOpen) closeSearch();
+      else openSearch();
+    });
+    searchClose.addEventListener('click', closeSearch);
+
+    searchForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      var query = searchInput.value.trim();
+      if (!query) return;
+      searchRes.classList.add('has-message');
+      searchRes.textContent = 'No results found for "' + query + '" - full search will be available once all pages are live.';
+    });
+
+    searchInput.addEventListener('input', function () {
+      if (searchRes.classList.contains('has-message')) {
+        searchRes.textContent = '';
+        searchRes.classList.remove('has-message');
+      }
+    });
+
+    if (!reduced) {
+      var spans = hamburger.querySelectorAll('span');
+      hamburger.addEventListener('mouseenter', function () {
+        gsap.to(spans[0], { y: -3, duration: 0.38, ease: 'expo.out' });
+        gsap.to(spans[2], { y: 3, duration: 0.38, ease: 'expo.out' });
+      });
+      hamburger.addEventListener('mouseleave', function () {
+        gsap.to([spans[0], spans[2]], { y: 0, duration: 0.28, ease: 'expo.out' });
+      });
+      hamburger.addEventListener('click', function () {
+        gsap.set([spans[0], spans[2]], { y: 0 });
+      });
+    }
+
+    var WAVES = [
+      {
+        pathId: 'sk-wave-path-2',
+        wrapperId: 'sk-wave-divider-2',
+        dA: 'M 0 0 L 1440 0 L 1440 14 C 1080 22 360 76 0 88 Z',
+        dB: 'M 0 0 L 1440 0 L 1440 14 C 1080 92 360 -8 0 88 Z'
+      }
+    ];
+
+    WAVES.forEach(function (cfg) {
+      var path = document.getElementById(cfg.pathId);
+      var wrapper = document.getElementById(cfg.wrapperId);
+      if (!path || !wrapper) return;
+      gsap.set(path, { attr: { d: cfg.dA } });
+      if (reduced) return;
+      var timeline = gsap.timeline({
+        scrollTrigger: {
+          id: cfg.pathId + '-morph',
+          trigger: wrapper,
+          start: 'top 100%',
+          end: 'bottom 0%',
+          scrub: 1.6
+        }
+      });
+      timeline.fromTo(path, { attr: { d: cfg.dA } }, { attr: { d: cfg.dB }, ease: 'sine.inOut' })
+        .to(path, { attr: { d: cfg.dA }, ease: 'sine.inOut' });
+    });
+
+    if (!reduced && !skipEntrances) {
+      gsap.from('.sk-enrol-intro__body', {
+        autoAlpha: 0,
+        y: 32,
+        duration: 1,
+        ease: 'expo.out',
+        scrollTrigger: { trigger: '.sk-enrol-intro', start: 'top 80%' }
+      });
+
+      gsap.from('.sk-pathway__step', {
+        autoAlpha: 0,
+        y: 24,
+        duration: 0.75,
+        ease: 'expo.out',
+        stagger: 0.1,
+        scrollTrigger: { trigger: '.sk-pathway', start: 'top 84%' }
+      });
+
+      gsap.utils.toArray('.sk-enrol-step__card').forEach(function (card) {
+        gsap.from(card, {
+          autoAlpha: 0,
+          y: 50,
+          duration: 1,
+          ease: 'expo.out',
+          scrollTrigger: { trigger: card, start: 'top 80%' }
+        });
+      });
+
+      gsap.utils.toArray('.sk-pillar').forEach(function (section) {
+        var textEls = section.querySelectorAll('.sk-pillar__heading, .sk-pillar__body, .sk-pillar__tagline');
+        var circle = section.querySelector('.sk-pillar__circle');
+        gsap.from(textEls, {
+          autoAlpha: 0,
+          y: 40,
+          duration: 1,
+          ease: 'expo.out',
+          stagger: 0.12,
+          scrollTrigger: { trigger: section, start: 'top 80%' }
+        });
+        gsap.from(circle, {
+          autoAlpha: 0,
+          scale: 0.92,
+          y: 28,
+          duration: 1.15,
+          ease: 'expo.out',
+          scrollTrigger: { trigger: section, start: 'top 82%' }
+        });
+      });
+
+      gsap.from(['.sk-enrol-closing__label', '.sk-enrol-closing__heading', '.sk-enrol-closing__body', '.sk-enrol-closing__buttons', '.sk-enrol-closing__tagline'], {
+        autoAlpha: 0,
+        y: 36,
+        duration: 1.1,
+        ease: 'expo.out',
+        stagger: 0.11,
+        scrollTrigger: { trigger: '.sk-enrol-closing', start: 'top 75%' }
+      });
+
+      gsap.from('.sk-enrol-closing__circle-img', {
+        autoAlpha: 0,
+        scale: 0.92,
+        duration: 1.15,
+        ease: 'expo.out',
+        scrollTrigger: { trigger: '.sk-enrol-closing', start: 'top 78%' }
+      });
+
+      var footer = document.getElementById('sk-footer');
+      var rule = footer.querySelector('.sk-footer__rule');
+      gsap.set(rule, { scaleX: 0 });
+      gsap.set([footer.querySelector('.sk-footer__tagline'), footer.querySelector('.sk-footer__logos'), footer.querySelectorAll('.sk-footer__col'), footer.querySelector('.sk-footer__bottom')], { opacity: 0 });
+      gsap.timeline({
+        scrollTrigger: { trigger: footer, start: 'top 88%', toggleActions: 'play none none none' }
+      })
+      .fromTo(footer.querySelector('.sk-footer__tagline'), { y: 22, opacity: 0 }, { y: 0, opacity: 1, duration: 0.85, ease: 'expo.out' })
+      .to(rule, { scaleX: 1, duration: 0.7, ease: 'expo.out', transformOrigin: 'center' }, '-=0.5')
+      .fromTo(footer.querySelector('.sk-footer__logos'), { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'expo.out' }, '-=0.35')
+      .fromTo(footer.querySelectorAll('.sk-footer__col'), { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.65, ease: 'expo.out', stagger: 0.12 }, '-=0.3')
+      .fromTo(footer.querySelector('.sk-footer__bottom'), { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'expo.out' }, '-=0.15');
+    }
+
+    (function () {
+      var canvas = document.getElementById('global-click-spark');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var sparks = [];
+      var dpr = window.devicePixelRatio || 1;
+
+      function resize() {
+        canvas.width = window.innerWidth * dpr;
+        canvas.height = window.innerHeight * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      resize();
+      window.addEventListener('resize', resize);
+
+      document.addEventListener('click', function (event) {
+        var now = performance.now();
+        for (var i = 0; i < 10; i++) {
+          sparks.push({ x: event.clientX, y: event.clientY, angle: (2 * Math.PI * i) / 10, startTime: now });
+        }
+      });
+
+      function ease(t) { return t * (2 - t); }
+
+      function draw(timestamp) {
+        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+        for (var i = sparks.length - 1; i >= 0; i--) {
+          var spark = sparks[i];
+          var elapsed = timestamp - spark.startTime;
+          if (elapsed >= 460) {
+            sparks.splice(i, 1);
+            continue;
+          }
+          var progress = elapsed / 460;
+          var eased = ease(progress);
+          var distance = eased * 24;
+          var lineLength = 12 * (1 - eased);
+          var x1 = spark.x + distance * Math.cos(spark.angle);
+          var y1 = spark.y + distance * Math.sin(spark.angle);
+          var x2 = spark.x + (distance + lineLength) * Math.cos(spark.angle);
+          var y2 = spark.y + (distance + lineLength) * Math.sin(spark.angle);
+          ctx.strokeStyle = '#ffffff';
+          ctx.lineWidth = 2;
+          ctx.lineCap = 'round';
+          ctx.beginPath();
+          ctx.moveTo(x1, y1);
+          ctx.lineTo(x2, y2);
+          ctx.stroke();
+        }
+        requestAnimationFrame(draw);
+      }
+
+      requestAnimationFrame(draw);
+    })();
+  })();
+
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var heading = document.querySelector('.sk-hero-h1');
+    var img = document.querySelector('.sk-hero-image img, .sk-hero-image-wrap img');
+    if (!heading) return;
+    gsap.set(heading, { y: 28 });
+    if (img) gsap.set(img, { scale: 1.09 });
+    window.addEventListener('load', function () {
+      var tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+      if (img) tl.to(img, { scale: 1.04, duration: 1.6, ease: 'power3.out' }, 0);
+      tl.to(heading, { y: 0, duration: 1.05 }, 0.15);
+    });
+  })();
+  </script>
+</body>
+</html>

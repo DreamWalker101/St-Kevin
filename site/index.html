@@ -113,6 +113,8 @@
     body {
       margin: 0;
       font-family: var(--font-inter);
+      font-kerning: normal;
+      font-optical-sizing: auto;
       color: var(--color-deep-navy);
       background: var(--color-warm-cream);
     }
@@ -566,7 +568,7 @@
     .sk-quote-text {
       font-family: var(--font-dancing-script);
       font-size: clamp(1.75rem, 3.8vw, 3.4rem);
-      line-height: 1.45;
+      line-height: 1.52;
       color: #fff;
       max-width: 640px;
       margin: 0 0 2rem;
@@ -649,7 +651,9 @@
       font-size: clamp(1.35rem, 2.5vw, 1.85rem);
       color: var(--color-burgundy-red);
       line-height: 1.5;
-      margin: 0;
+      margin: 0 auto;
+      max-width: 62ch;
+      text-wrap: balance;
     }
 
     /* ══════════════════════════════════════════════
@@ -696,18 +700,20 @@
     }
     .sk-pillar__text {
       font-family: var(--font-inter);
-      font-size: clamp(1rem, 1.2vw, 1.0625rem);
+      font-size: 1.0625rem;
       line-height: 1.8;
       color: #374151;
       max-width: 50ch;
       margin: 0 0 1.75rem;
+      text-wrap: pretty;
     }
     .sk-pillar__tagline {
       display: block;
       font-family: var(--font-dancing-script);
       font-size: clamp(1.35rem, 2.2vw, 1.65rem);
       color: var(--color-burgundy-red);
-      line-height: 1.4;
+      line-height: 1.45;
+      text-wrap: pretty;
     }
 
 
@@ -867,9 +873,11 @@
     .sk-effect__body {
       font-family: 'Inter', sans-serif;
       font-size: clamp(16px, 1.5vw, 18px);
-      color: rgba(255,255,255,0.62);
-      line-height: 1.78;
-      margin: 0;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.82;
+      margin: 0 auto;
+      max-width: 58ch;
+      text-wrap: pretty;
     }
 
     /* Testimonial component */
@@ -1008,10 +1016,10 @@
     }
     .sk-testimonial-role {
       font-family: 'Inter', sans-serif;
-      font-size: 10px;
-      color: rgba(255,255,255,0.52);
+      font-size: 11px;
+      color: rgba(255,255,255,0.58);
       font-style: normal;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.11em;
       text-transform: uppercase;
       font-weight: 600;
       margin: 0;
@@ -1054,6 +1062,7 @@
       .sk-testimonial-container { padding: 0; }
       .sk-testimonial-image-container { max-width: 280px; }
       .sk-testimonial-quote { font-size: 22px; }
+      .sk-testimonial-arrows { justify-content: center; gap: 35px; }
     }
 
     /* Light button variant — for use on dark backgrounds */
@@ -1095,9 +1104,9 @@
     .sk-videos__label {
       display: inline-block;
       font-family: var(--font-inter);
-      font-size: 0.7rem;
+      font-size: 0.75rem;
       font-weight: 700;
-      letter-spacing: 0.16em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--color-burgundy-red);
       margin-bottom: 16px;
@@ -1113,11 +1122,12 @@
     }
     .sk-videos__body {
       font-family: var(--font-inter);
-      font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+      font-size: clamp(1rem, 1.3vw, 1.0625rem);
       color: var(--color-slate-text);
       max-width: 52ch;
       margin: 0 auto;
-      line-height: 1.7;
+      line-height: 1.72;
+      text-wrap: pretty;
     }
     .sk-videos__grid {
       display: grid;
@@ -1309,19 +1319,21 @@
       color: var(--color-pure-white);
       text-transform: uppercase;
       letter-spacing: -0.025em;
-      line-height: 0.95;
+      line-height: 1.0;
       margin: 0 0 24px;
+      text-wrap: balance;
     }
     @media (min-width: 769px) {
       .sk-enrol__heading { white-space: nowrap; }
     }
     .sk-enrol__body {
       font-family: var(--font-inter);
-      font-size: clamp(15px, 1.4vw, 17px);
-      color: rgba(255,255,255,0.72);
-      line-height: 1.78;
+      font-size: clamp(16px, 1.4vw, 17px);
+      color: rgba(255,255,255,0.78);
+      line-height: 1.8;
       margin: 0 0 40px;
       max-width: 46ch;
+      text-wrap: pretty;
     }
     .sk-enrol__buttons {
       display: flex;
@@ -1370,7 +1382,7 @@
       .sk-enrol__visual { order: 1; min-height: 280px; }
       .sk-enrol__circle-img {
         width: 170px;
-        height: 160px;
+        height: 170px;
       }
       .sk-enrol__heading { letter-spacing: -0.02em; }
     }
@@ -1577,9 +1589,10 @@
     .sk-footer__about {
       font-family: var(--font-inter);
       font-size: 14px;
-      line-height: 1.7;
+      line-height: 1.75;
       color: rgba(255,255,255,0.58);
       margin-bottom: 20px;
+      text-wrap: pretty;
     }
     .sk-footer__social {
       display: flex;
@@ -1666,6 +1679,63 @@
         transform: translateY(0) !important;
         opacity: 1 !important;
       }
+    }
+
+    /* ══════════════════════════════════════════════
+       MOBILE RESPONSIVE ENHANCEMENTS
+    ══════════════════════════════════════════════ */
+
+    /* Hero: use dynamic viewport height on supporting browsers so iOS
+       browser chrome doesn't cut off the bottom of the hero */
+    @supports (min-height: 100dvh) {
+      .sk-hero { min-height: 100dvh; }
+    }
+
+    /* MACS logo — scale down on mobile so it doesn't dominate the hero */
+    @media (max-width: 600px) {
+      :root { --logo-macs-size: 64px; }
+      .sk-hero-macs { bottom: 20px; left: 20px; }
+    }
+    @media (max-width: 380px) {
+      :root { --logo-macs-size: 50px; }
+      .sk-hero-macs { bottom: 14px; left: 14px; }
+    }
+
+    /* Testimonial content — release fixed height so quotes never clip on mobile */
+    @media (max-width: 767px) {
+      .sk-testimonial-content {
+        height: auto;
+        overflow: visible;
+      }
+      .sk-testimonial-arrows {
+        padding-top: 2rem;
+      }
+    }
+
+    /* Enrolment CTA — full-width stacked buttons on tiny screens */
+    @media (max-width: 400px) {
+      .sk-enrol__text { padding: 40px 20px 36px; }
+      .sk-enrol__buttons {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+      }
+      .sk-enrol__buttons .sk-btn-wipe {
+        justify-content: center;
+        width: 100%;
+      }
+    }
+    @media (max-width: 767px) {
+      .sk-wave-divider--burg,
+      .sk-wave-divider--navy,
+      .sk-wave-divider--navy-inv,
+      .sk-wave-divider--cream { height: 72px; }
+    }
+    @media (max-width: 480px) {
+      .sk-wave-divider--burg,
+      .sk-wave-divider--navy,
+      .sk-wave-divider--navy-inv,
+      .sk-wave-divider--cream { height: 60px; }
     }
   </style>
 </head>
@@ -2614,6 +2684,7 @@
       var quoteWrap      = document.getElementById('sk-testimonial-quote-wrap');
       var prevBtn        = document.getElementById('sk-testimonial-prev');
       var nextBtn        = document.getElementById('sk-testimonial-next');
+      var contentEl      = document.querySelector('.sk-testimonial-content');
 
       if (!imageContainer || !nameEl) return;
 
@@ -2689,9 +2760,34 @@
         stopAutoplay();
       }
 
+      /* Lock content height to tallest quote on mobile so switching quotes never snaps the section height */
+      function lockMobileHeight() {
+        if (!contentEl) return;
+        if (window.innerWidth > 767) { contentEl.style.minHeight = ''; return; }
+        contentEl.style.minHeight = '';
+        var savedQ = quoteEl.textContent, savedN = nameEl.textContent, savedR = roleEl.textContent;
+        var maxH = 0;
+        skTestimonials.forEach(function (t) {
+          quoteEl.textContent = t.quote;
+          nameEl.textContent  = t.name;
+          roleEl.textContent  = t.role;
+          var h = contentEl.offsetHeight;
+          if (h > maxH) maxH = h;
+        });
+        quoteEl.textContent = savedQ;
+        nameEl.textContent  = savedN;
+        roleEl.textContent  = savedR;
+        contentEl.style.minHeight = maxH + 'px';
+      }
+
       nextBtn.addEventListener('click', goNext);
       prevBtn.addEventListener('click', goPrev);
-      window.addEventListener('resize', render);
+      var resizeTimer;
+      window.addEventListener('resize', function () {
+        render();
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(lockMobileHeight, 150);
+      });
 
       autoplayTimer = setInterval(function () {
         activeIndex = (activeIndex + 1) % skTestimonials.length;
@@ -2699,6 +2795,7 @@
       }, 5000);
 
       render();
+      document.fonts.ready.then(lockMobileHeight);
     })();
 
 

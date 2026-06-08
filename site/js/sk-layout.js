@@ -292,6 +292,8 @@
   function openNav() {
     navOpen = true;
     hamburger.setAttribute('aria-expanded', 'true');
+    var scrollbarW = window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.paddingRight = scrollbarW ? scrollbarW + 'px' : '';
     document.body.style.overflow = 'hidden';
     var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
@@ -324,6 +326,7 @@
     navOpen = false;
     hamburger.setAttribute('aria-expanded', 'false');
     document.body.style.overflow = '';
+    document.body.style.paddingRight = '';
     var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var tl = gsap.timeline();
     tl.to(sidebar,  { x: '-100%', duration: rm ? 0.01 : 0.56, ease: 'power4.inOut' }, 0);

@@ -16,7 +16,7 @@ Gather everything that happened this session:
 
 ## 2. Update master PROGRESS.md
 
-Open `PROGRESS.md` and append one brief block at the bottom:
+Open `_dev/PROGRESS.md` and append one brief block at the bottom:
 
 ```
 ## Session [N] — [date]
@@ -27,8 +27,8 @@ If multiple pages were touched this session, one bullet per page. Keep the entir
 
 ## 3. Write page-specific progress file
 
-Write a full detailed update to `docs/progress-[slug].md`
-(e.g. `docs/progress-about.md`, `docs/progress-learning.md`, `docs/progress-index.md`).
+Write a full detailed update to `_dev/docs/progress-[slug].md`
+(e.g. `_dev/docs/progress-about.md`, `_dev/docs/progress-learning.md`, `_dev/docs/progress-index.md`).
 Create the file if it doesn't exist. Append a new session block if it does.
 
 Use exactly this structure:

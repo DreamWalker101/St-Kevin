@@ -67,6 +67,8 @@ html { scroll-behavior: auto; } /* Lenis handles smooth scroll */
 body {
   margin: 0;
   font-family: var(--font-inter);
+  font-kerning: normal;
+  font-optical-sizing: auto;
   color: var(--color-deep-navy);
   background: var(--color-warm-cream);
 }
@@ -484,9 +486,10 @@ body {
   font-weight: 400;
   color: rgba(255,255,255,0.65);
   text-align: center;
-  line-height: 1.45;
+  line-height: 1.52;
   margin: 0 auto clamp(32px, 5vw, 52px);
   max-width: 640px;
+  text-wrap: balance;
 }
 .sk-footer__rule {
   height: 1px;
@@ -600,9 +603,10 @@ body {
 .sk-footer__about {
   font-family: var(--font-inter);
   font-size: 14px;
-  line-height: 1.7;
+  line-height: 1.75;
   color: rgba(255,255,255,0.58);
   margin-bottom: 20px;
+  text-wrap: pretty;
 }
 .sk-footer__social {
   display: flex;
@@ -687,4 +691,39 @@ body {
     transform: translateY(0) !important;
     opacity: 1 !important;
   }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   MOBILE RESPONSIVE OVERRIDES — shared layout
+════════════════════════════════════════════════════════════════ */
+
+/* Header logos — reduce on small screens to avoid crowding the hamburger/search */
+@media (max-width: 480px) {
+  .sk-logo-hero   { height: 72px; }
+  .sk-logo-sticky { height: 44px; }
+}
+
+/* Footer logos — scale down from 110px on narrow viewports */
+@media (max-width: 540px) {
+  .sk-footer__logo-img--macs,
+  .sk-footer__logo-img--sk { height: 80px; }
+  .sk-footer__logos { gap: 36px; }
+}
+
+/* Footer bottom bar — stack copyright/links and wrap long URL on tiny screens */
+@media (max-width: 480px) {
+  .sk-footer__bottom {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .sk-footer__bottom-links {
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+}
+
+@media (max-width: 540px) {
+  .sk-footer__logo-img--macs,
+  .sk-footer__logo-img--sk { height: 64px; }
 }

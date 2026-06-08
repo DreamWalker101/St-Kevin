@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Community — St Kevin's Primary School, Hampton Park</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-navy':    '#051E42',
+            'burgundy-red': '#8A2232',
+            'warm-cream':   '#F6F3EE',
+            'cloud-grey':   '#F0EDE5',
+            'border-mist':  '#E2E6EA',
+            'slate-text':   '#6B7280',
+            'navy-tint':    '#0A2D5C',
+            'red-soft':     '#F4E3E6',
+          },
+          fontFamily: {
+            'montserrat': ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            'inter':      ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            'script':     ['Dancing Script', 'cursive'],
+          },
+          maxWidth: { 'content': '1200px' },
+          borderRadius: { 'card': '12px', 'image': '16px' },
+          boxShadow: { 'soft': '0 8px 24px rgba(0, 0, 0, 0.08)' },
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/ScrollTrigger.min.js"></script>
+  <!-- Lenis smooth scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <!-- Shared layout styles -->
+  <link rel="stylesheet" href="css/sk-layout.css">
+
+  <style>
+    :root {
+      --color-deep-navy:    #051E42;
+      --color-burgundy-red: #8A2232;
+      --color-pure-white:   #FFFFFF;
+      --color-warm-cream:   #F6F3EE;
+      --color-cloud-grey:   #F0EDE5;
+      --color-border-mist:  #E2E6EA;
+      --color-slate-text:   #6B7280;
+      --color-navy-tint:    #0A2D5C;
+      --color-red-soft:     #F4E3E6;
+
+      --font-montserrat:     'Montserrat', ui-sans-serif, system-ui, sans-serif;
+      --font-inter:          'Inter', ui-sans-serif, system-ui, sans-serif;
+      --font-dancing-script: 'Dancing Script', cursive;
+
+      --section-padding-desktop: 96px;
+      --section-padding-mobile:  48px;
+      --max-width: 1200px;
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-inter);
+      color: var(--color-deep-navy);
+      background: var(--color-warm-cream);
+      overflow-x: hidden;
+      font-kerning: normal;
+      font-optical-sizing: auto;
+    }
+
+    .sk-nav-item.is-active .sk-nav-item-label {
+      color: var(--color-burgundy-red);
+    }
+
+    .sk-hero {
+      position: relative;
+      min-height: 60vh;
+      overflow: hidden;
+      background: var(--color-deep-navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .sk-hero--short {
+      min-height: 60vh;
+    }
+
+    .sk-hero-image {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    .sk-hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 34%;
+      display: block;
+    }
+
+    .sk-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(5,30,66,0.60);
+      pointer-events: none;
+    }
+
+    .sk-hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 980px;
+      padding: clamp(80px, 14vw, 110px) 24px;
+      text-align: center;
+    }
+
+    .sk-hero-h1 {
+      font-family: var(--font-montserrat);
+      font-size: clamp(3rem, 7vw, 5.5rem);
+      font-weight: 800;
+      line-height: 0.98;
+      letter-spacing: -0.02em;
+      color: var(--color-pure-white);
+      margin: 0;
+      text-wrap: balance;
+    }
+
+    .sk-hero-macs {
+      position: absolute;
+      left: 32px;
+      bottom: 32px;
+      z-index: 2;
+    }
+
+    .sk-hero-macs img {
+      display: block;
+      height: 90px;
+      width: auto;
+    }
+
+    .sk-hero-scroll {
+      position: absolute;
+      left: 50%;
+      bottom: 32px;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .sk-hero-scroll-dot {
+      width: 3px;
+      height: 24px;
+      border-radius: var(--radius-pill, 999px);
+      background: var(--color-deep-navy);
+    }
+
+    .sk-wave-divider {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      display: block;
+    }
+
+    .sk-wave-divider--burg {
+      background: var(--color-warm-cream);
+      height: 126px;
+    }
+
+    .sk-wave-divider--navy {
+      background: var(--color-cloud-grey);
+      height: 120px;
+    }
+
+    .sk-wave-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      transform-origin: top center;
+    }
+
+    .sk-community-intro {
+      background: var(--color-warm-cream);
+      padding: var(--section-padding-desktop) 24px;
+      text-align: center;
+    }
+
+    .sk-community-intro__inner {
+      width: 100%;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .sk-community-intro__body {
+      font-family: var(--font-inter);
+      font-size: clamp(1.0625rem, 2vw, 1.25rem);
+      line-height: 1.8;
+      color: var(--color-deep-navy);
+      opacity: 0.85;
+      margin: 0;
+      text-wrap: pretty;
+    }
+
+    .sk-pillar {
+      position: relative;
+      background: var(--color-warm-cream);
+      padding: var(--section-padding-desktop) 24px;
+      overflow: hidden;
+    }
+
+    .sk-pillar--grey {
+      background: var(--color-cloud-grey);
+    }
+
+    .sk-pillar__wrap {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1fr);
+      gap: clamp(40px, 7vw, 96px);
+      align-items: center;
+    }
+
+    .sk-pillar--reverse .sk-pillar__wrap {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+    }
+
+    .sk-pillar--reverse .sk-pillar__media {
+      order: -1;
+    }
+
+    .sk-pillar__text {
+      max-width: 500px;
+    }
+
+    .sk-pillar__heading {
+      font-family: var(--font-montserrat);
+      font-size: clamp(2rem, 3.2vw, 2.25rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--color-deep-navy);
+      line-height: 1.12;
+      margin: 0 0 22px;
+      text-wrap: balance;
+    }
+
+    .sk-pillar__body {
+      font-family: var(--font-inter);
+      font-size: clamp(1rem, 1.22vw, 1.075rem);
+      line-height: 1.8;
+      color: var(--color-deep-navy);
+      opacity: 0.84;
+      margin: 0 0 26px;
+      text-wrap: pretty;
+    }
+
+    .sk-pillar__tagline {
+      display: block;
+      font-family: var(--font-dancing-script);
+      font-size: clamp(1.45rem, 2.7vw, 2rem);
+      color: var(--color-burgundy-red);
+      line-height: 1.35;
+      font-style: italic;
+    }
+
+    .sk-pillar__accent {
+      display: block;
+      width: 40px;
+      height: 3px;
+      background: var(--color-burgundy-red);
+      border-radius: 2px;
+      margin-bottom: 20px;
+      transform-origin: left center;
+    }
+
+    .sk-pillar__deco {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .sk-pillar__deco > svg { position: absolute; }
+
+    @keyframes skAccentUp {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-14px); }
+    }
+    @keyframes skAccentDown {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(12px); }
+    }
+    @keyframes skAccentSpin {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50%       { transform: translateY(-10px) rotate(20deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .sk-accent { animation: none !important; }
+    }
+    @media (max-width: 768px) {
+      .sk-pillar__deco { display: none; }
+    }
+
+    /* ── Character-by-character heading reveal ── */
+    .scroll-text-word {
+      display: inline-flex;
+      overflow: hidden;
+      vertical-align: bottom;
+    }
+    .scroll-text-char {
+      display: inline-block;
+      transform: translateY(108%);
+      opacity: 0;
+      transition:
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity   0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      transition-delay: calc(var(--char-index, 0) * 28ms);
+      will-change: transform, opacity;
+    }
+    .scroll-text-reveal.is-visible .scroll-text-char {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-text-char {
+        transition: none !important;
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+      }
+    }
+
+    .sk-pillar__media {
+      position: relative;
+      margin: 0;
+      min-width: 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .sk-pillar__media::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: min(115%, 660px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: rgba(138,34,50,0.18);
+      transform: translate(calc(-50% + 20px), calc(-50% + 16px)) scale(1.12);
+      filter: blur(22px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .sk-pillar--reverse .sk-pillar__media::before {
+      transform: translate(calc(-50% - 20px), calc(-50% + 16px)) scale(1.12);
+    }
+
+    .sk-pillar__circle {
+      position: relative;
+      z-index: 1;
+      width: min(115%, 660px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow:
+        0 2px 4px rgba(5,30,66,0.05),
+        0 10px 28px rgba(5,30,66,0.11),
+        0 32px 56px rgba(5,30,66,0.09);
+      flex-shrink: 0;
+    }
+
+    .sk-pillar__img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 50%;
+    }
+
+    .sk-spirit {
+      background: var(--color-burgundy-red);
+      color: var(--color-pure-white);
+      padding: clamp(80px, 12vw, 120px) 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sk-spirit__deco {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .sk-spirit__inner {
+      max-width: 740px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sk-spirit__heading {
+      font-family: var(--font-montserrat);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -0.025em;
+      color: var(--color-pure-white);
+      margin: 0 0 28px;
+      text-wrap: balance;
+    }
+
+    .sk-spirit__body {
+      font-family: var(--font-inter);
+      font-size: clamp(1rem, 1.5vw, 1.125rem);
+      line-height: 1.82;
+      color: rgba(255,255,255,0.88);
+      margin: 0 0 36px;
+      text-wrap: pretty;
+    }
+
+    .sk-spirit__rule {
+      width: 48px;
+      height: 1px;
+      border: none;
+      background: rgba(255,255,255,0.30);
+      margin: 0 auto 30px;
+    }
+
+    .sk-spirit__tagline {
+      font-family: var(--font-dancing-script);
+      font-size: clamp(1.65rem, 3.5vw, 2.5rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.82);
+      margin: 0;
+      font-style: italic;
+    }
+
+    #global-click-spark {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      mix-blend-mode: difference;
+      z-index: 9999;
+    }
+
+    @media (max-width: 768px) {
+      .sk-hero {
+        min-height: 60vh;
+      }
+
+      .sk-hero-content {
+        padding: 60px 20px;
+      }
+
+      .sk-hero-h1 {
+        max-width: 100%;
+        margin: 0 auto;
+        font-size: clamp(1.65rem, 7.4vw, 1.9rem);
+        line-height: 1.02;
+        overflow-wrap: normal;
+        word-break: normal;
+        white-space: normal;
+      }
+
+      .sk-hero-macs {
+        left: 20px;
+        bottom: 24px;
+      }
+
+      .sk-hero-macs img {
+        height: 64px;
+      }
+
+      .sk-community-intro,
+      .sk-pillar,
+      .sk-spirit {
+        padding: var(--section-padding-mobile) 24px;
+      }
+
+      .sk-community-intro__inner {
+        max-width: 18rem;
+      }
+
+      .sk-community-intro__body {
+        font-size: 1rem;
+      }
+
+      .sk-pillar__wrap,
+      .sk-pillar--reverse .sk-pillar__wrap {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .sk-pillar--reverse .sk-pillar__media {
+        order: 0;
+      }
+
+      .sk-pillar__text {
+        width: 100%;
+        max-width: 18rem;
+        margin: 0 auto;
+      }
+
+      .sk-pillar__heading {
+        font-size: clamp(1.55rem, 7.2vw, 1.85rem);
+      }
+
+      .sk-pillar__body {
+        font-size: 1rem;
+      }
+
+      .sk-pillar__circle {
+        width: min(100%, 420px);
+      }
+    }
+
+    /* ── dvh hero fix: iOS Safari bottom chrome ── */
+    @supports (min-height: 100dvh) {
+      .sk-hero,
+      .sk-hero--short {
+        min-height: 60dvh;
+      }
+    }
+
+    /* ── 480px: small phones ── */
+    @media (max-width: 480px) {
+      .sk-hero-content {
+        padding: 0 20px 14vh;
+      }
+
+      .sk-hero-macs img {
+        height: 56px;
+      }
+
+      .sk-community-intro__inner {
+        max-width: 100%;
+      }
+
+      .sk-pillar__text {
+        max-width: 100%;
+      }
+
+      .sk-pillar__media::before {
+        display: none;
+      }
+    }
+
+    /* ── 375px: very small phones ── */
+    @media (max-width: 375px) {
+      .sk-hero-content {
+        padding: 0 16px 12vh;
+      }
+
+      .sk-hero-macs {
+        left: 14px;
+        bottom: 18px;
+      }
+
+      .sk-hero-macs img {
+        height: 48px;
+      }
+
+      .sk-community-intro {
+        padding: var(--section-padding-mobile) 16px;
+      }
+
+      .sk-pillar {
+        padding: var(--section-padding-mobile) 16px;
+      }
+
+      .sk-spirit {
+        padding: clamp(64px, 12vw, 96px) 16px;
+      }
+
+      .sk-pillar__heading {
+        font-size: 1.45rem;
+      }
+    }
+
+    /* ── spirit deco overflow guard ── */
+    @media (max-width: 767px) {
+      .sk-spirit__deco {
+        display: none;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .sk-wave-divider--burg,
+      .sk-wave-divider--navy { height: 72px; }
+    }
+    @media (max-width: 480px) {
+      .sk-wave-divider--burg,
+      .sk-wave-divider--navy { height: 60px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="sk-header is-transparent" id="sk-header">
+    <button class="sk-hamburger" id="sk-hamburger-btn" aria-label="Open navigation" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <a href="index.html" class="sk-header__logo-link" aria-label="St Kevin's Primary School — Home">
+      <img id="sk-logo-hero" src="images/logo-sk-white.png" alt="St Kevin's Primary School, Hampton Park" class="sk-logo-hero">
+      <img id="sk-logo-sticky" src="images/logo-sk-colour.png" alt="" class="sk-logo-sticky" aria-hidden="true">
+    </a>
+    <button class="sk-search-btn" id="sk-search-btn" aria-label="Search site" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="9.5" cy="9.5" r="7"/><line x1="14.5" y1="14.5" x2="21" y2="21"/>
+      </svg>
+    </button>
+  </header>
+
+  <div class="sk-search-panel" id="sk-search-panel" role="search" aria-label="Site search">
+    <div class="sk-search-inner">
+      <form class="sk-search-form" id="sk-search-form" autocomplete="off">
+        <span class="sk-search-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 22 22" fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9.5" cy="9.5" r="7"/><line x1="14.5" y1="14.5" x2="21" y2="21"/>
+          </svg>
+        </span>
+        <input type="search" class="sk-search-input" id="sk-search-input" placeholder="Search St Kevin's..." aria-label="Search">
+        <button type="submit" class="sk-search-submit">Search</button>
+      </form>
+      <button class="sk-search-close-btn" id="sk-search-close-btn" aria-label="Close search">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="2" y1="2" x2="16" y2="16"/><line x1="16" y1="2" x2="2" y2="16"/>
+        </svg>
+      </button>
+    </div>
+    <div class="sk-search-results" id="sk-search-results" aria-live="polite"></div>
+  </div>
+
+  <div class="sk-nav-backdrop" id="sk-nav-backdrop"></div>
+
+  <nav class="sk-nav-sidebar" id="sk-nav-sidebar" aria-label="Site navigation">
+    <div class="sk-sidebar-content">
+      <div class="sk-sidebar-header">
+        <button class="sk-sidebar-close" id="sk-sidebar-close" aria-label="Close navigation">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <line x1="2" y1="2" x2="14" y2="14"/><line x1="14" y1="2" x2="2" y2="14"/>
+          </svg>
+        </button>
+        <img src="images/logo-sk-macs-combined.png" alt="St Kevin's Primary School, Hampton Park" class="sk-sidebar-logo">
+      </div>
+      <div class="sk-sidebar-nav" aria-label="Primary navigation">
+        <a href="about.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">About Us</span>
+          <span class="sk-nav-arrow" aria-hidden="true"><span class="sk-nav-arrow-line"></span><span class="sk-nav-arrow-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg></span></span>
+        </a>
+        <a href="learning.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">Learning</span>
+          <span class="sk-nav-arrow" aria-hidden="true"><span class="sk-nav-arrow-line"></span><span class="sk-nav-arrow-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg></span></span>
+        </a>
+        <a href="community.html" class="sk-nav-item is-active" aria-current="page">
+          <span class="sk-nav-item-label">Community</span>
+          <span class="sk-nav-arrow" aria-hidden="true"><span class="sk-nav-arrow-line"></span><span class="sk-nav-arrow-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg></span></span>
+        </a>
+        <a href="enrolments.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">Enrolments</span>
+          <span class="sk-nav-arrow" aria-hidden="true"><span class="sk-nav-arrow-line"></span><span class="sk-nav-arrow-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg></span></span>
+        </a>
+        <a href="contact.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">Contact</span>
+          <span class="sk-nav-arrow" aria-hidden="true"><span class="sk-nav-arrow-line"></span><span class="sk-nav-arrow-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg></span></span>
+        </a>
+        <a href="policies.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">Policies</span>
+          <span class="sk-nav-arrow" aria-hidden="true"><span class="sk-nav-arrow-line"></span><span class="sk-nav-arrow-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg></span></span>
+        </a>
+      </div>
+      <div class="sk-sidebar-footer">
+        <div class="sk-sidebar-socials">
+          <a href="tel:0397098600" class="sk-social-btn sk-social-btn--phone" aria-label="Call us: (03) 9709 8600">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 5.5 5.5l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </a>
+          <a href="mailto:administration@skhamptonpark.catholic.edu.au" class="sk-social-btn sk-social-btn--mail" aria-label="Email us">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect class="env-body" x="2" y="4" width="20" height="16" rx="2"/>
+              <polyline class="env-flap" points="22,6 12,13 2,6"/>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/skhamptonpark" class="sk-social-btn sk-social-btn--fb" aria-label="Find us on Facebook" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="sk-sidebar-image" aria-hidden="true">
+      <div class="sk-sidebar-image-frame">
+        <img src="images/samples/cosmos_1616537391.jpeg" alt="" loading="eager">
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="sk-hero sk-hero--short" id="sk-hero" aria-label="Community hero">
+      <div class="sk-hero-image" aria-hidden="true">
+        <img src="images/samples/cosmos_1226555780.jpeg" alt="">
+      </div>
+      <div class="sk-hero-overlay" aria-hidden="true"></div>
+      <div class="sk-hero-content">
+        <h1 class="sk-hero-h1"><span class="scroll-text-reveal" data-text="Our Community">Our Community</span></h1>
+      </div>
+      <div class="sk-hero-macs" aria-hidden="true">
+        <img src="images/macs-logo-white.png" alt="">
+      </div>
+      <div class="sk-hero-scroll" id="sk-hero-scroll" aria-hidden="true">
+        <div class="sk-hero-scroll-dot" id="sk-hero-scroll-dot"></div>
+      </div>
+    </section>
+
+    <div class="sk-wave-divider sk-wave-divider--burg" id="sk-wave-divider-2" aria-hidden="true">
+      <svg class="sk-wave-svg" viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path id="sk-wave-path-2" d="M 0 0 L 1440 0 L 1440 14 C 1080 22 360 76 0 88 Z" fill="#8A2232"/>
+      </svg>
+    </div>
+
+    <section class="sk-community-intro" id="sk-community-intro" aria-label="Community introduction">
+      <div class="sk-community-intro__inner">
+        <p class="sk-community-intro__body">St Kevin's is more than a school. It is a community where families, staff and students walk together in support, friendship and faith.</p>
+      </div>
+    </section>
+
+    <section class="sk-pillar" id="sk-welcoming" aria-label="A Welcoming Community">
+      <div class="sk-pillar__deco" aria-hidden="true">
+        <!-- top-right: 3×3 dot grid -->
+        <svg class="sk-accent" style="top: 8%; right: 3%; animation: skAccentUp 10s ease-in-out infinite;" width="46" height="46" viewBox="0 0 46 46" fill="none">
+          <circle cx="6"  cy="6"  r="2.8" fill="rgba(5,30,66,0.10)"/>
+          <circle cx="23" cy="6"  r="2.8" fill="rgba(5,30,66,0.10)"/>
+          <circle cx="40" cy="6"  r="2.8" fill="rgba(5,30,66,0.10)"/>
+          <circle cx="6"  cy="23" r="2.8" fill="rgba(5,30,66,0.07)"/>
+          <circle cx="23" cy="23" r="2.8" fill="rgba(5,30,66,0.07)"/>
+          <circle cx="40" cy="23" r="2.8" fill="rgba(5,30,66,0.07)"/>
+          <circle cx="6"  cy="40" r="2.8" fill="rgba(5,30,66,0.04)"/>
+          <circle cx="23" cy="40" r="2.8" fill="rgba(5,30,66,0.04)"/>
+          <circle cx="40" cy="40" r="2.8" fill="rgba(5,30,66,0.04)"/>
+        </svg>
+        <!-- bottom-left: concentric rings -->
+        <svg class="sk-accent" style="bottom: 10%; left: 2%; animation: skAccentDown 8s ease-in-out infinite 1.8s;" width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="15" stroke="rgba(5,30,66,0.08)" stroke-width="1.5"/>
+          <circle cx="18" cy="18" r="8"  stroke="rgba(5,30,66,0.11)" stroke-width="1.5"/>
+          <circle cx="18" cy="18" r="2.5" fill="rgba(138,34,50,0.16)"/>
+        </svg>
+        <!-- mid-right: asterisk -->
+        <svg class="sk-accent" style="top: 50%; right: 2%; animation: skAccentSpin 13s ease-in-out infinite 3.2s;" width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <line x1="20" y1="4"  x2="20" y2="36" stroke="rgba(5,30,66,0.11)" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="4"  y1="12" x2="36" y2="28" stroke="rgba(5,30,66,0.11)" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="36" y1="12" x2="4"  y2="28" stroke="rgba(5,30,66,0.11)" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <!-- top-left: diamond -->
+        <svg class="sk-accent" style="top: 15%; left: 2%; animation: skAccentUp 12s ease-in-out infinite 4.5s;" width="30" height="30" viewBox="0 0 30 30" fill="none">
+          <path d="M15 2 L28 15 L15 28 L2 15 Z" stroke="rgba(138,34,50,0.14)" stroke-width="1.5"/>
+        </svg>
+      </div>
+      <div class="sk-pillar__wrap">
+        <article class="sk-pillar__text">
+          <span class="sk-pillar__accent" aria-hidden="true"></span>
+          <h2 class="sk-pillar__heading"><span class="scroll-text-reveal" data-text="A Welcoming Community">A Welcoming Community</span></h2>
+          <p class="sk-pillar__body">Everyone is welcome here. Families from many cultures and backgrounds form the heart of our school community. Together we create a place where every family feels a sense of belonging.</p>
+          <span class="sk-pillar__tagline">Where every family belongs.</span>
+        </article>
+        <figure class="sk-pillar__media">
+          <div class="sk-pillar__circle">
+            <img class="sk-pillar__img" src="images/samples/cosmos_1226555780.jpeg" alt="Students and families gathered in the St Kevin's community" loading="lazy">
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <section class="sk-pillar sk-pillar--reverse sk-pillar--grey" id="sk-partnerships" aria-label="Partnerships with Families">
+      <div class="sk-pillar__deco" aria-hidden="true">
+        <!-- top-left: cross + dot -->
+        <svg class="sk-accent" style="top: 8%; left: 3%; animation: skAccentDown 9s ease-in-out infinite;" width="44" height="44" viewBox="0 0 44 44" fill="none">
+          <line x1="22" y1="6"  x2="22" y2="38" stroke="rgba(5,30,66,0.12)" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="6"  y1="22" x2="38" y2="22" stroke="rgba(5,30,66,0.12)" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="36" cy="8" r="3" fill="rgba(138,34,50,0.15)"/>
+        </svg>
+        <!-- mid-left: dot grid -->
+        <svg class="sk-accent" style="top: 44%; left: 2%; animation: skAccentUp 11s ease-in-out infinite 2s;" width="46" height="46" viewBox="0 0 46 46" fill="none">
+          <circle cx="6"  cy="6"  r="2.8" fill="rgba(5,30,66,0.10)"/>
+          <circle cx="23" cy="6"  r="2.8" fill="rgba(5,30,66,0.10)"/>
+          <circle cx="40" cy="6"  r="2.8" fill="rgba(5,30,66,0.10)"/>
+          <circle cx="6"  cy="23" r="2.8" fill="rgba(5,30,66,0.07)"/>
+          <circle cx="23" cy="23" r="2.8" fill="rgba(5,30,66,0.07)"/>
+          <circle cx="40" cy="23" r="2.8" fill="rgba(5,30,66,0.07)"/>
+          <circle cx="6"  cy="40" r="2.8" fill="rgba(5,30,66,0.04)"/>
+          <circle cx="23" cy="40" r="2.8" fill="rgba(5,30,66,0.04)"/>
+          <circle cx="40" cy="40" r="2.8" fill="rgba(5,30,66,0.04)"/>
+        </svg>
+        <!-- top-right: diamond -->
+        <svg class="sk-accent" style="top: 12%; right: 3%; animation: skAccentSpin 15s ease-in-out infinite 1s;" width="30" height="30" viewBox="0 0 30 30" fill="none">
+          <path d="M15 2 L28 15 L15 28 L2 15 Z" stroke="rgba(5,30,66,0.12)" stroke-width="1.5"/>
+        </svg>
+        <!-- bottom-right: concentric rings -->
+        <svg class="sk-accent" style="bottom: 9%; right: 2%; animation: skAccentDown 10s ease-in-out infinite 3.5s;" width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="15" stroke="rgba(5,30,66,0.08)" stroke-width="1.5"/>
+          <circle cx="18" cy="18" r="8"  stroke="rgba(5,30,66,0.11)" stroke-width="1.5"/>
+          <circle cx="18" cy="18" r="2.5" fill="rgba(138,34,50,0.16)"/>
+        </svg>
+      </div>
+      <div class="sk-pillar__wrap">
+        <article class="sk-pillar__text">
+          <span class="sk-pillar__accent" aria-hidden="true"></span>
+          <h2 class="sk-pillar__heading"><span class="scroll-text-reveal" data-text="Partnerships with Families">Partnerships with Families</span></h2>
+          <p class="sk-pillar__body">Learning works best when school and home walk together. We value strong relationships with families and believe open communication and partnership help every child flourish.</p>
+          <span class="sk-pillar__tagline">Together for every child.</span>
+        </article>
+        <figure class="sk-pillar__media">
+          <div class="sk-pillar__circle">
+            <img class="sk-pillar__img" src="images/samples/cosmos_226684284.jpeg" alt="Children collaborating during a classroom activity" loading="lazy">
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <section class="sk-pillar" id="sk-celebrating" aria-label="Celebrating Together">
+      <div class="sk-pillar__deco" aria-hidden="true">
+        <!-- top-right: asterisk -->
+        <svg class="sk-accent" style="top: 10%; right: 2%; animation: skAccentSpin 11s ease-in-out infinite 0.8s;" width="42" height="42" viewBox="0 0 42 42" fill="none">
+          <line x1="21" y1="5"  x2="21" y2="37" stroke="rgba(5,30,66,0.11)" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="5"  y1="13" x2="37" y2="29" stroke="rgba(5,30,66,0.11)" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="37" y1="13" x2="5"  y2="29" stroke="rgba(5,30,66,0.11)" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <!-- bottom-left: dot grid -->
+        <svg class="sk-accent" style="bottom: 8%; left: 2%; animation: skAccentDown 9s ease-in-out infinite 2.2s;" width="46" height="46" viewBox="0 0 46 46" fill="none">
+          <circle cx="6"  cy="6"  r="2.8" fill="rgba(5,30,66,0.10)"/>
+          <circle cx="23" cy="6"  r="2.8" fill="rgba(5,30,66,0.10)"/>
+          <circle cx="40" cy="6"  r="2.8" fill="rgba(5,30,66,0.10)"/>
+          <circle cx="6"  cy="23" r="2.8" fill="rgba(5,30,66,0.07)"/>
+          <circle cx="23" cy="23" r="2.8" fill="rgba(5,30,66,0.07)"/>
+          <circle cx="40" cy="23" r="2.8" fill="rgba(5,30,66,0.07)"/>
+          <circle cx="6"  cy="40" r="2.8" fill="rgba(5,30,66,0.04)"/>
+          <circle cx="23" cy="40" r="2.8" fill="rgba(5,30,66,0.04)"/>
+          <circle cx="40" cy="40" r="2.8" fill="rgba(5,30,66,0.04)"/>
+        </svg>
+        <!-- mid-left: diamond -->
+        <svg class="sk-accent" style="top: 46%; left: 2%; animation: skAccentUp 14s ease-in-out infinite 4s;" width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <path d="M16 2 L30 16 L16 30 L2 16 Z" stroke="rgba(138,34,50,0.14)" stroke-width="1.5"/>
+        </svg>
+        <!-- top-left: concentric rings -->
+        <svg class="sk-accent" style="top: 8%; left: 3%; animation: skAccentDown 12s ease-in-out infinite 5.5s;" width="34" height="34" viewBox="0 0 34 34" fill="none">
+          <circle cx="17" cy="17" r="14" stroke="rgba(5,30,66,0.08)" stroke-width="1.5"/>
+          <circle cx="17" cy="17" r="7"  stroke="rgba(5,30,66,0.11)" stroke-width="1.5"/>
+          <circle cx="17" cy="17" r="2.5" fill="rgba(138,34,50,0.16)"/>
+        </svg>
+      </div>
+      <div class="sk-pillar__wrap">
+        <article class="sk-pillar__text">
+          <span class="sk-pillar__accent" aria-hidden="true"></span>
+          <h2 class="sk-pillar__heading"><span class="scroll-text-reveal" data-text="Celebrating Together">Celebrating Together</span></h2>
+          <p class="sk-pillar__body">Community grows through shared moments. School events, celebrations and gatherings bring families together and strengthen the sense of connection across our community.</p>
+          <span class="sk-pillar__tagline">Every season, every story.</span>
+        </article>
+        <figure class="sk-pillar__media">
+          <div class="sk-pillar__circle">
+            <img class="sk-pillar__img" src="images/samples/cosmos_1074538081.jpeg" alt="Students sharing a group celebration activity" loading="lazy">
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <section class="sk-pillar sk-pillar--reverse sk-pillar--grey" id="sk-faith-community" aria-label="Faith in Community">
+      <div class="sk-pillar__deco" aria-hidden="true">
+        <!-- top-left: cross (faith) -->
+        <svg class="sk-accent" style="top: 8%; left: 3%; animation: skAccentUp 10s ease-in-out infinite;" width="44" height="44" viewBox="0 0 44 44" fill="none">
+          <line x1="22" y1="4"  x2="22" y2="40" stroke="rgba(5,30,66,0.12)" stroke-width="2" stroke-linecap="round"/>
+          <line x1="6"  y1="15" x2="38" y2="15" stroke="rgba(5,30,66,0.12)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <!-- mid-left: dot grid -->
+        <svg class="sk-accent" style="top: 46%; left: 2%; animation: skAccentDown 11s ease-in-out infinite 2.5s;" width="46" height="46" viewBox="0 0 46 46" fill="none">
+          <circle cx="6"  cy="6"  r="2.8" fill="rgba(5,30,66,0.10)"/>
+          <circle cx="23" cy="6"  r="2.8" fill="rgba(5,30,66,0.10)"/>
+          <circle cx="40" cy="6"  r="2.8" fill="rgba(5,30,66,0.10)"/>
+          <circle cx="6"  cy="23" r="2.8" fill="rgba(5,30,66,0.07)"/>
+          <circle cx="23" cy="23" r="2.8" fill="rgba(5,30,66,0.07)"/>
+          <circle cx="40" cy="23" r="2.8" fill="rgba(5,30,66,0.07)"/>
+          <circle cx="6"  cy="40" r="2.8" fill="rgba(5,30,66,0.04)"/>
+          <circle cx="23" cy="40" r="2.8" fill="rgba(5,30,66,0.04)"/>
+          <circle cx="40" cy="40" r="2.8" fill="rgba(5,30,66,0.04)"/>
+        </svg>
+        <!-- top-right: asterisk -->
+        <svg class="sk-accent" style="top: 12%; right: 2%; animation: skAccentSpin 13s ease-in-out infinite 1.6s;" width="40" height="40" viewBox="0 0 40 40" fill="none">
+          <line x1="20" y1="4"  x2="20" y2="36" stroke="rgba(5,30,66,0.11)" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="4"  y1="12" x2="36" y2="28" stroke="rgba(5,30,66,0.11)" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="36" y1="12" x2="4"  y2="28" stroke="rgba(5,30,66,0.11)" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        <!-- bottom-right: concentric rings -->
+        <svg class="sk-accent" style="bottom: 10%; right: 3%; animation: skAccentDown 9s ease-in-out infinite 4s;" width="36" height="36" viewBox="0 0 36 36" fill="none">
+          <circle cx="18" cy="18" r="15" stroke="rgba(5,30,66,0.08)" stroke-width="1.5"/>
+          <circle cx="18" cy="18" r="8"  stroke="rgba(5,30,66,0.11)" stroke-width="1.5"/>
+          <circle cx="18" cy="18" r="2.5" fill="rgba(138,34,50,0.16)"/>
+        </svg>
+      </div>
+      <div class="sk-pillar__wrap">
+        <article class="sk-pillar__text">
+          <span class="sk-pillar__accent" aria-hidden="true"></span>
+          <h2 class="sk-pillar__heading"><span class="scroll-text-reveal" data-text="Faith in Community">Faith in Community</span></h2>
+          <p class="sk-pillar__body">Our faith brings us together. Masses, prayer and parish celebrations are important moments where our community gathers to reflect, celebrate and grow in faith.</p>
+          <span class="sk-pillar__tagline">Guided by Christ, shaped by community.</span>
+        </article>
+        <figure class="sk-pillar__media">
+          <div class="sk-pillar__circle">
+            <img class="sk-pillar__img" src="images/samples/cosmos_1263936189.jpeg" alt="Students participating in a faith community gathering" loading="lazy">
+          </div>
+        </figure>
+      </div>
+    </section>
+
+    <div class="sk-wave-divider sk-wave-divider--navy" id="sk-wave-divider-8" aria-hidden="true">
+      <svg class="sk-wave-svg" viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path id="sk-wave-path-8" d="M 0 120 L 1440 120 L 1440 88 C 1080 76 360 22 0 14 Z" fill="#8A2232"/>
+      </svg>
+    </div>
+
+    <section class="sk-spirit" id="sk-spirit" aria-label="The St Kevin's Spirit">
+      <div class="sk-spirit__deco" aria-hidden="true">
+
+        <!-- Large concentric rings — right edge depth -->
+        <svg style="position:absolute;right:-100px;top:50%;transform:translateY(-50%);" width="400" height="400" viewBox="0 0 400 400" fill="none">
+          <circle cx="200" cy="200" r="188" stroke="rgba(255,255,255,0.05)" stroke-width="1.5"/>
+          <circle cx="200" cy="200" r="148" stroke="rgba(255,255,255,0.07)" stroke-width="1.5"/>
+          <circle cx="200" cy="200" r="108" stroke="rgba(255,255,255,0.09)" stroke-width="1.5"/>
+          <circle cx="200" cy="200" r="68"  stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+          <circle cx="200" cy="200" r="28"  stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+        </svg>
+
+        <!-- Large concentric rings — left edge depth -->
+        <svg style="position:absolute;left:-90px;top:50%;transform:translateY(-50%);" width="320" height="320" viewBox="0 0 320 320" fill="none">
+          <circle cx="160" cy="160" r="150" stroke="rgba(255,255,255,0.04)" stroke-width="1.5"/>
+          <circle cx="160" cy="160" r="110" stroke="rgba(255,255,255,0.06)" stroke-width="1.5"/>
+          <circle cx="160" cy="160" r="70"  stroke="rgba(255,255,255,0.08)" stroke-width="1.5"/>
+          <circle cx="160" cy="160" r="30"  stroke="rgba(255,255,255,0.11)" stroke-width="1.5"/>
+        </svg>
+
+        <!-- Top-left: dot grid -->
+        <svg class="sk-accent" style="top:14%;left:clamp(16px,4vw,64px);animation:skAccentUp 10s ease-in-out infinite;" width="46" height="46" viewBox="0 0 46 46" fill="none">
+          <circle cx="6"  cy="6"  r="2.8" fill="rgba(255,255,255,0.16)"/>
+          <circle cx="23" cy="6"  r="2.8" fill="rgba(255,255,255,0.16)"/>
+          <circle cx="40" cy="6"  r="2.8" fill="rgba(255,255,255,0.16)"/>
+          <circle cx="6"  cy="23" r="2.8" fill="rgba(255,255,255,0.11)"/>
+          <circle cx="23" cy="23" r="2.8" fill="rgba(255,255,255,0.11)"/>
+          <circle cx="40" cy="23" r="2.8" fill="rgba(255,255,255,0.11)"/>
+          <circle cx="6"  cy="40" r="2.8" fill="rgba(255,255,255,0.06)"/>
+          <circle cx="23" cy="40" r="2.8" fill="rgba(255,255,255,0.06)"/>
+          <circle cx="40" cy="40" r="2.8" fill="rgba(255,255,255,0.06)"/>
+        </svg>
+
+        <!-- Top-right: asterisk -->
+        <svg class="sk-accent" style="top:16%;right:clamp(16px,4vw,64px);animation:skAccentSpin 13s ease-in-out infinite 2.5s;" width="44" height="44" viewBox="0 0 44 44" fill="none">
+          <line x1="22" y1="4"  x2="22" y2="40" stroke="rgba(255,255,255,0.18)" stroke-width="2" stroke-linecap="round"/>
+          <line x1="5"  y1="13" x2="39" y2="31" stroke="rgba(255,255,255,0.18)" stroke-width="2" stroke-linecap="round"/>
+          <line x1="39" y1="13" x2="5"  y2="31" stroke="rgba(255,255,255,0.18)" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+
+        <!-- Bottom-left: diamond -->
+        <svg class="sk-accent" style="bottom:16%;left:clamp(20px,5vw,80px);animation:skAccentDown 9s ease-in-out infinite 1.2s;" width="30" height="30" viewBox="0 0 30 30" fill="none">
+          <path d="M15 2 L28 15 L15 28 L2 15 Z" stroke="rgba(255,255,255,0.18)" stroke-width="1.5"/>
+        </svg>
+
+        <!-- Bottom-right: concentric small rings -->
+        <svg class="sk-accent" style="bottom:18%;right:clamp(20px,5vw,80px);animation:skAccentUp 11s ease-in-out infinite 4s;" width="34" height="34" viewBox="0 0 34 34" fill="none">
+          <circle cx="17" cy="17" r="14" stroke="rgba(255,255,255,0.11)" stroke-width="1.5"/>
+          <circle cx="17" cy="17" r="7"  stroke="rgba(255,255,255,0.16)" stroke-width="1.5"/>
+          <circle cx="17" cy="17" r="2.5" fill="rgba(255,255,255,0.24)"/>
+        </svg>
+
+      </div>
+      <div class="sk-spirit__inner">
+        <h2 class="sk-spirit__heading"><span class="scroll-text-reveal" data-text="The St Kevin's Spirit">The St Kevin's Spirit</span></h2>
+        <p class="sk-spirit__body">Something special happens when people care for one another. The kindness, generosity and support shown within our community help create a place where children and families truly feel at home.</p>
+        <hr class="sk-spirit__rule" aria-hidden="true">
+        <p class="sk-spirit__tagline">A community that truly cares.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="sk-footer" id="sk-footer" aria-label="Site footer">
+    <svg class="sk-footer__deco" viewBox="0 0 1440 560" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="64" cy="72" r="2.8" fill="rgba(255,255,255,0.04)"/>
+      <circle cx="96" cy="72" r="2.8" fill="rgba(255,255,255,0.04)"/>
+      <circle cx="128" cy="72" r="2.8" fill="rgba(255,255,255,0.04)"/>
+      <circle cx="1312" cy="444" r="2.4" fill="rgba(255,255,255,0.033)"/>
+      <circle cx="1344" cy="444" r="2.4" fill="rgba(255,255,255,0.033)"/>
+      <circle cx="1376" cy="444" r="2.4" fill="rgba(255,255,255,0.033)"/>
+      <circle cx="1420" cy="88" r="5" fill="#8A2232" opacity="0.22"/>
+      <circle cx="38" cy="480" r="4" fill="#8A2232" opacity="0.18"/>
+      <path d="M 1298 530 Q 1350 502 1402 530" stroke="rgba(255,255,255,0.055)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    </svg>
+    <div class="sk-footer__inner">
+      <p class="sk-footer__tagline">A community where every child is known, supported and inspired to flourish</p>
+      <div class="sk-footer__rule" aria-hidden="true"></div>
+      <div class="sk-footer__logos">
+        <a href="https://www.macs.edu.au" class="sk-footer__logo-link" aria-label="Melbourne Archdiocese Catholic Schools — opens in new tab" target="_blank" rel="noopener noreferrer">
+          <img src="images/macs-logo-white.png" alt="Melbourne Archdiocese Catholic Schools" class="sk-footer__logo-img sk-footer__logo-img--macs" loading="lazy">
+        </a>
+        <a href="index.html" class="sk-footer__logo-link" aria-label="St Kevin's Primary School — Home">
+          <img src="images/logo-sk-white.png" alt="St Kevin's Primary School Hampton Park" class="sk-footer__logo-img sk-footer__logo-img--sk" loading="lazy">
+        </a>
+      </div>
+      <div class="sk-footer__cols">
+        <div class="sk-footer__col">
+          <h3 class="sk-footer__col-head">Contact Us</h3>
+          <address class="sk-footer__address">
+            <div class="sk-footer__contact-row">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>120 Hallam Rd, Hampton Park VIC 3976</span>
+            </div>
+            <div class="sk-footer__contact-row">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.95-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <a href="tel:0397098600">(03) 9709 8600</a>
+            </div>
+            <div class="sk-footer__contact-row">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:administration@skhamptonpark.catholic.edu.au">administration@<wbr>skhamptonpark.catholic.edu.au</a>
+            </div>
+          </address>
+          <p class="sk-footer__hours">Monday to Friday &nbsp;&middot;&nbsp; 8:00am – 4:00pm</p>
+        </div>
+        <div class="sk-footer__col">
+          <h3 class="sk-footer__col-head">Quick Links</h3>
+          <nav class="sk-footer__nav" aria-label="Footer navigation">
+            <a href="contact.html" class="sk-footer__link">Contact</a>
+            <a href="enrolments.html" class="sk-footer__link">Enrolments</a>
+            <a href="enrolments.html" class="sk-footer__link">School Tours</a>
+            <a href="#" class="sk-footer__link">Newsletter</a>
+            <a href="#" class="sk-footer__link">Annual Report</a>
+            <a href="policies.html" class="sk-footer__link">Policies &amp; Compliance</a>
+          </nav>
+        </div>
+        <div class="sk-footer__col">
+          <h3 class="sk-footer__col-head">Stay Connected</h3>
+          <p class="sk-footer__about">St Kevin's is a Christ-centred Catholic primary school in Hampton Park, Melbourne. Part of the Melbourne Archdiocese Catholic Schools community.</p>
+          <div class="sk-footer__social">
+            <a href="https://www.facebook.com/skhamptonpark" class="sk-footer__social-btn sk-footer__social-btn--fb" aria-label="St Kevin's on Facebook" target="_blank" rel="noopener noreferrer">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://www.skhamptonpark.catholic.edu.au" class="sk-footer__social-btn sk-footer__social-btn--web" aria-label="St Kevin's website" target="_blank" rel="noopener noreferrer">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="sk-footer__bottom">
+        <p class="sk-footer__copy">© 2026 St Kevin's Primary School Hampton Park</p>
+        <div class="sk-footer__bottom-links">
+          <a href="policies.html" class="sk-footer__bottom-link">Policies</a>
+          <span class="sk-footer__bottom-sep" aria-hidden="true">·</span>
+          <a href="contact.html" class="sk-footer__bottom-link">Contact</a>
+          <span class="sk-footer__bottom-sep" aria-hidden="true">·</span>
+          <a href="https://www.skhamptonpark.catholic.edu.au" class="sk-footer__bottom-link" target="_blank" rel="noopener noreferrer">skhamptonpark.catholic.edu.au</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <canvas id="global-click-spark"></canvas>
+
+  <script>
+  (function () {
+    'use strict';
+
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var skipEntrances = Boolean(window.location.hash);
+    gsap.registerPlugin(ScrollTrigger);
+
+    if (!reduced && typeof Lenis !== 'undefined') {
+      var lenis = new Lenis({
+        autoRaf: false,
+        duration: 1.15,
+        easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }
+      });
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
+      gsap.ticker.lagSmoothing(0);
+    }
+
+    var header = document.getElementById('sk-header');
+    var hamburger = document.getElementById('sk-hamburger-btn');
+    var sidebar = document.getElementById('sk-nav-sidebar');
+    var backdrop = document.getElementById('sk-nav-backdrop');
+    var closeBtn = document.getElementById('sk-sidebar-close');
+    var searchBtn = document.getElementById('sk-search-btn');
+    var searchPanel = document.getElementById('sk-search-panel');
+    var searchClose = document.getElementById('sk-search-close-btn');
+    var searchInput = document.getElementById('sk-search-input');
+    var searchForm = document.getElementById('sk-search-form');
+    var searchRes = document.getElementById('sk-search-results');
+    var navItems = sidebar.querySelectorAll('.sk-nav-item');
+    var footerLinks = sidebar.querySelectorAll('.sk-social-btn');
+    var sideHead = sidebar.querySelector('.sk-sidebar-header');
+    var sideImg = sidebar.querySelector('.sk-sidebar-image img');
+    var navOpen = false;
+    var searchOpen = false;
+    var lastScrollY = 0;
+
+    gsap.set(sidebar, { x: '-100%' });
+    gsap.set(backdrop, { autoAlpha: 0 });
+    gsap.set(searchPanel, { autoAlpha: 0, y: -8 });
+
+    function onScroll() {
+      var y = window.scrollY;
+      var scrolled = y > 60;
+      header.classList.toggle('is-scrolled', scrolled);
+      header.classList.toggle('is-transparent', !scrolled);
+      if (y > 140) {
+        header.classList.toggle('is-hidden', y > lastScrollY);
+      } else {
+        header.classList.remove('is-hidden');
+      }
+      lastScrollY = y;
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    function openNav() {
+      navOpen = true;
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      var tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+      tl.to(backdrop, { autoAlpha: 1, duration: reduced ? 0.01 : 0.65 }, 0);
+      tl.to(sidebar, { x: '0%', duration: reduced ? 0.01 : 0.78 }, 0);
+      if (sideImg && !reduced) {
+        tl.from(sideImg, { scale: 1.1, duration: 1.1, ease: 'power3.out', clearProps: 'transform' }, 0);
+      }
+      tl.from(sideHead, { autoAlpha: 0, y: 8, duration: reduced ? 0 : 0.45, clearProps: 'all' }, reduced ? 0 : 0.32);
+      tl.from(navItems, { autoAlpha: 0, x: -22, y: 10, duration: reduced ? 0 : 0.55, stagger: reduced ? 0 : { each: 0.09 }, clearProps: 'all' }, reduced ? 0 : 0.38);
+      tl.from(footerLinks, { autoAlpha: 0, y: 8, duration: reduced ? 0 : 0.4, stagger: reduced ? 0 : { each: 0.07 }, ease: 'power3.out', clearProps: 'all' }, reduced ? 0 : 0.76);
+      tl.call(function () { closeBtn.focus(); });
+    }
+
+    function closeNav() {
+      navOpen = false;
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      var tl = gsap.timeline();
+      tl.to(sidebar, { x: '-100%', duration: reduced ? 0.01 : 0.56, ease: 'power4.inOut' }, 0);
+      tl.to(backdrop, { autoAlpha: 0, duration: reduced ? 0.01 : 0.42, ease: 'power2.in' }, reduced ? 0 : 0.08);
+    }
+
+    hamburger.addEventListener('click', openNav);
+    closeBtn.addEventListener('click', closeNav);
+    backdrop.addEventListener('click', closeNav);
+    navItems.forEach(function (a) { a.addEventListener('click', closeNav); });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        if (navOpen) closeNav();
+        if (searchOpen) closeSearch();
+      }
+    });
+
+    sidebar.addEventListener('keydown', function (event) {
+      if (!navOpen || event.key !== 'Tab') return;
+      var focusable = Array.from(sidebar.querySelectorAll('button, a, input, [tabindex]:not([tabindex="-1"])')).filter(function (el) { return !el.disabled; });
+      if (!focusable.length) return;
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+
+    function openSearch() {
+      searchOpen = true;
+      searchBtn.setAttribute('aria-expanded', 'true');
+      gsap.to(searchPanel, { autoAlpha: 1, y: 0, duration: 0.28, ease: 'power2.out' });
+      requestAnimationFrame(function () { searchInput.focus(); });
+    }
+
+    function closeSearch() {
+      searchOpen = false;
+      searchBtn.setAttribute('aria-expanded', 'false');
+      searchInput.value = '';
+      searchRes.textContent = '';
+      searchRes.classList.remove('has-message');
+      gsap.to(searchPanel, { autoAlpha: 0, y: -8, duration: 0.22, ease: 'power2.in' });
+    }
+
+    searchBtn.addEventListener('click', function () {
+      if (searchOpen) closeSearch();
+      else openSearch();
+    });
+    searchClose.addEventListener('click', closeSearch);
+
+    searchForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      var query = searchInput.value.trim();
+      if (!query) return;
+      searchRes.classList.add('has-message');
+      searchRes.textContent = 'No results found for "' + query + '" - full search will be available once all pages are live.';
+    });
+
+    searchInput.addEventListener('input', function () {
+      if (searchRes.classList.contains('has-message')) {
+        searchRes.textContent = '';
+        searchRes.classList.remove('has-message');
+      }
+    });
+
+    if (!reduced) {
+      var spans = hamburger.querySelectorAll('span');
+      hamburger.addEventListener('mouseenter', function () {
+        gsap.to(spans[0], { y: -3, duration: 0.38, ease: 'expo.out' });
+        gsap.to(spans[2], { y: 3, duration: 0.38, ease: 'expo.out' });
+      });
+      hamburger.addEventListener('mouseleave', function () {
+        gsap.to([spans[0], spans[2]], { y: 0, duration: 0.28, ease: 'expo.out' });
+      });
+      hamburger.addEventListener('click', function () {
+        gsap.set([spans[0], spans[2]], { y: 0 });
+      });
+    }
+
+    var WAVES = [
+      {
+        pathId: 'sk-wave-path-2',
+        wrapperId: 'sk-wave-divider-2',
+        dA: 'M 0 0 L 1440 0 L 1440 14 C 1080 22 360 76 0 88 Z',
+        dB: 'M 0 0 L 1440 0 L 1440 14 C 1080 92 360 -8 0 88 Z'
+      },
+      {
+        pathId: 'sk-wave-path-8',
+        wrapperId: 'sk-wave-divider-8',
+        dA: 'M 0 120 L 1440 120 L 1440 88 C 1080 76 360 22 0 14 Z',
+        dB: 'M 0 120 L 1440 120 L 1440 88 C 1080 18 360 106 0 14 Z'
+      }
+    ];
+
+    WAVES.forEach(function (cfg) {
+      var path = document.getElementById(cfg.pathId);
+      var wrapper = document.getElementById(cfg.wrapperId);
+      if (!path || !wrapper) return;
+      gsap.set(path, { attr: { d: cfg.dA } });
+      if (reduced) return;
+      var timeline = gsap.timeline({
+        scrollTrigger: {
+          id: cfg.pathId + '-morph',
+          trigger: wrapper,
+          start: 'top 100%',
+          end: 'bottom 0%',
+          scrub: 1.6
+        }
+      });
+      timeline.fromTo(path, { attr: { d: cfg.dA } }, { attr: { d: cfg.dB }, ease: 'sine.inOut' })
+        .to(path, { attr: { d: cfg.dA }, ease: 'sine.inOut' });
+    });
+
+    if (!reduced && !skipEntrances) {
+      window.addEventListener('load', function () {
+        gsap.fromTo('#sk-hero-scroll-dot', { y: -14, autoAlpha: 0.25 }, { y: 16, autoAlpha: 1, duration: 1.1, ease: 'sine.inOut', repeat: -1, yoyo: true });
+      });
+
+      gsap.from('.sk-community-intro__body', {
+        scrollTrigger: { trigger: '.sk-community-intro', start: 'top 80%' },
+        opacity: 0, y: 32, duration: 1, ease: 'expo.out'
+      });
+
+      gsap.utils.toArray('.sk-pillar').forEach(function (section) {
+        var textEls = section.querySelectorAll('.sk-pillar__body, .sk-pillar__tagline');
+        var circle  = section.querySelector('.sk-pillar__circle');
+        gsap.from(textEls, {
+          scrollTrigger: { trigger: section, start: 'top 80%' },
+          opacity: 0, y: 40, duration: 1, ease: 'expo.out', stagger: 0.12
+        });
+        gsap.from(circle, {
+          scrollTrigger: { trigger: section, start: 'top 82%' },
+          opacity: 0, scale: 0.92, y: 28, duration: 1.15, ease: 'expo.out'
+        });
+      });
+
+      gsap.from(['.sk-spirit__body', '.sk-spirit__rule', '.sk-spirit__tagline'], {
+        scrollTrigger: { trigger: '.sk-spirit', start: 'top 75%' },
+        opacity: 0, y: 40, duration: 1.1, ease: 'expo.out', stagger: 0.14
+      });
+
+      var footer = document.getElementById('sk-footer');
+      var rule = footer.querySelector('.sk-footer__rule');
+      gsap.set(rule, { scaleX: 0 });
+      gsap.set([footer.querySelector('.sk-footer__tagline'), footer.querySelector('.sk-footer__logos'), footer.querySelectorAll('.sk-footer__col'), footer.querySelector('.sk-footer__bottom')], { opacity: 0 });
+      gsap.timeline({
+        scrollTrigger: { trigger: footer, start: 'top 88%', toggleActions: 'play none none none' }
+      })
+      .fromTo(footer.querySelector('.sk-footer__tagline'), { y: 22, opacity: 0 }, { y: 0, opacity: 1, duration: 0.85, ease: 'expo.out' })
+      .to(rule, { scaleX: 1, duration: 0.7, ease: 'expo.out', transformOrigin: 'center' }, '-=0.5')
+      .fromTo(footer.querySelector('.sk-footer__logos'), { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'expo.out' }, '-=0.35')
+      .fromTo(footer.querySelectorAll('.sk-footer__col'), { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.65, ease: 'expo.out', stagger: 0.12 }, '-=0.3')
+      .fromTo(footer.querySelector('.sk-footer__bottom'), { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'expo.out' }, '-=0.15');
+    }
+
+    (function () {
+      var canvas = document.getElementById('global-click-spark');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var sparks = [];
+      var dpr = window.devicePixelRatio || 1;
+
+      function resize() {
+        canvas.width = window.innerWidth * dpr;
+        canvas.height = window.innerHeight * dpr;
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      resize();
+      window.addEventListener('resize', resize);
+
+      document.addEventListener('click', function (event) {
+        var now = performance.now();
+        for (var i = 0; i < 10; i++) {
+          sparks.push({ x: event.clientX, y: event.clientY, angle: (2 * Math.PI * i) / 10, startTime: now });
+        }
+      });
+
+      function ease(t) { return t * (2 - t); }
+
+      function draw(timestamp) {
+        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+        for (var i = sparks.length - 1; i >= 0; i--) {
+          var spark = sparks[i];
+          var elapsed = timestamp - spark.startTime;
+          if (elapsed >= 460) {
+            sparks.splice(i, 1);
+            continue;
+          }
+          var progress = elapsed / 460;
+          var eased = ease(progress);
+          var distance = eased * 24;
+          var lineLength = 12 * (1 - eased);
+          var x1 = spark.x + distance * Math.cos(spark.angle);
+          var y1 = spark.y + distance * Math.sin(spark.angle);
+          var x2 = spark.x + (distance + lineLength) * Math.cos(spark.angle);
+          var y2 = spark.y + (distance + lineLength) * Math.sin(spark.angle);
+          ctx.strokeStyle = '#ffffff';
+          ctx.lineWidth = 2;
+          ctx.lineCap = 'round';
+          ctx.beginPath();
+          ctx.moveTo(x1, y1);
+          ctx.lineTo(x2, y2);
+          ctx.stroke();
+        }
+        requestAnimationFrame(draw);
+      }
+
+      requestAnimationFrame(draw);
+    })();
+  })();
+
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var heading = document.querySelector('.sk-hero-h1');
+    var img = document.querySelector('.sk-hero-image img');
+    if (!heading) return;
+    gsap.set(heading, { y: 28 });
+    if (img) gsap.set(img, { scale: 1.09 });
+    window.addEventListener('load', function () {
+      var tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+      if (img) tl.to(img, { scale: 1.04, duration: 1.6, ease: 'power3.out' }, 0);
+      tl.to(heading, { y: 0, duration: 1.05 }, 0.15);
+    });
+  })();
+  </script>
+</body>
+</html>
