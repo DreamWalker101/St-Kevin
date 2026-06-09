@@ -46,6 +46,8 @@
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
   <!-- Shared layout styles -->
   <link rel="stylesheet" href="css/sk-layout.css">
+  <!-- Shared layout JS (nav, header, click-spark) -->
+  <script src="js/sk-layout.js"></script>
 
   <style>
     :root {
@@ -68,6 +70,8 @@
       --max-width: 1200px;
       --safesmart-frame-height: 1250px;
     }
+
+    html, body { overflow-x: hidden; }
 
     body {
       margin: 0;
@@ -129,7 +133,7 @@
       right: -80px;
       width: 500px;
       height: 500px;
-      opacity: 0.04;
+      opacity: 0.07;
     }
 
     .sk-policy-hero__rings--bottom {
@@ -137,7 +141,7 @@
       left: -60px;
       width: 360px;
       height: 360px;
-      opacity: 0.03;
+      opacity: 0.07;
     }
 
     .sk-hero-macs {
@@ -234,16 +238,6 @@
       background: var(--color-warm-cream);
     }
 
-    #global-click-spark {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      mix-blend-mode: difference;
-      z-index: 9999;
-    }
-
     /* ── Character-by-character heading reveal ── */
     .scroll-text-word {
       display: inline-flex;
@@ -273,10 +267,6 @@
     }
 
     @media (max-width: 768px) {
-      :root {
-        --safesmart-frame-height: 1300px;
-      }
-
       .sk-hero--policy {
         min-height: 42vh;
         padding: 112px 24px 72px;
@@ -382,6 +372,26 @@
     }
     @media (max-width: 480px) {
       .sk-wave-divider--burg { height: 60px; }
+    }
+
+    /* Touch targets — ensure all in-page interactive elements meet 44px minimum */
+    .sk-footer__link,
+    .sk-footer__bottom-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+    }
+
+    /* Concentric ring deco — prevent overflow on very small viewports */
+    @media (max-width: 480px) {
+      .sk-policy-hero__rings--top {
+        width: min(400px, 90vw);
+        height: auto;
+      }
+      .sk-policy-hero__rings--bottom {
+        width: min(280px, 75vw);
+        height: auto;
+      }
     }
   </style>
 </head>
@@ -512,7 +522,7 @@
 
     <section class="sk-policy-intro" id="sk-policy-intro" aria-label="School Policies">
       <div class="sk-policy-intro__inner">
-        <h2 class="sk-policy-intro__heading"><span class="scroll-text-reveal" data-text="School Policies">School Policies</span></h2>
+        <h2 class="sk-policy-intro__heading"><span class="scroll-text-reveal" data-text="Our Commitment to Safe and Transparent Schooling">Our Commitment to Safe and Transparent Schooling</span></h2>
         <p class="sk-policy-intro__body">St Kevin's Primary School operates within the policies and governance frameworks of Melbourne Archdiocese Catholic Schools (MACS). The policies that guide our work in areas such as child safety, wellbeing and governance can be accessed below.</p>
       </div>
     </section>
@@ -524,11 +534,18 @@
             src="https://safesmartsolutions.com.au/portal/St%20Kevin's%20Primary%20School%20-%20Hampton%20Park/882a137f3d/policy"
             title="St Kevin's School Policies — SafeSmart Portal"
             loading="lazy"
-            allowfullscreen>
+            allowfullscreen
+            sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
           </iframe>
         </div>
       </div>
     </section>
+
+    <div class="sk-wave-divider" style="height:80px;background:#051E42;" aria-hidden="true">
+      <svg class="sk-wave-svg" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,40 C360,80 1080,0 1440,40 L1440,0 L0,0 Z" fill="#F6F3EE"/>
+      </svg>
+    </div>
   </main>
 
   <footer class="sk-footer" id="sk-footer" aria-label="Site footer">
@@ -610,7 +627,6 @@
     </div>
   </footer>
 
-  <canvas id="global-click-spark"></canvas>
 
   <script>
   (function () {
@@ -835,14 +851,11 @@
 
     if (!reduced && !skipEntrances) {
       window.addEventListener('load', function () {
-        (function () {
-          var heading = document.querySelector('.sk-policy-hero__heading');
-          if (!heading) return;
+        var heading = document.querySelector('.sk-policy-hero__heading');
+        if (heading) {
           gsap.set(heading, { y: 28 });
-          window.addEventListener('load', function () {
-            gsap.to(heading, { y: 0, duration: 1.05, ease: 'expo.out' });
-          });
-        })();
+          gsap.to(heading, { y: 0, duration: 1.05, ease: 'expo.out' });
+        }
       });
 
       gsap.from(['.sk-policy-intro__heading', '.sk-policy-intro__body'], {
@@ -868,61 +881,6 @@
       .fromTo(footer.querySelector('.sk-footer__bottom'), { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'expo.out' }, '-=0.15');
     }
 
-    (function () {
-      var canvas = document.getElementById('global-click-spark');
-      if (!canvas) return;
-      var ctx = canvas.getContext('2d');
-      var sparks = [];
-      var dpr = window.devicePixelRatio || 1;
-
-      function resize() {
-        canvas.width = window.innerWidth * dpr;
-        canvas.height = window.innerHeight * dpr;
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      }
-
-      resize();
-      window.addEventListener('resize', resize);
-
-      document.addEventListener('click', function (event) {
-        var now = performance.now();
-        for (var i = 0; i < 10; i++) {
-          sparks.push({ x: event.clientX, y: event.clientY, angle: (2 * Math.PI * i) / 10, startTime: now });
-        }
-      });
-
-      function ease(t) { return t * (2 - t); }
-
-      function draw(timestamp) {
-        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-        for (var i = sparks.length - 1; i >= 0; i--) {
-          var spark = sparks[i];
-          var elapsed = timestamp - spark.startTime;
-          if (elapsed >= 460) {
-            sparks.splice(i, 1);
-            continue;
-          }
-          var progress = elapsed / 460;
-          var eased = ease(progress);
-          var distance = eased * 24;
-          var lineLength = 12 * (1 - eased);
-          var x1 = spark.x + distance * Math.cos(spark.angle);
-          var y1 = spark.y + distance * Math.sin(spark.angle);
-          var x2 = spark.x + (distance + lineLength) * Math.cos(spark.angle);
-          var y2 = spark.y + (distance + lineLength) * Math.sin(spark.angle);
-          ctx.strokeStyle = '#ffffff';
-          ctx.lineWidth = 2;
-          ctx.lineCap = 'round';
-          ctx.beginPath();
-          ctx.moveTo(x1, y1);
-          ctx.lineTo(x2, y2);
-          ctx.stroke();
-        }
-        requestAnimationFrame(draw);
-      }
-
-      requestAnimationFrame(draw);
-    })();
   })();
   </script>
 </body>

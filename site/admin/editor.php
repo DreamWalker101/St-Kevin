@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['nwork_auth'])) {
+if (!isset($_SESSION['sk_auth'])) {
     header('Location: index.php');
     exit;
 }
@@ -13,570 +13,509 @@ function v($val, $default = '') { return htmlspecialchars($val ?? $default, ENT_
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>nWork — Content Editor</title>
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+  <title>St Kevin's — Content Editor</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            primary: '#5d5699',
-            'primary-light': '#bcb4ff',
-            tertiary: '#476733',
-            'tertiary-light': '#c9eaa0',
-            surface: '#fbf9f8',
-            'surface-container': '#f0eded',
-            'surface-container-low': '#f6f3f2',
-            'surface-container-high': '#eae8e7',
+            navy:    '#051E42',
+            burgundy:'#8A2232',
+            cream:   '#F6F3EE',
+            cloud:   '#F0EDE5',
+          },
+          fontFamily: {
+            heading: ['Montserrat', 'sans-serif'],
+            body:    ['Inter', 'sans-serif'],
           }
         }
       }
     }
   </script>
   <style>
-    body { font-family: 'Inter', sans-serif; background: #f6f3f2; }
-    .signature-gradient { background: linear-gradient(135deg, #5d5699, #bcb4ff); }
-    .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-weight: normal; font-style: normal; font-size: 20px; line-height: 1; text-transform: none; display: inline-block; white-space: nowrap; -webkit-font-smoothing: antialiased; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #F6F3EE; color: #051E42; }
+
+    /* ── Tab bar ── */
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
-    .tab-btn { transition: all 0.15s ease; }
-    .tab-btn.active { background: white; color: #5d5699; font-weight: 700; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
-    .field-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: #737a66; margin-bottom: 6px; display: block; }
-    .field-input { width: 100%; border: 1px solid #d4d4d4; border-radius: 10px; padding: 10px 14px; font-size: 14px; font-family: 'Inter', sans-serif; transition: border-color 0.15s, box-shadow 0.15s; background: white; }
-    .field-input:focus { outline: none; border-color: #bcb4ff; box-shadow: 0 0 0 3px rgba(188,180,255,0.2); }
-    textarea.field-input { resize: vertical; min-height: 80px; }
-    .card-group { background: #f0eded; border-radius: 14px; padding: 16px; margin-bottom: 12px; }
-    .card-group-label { font-size: 10px; font-weight: 800; color: #5d5699; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 10px; }
-    .save-btn { background: linear-gradient(135deg, #5d5699, #bcb4ff); color: white; border: none; border-radius: 12px; padding: 12px 28px; font-size: 14px; font-weight: 700; cursor: pointer; transition: opacity 0.15s, transform 0.1s; }
-    .save-btn:hover { opacity: 0.9; }
-    .save-btn:active { transform: scale(0.97); }
-    .section-title { font-size: 18px; font-weight: 800; color: #1b1c1c; margin-bottom: 4px; }
-    .section-subtitle { font-size: 13px; color: #737a66; margin-bottom: 24px; }
-    .divider { height: 1px; background: #e4e2e1; margin: 20px 0; }
+    .tab-btn {
+      padding: 8px 20px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 500;
+      color: rgba(5,30,66,0.5);
+      cursor: pointer;
+      border: none;
+      background: transparent;
+      transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+      white-space: nowrap;
+    }
+    .tab-btn.active {
+      background: #ffffff;
+      color: #051E42;
+      font-weight: 600;
+      box-shadow: 0 1px 5px rgba(5,30,66,0.12);
+    }
+    .tab-btn:hover:not(.active) { color: #051E42; }
+
+    /* ── Card sections ── */
+    .section-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 1px 4px rgba(5,30,66,0.07);
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: #051E42;
+      margin-bottom: 4px;
+    }
+    .section-subtitle {
+      font-size: 13px;
+      color: rgba(5,30,66,0.5);
+      margin-bottom: 20px;
+    }
+    .divider { height: 1px; background: #E2E6EA; margin: 20px 0; }
+
+    /* ── Group cards (quote / tour groups) ── */
+    .group-card {
+      background: #F0EDE5;
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 12px;
+    }
+    .group-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: #8A2232;
+      margin-bottom: 12px;
+    }
+
+    /* ── Fields ── */
+    .field-label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(5,30,66,0.55);
+      margin-bottom: 6px;
+    }
+    .field-input {
+      width: 100%;
+      border: 1.5px solid #E2E6EA;
+      border-radius: 10px;
+      padding: 0 14px;
+      height: 44px;
+      font-size: 14px;
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #051E42;
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .field-input:focus {
+      outline: none;
+      border-color: #051E42;
+      box-shadow: 0 0 0 2px rgba(5,30,66,0.15);
+    }
+    textarea.field-input {
+      height: auto;
+      min-height: 80px;
+      padding: 12px 14px;
+      resize: vertical;
+    }
+    .field-hint {
+      font-size: 12px;
+      color: rgba(5,30,66,0.45);
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+
+    /* ── Toggle ── */
+    .toggle-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+    .toggle-switch {
+      position: relative;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+    .toggle-switch input { opacity: 0; width: 0; height: 0; }
+    .toggle-track {
+      position: absolute;
+      inset: 0;
+      background: #D1D5DB;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .toggle-track::after {
+      content: '';
+      position: absolute;
+      top: 3px; left: 3px;
+      width: 18px; height: 18px;
+      background: white;
+      border-radius: 50%;
+      transition: transform 0.2s;
+    }
+    .toggle-switch input:checked + .toggle-track { background: #051E42; }
+    .toggle-switch input:checked + .toggle-track::after { transform: translateX(20px); }
+    .toggle-label { font-size: 14px; font-family: 'Inter', sans-serif; color: #051E42; }
+
+    .announcement-extra { display: none; }
+    .announcement-extra.visible { display: block; }
+
+    /* ── Save button ── */
+    .save-btn {
+      background: #051E42;
+      color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      height: 44px;
+      padding: 0 28px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.15s, opacity 0.15s;
+    }
+    .save-btn:hover { background: #0A2D5C; }
+    .save-btn:disabled { opacity: 0.55; cursor: not-allowed; }
+
+    /* ── Toast ── */
+    #toast {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 9999;
+      width: 320px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(5,30,66,0.18);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: opacity 0.3s, transform 0.3s;
+      opacity: 0;
+      transform: translateY(12px);
+      pointer-events: none;
+    }
+    #toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    #toast .toast-bar {
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      border-radius: 16px 0 0 16px;
+    }
+    #toast .toast-bar.success { background: #16A34A; }
+    #toast .toast-bar.error   { background: #DC2626; }
+    #toast-msg {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: #051E42;
+      font-weight: 500;
+    }
   </style>
 </head>
 <body class="min-h-screen">
 
-  <!-- Top Navigation -->
-  <header class="sticky top-0 z-50 bg-white border-b border-gray-100 shadow-sm">
-    <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="signature-gradient w-8 h-8 rounded-xl flex items-center justify-center">
-          <span class="text-white font-black text-sm">n</span>
-        </div>
-        <span class="font-black text-gray-900">nWork</span>
-        <span class="text-gray-300 text-sm mx-1">/</span>
-        <span class="text-sm text-gray-500 font-medium">Content Editor</span>
+  <!-- ═══════════════════════════════════════ TOP NAV ═══ -->
+  <header style="position:sticky;top:0;z-index:50;background:#ffffff;border-bottom:1px solid #E2E6EA;box-shadow:0 1px 4px rgba(5,30,66,0.06);">
+    <div style="max-width:900px;margin:0 auto;padding:0 24px;height:56px;display:flex;align-items:center;justify-content:space-between;">
+
+      <!-- Left: logo mark + wordmark -->
+      <div style="display:flex;align-items:center;gap:12px;">
+        <!-- Burgundy cross -->
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect x="10" y="2"  width="4" height="20" rx="2" fill="#8A2232"/>
+          <rect x="2"  y="10" width="20" height="4" rx="2" fill="#8A2232"/>
+        </svg>
+        <span style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:15px;color:#051E42;">St Kevin's</span>
+        <span style="color:#D1D5DB;font-size:14px;margin:0 2px;">|</span>
+        <span style="font-family:'Inter',sans-serif;font-size:14px;color:rgba(5,30,66,0.5);font-weight:400;">Content Editor</span>
       </div>
-      <div class="flex items-center gap-3">
-        <a href="../index.html" target="_blank" class="flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-800 transition px-3 py-1.5 rounded-lg hover:bg-gray-100">
-          <span class="material-symbols-outlined text-base">open_in_new</span>
+
+      <!-- Right: actions -->
+      <div style="display:flex;align-items:center;gap:8px;">
+        <a href="../index.html" target="_blank"
+           style="display:flex;align-items:center;gap:6px;font-family:'Inter',sans-serif;font-size:13px;color:rgba(5,30,66,0.55);text-decoration:none;padding:6px 14px;border-radius:8px;transition:background 0.15s,color 0.15s;"
+           onmouseover="this.style.background='#F0EDE5';this.style.color='#051E42';"
+           onmouseout="this.style.background='transparent';this.style.color='rgba(5,30,66,0.55)';">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
           Preview Site
         </a>
-        <a href="?logout=1" class="flex items-center gap-1.5 text-sm text-gray-500 hover:text-red-600 transition px-3 py-1.5 rounded-lg hover:bg-red-50">
-          <span class="material-symbols-outlined text-base">logout</span>
+        <a href="?logout=1"
+           style="display:flex;align-items:center;gap:6px;font-family:'Inter',sans-serif;font-size:13px;color:rgba(5,30,66,0.55);text-decoration:none;padding:6px 14px;border-radius:8px;transition:background 0.15s,color 0.15s;"
+           onmouseover="this.style.background='#FEE2E2';this.style.color='#DC2626';"
+           onmouseout="this.style.background='transparent';this.style.color='rgba(5,30,66,0.55)';">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
           Logout
         </a>
       </div>
     </div>
   </header>
 
-  <div class="max-w-6xl mx-auto px-6 py-8">
+  <!-- ═══════════════════════════════════════ MAIN CONTENT ═══ -->
+  <div style="max-width:760px;margin:0 auto;padding:32px 24px 64px;">
 
-    <!-- Tab Bar -->
-    <div class="bg-surface-container rounded-2xl p-1.5 flex gap-1 mb-8 overflow-x-auto">
+    <!-- Tab bar -->
+    <div style="background:#F0EDE5;border-radius:999px;padding:5px;display:flex;gap:4px;margin-bottom:32px;overflow-x:auto;">
       <?php
       $tabs = [
-        'hero'          => ['label' => 'Hero',          'icon' => 'home'],
-        'features'      => ['label' => 'Features',      'icon' => 'grid_view'],
-        'capabilities'  => ['label' => 'Capabilities',  'icon' => 'bolt'],
-        'benefits'      => ['label' => 'Benefits',      'icon' => 'favorite'],
-        'testimonials'  => ['label' => 'Testimonials',  'icon' => 'format_quote'],
-        'faq'           => ['label' => 'FAQ',            'icon' => 'help'],
-        'cta'           => ['label' => 'CTA',            'icon' => 'ads_click'],
-        'footer'        => ['label' => 'Footer',         'icon' => 'bottom_navigation'],
+        'global'      => 'Global',
+        'homepage'    => 'Homepage',
+        'enrolments'  => 'Enrolments',
+        'about'       => 'About',
+        'contact'     => 'Contact',
       ];
       $first = true;
-      foreach ($tabs as $key => $tab):
+      foreach ($tabs as $key => $label):
       ?>
       <button onclick="switchTab('<?= $key ?>', this)"
-        class="tab-btn <?= $first ? 'active' : '' ?> flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm text-gray-500 whitespace-nowrap">
-        <span class="material-symbols-outlined text-base"><?= $tab['icon'] ?></span>
-        <?= $tab['label'] ?>
+        class="tab-btn <?= $first ? 'active' : '' ?>">
+        <?= $label ?>
       </button>
       <?php $first = false; endforeach; ?>
     </div>
 
-    <!-- ===== HERO TAB ===== -->
-    <div id="tab-hero" class="tab-panel active">
-      <div class="bg-white rounded-3xl p-8 shadow-sm">
-        <div class="section-title">Hero Section</div>
-        <div class="section-subtitle">The first thing visitors see — make it count.</div>
+    <!-- ═══ GLOBAL TAB ═══ -->
+    <div id="tab-global" class="tab-panel active">
+      <div class="section-card">
+        <div class="section-title">School Details</div>
+        <div class="section-subtitle">Contact information and social links shown sitewide.</div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div class="md:col-span-2">
-            <label class="field-label">Main Heading</label>
-            <textarea id="hero-heading" class="field-input" rows="2"><?= v($c['hero']['heading'] ?? '') ?></textarea>
-          </div>
-          <div class="md:col-span-2">
-            <label class="field-label">Subheading</label>
-            <textarea id="hero-sub" class="field-input" rows="2"><?= v($c['hero']['subheading'] ?? '') ?></textarea>
+        <div style="display:grid;gap:16px;">
+          <div>
+            <label class="field-label" for="g-phone">Phone</label>
+            <input type="text" id="g-phone" class="field-input"
+              value="<?= v($c['global']['phone'] ?? '(03) 9709 8600') ?>">
           </div>
           <div>
-            <label class="field-label">CTA Button Label</label>
-            <input type="text" id="hero-cta" class="field-input" value="<?= v($c['hero']['ctaLabel'] ?? '') ?>">
+            <label class="field-label" for="g-email">Email</label>
+            <input type="email" id="g-email" class="field-input"
+              value="<?= v($c['global']['email'] ?? 'administration@skhamptonpark.catholic.edu.au') ?>">
           </div>
           <div>
-            <label class="field-label">Badge Text</label>
-            <input type="text" id="hero-badge" class="field-input" value="<?= v($c['hero']['badge'] ?? '') ?>">
+            <label class="field-label" for="g-address">Address</label>
+            <input type="text" id="g-address" class="field-input"
+              value="<?= v($c['global']['address'] ?? '120 Hallam Rd, Hampton Park VIC 3976') ?>">
           </div>
           <div>
-            <label class="field-label">Stat Number (e.g. 50+)</label>
-            <input type="text" id="hero-stat-num" class="field-input" value="<?= v($c['hero']['statNumber'] ?? '') ?>">
+            <label class="field-label" for="g-facebook">Facebook URL</label>
+            <input type="url" id="g-facebook" class="field-input"
+              value="<?= v($c['global']['facebookUrl'] ?? '#') ?>">
           </div>
           <div>
-            <label class="field-label">Stat Label (e.g. Clients Secured)</label>
-            <input type="text" id="hero-stat-label" class="field-input" value="<?= v($c['hero']['statLabel'] ?? '') ?>">
+            <label class="field-label" for="g-principal">Principal Name</label>
+            <input type="text" id="g-principal" class="field-input"
+              value="<?= v($c['global']['principalName'] ?? 'Jason Micallef') ?>">
           </div>
         </div>
 
         <div class="divider"></div>
-        <div class="card-group">
-          <div class="card-group-label">Hero Image</div>
-          <div class="flex items-center gap-5">
-            <div class="w-28 h-28 rounded-2xl overflow-hidden bg-gray-100 border-2 border-dashed border-gray-200 flex-shrink-0 flex items-center justify-center">
-              <?php $heroImg = $c['hero']['image'] ?? ''; ?>
-              <img id="hero-img-preview" src="<?= $heroImg ? '../' . v($heroImg) : '' ?>"
-                   class="w-full h-full object-cover <?= $heroImg ? '' : 'hidden' ?>">
-              <?php if (!$heroImg): ?>
-              <span class="material-symbols-outlined text-gray-300 text-3xl">image</span>
-              <?php endif; ?>
-            </div>
-            <input type="hidden" id="hero-img-val" value="<?= v($heroImg) ?>">
-            <div class="flex flex-col gap-2">
-              <button type="button" onclick="openMediaLibrary('hero-img-val','hero-img-preview')"
-                class="flex items-center gap-2 text-sm font-semibold text-white rounded-xl px-4 py-2 transition"
-                style="background:linear-gradient(135deg,#5d5699,#bcb4ff)">
-                <span class="material-symbols-outlined text-base">photo_library</span>
-                Change Image
-              </button>
-              <button type="button" onclick="clearImage('hero-img-val','hero-img-preview')"
-                class="flex items-center gap-2 text-sm text-gray-400 hover:text-red-500 transition px-1">
-                <span class="material-symbols-outlined text-sm">delete</span>
-                Remove
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="divider"></div>
-        <div class="flex justify-end">
-          <button class="save-btn" onclick="saveSection('hero')">
-            <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base">save</span>Save Hero</span>
-          </button>
+        <div style="display:flex;justify-content:flex-end;">
+          <button class="save-btn" onclick="saveTab('global', event)">Save Changes</button>
         </div>
       </div>
     </div>
 
-    <!-- ===== FEATURES TAB ===== -->
-    <div id="tab-features" class="tab-panel">
-      <div class="bg-white rounded-3xl p-8 shadow-sm">
-        <div class="section-title">Feature Cards</div>
-        <div class="section-subtitle">The 3 cards shown in the features section.</div>
+    <!-- ═══ HOMEPAGE TAB ═══ -->
+    <div id="tab-homepage" class="tab-panel">
 
-        <?php for ($i = 0; $i < 3; $i++):
-          $card = $c['features']['cards'][$i] ?? [];
+      <!-- Quotes Carousel -->
+      <div class="section-card">
+        <div class="section-title">Quotes Carousel</div>
+        <div class="section-subtitle">Rotating quotes shown on the homepage hero.</div>
+
+        <?php for ($i = 0; $i < 6; $i++):
+          $q = $c['homepage']['quotes'][$i] ?? [];
         ?>
-        <div class="card-group">
-          <div class="card-group-label">Card <?= $i+1 ?></div>
-          <div class="grid grid-cols-1 gap-3">
+        <div class="group-card">
+          <div class="group-label">Quote <?= $i + 1 ?></div>
+          <div style="display:grid;gap:12px;">
             <div>
-              <label class="field-label">Title</label>
-              <input type="text" id="feat-<?= $i ?>-title" class="field-input" value="<?= v($card['title'] ?? '') ?>">
+              <label class="field-label" for="quote-<?= $i ?>-text">Quote Text</label>
+              <textarea id="quote-<?= $i ?>-text" class="field-input"><?= v($q['text'] ?? '') ?></textarea>
             </div>
             <div>
-              <label class="field-label">Description</label>
-              <textarea id="feat-<?= $i ?>-desc" class="field-input" rows="2"><?= v($card['description'] ?? '') ?></textarea>
+              <label class="field-label" for="quote-<?= $i ?>-author">Author</label>
+              <input type="text" id="quote-<?= $i ?>-author" class="field-input"
+                value="<?= v($q['author'] ?? '') ?>">
             </div>
           </div>
         </div>
         <?php endfor; ?>
 
         <div class="divider"></div>
-        <div class="flex justify-end">
-          <button class="save-btn" onclick="saveSection('features')">
-            <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base">save</span>Save Features</span>
-          </button>
-        </div>
-      </div>
-    </div>
 
-    <!-- ===== CAPABILITIES TAB ===== -->
-    <div id="tab-capabilities" class="tab-panel">
-      <div class="bg-white rounded-3xl p-8 shadow-sm">
-        <div class="section-title">Capabilities (Dark Section)</div>
-        <div class="section-subtitle">The dark bento grid section with stats below.</div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
-          <div>
-            <label class="field-label">Section Heading</label>
-            <input type="text" id="cap-heading" class="field-input" value="<?= v($c['capabilities']['heading'] ?? '') ?>">
-          </div>
-          <div>
-            <label class="field-label">Section Subheading</label>
-            <input type="text" id="cap-subheading" class="field-input" value="<?= v($c['capabilities']['subheading'] ?? '') ?>">
-          </div>
-        </div>
-
-        <div class="divider"></div>
-        <div class="card-group-label" style="color:#1b1c1c;font-size:13px;font-weight:700;margin-bottom:12px;">Capability Cards</div>
-
-        <?php for ($i = 0; $i < 4; $i++):
-          $card = $c['capabilities']['cards'][$i] ?? [];
-        ?>
-        <div class="card-group">
-          <div class="card-group-label">Card <?= $i+1 ?></div>
-          <div class="grid grid-cols-2 gap-3">
-            <div>
-              <label class="field-label">Title</label>
-              <input type="text" id="cap-card-<?= $i ?>-title" class="field-input" value="<?= v($card['title'] ?? '') ?>">
-            </div>
-            <div>
-              <label class="field-label">Description</label>
-              <input type="text" id="cap-card-<?= $i ?>-desc" class="field-input" value="<?= v($card['description'] ?? '') ?>">
-            </div>
-          </div>
-        </div>
-        <?php endfor; ?>
-
-        <div class="divider"></div>
-        <div class="card-group-label" style="color:#1b1c1c;font-size:13px;font-weight:700;margin-bottom:12px;">Stats Row</div>
-
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-          <?php for ($i = 0; $i < 4; $i++):
-            $stat = $c['capabilities']['stats'][$i] ?? [];
-          ?>
-          <div class="card-group">
-            <div class="card-group-label">Stat <?= $i+1 ?></div>
-            <div>
-              <label class="field-label">Number</label>
-              <input type="text" id="stat-<?= $i ?>-num" class="field-input" value="<?= v($stat['number'] ?? '') ?>">
-            </div>
-            <div class="mt-2">
-              <label class="field-label">Label</label>
-              <input type="text" id="stat-<?= $i ?>-label" class="field-input" value="<?= v($stat['label'] ?? '') ?>">
-            </div>
-          </div>
-          <?php endfor; ?>
-        </div>
-
-        <div class="divider"></div>
-        <div class="flex justify-end">
-          <button class="save-btn" onclick="saveSection('capabilities')">
-            <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base">save</span>Save Capabilities</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== BENEFITS TAB ===== -->
-    <div id="tab-benefits" class="tab-panel">
-      <div class="bg-white rounded-3xl p-8 shadow-sm">
-        <div class="section-title">Benefits Section</div>
-        <div class="section-subtitle">The green kinetic oval section.</div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
-          <div>
-            <label class="field-label">Heading</label>
-            <input type="text" id="benefits-heading" class="field-input" value="<?= v($c['benefits']['heading'] ?? '') ?>">
-          </div>
-          <div>
-            <label class="field-label">Subheading (inside pill)</label>
-            <input type="text" id="benefits-subheading" class="field-input" value="<?= v($c['benefits']['subheading'] ?? '') ?>">
-          </div>
-          <div class="md:col-span-2">
-            <label class="field-label">Description</label>
-            <textarea id="benefits-desc" class="field-input" rows="3"><?= v($c['benefits']['description'] ?? '') ?></textarea>
-          </div>
-        </div>
-
-        <div class="divider"></div>
-        <div style="font-size:13px;font-weight:700;color:#1b1c1c;margin-bottom:12px;">Benefit Items</div>
-
-        <?php for ($i = 0; $i < 3; $i++):
-          $item = $c['benefits']['items'][$i] ?? [];
-        ?>
-        <div class="card-group">
-          <div class="card-group-label">Item <?= $i+1 ?></div>
-          <label class="field-label">Text</label>
-          <input type="text" id="benefit-<?= $i ?>-text" class="field-input" value="<?= v($item['text'] ?? '') ?>">
-        </div>
-        <?php endfor; ?>
-
-        <div class="divider"></div>
-        <div class="card-group">
-          <div class="card-group-label">Section Image</div>
-          <div class="flex items-center gap-5">
-            <div class="w-28 h-28 rounded-2xl overflow-hidden bg-gray-100 border-2 border-dashed border-gray-200 flex-shrink-0 flex items-center justify-center">
-              <?php $benefitsImg = $c['benefits']['image'] ?? ''; ?>
-              <img id="benefits-img-preview" src="<?= $benefitsImg ? '../' . v($benefitsImg) : '' ?>"
-                   class="w-full h-full object-cover <?= $benefitsImg ? '' : 'hidden' ?>">
-              <?php if (!$benefitsImg): ?>
-              <span class="material-symbols-outlined text-gray-300 text-3xl">image</span>
-              <?php endif; ?>
-            </div>
-            <input type="hidden" id="benefits-img-val" value="<?= v($benefitsImg) ?>">
-            <div class="flex flex-col gap-2">
-              <button type="button" onclick="openMediaLibrary('benefits-img-val','benefits-img-preview')"
-                class="flex items-center gap-2 text-sm font-semibold text-white rounded-xl px-4 py-2 transition"
-                style="background:linear-gradient(135deg,#5d5699,#bcb4ff)">
-                <span class="material-symbols-outlined text-base">photo_library</span>
-                Change Image
-              </button>
-              <button type="button" onclick="clearImage('benefits-img-val','benefits-img-preview')"
-                class="flex items-center gap-2 text-sm text-gray-400 hover:text-red-500 transition px-1">
-                <span class="material-symbols-outlined text-sm">delete</span>
-                Remove
-              </button>
-            </div>
-          </div>
-        </div>
-
-        <div class="divider"></div>
-        <div class="flex justify-end">
-          <button class="save-btn" onclick="saveSection('benefits')">
-            <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base">save</span>Save Benefits</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== TESTIMONIALS TAB ===== -->
-    <div id="tab-testimonials" class="tab-panel">
-      <div class="bg-white rounded-3xl p-8 shadow-sm">
-        <div class="section-title">Testimonials</div>
-        <div class="section-subtitle">Client quotes shown in the social proof section.</div>
+        <!-- Announcement Banner -->
+        <div class="section-title" style="margin-bottom:4px;">Announcement Banner</div>
+        <div class="section-subtitle">Optional banner shown at top of homepage.</div>
 
         <?php
-        $testimonials = $c['testimonials'] ?? [];
-        for ($i = 0; $i < 3; $i++):
-          $t = $testimonials[$i] ?? [];
+          $ann = $c['homepage']['announcement'] ?? [];
+          $annEnabled = !empty($ann['enabled']);
         ?>
-        <div class="card-group">
-          <div class="card-group-label">Testimonial <?= $i+1 ?></div>
-          <div class="grid grid-cols-1 gap-3">
+        <div class="group-card">
+          <div class="toggle-row" style="margin-bottom:16px;">
+            <label class="toggle-switch">
+              <input type="checkbox" id="ann-enabled" <?= $annEnabled ? 'checked' : '' ?>
+                onchange="toggleAnnouncement(this.checked)">
+              <span class="toggle-track"></span>
+            </label>
+            <span class="toggle-label">Enable announcement banner</span>
+          </div>
+
+          <div id="ann-extra" class="announcement-extra <?= $annEnabled ? 'visible' : '' ?>"
+               style="display:<?= $annEnabled ? 'grid' : 'none' ?>;gap:12px;">
             <div>
-              <label class="field-label">Quote</label>
-              <textarea id="testi-<?= $i ?>-quote" class="field-input" rows="3"><?= v($t['quote'] ?? '') ?></textarea>
+              <label class="field-label" for="ann-text">Announcement Text</label>
+              <input type="text" id="ann-text" class="field-input"
+                value="<?= v($ann['text'] ?? '') ?>">
             </div>
-            <div class="grid grid-cols-2 gap-3">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
               <div>
-                <label class="field-label">Name</label>
-                <input type="text" id="testi-<?= $i ?>-name" class="field-input" value="<?= v($t['name'] ?? '') ?>">
+                <label class="field-label" for="ann-linklabel">Link Label</label>
+                <input type="text" id="ann-linklabel" class="field-input"
+                  value="<?= v($ann['linkLabel'] ?? '') ?>">
               </div>
               <div>
-                <label class="field-label">Role / Company</label>
-                <input type="text" id="testi-<?= $i ?>-role" class="field-input" value="<?= v($t['role'] ?? '') ?>">
+                <label class="field-label" for="ann-linkurl">Link URL</label>
+                <input type="url" id="ann-linkurl" class="field-input"
+                  value="<?= v($ann['linkUrl'] ?? '') ?>">
               </div>
             </div>
           </div>
         </div>
-        <?php endfor; ?>
 
         <div class="divider"></div>
-        <div class="flex justify-end">
-          <button class="save-btn" onclick="saveSection('testimonials')">
-            <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base">save</span>Save Testimonials</span>
-          </button>
+        <div style="display:flex;justify-content:flex-end;">
+          <button class="save-btn" onclick="saveTab('homepage', event)">Save Changes</button>
         </div>
       </div>
     </div>
 
-    <!-- ===== FAQ TAB ===== -->
-    <div id="tab-faq" class="tab-panel">
-      <div class="bg-white rounded-3xl p-8 shadow-sm">
-        <div class="section-title">FAQ Section</div>
-        <div class="section-subtitle">Frequently asked questions shown in the grid.</div>
+    <!-- ═══ ENROLMENTS TAB ═══ -->
+    <div id="tab-enrolments" class="tab-panel">
 
-        <?php
-        $faqs = $c['faq'] ?? [];
-        for ($i = 0; $i < 4; $i++):
-          $faq = $faqs[$i] ?? [];
+      <!-- Tour Dates -->
+      <div class="section-card">
+        <div class="section-title">School Tour Dates</div>
+        <div class="section-subtitle">Upcoming open day / tour dates shown on the enrolments page.</div>
+
+        <?php for ($i = 0; $i < 3; $i++):
+          $tour = $c['enrolments']['tourDates'][$i] ?? [];
         ?>
-        <div class="card-group">
-          <div class="card-group-label">FAQ <?= $i+1 ?></div>
-          <div class="grid grid-cols-1 gap-3">
+        <div class="group-card">
+          <div class="group-label">Tour <?= $i + 1 ?></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
             <div>
-              <label class="field-label">Question</label>
-              <input type="text" id="faq-<?= $i ?>-q" class="field-input" value="<?= v($faq['question'] ?? '') ?>">
+              <label class="field-label" for="tour-<?= $i ?>-date">Date</label>
+              <input type="text" id="tour-<?= $i ?>-date" class="field-input"
+                value="<?= v($tour['date'] ?? '') ?>" placeholder="e.g. Wednesday 23 July 2025">
             </div>
             <div>
-              <label class="field-label">Answer</label>
-              <textarea id="faq-<?= $i ?>-a" class="field-input" rows="3"><?= v($faq['answer'] ?? '') ?></textarea>
-            </div>
-          </div>
-        </div>
-        <?php endfor; ?>
-
-        <div class="divider"></div>
-        <div class="flex justify-end">
-          <button class="save-btn" onclick="saveSection('faq')">
-            <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base">save</span>Save FAQ</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== CTA TAB ===== -->
-    <div id="tab-cta" class="tab-panel">
-      <div class="bg-white rounded-3xl p-8 shadow-sm">
-        <div class="section-title">Call to Action</div>
-        <div class="section-subtitle">The bottom conversion section.</div>
-
-        <div class="grid grid-cols-1 gap-5">
-          <div>
-            <label class="field-label">Heading</label>
-            <input type="text" id="cta-heading" class="field-input" value="<?= v($c['cta']['heading'] ?? '') ?>">
-          </div>
-          <div>
-            <label class="field-label">Description</label>
-            <textarea id="cta-desc" class="field-input" rows="3"><?= v($c['cta']['description'] ?? '') ?></textarea>
-          </div>
-          <div>
-            <label class="field-label">Button Label</label>
-            <input type="text" id="cta-btn" class="field-input" value="<?= v($c['cta']['ctaLabel'] ?? '') ?>">
-          </div>
-        </div>
-
-        <div class="divider"></div>
-        <div class="flex justify-end">
-          <button class="save-btn" onclick="saveSection('cta')">
-            <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base">save</span>Save CTA</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== FOOTER TAB ===== -->
-    <div id="tab-footer" class="tab-panel">
-      <div class="bg-white rounded-3xl p-8 shadow-sm">
-        <div class="section-title">Footer</div>
-        <div class="section-subtitle">Contact info, links, and copyright.</div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-6">
-          <div>
-            <label class="field-label">Email Address</label>
-            <input type="email" id="footer-email" class="field-input" value="<?= v($c['footer']['email'] ?? '') ?>">
-          </div>
-          <div>
-            <label class="field-label">Copyright Text</label>
-            <input type="text" id="footer-copyright" class="field-input" value="<?= v($c['footer']['copyright'] ?? '') ?>">
-          </div>
-          <div class="md:col-span-2">
-            <label class="field-label">Tagline (below email)</label>
-            <input type="text" id="footer-tagline" class="field-input" value="<?= v($c['footer']['tagline'] ?? '') ?>">
-          </div>
-        </div>
-
-        <div class="divider"></div>
-        <div style="font-size:13px;font-weight:700;color:#1b1c1c;margin-bottom:12px;">Social Links</div>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-          <?php foreach (['instagram', 'twitter', 'facebook', 'linkedin'] as $soc): ?>
-          <div class="card-group">
-            <div class="card-group-label"><?= ucfirst($soc) ?></div>
-            <label class="field-label">URL</label>
-            <input type="text" id="social-<?= $soc ?>" class="field-input" value="<?= v($c['footer']['social'][$soc] ?? '') ?>">
-          </div>
-          <?php endforeach; ?>
-        </div>
-
-        <div class="divider"></div>
-        <div style="font-size:13px;font-weight:700;color:#1b1c1c;margin-bottom:12px;">Footer Links</div>
-        <?php
-        $links = $c['footer']['links'] ?? [];
-        for ($i = 0; $i < count($links); $i++):
-          $link = $links[$i];
-        ?>
-        <div class="card-group">
-          <div class="grid grid-cols-2 gap-3">
-            <div>
-              <label class="field-label">Label</label>
-              <input type="text" id="link-<?= $i ?>-label" class="field-input" value="<?= v($link['label'] ?? '') ?>">
-            </div>
-            <div>
-              <label class="field-label">URL</label>
-              <input type="text" id="link-<?= $i ?>-href" class="field-input" value="<?= v($link['href'] ?? '') ?>">
+              <label class="field-label" for="tour-<?= $i ?>-time">Time</label>
+              <input type="text" id="tour-<?= $i ?>-time" class="field-input"
+                value="<?= v($tour['time'] ?? '') ?>" placeholder="e.g. 9:30 AM">
             </div>
           </div>
         </div>
         <?php endfor; ?>
 
         <div class="divider"></div>
-        <div class="flex justify-end">
-          <button class="save-btn" onclick="saveSection('footer')">
-            <span class="flex items-center gap-2"><span class="material-symbols-outlined text-base">save</span>Save Footer</span>
-          </button>
+
+        <!-- Enquiry Note -->
+        <div class="section-title" style="margin-bottom:4px;">Enquiry Note</div>
+        <div class="section-subtitle">Short note displayed beneath the enquiry form.</div>
+        <div>
+          <label class="field-label" for="enrol-enquiry">Enquiry Note</label>
+          <textarea id="enrol-enquiry" class="field-input"><?= v($c['enrolments']['enquiryNote'] ?? '') ?></textarea>
+        </div>
+
+        <div class="divider"></div>
+        <div style="display:flex;justify-content:flex-end;">
+          <button class="save-btn" onclick="saveTab('enrolments', event)">Save Changes</button>
         </div>
       </div>
     </div>
 
-  </div><!-- end max-w container -->
+    <!-- ═══ ABOUT TAB ═══ -->
+    <div id="tab-about" class="tab-panel">
+      <div class="section-card">
+        <div class="section-title">About the School</div>
+        <div class="section-subtitle">Key statements shown on the About page.</div>
 
-  <!-- ===== MEDIA LIBRARY MODAL ===== -->
-  <div id="media-modal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true">
-    <!-- Backdrop -->
-    <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeMediaLibrary()"></div>
-    <!-- Panel -->
-    <div class="absolute inset-4 md:inset-10 bg-white rounded-3xl flex flex-col shadow-2xl overflow-hidden">
-      <!-- Header -->
-      <div class="flex items-center justify-between px-6 py-4 border-b border-gray-100 flex-shrink-0">
-        <div class="flex items-center gap-3">
-          <span class="material-symbols-outlined text-xl" style="color:#5d5699">photo_library</span>
-          <h2 class="text-lg font-bold text-gray-900">Media Library</h2>
-          <span id="media-count" class="text-xs bg-gray-100 text-gray-500 rounded-full px-2.5 py-0.5 font-medium"></span>
+        <div style="display:grid;gap:16px;">
+          <div>
+            <label class="field-label" for="about-principal">Principal's Message</label>
+            <textarea id="about-principal" class="field-input" style="min-height:120px;"><?= v($c['about']['principalMessage'] ?? '') ?></textarea>
+          </div>
+          <div>
+            <label class="field-label" for="about-mission">Mission Statement</label>
+            <textarea id="about-mission" class="field-input"><?= v($c['about']['missionStatement'] ?? '') ?></textarea>
+          </div>
+          <div>
+            <label class="field-label" for="about-vision">Vision Statement</label>
+            <textarea id="about-vision" class="field-input"><?= v($c['about']['visionStatement'] ?? '') ?></textarea>
+          </div>
         </div>
-        <div class="flex items-center gap-3">
-          <label class="flex items-center gap-2 text-sm font-semibold text-white rounded-xl px-4 py-2 cursor-pointer hover:opacity-90 transition"
-                 style="background:linear-gradient(135deg,#5d5699,#bcb4ff)">
-            <span class="material-symbols-outlined text-base">upload</span>
-            Upload New
-            <input type="file" id="media-upload-input" accept="image/*" multiple class="hidden" onchange="uploadMediaImages(this)">
-          </label>
-          <button onclick="closeMediaLibrary()"
-            class="w-9 h-9 rounded-xl bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition">
-            <span class="material-symbols-outlined text-base text-gray-600">close</span>
-          </button>
-        </div>
-      </div>
-      <!-- Upload progress bar -->
-      <div id="media-progress-bar" class="h-1 hidden" style="background:linear-gradient(90deg,#5d5699,#bcb4ff);animation:prog 1s linear infinite;background-size:200% 100%"></div>
-      <!-- Grid -->
-      <div class="flex-1 overflow-y-auto p-6">
-        <div id="media-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4"></div>
-        <div id="media-empty" class="hidden items-center justify-center h-64 flex-col text-center">
-          <span class="material-symbols-outlined text-6xl text-gray-200 mb-3">photo_library</span>
-          <p class="text-gray-400 font-semibold">No images yet</p>
-          <p class="text-sm text-gray-300 mt-1">Click "Upload New" to add your first image</p>
+
+        <div class="divider"></div>
+        <div style="display:flex;justify-content:flex-end;">
+          <button class="save-btn" onclick="saveTab('about', event)">Save Changes</button>
         </div>
       </div>
     </div>
-  </div>
-  <style>
-    @keyframes prog { 0%{background-position:0 0} 100%{background-position:-200% 0} }
-  </style>
 
-  <!-- Toast notification -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 hidden">
-    <div class="flex items-center gap-3 bg-gray-900 text-white text-sm px-5 py-3.5 rounded-2xl shadow-2xl">
-      <span class="material-symbols-outlined text-green-400 text-base" id="toast-icon">check_circle</span>
-      <span id="toast-msg">Saved!</span>
+    <!-- ═══ CONTACT TAB ═══ -->
+    <div id="tab-contact" class="tab-panel">
+      <div class="section-card">
+        <div class="section-title">Contact Page</div>
+        <div class="section-subtitle">Settings for the contact page map and details.</div>
+
+        <div>
+          <label class="field-label" for="contact-map">Google Maps Embed URL</label>
+          <textarea id="contact-map" class="field-input" style="min-height:100px;"><?= v($c['contact']['mapEmbedUrl'] ?? '') ?></textarea>
+          <p class="field-hint">Get this from Google Maps &rarr; Share &rarr; Embed a map &rarr; Copy the <strong>iframe src URL only</strong> (not the full &lt;iframe&gt; tag).</p>
+        </div>
+
+        <div class="divider"></div>
+        <div style="display:flex;justify-content:flex-end;">
+          <button class="save-btn" onclick="saveTab('contact', event)">Save Changes</button>
+        </div>
+      </div>
     </div>
+
+  </div><!-- /main content -->
+
+  <!-- ═══════════════════════════════════════ TOAST ═══ -->
+  <div id="toast" role="alert" aria-live="polite">
+    <span class="toast-bar" id="toast-bar"></span>
+    <span id="toast-msg">Saved!</span>
   </div>
 
 <script>
-// ─── Tab switching ────────────────────────────────────────────
+// ── Tab switching ─────────────────────────────────────────────────────────────
 function switchTab(name, btn) {
   document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -584,249 +523,114 @@ function switchTab(name, btn) {
   btn.classList.add('active');
 }
 
-// ─── Save helpers ─────────────────────────────────────────────
-function get(id) {
-  const el = document.getElementById(id);
-  return el ? el.value : undefined;
-}
-
-async function postContent(data) {
-  const res = await fetch('api.php', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
-  });
-  return res.json();
-}
-
-function toast(msg, ok = true) {
-  const t = document.getElementById('toast');
-  document.getElementById('toast-msg').textContent = msg;
-  document.getElementById('toast-icon').textContent = ok ? 'check_circle' : 'error';
-  t.classList.remove('hidden');
-  setTimeout(() => t.classList.add('hidden'), 2500);
-}
-
-// ─── Section savers ───────────────────────────────────────────
-const savers = {
-  hero: () => ({
-    hero: {
-      heading: get('hero-heading'),
-      subheading: get('hero-sub'),
-      ctaLabel: get('hero-cta'),
-      badge: get('hero-badge'),
-      statNumber: get('hero-stat-num'),
-      statLabel: get('hero-stat-label'),
-      image: get('hero-img-val'),
-    }
-  }),
-
-  features: () => ({
-    features: {
-      cards: [0, 1, 2].map(i => ({
-        title: get(`feat-${i}-title`),
-        description: get(`feat-${i}-desc`),
-      }))
-    }
-  }),
-
-  capabilities: () => ({
-    capabilities: {
-      heading: get('cap-heading'),
-      subheading: get('cap-subheading'),
-      cards: [0, 1, 2, 3].map(i => ({
-        title: get(`cap-card-${i}-title`),
-        description: get(`cap-card-${i}-desc`),
-      })),
-      stats: [0, 1, 2, 3].map(i => ({
-        number: get(`stat-${i}-num`),
-        label: get(`stat-${i}-label`),
-      }))
-    }
-  }),
-
-  benefits: () => ({
-    benefits: {
-      heading: get('benefits-heading'),
-      subheading: get('benefits-subheading'),
-      description: get('benefits-desc'),
-      image: get('benefits-img-val'),
-      items: [0, 1, 2].map(i => ({ text: get(`benefit-${i}-text`) }))
-    }
-  }),
-
-  testimonials: () => ({
-    testimonials: [0, 1, 2].map(i => ({
-      quote: get(`testi-${i}-quote`),
-      name: get(`testi-${i}-name`),
-      role: get(`testi-${i}-role`),
-    }))
-  }),
-
-  faq: () => ({
-    faq: [0, 1, 2, 3].map(i => ({
-      question: get(`faq-${i}-q`),
-      answer: get(`faq-${i}-a`),
-    }))
-  }),
-
-  cta: () => ({
-    cta: {
-      heading: get('cta-heading'),
-      description: get('cta-desc'),
-      ctaLabel: get('cta-btn'),
-    }
-  }),
-
-  footer: () => {
-    const links = [];
-    let i = 0;
-    while (document.getElementById(`link-${i}-label`) !== null) {
-      links.push({ label: get(`link-${i}-label`), href: get(`link-${i}-href`) });
-      i++;
-    }
-    return {
-      footer: {
-        email: get('footer-email'),
-        copyright: get('footer-copyright'),
-        tagline: get('footer-tagline'),
-        social: {
-          instagram: get('social-instagram'),
-          twitter: get('social-twitter'),
-          facebook: get('social-facebook'),
-          linkedin: get('social-linkedin'),
-        },
-        links
-      }
-    };
+// ── Announcement toggle ───────────────────────────────────────────────────────
+function toggleAnnouncement(checked) {
+  const extra = document.getElementById('ann-extra');
+  if (checked) {
+    extra.style.display = 'grid';
+  } else {
+    extra.style.display = 'none';
   }
+}
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+function val(id) {
+  const el = document.getElementById(id);
+  if (!el) return undefined;
+  if (el.type === 'checkbox') return el.checked;
+  return el.value;
+}
+
+// ── Toast ─────────────────────────────────────────────────────────────────────
+let _toastTimer = null;
+function showToast(msg, success = true) {
+  const t   = document.getElementById('toast');
+  const bar = document.getElementById('toast-bar');
+  document.getElementById('toast-msg').textContent = msg;
+  bar.className = 'toast-bar ' + (success ? 'success' : 'error');
+  t.classList.add('show');
+  clearTimeout(_toastTimer);
+  _toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+// ── Build payloads per tab ────────────────────────────────────────────────────
+const payloads = {
+  global: () => ({
+    global: {
+      phone:         val('g-phone'),
+      email:         val('g-email'),
+      address:       val('g-address'),
+      facebookUrl:   val('g-facebook'),
+      principalName: val('g-principal'),
+    }
+  }),
+
+  homepage: () => ({
+    homepage: {
+      quotes: [0,1,2,3,4,5].map(i => ({
+        text:   val(`quote-${i}-text`),
+        author: val(`quote-${i}-author`),
+      })),
+      announcement: {
+        enabled:   val('ann-enabled'),
+        text:      val('ann-text') || '',
+        linkLabel: val('ann-linklabel') || '',
+        linkUrl:   val('ann-linkurl') || '',
+      }
+    }
+  }),
+
+  enrolments: () => ({
+    enrolments: {
+      tourDates: [0,1,2].map(i => ({
+        date: val(`tour-${i}-date`),
+        time: val(`tour-${i}-time`),
+      })),
+      enquiryNote: val('enrol-enquiry'),
+    }
+  }),
+
+  about: () => ({
+    about: {
+      principalMessage: val('about-principal'),
+      missionStatement: val('about-mission'),
+      visionStatement:  val('about-vision'),
+    }
+  }),
+
+  contact: () => ({
+    contact: {
+      mapEmbedUrl: val('contact-map'),
+    }
+  }),
 };
 
-async function saveSection(section) {
+// ── Save ──────────────────────────────────────────────────────────────────────
+async function saveTab(tab, event) {
   const btn = event.currentTarget;
   btn.disabled = true;
-  btn.style.opacity = '0.6';
+  const orig = btn.textContent;
+  btn.textContent = 'Saving…';
+
   try {
-    const data = savers[section]();
-    const result = await postContent(data);
+    const data   = payloads[tab]();
+    const res    = await fetch('../admin/api.php', {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify(data),
+    });
+    const result = await res.json();
     if (result.success) {
-      toast('Saved successfully!');
+      showToast('Saved!', true);
     } else {
-      toast(result.error || 'Save failed', false);
+      showToast(result.error || 'Save failed', false);
     }
   } catch (e) {
-    toast('Network error — check server', false);
+    showToast('Network error — check server', false);
   }
+
   btn.disabled = false;
-  btn.style.opacity = '';
-}
-
-// ─── Media Library ────────────────────────────────────────────
-let _mlInputId   = null;
-let _mlPreviewId = null;
-
-function openMediaLibrary(inputId, previewId) {
-  _mlInputId   = inputId;
-  _mlPreviewId = previewId;
-  document.getElementById('media-modal').classList.remove('hidden');
-  loadMediaImages();
-}
-
-function closeMediaLibrary() {
-  document.getElementById('media-modal').classList.add('hidden');
-}
-
-async function loadMediaImages() {
-  const grid  = document.getElementById('media-grid');
-  const empty = document.getElementById('media-empty');
-  grid.innerHTML = '<div class="col-span-full py-16 text-center text-sm text-gray-400">Loading…</div>';
-  empty.classList.add('hidden');
-  empty.classList.remove('flex');
-
-  try {
-    const res    = await fetch('api.php?action=images');
-    const images = await res.json();
-
-    document.getElementById('media-count').textContent = images.length + (images.length === 1 ? ' file' : ' files');
-
-    if (images.length === 0) {
-      grid.innerHTML = '';
-      empty.classList.remove('hidden');
-      empty.classList.add('flex');
-      return;
-    }
-
-    grid.innerHTML = images.map(img => `
-      <div class="group relative aspect-square rounded-2xl overflow-hidden bg-gray-100 cursor-pointer
-                  border-2 border-transparent hover:border-[#5d5699] transition-all shadow-sm hover:shadow-md"
-           onclick="selectMediaImage('${img.url}')">
-        <img src="../${img.url}" class="w-full h-full object-cover" loading="lazy">
-        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-all
-                    flex flex-col items-center justify-center gap-2 opacity-0 group-hover:opacity-100">
-          <span class="material-symbols-outlined text-white text-3xl">check_circle</span>
-          <span class="text-white text-xs font-semibold px-2 text-center leading-tight"
-                style="text-shadow:0 1px 3px rgba(0,0,0,.5)">${img.name}</span>
-        </div>
-      </div>
-    `).join('');
-  } catch (e) {
-    grid.innerHTML = '<div class="col-span-full py-16 text-center text-sm text-red-400">Failed to load images</div>';
-  }
-}
-
-function selectMediaImage(url) {
-  if (_mlInputId) {
-    document.getElementById(_mlInputId).value = url;
-  }
-  if (_mlPreviewId) {
-    const prev = document.getElementById(_mlPreviewId);
-    prev.src = '../' + url;
-    prev.classList.remove('hidden');
-    // hide the placeholder icon if present
-    const wrap = prev.parentElement;
-    const icon = wrap.querySelector('.material-symbols-outlined');
-    if (icon) icon.style.display = 'none';
-  }
-  closeMediaLibrary();
-  toast('Image selected — remember to Save!');
-}
-
-function clearImage(inputId, previewId) {
-  document.getElementById(inputId).value = '';
-  const prev = document.getElementById(previewId);
-  prev.src = '';
-  prev.classList.add('hidden');
-  const wrap = prev.parentElement;
-  const icon = wrap.querySelector('.material-symbols-outlined');
-  if (icon) icon.style.display = '';
-}
-
-async function uploadMediaImages(input) {
-  if (!input.files || !input.files.length) return;
-  const bar = document.getElementById('media-progress-bar');
-  bar.classList.remove('hidden');
-
-  const files = Array.from(input.files);
-  let uploaded = 0;
-  for (const file of files) {
-    const fd = new FormData();
-    fd.append('image', file);
-    try {
-      const res  = await fetch('api.php?action=upload', { method: 'POST', body: fd });
-      const data = await res.json();
-      if (data.success) uploaded++;
-      else toast(data.error || 'Upload failed', false);
-    } catch (e) {
-      toast('Upload failed', false);
-    }
-  }
-
-  input.value = '';
-  bar.classList.add('hidden');
-  if (uploaded > 0) {
-    toast(`${uploaded} image${uploaded > 1 ? 's' : ''} uploaded!`);
-    await loadMediaImages();
-  }
+  btn.textContent = orig;
 }
 </script>
 </body>

@@ -110,6 +110,7 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; }
+    html, body { overflow-x: hidden; }
     html { scroll-behavior: auto; } /* Lenis handles smooth scroll */
     body {
       margin: 0;
@@ -399,7 +400,7 @@
     .sk-hero {
       position: relative;
       width: 100%;
-      min-height: 100vh;
+      min-height: 100dvh;
       overflow: hidden;
       background: var(--color-deep-navy);
     }
@@ -503,7 +504,7 @@
       transition: width 0.5s cubic-bezier(0.4,0,0.2,1), background 0.5s ease;
     }
     .sk-smv__dot.is-active { width: 48px; background: var(--color-deep-navy); }
-    .sk-smv__copy-wrap { position: relative; height: 320px; }
+    .sk-smv__copy-wrap { position: relative; min-height: 320px; }
     .sk-smv__copy {
       position: absolute; inset: 0;
       opacity: 0; transform: translateY(28px);
@@ -609,7 +610,7 @@
         border-right: 0; border-bottom: 1px solid rgba(5,30,66,0.1);
       }
       .sk-smv__pagination { top: 24px; left: 28px; }
-      .sk-smv__copy-wrap { height: 280px; margin-top: 32px; }
+      .sk-smv__copy-wrap { min-height: 280px; margin-top: 32px; }
       .sk-smv__cta-wrap { position: relative; left: auto; bottom: auto; margin-top: 32px; padding-bottom: 8px; }
       .sk-smv__right { min-height: 44vh; padding: 28px; }
       .sk-smv__frame { height: 38vh; width: 80%; min-width: 200px; max-width: 88%; }
@@ -922,7 +923,7 @@
     .sk-principal__name {
       font-family: var(--font-inter); font-size: clamp(1rem, 1.1vw, 1rem);
       font-weight: 500; letter-spacing: 0.04em;
-      color: rgba(255,255,255,0.52);
+      color: rgba(255,255,255,0.92);
       margin: 0 0 clamp(28px, 4.5vw, 48px);
     }
     .sk-principal__body {
@@ -1042,8 +1043,8 @@
       display: inline-flex; align-items: center; border-radius: 999px;
       padding: 7px 14px; background: rgba(255,255,255,0.78);
       border: 1px solid rgba(5,30,66,0.1); color: var(--color-deep-navy);
-      font-family: var(--font-dancing-script); font-size: 14px;
-      font-weight: 600; font-style: italic; line-height: 1.3;
+      font-family: var(--font-inter); font-size: 14px;
+      font-weight: 500; font-style: normal; line-height: 1.3;
     }
     .sk-staff__grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
     .sk-staff__card {
@@ -1202,10 +1203,10 @@
 
     /* SMV copy-wrap: fixed height clips long body text on small phones */
     @media (max-width: 480px) {
-      .sk-smv__copy-wrap { height: 320px; }
+      .sk-smv__copy-wrap { min-height: 320px; }
     }
     @media (max-width: 375px) {
-      .sk-smv__copy-wrap { height: 360px; }
+      .sk-smv__copy-wrap { min-height: 360px; }
     }
 
     /* SMV image frame: prevent frame collapsing too small on very short viewports */
@@ -1251,6 +1252,9 @@
         letter-spacing: -0.03em;
       }
     }
+
+    /* ── Screen reader only utility ── */
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 
     /* ══════════════════════════════════════════════
        FIX 1 — SMV sticky: restore sticky + image above text on mobile
@@ -1309,6 +1313,8 @@
        SECTION 1 — HERO (60vh)
   ════════════════════════════════ -->
   <section class="sk-hero sk-hero--short" id="sk-hero" aria-label="Hero">
+
+    <h1 class="sr-only">About Us — St Kevin's Primary School</h1>
 
     <div class="sk-hero-video-wrap" aria-hidden="true">
       <video

@@ -48,45 +48,13 @@
   <link rel="stylesheet" href="css/sk-layout.css">
 
   <style>
-    /* ── CSS Custom Properties ── */
+    /* ── CSS Custom Properties (page-level overrides only) ── */
     :root {
-      --color-deep-navy:    #051E42;
-      --color-burgundy-red: #8A2232;
-      --color-pure-white:   #FFFFFF;
-      --color-warm-cream:   #F6F3EE;
-      --color-cloud-grey:   hsl(38, 18%, 93.5%);
-      --color-border-mist:  #E2E6EA;
-      --color-slate-text:   #6B7280;
-      --color-navy-tint:    #0A2D5C;
-      --color-red-soft:     #F4E3E6;
-
-      --font-montserrat:     'Montserrat', ui-sans-serif, system-ui, sans-serif;
-      --font-inter:          'Inter', ui-sans-serif, system-ui, sans-serif;
-      --font-dancing-script: 'Dancing Script', cursive;
-
-      --text-body:       16px; --leading-body:    1.7;
-      --text-body-lg:    18px; --leading-body-lg: 1.7;
-
-      --font-weight-regular:   400;
-      --font-weight-medium:    500;
-      --font-weight-semibold:  600;
-      --font-weight-bold:      700;
-      --font-weight-extrabold: 800;
-
-      --max-width: 1200px;
-
-      --radius-pill: 999px;
-
-      --transition-fast:   0.2s ease;
-      --transition-medium: 0.3s ease;
-
-      --z-search:   1100;
-      --z-header:   1000;
-      --z-backdrop: 9000;
-      --z-sidebar:  9100;
+      --color-slate-text: #6B7280;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
+    html, body { overflow-x: hidden; }
     html { scroll-behavior: auto; }
     body {
       margin: 0;
@@ -487,7 +455,7 @@
       font-family: var(--font-inter);
       font-size: clamp(15px, 1.3vw, 17px);
       line-height: 1.82;
-      color: rgba(5,30,66,0.60);
+      color: rgba(5,30,66,0.82);
       max-width: 500px;
     }
 
@@ -552,12 +520,12 @@
       font-family: var(--font-inter);
       font-size: clamp(15px, 1.25vw, 17px);
       line-height: 1.82;
-      color: rgba(5,30,66,0.62);
+      color: rgba(5,30,66,0.82);
       margin: 0;
       max-width: 440px;
     }
     .sk-learn--grey .sk-learn__body {
-      color: rgba(5,30,66,0.68);
+      color: rgba(5,30,66,0.82);
     }
 
     .sk-learn__media {
@@ -763,6 +731,8 @@
     <!-- Centred heading -->
     <div class="sk-hero-content">
       <h1 class="sk-hero-heading" id="sk-hero-heading"><span class="scroll-text-reveal" data-text="Learning with Purpose">Learning with Purpose</span></h1>
+      <div class="sk-hero-rule" aria-hidden="true"></div>
+      <p class="sk-hero-body">Inspired by faith, guided by purpose — learning at St Kevin's goes beyond the classroom.</p>
     </div>
 
     <!-- MACS logo — bottom-left -->

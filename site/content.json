@@ -1,157 +1,59 @@
 {
-    "hero": {
-        "badge": "New Experience",
-        "heading": "Simplify workinf force Operations with Smart Rostering, Compliance & Reporting Tools",
-        "subheading": "Manage teams, schedules, compliance, and audits—faster, smarter, all in one place.",
-        "ctaLabel": "Book a Demo",
-        "statNumber": "50+",
-        "statLabel": "Clients Secured",
-        "image": "images/img_69d9d4c483575.jpeg"
-    },
-    "features": {
-        "cards": [
-            {
-                "title": "Unified Dashboard",
-                "description": "Access staffing, compliance, incidents, and performance in one powerful, intuitive dashboard."
-            },
-            {
-                "title": "Smart Rostering & Compliance",
-                "description": "Automate complex scheduling with intelligent rostering that considers availability and certifications."
-            },
-            {
-                "title": "Reports, Audits & Communication",
-                "description": "Track labor usage, log incidents, and keep your team informed—all from one platform."
-            }
-        ]
-    },
-    "capabilities": {
-        "heading": "Unlock Advanced Capabilities",
-        "subheading": "Take your workforce management beyond the basics",
-        "cards": [
-            {
-                "title": "Smart Alerts",
-                "description": "Proactive flagging of issues."
-            },
-            {
-                "title": "Seamless Integrations",
-                "description": "Connect with HR & payroll."
-            },
-            {
-                "title": "Automated Reporting",
-                "description": "Real-time insights delivered."
-            },
-            {
-                "title": "Financial Forecasting",
-                "description": "Predict labor costs accurately."
-            }
-        ],
-        "stats": [
-            {
-                "number": "500+",
-                "label": "Worksites Managed"
-            },
-            {
-                "number": "8K+",
-                "label": "Active Users"
-            },
-            {
-                "number": "120K+",
-                "label": "Shifts per Month"
-            },
-            {
-                "number": "50+",
-                "label": "Clients Secured"
-            }
-        ]
-    },
-    "benefits": {
-        "heading": "Why You'll Love Our Platform",
-        "subheading": "Full Control, Zero Stress",
-        "description": "nWorks brings everything into one smart, automated hub—giving you full control over workforce performance, compliance, and communication.",
-        "image": "",
-        "items": [
-            {
-                "text": "Live Workforce Insights"
-            },
-            {
-                "text": "Automated Compliance & Staff Management"
-            },
-            {
-                "text": "Built-in Chat Groups"
-            }
-        ]
-    },
-    "testimonials": [
-        {
-            "quote": "nWorks changed the way we handle scheduling. It's truly revolutionary.",
-            "name": "Finnian Graves",
-            "role": "Digital Marketing Strategist"
-        },
-        {
-            "quote": "nWorks transformed how we manage our workforce. Incredible!",
-            "name": "Client 2",
-            "role": "Operations Manager"
-        },
-        {
-            "quote": "Our compliance tracking is now automated and foolproof.",
-            "name": "Client 3",
-            "role": "HR Director"
-        }
+  "global": {
+    "phone": "(03) 9709 8600",
+    "email": "administration@skhamptonpark.catholic.edu.au",
+    "address": "120 Hallam Rd, Hampton Park VIC 3976",
+    "facebookUrl": "#",
+    "principalName": "Jason Micallef"
+  },
+  "homepage": {
+    "quotes": [
+      {
+        "text": "St Kevin’s welcomed my son without judgement, only genuine care and support.",
+        "author": "Julie M"
+      },
+      {
+        "text": "St Kevin’s is more than a school for our family, it is our extended family.",
+        "author": "Tash"
+      },
+      {
+        "text": "Thanks to the nurturing environment and dedicated teachers at St Kevin’s, my once very shy daughter has grown into a confident child.",
+        "author": "Karina Rogers"
+      },
+      {
+        "text": "What we appreciate most about St Kevin’s is its diversity and the way the school brings families together, creating a strong sense of belonging.",
+        "author": "Shanelle Fairweather"
+      },
+      {
+        "text": "Kindness and love are everywhere at St Kevin’s. You see it when you’re learning, when you’re playing, in church and in the hall.",
+        "author": "Blaze (Grade 3)"
+      },
+      {
+        "text": "St Kevin’s is a welcoming school with caring teachers and a strong community that supports every child.",
+        "author": "Koreti Solo Sakopo"
+      }
     ],
-    "faq": [
-        {
-            "question": "How does nWorks simplify workforce scheduling?",
-            "answer": "nWorks uses intelligent rostering that considers staff availability, certifications, and legal compliance to automate complex scheduling while optimizing coverage."
-        },
-        {
-            "question": "Can nWorks help with compliance tracking?",
-            "answer": "Yes! nWorks provides automated compliance tracking with alerts for document expiry and role-specific access controls to ensure all staff meet requirements."
-        },
-        {
-            "question": "Does nWorks integrate with our existing systems?",
-            "answer": "Absolutely. nWorks offers seamless integrations with HR systems, payroll platforms, and compliance tools to streamline workflows across your organization."
-        },
-        {
-            "question": "Is there a trial available?",
-            "answer": "Yes, we offer a demo so you can experience how nWorks simplifies scheduling, compliance, and reporting before making any commitment."
-        }
-    ],
-    "cta": {
-        "heading": "Ready to Transform Workforce Management?",
-        "description": "Experience how nWorks simplifies scheduling, compliance, and service delivery—bringing clarity and control to your operations.",
-        "ctaLabel": "Book a Demo"
-    },
-    "footer": {
-        "email": "nworks@on5.io",
-        "tagline": "Create profiles, connect with friends, or build networks & community.",
-        "copyright": "© 2024 nWorks by On5.io. All Rights Reserved.",
-        "links": [
-            {
-                "label": "Overview",
-                "href": "#"
-            },
-            {
-                "label": "Community",
-                "href": "#"
-            },
-            {
-                "label": "Features",
-                "href": "#features"
-            },
-            {
-                "label": "FAQs",
-                "href": "#faq"
-            },
-            {
-                "label": "Getting Started",
-                "href": "#"
-            }
-        ],
-        "social": {
-            "instagram": "#",
-            "twitter": "#",
-            "facebook": "#",
-            "linkedin": "#"
-        }
+    "announcement": {
+      "enabled": false,
+      "text": "",
+      "linkLabel": "",
+      "linkUrl": ""
     }
+  },
+  "enrolments": {
+    "tourDates": [
+      { "date": "Wednesday 23 July 2025", "time": "9:30 AM" },
+      { "date": "Wednesday 13 August 2025", "time": "9:30 AM" },
+      { "date": "Wednesday 10 September 2025", "time": "9:30 AM" }
+    ],
+    "enquiryNote": "To begin the enrolment process, or simply find out more, we warmly invite you to visit our school."
+  },
+  "about": {
+    "principalMessage": "At St Kevin’s, we are privileged to lead a community where every child is known by name and valued for who they are. Our dedicated staff work tirelessly to ensure that learning is purposeful, faith is lived, and every family feels genuinely welcomed.",
+    "missionStatement": "To educate and inspire young people to live the Gospel values through faith, learning and service.",
+    "visionStatement": "A vibrant, inclusive Catholic community where every child is known, valued and empowered to flourish."
+  },
+  "contact": {
+    "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3142.8!2d145.257!3d-38.024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSt+Kevin%27s+Primary+School!5e0!3m2!1sen!2sau!4v1"
+  }
 }

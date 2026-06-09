@@ -69,6 +69,10 @@
       --radius-buttons: 8px;
     }
 
+    html {
+      overflow-x: hidden;
+    }
+
     body {
       margin: 0;
       font-family: var(--font-inter);
@@ -336,14 +340,6 @@
       overflow: hidden;
     }
 
-    .sk-enrol-step__card::before {
-      content: '';
-      position: absolute;
-      inset: 0 0 auto;
-      height: 5px;
-      background: linear-gradient(90deg, var(--color-burgundy-red), var(--color-deep-navy));
-    }
-
     .sk-enrol-step__label {
       display: inline-flex;
       align-items: center;
@@ -602,7 +598,7 @@
     .sk-enrol-closing__tagline {
       font-family: var(--font-dancing-script);
       font-size: clamp(1.25rem, 2.5vw, 1.6rem);
-      color: rgba(255,255,255,0.5);
+      color: rgba(255,255,255,0.82);
       font-style: italic;
       display: block;
     }
@@ -1104,9 +1100,7 @@
         <p class="sk-enrol-intro__body">Choosing a school is an important decision for every family. We would love to welcome you to St Kevin's and help you discover what makes our community special.</p>
         <ol class="sk-pathway" aria-label="Enrolment pathway steps">
           <li class="sk-pathway__step"><span class="sk-pathway__num">1</span><span class="sk-pathway__label">Visit</span></li>
-          <li class="sk-pathway__arrow" aria-hidden="true">→</li>
           <li class="sk-pathway__step"><span class="sk-pathway__num">2</span><span class="sk-pathway__label">Enquire</span></li>
-          <li class="sk-pathway__arrow" aria-hidden="true">→</li>
           <li class="sk-pathway__step"><span class="sk-pathway__num">3</span><span class="sk-pathway__label">Enrol</span></li>
         </ol>
       </div>

@@ -11,7 +11,7 @@
   --color-warm-cream:   #F6F3EE;
   --color-cloud-grey:   #F0EDE5;
   --color-border-mist:  #E2E6EA;
-  --color-slate-text:   #6B7280;
+  --color-slate-text:   #4B5563;
   --color-navy-tint:    #0A2D5C;
   --color-red-soft:     #F4E3E6;
 
@@ -136,6 +136,11 @@ body {
 }
 .sk-search-btn:hover { background: rgba(255,255,255,0.12); }
 .is-scrolled .sk-search-btn:hover { background: var(--color-cloud-grey); }
+.sk-hamburger:focus-visible,
+.sk-search-btn:focus-visible {
+  outline: 2px solid var(--color-burgundy-red);
+  outline-offset: 3px;
+}
 .sk-search-btn svg { transition: stroke var(--transition-medium); }
 .is-transparent .sk-search-btn svg { stroke: var(--color-pure-white); }
 .is-scrolled    .sk-search-btn svg { stroke: var(--color-deep-navy); }
@@ -534,7 +539,7 @@ body {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--color-burgundy-red);
+  color: rgba(255,255,255,0.72);
   margin-bottom: 16px;
   padding-bottom: 12px;
   border-bottom: 1px solid rgba(255,255,255,0.08);
@@ -671,7 +676,7 @@ body {
   overflow: hidden;
   vertical-align: bottom;
 }
-.scroll-text-char {
+body.js-loaded .scroll-text-char {
   display: inline-block;
   transform: translateY(108%);
   opacity: 0;

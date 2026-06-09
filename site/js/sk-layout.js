@@ -430,7 +430,7 @@
       var phoneTl  = gsap.timeline({ paused: true });
       phoneTl
         .to(phoneSvg, { rotation: 18, duration: 0.18, ease: 'power2.out', transformOrigin: '50% 50%' })
-        .to(phoneSvg, { rotation: 0,  duration: 0.5,  ease: 'elastic.out(1, 0.5)' });
+        .to(phoneSvg, { rotation: 0,  duration: 0.5,  ease: 'power3.out' });
       phoneBtn.addEventListener('mouseenter', function () { phoneTl.restart(); });
     }
 
@@ -450,7 +450,7 @@
       var fbTl  = gsap.timeline({ paused: true });
       fbTl
         .to(fbSvg, { y: -4, duration: 0.2,  ease: 'power2.out' })
-        .to(fbSvg, { y:  0, duration: 0.45, ease: 'elastic.out(1, 0.45)' });
+        .to(fbSvg, { y:  0, duration: 0.45, ease: 'power3.out' });
       fbBtn.addEventListener('mouseenter', function () { fbTl.restart(); });
     }
   })();
@@ -536,6 +536,8 @@
         if (reduced) el.classList.add('is-visible');
       });
 
+      document.body.classList.add('js-loaded');
+
       if (reduced) return;
 
       var observer = new IntersectionObserver(function (entries) {
@@ -559,11 +561,13 @@
 
   /* ── Click spark ── */
   (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     var canvas = document.getElementById('global-click-spark');
     if (!canvas) return;
     var ctx    = canvas.getContext('2d');
     var sparks = [];
     var dpr    = window.devicePixelRatio || 1;
+    var rafId  = null;
 
     function resize() {
       canvas.width  = window.innerWidth  * dpr;
@@ -578,6 +582,7 @@
       for (var i = 0; i < 10; i++) {
         sparks.push({ x: e.clientX, y: e.clientY, angle: (2 * Math.PI * i) / 10, startTime: now });
       }
+      if (!rafId) rafId = requestAnimationFrame(draw);
     });
 
     function ease(t) { return t * (2 - t); }
@@ -603,9 +608,12 @@
         ctx.lineTo(x2, y2);
         ctx.stroke();
       }
-      requestAnimationFrame(draw);
+      if (sparks.length) {
+        rafId = requestAnimationFrame(draw);
+      } else {
+        rafId = null;
+      }
     }
-    requestAnimationFrame(draw);
   })();
 
 })();

@@ -57,7 +57,7 @@
       --color-warm-cream:   #F6F3EE;
       --color-cloud-grey:   #F0EDE5;
       --color-border-mist:  #E2E6EA;
-      --color-slate-text:   #6B7280;
+      --color-slate-text:   #4B5563;
       --color-navy-tint:    #0A2D5C;
       --color-red-soft:     #F4E3E6;
 
@@ -109,6 +109,7 @@
 
     }
 
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
     *, *::before, *::after { box-sizing: border-box; }
     html { scroll-behavior: auto; } /* Lenis handles smooth scroll */
     body {
@@ -399,12 +400,12 @@
     .sk-hero {
       position: relative;
       width: 100%;
-      min-height: 100vh;
+      min-height: 100dvh;
       overflow: hidden;
       background: var(--color-deep-navy);
     }
     /* About page: shorter sub-page hero */
-    .sk-hero--short { min-height: 60vh; }
+    .sk-hero--short { min-height: 60dvh; }
 
     .sk-hero-video-wrap {
       position: absolute;
@@ -1050,7 +1051,7 @@
       font-family: var(--font-montserrat);
       font-size: clamp(2.5rem, 6vw, 5rem);
       font-weight: 800;
-      letter-spacing: 0;
+      letter-spacing: -0.02em;
       line-height: 0.98;
       color: var(--color-pure-white);
       margin: 0;
@@ -1410,12 +1411,18 @@
       min-height: 136px;
       resize: vertical;
     }
-    .sk-form-input:focus,
-    .sk-form-select:focus,
-    .sk-form-textarea:focus {
+    .sk-form-input:focus-visible,
+    .sk-form-select:focus-visible,
+    .sk-form-textarea:focus-visible {
       border-color: var(--color-deep-navy);
       background: var(--color-warm-cream);
-      box-shadow: 0 0 0 3px rgba(5,30,66,0.1);
+      outline: 2px solid var(--color-deep-navy);
+      outline-offset: 0;
+      box-shadow: 0 0 0 4px rgba(5,30,66,0.12);
+    }
+    .sk-enquiry-form .sk-btn-wipe:focus-visible {
+      outline: 2px solid var(--color-deep-navy);
+      outline-offset: 3px;
     }
     .sk-enquiry-form__actions {
       margin-top: 22px;
@@ -1545,12 +1552,6 @@
     /* ══════════════════════════════════════════════
        MOBILE RESPONSIVENESS OVERRIDES
     ══════════════════════════════════════════════ */
-
-    /* iOS Safari: use dynamic viewport height on short hero */
-    @supports (min-height: 100dvh) {
-      .sk-hero { min-height: 100dvh; }
-      .sk-hero--short { min-height: 60dvh; }
-    }
 
     /* ── ≤ 767px  (tablet/mobile split) ── */
     @media (max-width: 767px) {
@@ -1735,6 +1736,7 @@
   ════════════════════════════════ -->
   <section class="sk-contact-intro" id="sk-contact-intro" aria-label="Contact introduction">
     <div class="sk-contact-intro__inner">
+      <h2 class="sr-only">Get in Touch</h2>
       <p class="sk-contact-intro__body">We would love to hear from you. Whether you have a question, would like to visit the school, or simply want to learn more about St Kevin's, our team is here to help.</p>
     </div>
   </section>
@@ -1806,7 +1808,7 @@
   ════════════════════════════════ -->
   <div class="sk-wave-divider sk-wave-divider--enquiry-top" id="sk-wave-divider-enquiry-top" aria-hidden="true">
     <svg class="sk-wave-svg" viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-      <path id="sk-wave-path-enquiry-top" d="M 0 120 L 1440 120 L 1440 34 C 1080 48 360 98 0 72 Z" fill="#0A2D5C"/>
+      <path id="sk-wave-path-enquiry-top" d="M 0 120 L 1440 120 L 1440 34 C 1080 48 360 98 0 72 Z" fill="#F6F3EE"/>
     </svg>
   </div>
 
@@ -2644,7 +2646,7 @@
         'gap:14px',
         'padding:18px 28px',
         'border-radius:8px',
-        'font-family:Arial,Helvetica,sans-serif',
+        "font-family:'Inter',ui-sans-serif,system-ui,sans-serif",
         'font-size:15px',
         'font-weight:600',
         'letter-spacing:-0.01em',

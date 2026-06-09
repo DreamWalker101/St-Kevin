@@ -1,10 +1,10 @@
 <?php
 session_start();
-$password = 'nwork2026'; // Change this before deployment
+$password = 'skhp2026';
 
 if (isset($_POST['password'])) {
     if ($_POST['password'] === $password) {
-        $_SESSION['nwork_auth'] = true;
+        $_SESSION['sk_auth'] = true;
         header('Location: editor.php');
         exit;
     }
@@ -17,7 +17,7 @@ if (isset($_GET['logout'])) {
     exit;
 }
 
-if (isset($_SESSION['nwork_auth'])) {
+if (isset($_SESSION['sk_auth'])) {
     header('Location: editor.php');
     exit;
 }
@@ -27,86 +27,200 @@ if (isset($_SESSION['nwork_auth'])) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>nWork Dashboard — Login</title>
-  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            primary: '#5d5699',
-            'primary-container': '#bcb4ff',
-            tertiary: '#476733',
-            'tertiary-container': '#c9eaa0',
-            surface: '#fbf9f8',
-            'surface-container': '#f0eded',
-            'surface-container-low': '#f6f3f2',
-            'on-surface': '#1b1c1c',
-            'on-surface-variant': '#434938',
-            outline: '#737a66',
-            'outline-variant': '#c3c9b2',
-          }
-        }
-      }
-    }
-  </script>
+  <title>Content Admin — St Kevin's Hampton Park</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    .signature-gradient { background: linear-gradient(135deg, #5d5699, #bcb4ff); }
-    .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-weight: normal; font-style: normal; font-size: 20px; line-height: 1; text-transform: none; display: inline-block; white-space: nowrap; -webkit-font-smoothing: antialiased; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #F6F3EE;
+    }
+    h1, h2, h3, .font-heading {
+      font-family: 'Montserrat', sans-serif;
+    }
+    .sk-card {
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(5, 30, 66, 0.10), 0 1px 4px rgba(5, 30, 66, 0.06);
+      max-width: 400px;
+      width: 100%;
+    }
+    .sk-card-header {
+      background-color: #051E42;
+      border-radius: 16px 16px 0 0;
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+    .sk-cross {
+      position: relative;
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+    }
+    .sk-cross::before,
+    .sk-cross::after {
+      content: '';
+      position: absolute;
+      background-color: #8A2232;
+      border-radius: 2px;
+    }
+    .sk-cross::before {
+      width: 4px;
+      height: 22px;
+      top: 0;
+      left: 9px;
+    }
+    .sk-cross::after {
+      width: 22px;
+      height: 4px;
+      top: 9px;
+      left: 0;
+    }
+    .sk-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+    }
+    .sk-card-title {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #ffffff;
+      text-align: center;
+      line-height: 1.2;
+    }
+    .sk-card-body {
+      padding: 32px;
+    }
+    .sk-input-label {
+      display: block;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #051E42;
+      margin-bottom: 8px;
+    }
+    .sk-input {
+      width: 100%;
+      height: 48px;
+      padding: 0 16px;
+      border: 1.5px solid #E2E6EA;
+      border-radius: 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      color: #051E42;
+      background: #ffffff;
+      outline: none;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      box-sizing: border-box;
+    }
+    .sk-input:focus {
+      border-color: #051E42;
+      box-shadow: 0 0 0 2px rgba(5, 30, 66, 0.18);
+    }
+    .sk-input::placeholder {
+      color: #B0B8C4;
+    }
+    .sk-btn {
+      display: block;
+      width: 100%;
+      height: 48px;
+      background-color: #051E42;
+      color: #ffffff;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background-color 0.15s;
+      margin-top: 24px;
+    }
+    .sk-btn:hover {
+      background-color: #0A2D5C;
+    }
+    .sk-btn:active {
+      background-color: #041530;
+    }
+    .sk-error {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #FEF2F2;
+      border: 1px solid #FECACA;
+      border-radius: 10px;
+      padding: 10px 14px;
+      margin-bottom: 20px;
+      color: #B91C1C;
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+    }
+    .sk-error svg {
+      flex-shrink: 0;
+    }
+    .sk-page-footer {
+      text-align: center;
+      margin-top: 28px;
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      color: rgba(5, 30, 66, 0.38);
+      letter-spacing: 0.01em;
+    }
   </style>
 </head>
-<body class="min-h-screen bg-surface flex items-center justify-center p-4">
-  <!-- Decorative blobs -->
-  <div class="fixed top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-    <div class="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full opacity-10 blur-[120px]" style="background: #5d5699;"></div>
-    <div class="absolute -bottom-40 -right-40 w-[500px] h-[500px] rounded-full opacity-10 blur-[120px]" style="background: #476733;"></div>
-  </div>
+<body class="min-h-screen flex flex-col items-center justify-center p-6">
 
-  <div class="relative w-full max-w-sm">
-    <div class="bg-white rounded-3xl shadow-2xl p-8">
-      <!-- Logo -->
-      <div class="flex items-center gap-3 mb-8">
-        <div class="signature-gradient w-10 h-10 rounded-2xl flex items-center justify-center flex-shrink-0">
-          <span class="text-white font-black text-base">n</span>
-        </div>
-        <div>
-          <div class="font-black text-gray-900 text-lg leading-none">nWork</div>
-          <div class="text-xs text-gray-400 font-medium">Content Dashboard</div>
-        </div>
-      </div>
+  <div class="sk-card">
 
-      <h1 class="text-2xl font-bold text-gray-900 mb-1">Welcome back</h1>
-      <p class="text-sm text-gray-400 mb-7">Sign in to manage your site content</p>
+    <!-- Card header -->
+    <div class="sk-card-header">
+      <div class="sk-cross"></div>
+      <span class="sk-label">St Kevin's Hampton Park</span>
+      <h1 class="sk-card-title">Content Admin</h1>
+    </div>
+
+    <!-- Card body -->
+    <div class="sk-card-body">
 
       <?php if (!empty($loginError)): ?>
-      <div class="flex items-center gap-2 bg-red-50 text-red-600 text-sm rounded-xl px-4 py-3 mb-5">
-        <span class="material-symbols-outlined text-base">error</span>
-        Incorrect password. Please try again.
+      <div class="sk-error">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <circle cx="8" cy="8" r="7.25" stroke="#B91C1C" stroke-width="1.5"/>
+          <path d="M8 4.5v4" stroke="#B91C1C" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="8" cy="11" r="0.75" fill="#B91C1C"/>
+        </svg>
+        Incorrect password — try again.
       </div>
       <?php endif; ?>
 
-      <form method="POST" autocomplete="off">
-        <div class="mb-5">
-          <label class="block text-sm font-semibold text-gray-700 mb-2">Password</label>
-          <input
-            type="password"
-            name="password"
-            required
-            autofocus
-            class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-purple-400 focus:border-transparent transition"
-            placeholder="Enter dashboard password"
-          >
-        </div>
-        <button type="submit" class="w-full signature-gradient text-white font-bold rounded-xl py-3 text-sm hover:opacity-90 transition active:scale-95">
-          Sign In
-        </button>
+      <form method="POST" autocomplete="off" novalidate>
+        <label class="sk-input-label" for="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          name="password"
+          class="sk-input"
+          placeholder="Enter admin password"
+          required
+          autofocus
+        >
+        <button type="submit" class="sk-btn">Sign In</button>
       </form>
 
-      <p class="text-center text-xs text-gray-300 mt-6">nWork CMS · Powered by nWorks</p>
     </div>
   </div>
+
+  <p class="sk-page-footer">St Kevin's Primary School, Hampton Park</p>
+
 </body>
 </html>

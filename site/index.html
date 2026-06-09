@@ -109,7 +109,7 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: auto; } /* Lenis handles smooth scroll */
+    html { scroll-behavior: auto; overflow-x: hidden; } /* Lenis handles smooth scroll */
     body {
       margin: 0;
       font-family: var(--font-inter);
@@ -117,6 +117,7 @@
       font-optical-sizing: auto;
       color: var(--color-deep-navy);
       background: var(--color-warm-cream);
+      overflow-x: hidden;
     }
 
     /* ── Header ── */
@@ -143,6 +144,7 @@
       background: none; border: none; cursor: pointer; padding: 6px; flex-shrink: 0;
       border-radius: 8px;
       transition: background var(--transition-fast);
+      touch-action: manipulation;
     }
     .sk-hamburger:hover { background: transparent; }
     .is-scrolled .sk-hamburger:hover { background: transparent; }
@@ -185,6 +187,7 @@
       border-radius: 50%;
       transition: background var(--transition-fast);
       flex-shrink: 0;
+      touch-action: manipulation;
     }
     .sk-search-btn:hover { background: rgba(255,255,255,0.12); }
     .is-scrolled .sk-search-btn:hover { background: var(--color-cloud-grey); }
@@ -344,6 +347,7 @@
       display: flex; align-items: center; justify-content: center;
       color: var(--color-deep-navy);
       transition: border-color var(--transition-fast), background var(--transition-fast);
+      touch-action: manipulation;
     }
     .sk-sidebar-close:hover {
       border-color: var(--color-deep-navy);
@@ -609,6 +613,7 @@
       cursor: pointer;
       padding: 0;
       transition: background 0.4s ease, width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      touch-action: manipulation;
     }
     .sk-quotes__dot.is-active {
       background: rgba(255, 255, 255, 0.9);
@@ -642,7 +647,6 @@
       letter-spacing: -0.025em;
       color: var(--color-deep-navy);
       line-height: 1.1;
-      text-transform: uppercase;
       margin: 0 0 1.25rem;
       text-wrap: balance;
     }
@@ -806,6 +810,7 @@
       text-decoration: none;
       line-height: 1;
       white-space: nowrap;
+      touch-action: manipulation;
     }
     .sk-btn-wipe:active { transform: scale(0.96); }
     .sk-btn-wipe::before {
@@ -1048,6 +1053,7 @@
       transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease, transform 0.25s ease;
       flex-shrink: 0;
       padding: 0;
+      touch-action: manipulation;
     }
     .sk-testimonial-arrow svg { width: 20px; height: 20px; display: block; }
     .sk-testimonial-arrow:hover {
@@ -1761,7 +1767,8 @@
         playsinline
         disablepictureinpicture
         disableremoteplayback
-        preload="auto"
+        preload="none"
+        poster="images/samples/cosmos_1226555780.jpeg"
       ></video>
     </div>
 
@@ -1770,7 +1777,7 @@
 
     <!-- MACS logo — bottom-left per client revision doc -->
     <div class="sk-hero-macs" aria-hidden="true">
-      <img src="images/macs-logo-white.png" alt="" id="sk-macs-logo" style="display:block;height:var(--logo-macs-size,90px);width:auto;transition:filter var(--transition-medium);">
+      <img src="images/macs-logo-white.png" alt="Melbourne Archdiocese Catholic Schools" id="sk-macs-logo" style="display:block;height:var(--logo-macs-size,90px);width:auto;transition:filter var(--transition-medium);">
     </div>
 
   </section>
@@ -2066,7 +2073,6 @@
     </div>
 
     <div class="sk-effect__header">
-      <span class="sk-effect__label">Community, Care &amp; Growth</span>
       <h2 class="sk-effect__heading"><span class="scroll-text-reveal" data-text="The St Kevin's Effect">The St Kevin's Effect</span></h2>
       <div class="sk-effect__rule" aria-hidden="true"></div>
       <p class="sk-effect__body">Over time, something special happens here. Through strong relationships, high expectations and genuine care, children grow into confident and compassionate young people.</p>
@@ -2159,7 +2165,6 @@
     <div class="sk-videos__inner">
 
       <div class="sk-videos__header">
-        <span class="sk-videos__label">Stories from our community</span>
         <h2 class="sk-videos__heading">See Our Story</h2>
         <p class="sk-videos__body">Hear from the families, teachers and students who make St Kevin's what it is — a place where every child is known, valued and inspired.</p>
       </div>
@@ -2336,7 +2341,7 @@
 
 
   <!-- ════════════════════════════════
-       WAVE: Enrolments → Footer (navy bg + burgundy wave)
+       WAVE: Enrolments → Footer (navy bg + cream wave)
   ════════════════════════════════ -->
   <div class="sk-wave-divider sk-wave-divider--burg" aria-hidden="true">
     <svg class="sk-wave-svg"
@@ -2344,7 +2349,7 @@
          preserveAspectRatio="none"
          xmlns="http://www.w3.org/2000/svg">
       <path d="M 0 0 L 1440 0 L 1440 14 C 1080 22 360 76 0 88 Z"
-            fill="#8A2232"/>
+            fill="#F6F3EE"/>
     </svg>
   </div>
 
