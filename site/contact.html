@@ -149,11 +149,11 @@
     .sk-hamburger:hover { background: transparent; }
     .is-scrolled .sk-hamburger:hover { background: transparent; }
     .sk-hamburger span {
-      display: block; height: 2px; border-radius: 2px;
+      display: block; width: 100%; height: 2px; border-radius: 2px;
+      background: var(--color-pure-white);
       transition: background var(--transition-medium);
     }
-    .is-transparent .sk-hamburger span { background: var(--color-pure-white); }
-    .is-scrolled    .sk-hamburger span { background: var(--color-deep-navy); }
+    .is-scrolled .sk-hamburger span { background: var(--color-deep-navy); }
 
     /* Two separate logos — hero (white, pre-scroll) and sticky (colour, post-scroll) */
     .sk-logo-hero, .sk-logo-sticky { display: block; width: auto; }
@@ -2370,8 +2370,9 @@
   /* ── Lenis smooth scroll + ScrollTrigger sync ── */
   (function () {
     var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var isTouch  = window.matchMedia('(pointer: coarse)').matches || ('ontouchstart' in window);
     gsap.registerPlugin(ScrollTrigger);
-    if (!reduced && typeof Lenis !== 'undefined') {
+    if (!reduced && !isTouch && typeof Lenis !== 'undefined') {
       var lenis = new Lenis({
         duration: 1.15,
         easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }

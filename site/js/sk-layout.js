@@ -457,9 +457,10 @@
 
   /* ── Lenis smooth scroll + ScrollTrigger sync ── */
   (function () {
-    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var reduced   = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var isTouch   = window.matchMedia('(pointer: coarse)').matches || ('ontouchstart' in window);
     gsap.registerPlugin(ScrollTrigger);
-    if (!reduced && typeof Lenis !== 'undefined') {
+    if (!reduced && !isTouch && typeof Lenis !== 'undefined') {
       var lenis = new Lenis({
         duration: 1.15,
         easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }

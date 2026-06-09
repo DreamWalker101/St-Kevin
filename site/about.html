@@ -149,11 +149,11 @@
     .sk-hamburger:hover { background: transparent; }
     .is-scrolled .sk-hamburger:hover { background: transparent; }
     .sk-hamburger span {
-      display: block; height: 2px; border-radius: 2px;
+      display: block; width: 100%; height: 2px; border-radius: 2px;
+      background: var(--color-pure-white);
       transition: background var(--transition-medium);
     }
-    .is-transparent .sk-hamburger span { background: var(--color-pure-white); }
-    .is-scrolled    .sk-hamburger span { background: var(--color-deep-navy); }
+    .is-scrolled .sk-hamburger span { background: var(--color-deep-navy); }
 
     /* Two separate logos — hero (white, pre-scroll) and sticky (colour, post-scroll) */
     .sk-logo-hero, .sk-logo-sticky { display: block; width: auto; }

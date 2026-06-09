@@ -1095,7 +1095,8 @@
     var skipEntrances = Boolean(window.location.hash);
     gsap.registerPlugin(ScrollTrigger);
 
-    if (!reduced && typeof Lenis !== 'undefined') {
+    var isTouch = window.matchMedia('(pointer: coarse)').matches || ('ontouchstart' in window);
+    if (!reduced && !isTouch && typeof Lenis !== 'undefined') {
       var lenis = new Lenis({
         autoRaf: false,
         duration: 1.15,
