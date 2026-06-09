@@ -85,7 +85,9 @@
     '          <line x1="2" y1="2" x2="14" y2="14"/><line x1="14" y1="2" x2="2" y2="14"/>',
     '        </svg>',
     '      </button>',
-    '      <img src="images/logo-sk-macs-combined.png" alt="St Kevin\'s Primary School, Hampton Park" class="sk-sidebar-logo">',
+    '      <a href="index.html" class="sk-sidebar-logo-link" aria-label="St Kevin\'s home">',
+    '        <img src="images/logo-sk-macs-combined.png" alt="St Kevin\'s Primary School, Hampton Park" class="sk-sidebar-logo">',
+    '      </a>',
     '    </div>',
     '    <nav class="sk-sidebar-nav" aria-label="Primary navigation">',
     buildNavItems(),
@@ -508,8 +510,9 @@
     }
 
     function setup() {
-      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      var reveals = document.querySelectorAll('.scroll-text-reveal');
+      var reduced  = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var isMobile = window.matchMedia('(max-width: 768px)').matches;
+      var reveals  = document.querySelectorAll('.scroll-text-reveal');
 
       reveals.forEach(function (el) {
         var text  = el.dataset.text || el.textContent.trim();
@@ -525,7 +528,11 @@
             var charSpan = document.createElement('span');
             charSpan.className = 'scroll-text-char';
             charSpan.textContent = char;
-            if (!reduced) charSpan.style.setProperty('--char-index', charIdx);
+            if (!reduced) {
+              /* Mobile: stagger by word so whole words rise together (stagger-up).
+                 Desktop: stagger by character for the finer char-by-char reveal. */
+              charSpan.style.setProperty('--char-index', isMobile ? wi * 3 : charIdx);
+            }
             wordSpan.appendChild(charSpan);
             charIdx++;
           });

@@ -168,6 +168,7 @@
     .sk-wave-divider--burg {
       background: var(--color-warm-cream);
       height: 126px;
+      margin-top: -2px;
     }
 
     .sk-wave-svg {
@@ -306,15 +307,13 @@
       }
     }
 
-    @supports (min-height: 1dvh) {
-      .sk-hero--policy {
-        min-height: 40dvh;
-      }
+    .sk-hero--policy {
+      min-height: 40vh;
+    }
 
-      @media (max-width: 768px) {
-        .sk-hero--policy {
-          min-height: 42dvh;
-        }
+    @media (max-width: 768px) {
+      .sk-hero--policy {
+        min-height: 42vh;
       }
     }
 
@@ -541,9 +540,9 @@
       </div>
     </section>
 
-    <div class="sk-wave-divider" style="height:80px;background:#051E42;" aria-hidden="true">
+    <div class="sk-wave-divider" style="height:80px;background:#F6F3EE;" aria-hidden="true">
       <svg class="sk-wave-svg" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M0,40 C360,80 1080,0 1440,40 L1440,0 L0,0 Z" fill="#F6F3EE"/>
+        <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#051E42"/>
       </svg>
     </div>
   </main>
@@ -853,9 +852,12 @@
     if (!reduced && !skipEntrances) {
       window.addEventListener('load', function () {
         var heading = document.querySelector('.sk-policy-hero__heading');
+        var img = document.querySelector('.sk-policy-hero__image img');
         if (heading) {
           gsap.set(heading, { y: 28 });
-          gsap.to(heading, { y: 0, duration: 1.05, ease: 'expo.out' });
+          var tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+          if (img) tl.to(img, { scale: 1.04, duration: 1.6, ease: 'power3.out' }, 0);
+          tl.to(heading, { y: 0, duration: 1.05 }, 0.15);
         }
       });
 
@@ -882,6 +884,58 @@
       .fromTo(footer.querySelector('.sk-footer__bottom'), { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'expo.out' }, '-=0.15');
     }
 
+  })();
+
+  /* ── Character-by-character heading reveal ── */
+  (function () {
+    function splitGraphemes(text) {
+      if (typeof Intl !== 'undefined' && 'Segmenter' in Intl) {
+        var seg = new Intl.Segmenter('en', { granularity: 'grapheme' });
+        return Array.from(seg.segment(text), function (s) { return s.segment; });
+      }
+      return Array.from(text);
+    }
+    function setup() {
+      var red = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var reveals = document.querySelectorAll('.scroll-text-reveal');
+      reveals.forEach(function (el) {
+        var text  = el.dataset.text || el.textContent.trim();
+        var words = text.split(' ');
+        el.innerHTML = '';
+        var charIdx = 0;
+        words.forEach(function (word, wi) {
+          var wordSpan = document.createElement('span');
+          wordSpan.className = 'scroll-text-word';
+          splitGraphemes(word).forEach(function (char) {
+            var charSpan = document.createElement('span');
+            charSpan.className = 'scroll-text-char';
+            charSpan.textContent = char;
+            if (!red) charSpan.style.setProperty('--char-index', charIdx);
+            wordSpan.appendChild(charSpan);
+            charIdx++;
+          });
+          el.appendChild(wordSpan);
+          if (wi < words.length - 1) el.appendChild(document.createTextNode(' '));
+        });
+        if (red) el.classList.add('is-visible');
+      });
+      document.body.classList.add('js-loaded');
+      if (red) return;
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      reveals.forEach(function (el) { observer.observe(el); });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setup);
+    } else {
+      setup();
+    }
   })();
   </script>
 </body>

@@ -110,7 +110,7 @@
     }
 
     *, *::before, *::after { box-sizing: border-box; }
-    html, body { overflow-x: hidden; }
+    html { overflow-x: hidden; }
     html { scroll-behavior: auto; } /* Lenis handles smooth scroll */
     body {
       margin: 0;
@@ -400,7 +400,7 @@
     .sk-hero {
       position: relative;
       width: 100%;
-      min-height: 100dvh;
+      min-height: 100vh;
       overflow: hidden;
       background: var(--color-deep-navy);
     }
@@ -1002,7 +1002,7 @@
     @media (max-width: 800px) {
       .sk-team { grid-template-columns: 1fr; height: auto; }
       .sk-team__visual { height: 62vw; min-height: 260px; }
-      .sk-team__img { transform: none !important; }
+      .sk-team__img { top: 0; bottom: 0; height: 100%; will-change: auto; transform: none !important; }
       .sk-team__content { padding: 40px 24px 48px; }
       .sk-team__body { max-width: 100%; }
     }
@@ -1068,10 +1068,10 @@
     .sk-staff__img-wrap img {
       width: 100%; height: 100%; display: block;
       object-fit: cover; object-position: top center;
-      filter: grayscale(1); transform: scale(1.03);
-      transition: filter 0.5s ease, transform 0.5s ease;
+      transform: scale(1.03);
+      transition: transform 0.5s ease;
     }
-    .sk-staff__card:hover .sk-staff__img-wrap img { filter: grayscale(0); transform: scale(1.07); }
+    .sk-staff__card:hover .sk-staff__img-wrap img { transform: scale(1.07); }
     .sk-staff__card-foot {
       padding: 14px 16px 18px;
       display: flex; align-items: center; justify-content: space-between; gap: 10px;
@@ -1184,21 +1184,9 @@
        MOBILE RESPONSIVENESS OVERRIDES
     ══════════════════════════════════════════════ */
 
-    /* Hero: dvh fix for iOS Safari address-bar on short hero */
-    @supports (min-height: 100dvh) {
-      .sk-hero--short { min-height: 60dvh; }
-    }
-
     /* MACS logo in hero: reduce on small phones via custom property */
     @media (max-width: 480px) {
       :root { --logo-macs-size: 60px; }
-    }
-
-    /* SMV sticky panel: dvh fix at tablet width before it de-stickies */
-    @supports (height: 100dvh) {
-      @media (min-width: 901px) {
-        .sk-smv__sticky { height: 100dvh; }
-      }
     }
 
     /* SMV copy-wrap: fixed height clips long body text on small phones */
@@ -1266,18 +1254,18 @@
       .sk-smv__grid { display: flex; flex-direction: column; height: 100%; }
       .sk-smv__right { order: -1; height: 40vh; min-height: 0; padding: 8px 12px; flex-shrink: 0; }
       .sk-smv__frame { height: 100%; width: 100%; max-width: 100%; border-radius: 10px; min-width: 0; }
-      .sk-smv__left { flex: 1; min-height: 0; overflow-y: auto; padding: 14px 24px 12px; border-right: 0; border-bottom: 0; justify-content: flex-start; display: flex; flex-direction: column; }
+      .sk-smv__left { flex: 1; min-height: 0; overflow: hidden; padding: 14px 24px 12px; border-right: 0; border-bottom: 0; justify-content: flex-start; display: flex; flex-direction: column; }
       .sk-smv__pagination { position: static; margin-bottom: 10px; }
       .sk-smv__heading { font-size: clamp(1.6rem, 5.5vw, 2.4rem); margin-bottom: 0.75rem; }
-      .sk-smv__copy-wrap { height: 230px; margin-top: 0; }
-      .sk-smv__cta-wrap { position: static; left: auto; bottom: auto; margin-top: auto; padding-bottom: 12px; }
+      .sk-smv__copy-wrap { height: 260px; min-height: 0; margin-top: 0; }
+      .sk-smv__cta-wrap { position: static; left: auto; bottom: auto; margin-top: 30px; flex-shrink: 0; padding-bottom: 0; }
       /* Shrink dot tap targets to proportionate size on mobile */
       .sk-smv__dot { min-height: 0; padding: 0; }
     }
     @media (max-width: 480px) {
       .sk-smv__right { height: 36vh; }
       .sk-smv__left { padding: 10px 18px 10px; }
-      .sk-smv__copy-wrap { height: 210px; }
+      .sk-smv__copy-wrap { height: 250px; min-height: 0; }
       .sk-smv__heading { font-size: clamp(1.45rem, 5vw, 2rem); }
     }
 
@@ -1448,13 +1436,13 @@
        SECTION 8 — WAVE DIVIDER (warm cream → navy)
   ════════════════════════════════ -->
   <div class="sk-wave-divider sk-wave-divider--navy"
-       style="background:#051E42"
+       style="background:#F6F3EE"
        aria-hidden="true">
     <svg class="sk-wave-svg"
          viewBox="0 0 1440 120"
          preserveAspectRatio="none"
          xmlns="http://www.w3.org/2000/svg">
-      <path d="M 0 0 L 1440 0 L 1440 14 C 1080 22 360 76 0 88 Z" fill="#F6F3EE"/>
+      <path d="M 0 88 C 360 76 1080 22 1440 14 L 1440 120 L 0 120 Z" fill="#051E42"/>
     </svg>
   </div>
 
