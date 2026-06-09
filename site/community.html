@@ -458,16 +458,6 @@
       font-style: italic;
     }
 
-    #global-click-spark {
-      position: fixed;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      mix-blend-mode: screen;
-      z-index: 9999;
-    }
-
     @media (max-width: 768px) {
       .sk-hero {
         min-height: 60vh;
@@ -1084,7 +1074,7 @@
     </div>
   </footer>
 
-  <canvas id="global-click-spark"></canvas>
+
 
   <script src="js/sk-layout.js"></script>
   <script>
@@ -1325,61 +1315,6 @@
       .fromTo(footer.querySelector('.sk-footer__bottom'), { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'expo.out' }, '-=0.15');
     }
 
-    (function () {
-      var canvas = document.getElementById('global-click-spark');
-      if (!canvas) return;
-      var ctx = canvas.getContext('2d');
-      var sparks = [];
-      var dpr = window.devicePixelRatio || 1;
-
-      function resize() {
-        canvas.width = window.innerWidth * dpr;
-        canvas.height = window.innerHeight * dpr;
-        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      }
-
-      resize();
-      window.addEventListener('resize', resize);
-
-      document.addEventListener('click', function (event) {
-        var now = performance.now();
-        for (var i = 0; i < 10; i++) {
-          sparks.push({ x: event.clientX, y: event.clientY, angle: (2 * Math.PI * i) / 10, startTime: now });
-        }
-      });
-
-      function ease(t) { return t * (2 - t); }
-
-      function draw(timestamp) {
-        ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-        for (var i = sparks.length - 1; i >= 0; i--) {
-          var spark = sparks[i];
-          var elapsed = timestamp - spark.startTime;
-          if (elapsed >= 460) {
-            sparks.splice(i, 1);
-            continue;
-          }
-          var progress = elapsed / 460;
-          var eased = ease(progress);
-          var distance = eased * 24;
-          var lineLength = 12 * (1 - eased);
-          var x1 = spark.x + distance * Math.cos(spark.angle);
-          var y1 = spark.y + distance * Math.sin(spark.angle);
-          var x2 = spark.x + (distance + lineLength) * Math.cos(spark.angle);
-          var y2 = spark.y + (distance + lineLength) * Math.sin(spark.angle);
-          ctx.strokeStyle = '#ffffff';
-          ctx.lineWidth = 2;
-          ctx.lineCap = 'round';
-          ctx.beginPath();
-          ctx.moveTo(x1, y1);
-          ctx.lineTo(x2, y2);
-          ctx.stroke();
-        }
-        requestAnimationFrame(draw);
-      }
-
-      requestAnimationFrame(draw);
-    })();
   })();
 
   (function () {
