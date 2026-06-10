@@ -1,0 +1,22 @@
+# ============================================================
+# St Kevin's — Root access controls
+# ============================================================
+
+# Block dev/tooling directories that live in the repo root
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Block _dev, .claude directories
+  RewriteRule ^_dev(/.*)?$ - [F,L]
+  RewriteRule ^\.claude(/.*)?$ - [F,L]
+</IfModule>
+
+# Block sensitive files at the repo root
+<FilesMatch "^(CLAUDE\.md|skills-lock\.json|\.cpanel\.yml|deploy\.php)$">
+  Require all denied
+</FilesMatch>
+
+# Block all markdown files
+<FilesMatch "\.md$">
+  Require all denied
+</FilesMatch>

@@ -47,3 +47,6 @@ Downloads/
 
 # Admin credentials — never commit
 site/admin/config.php
+
+# Deploy credentials — never commit
+deploy-config.php
