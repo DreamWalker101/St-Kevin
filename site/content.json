@@ -3,33 +3,135 @@
     "phone": "(03) 9709 8600",
     "email": "administration@skhamptonpark.catholic.edu.au",
     "address": "120 Hallam Rd, Hampton Park VIC 3976",
-    "facebookUrl": "#",
-    "principalName": "Jason Micallef"
+    "facebookUrl": "https://www.facebook.com/StKevinsPrimaryHamptonPark",
+    "principalName": "Jason Micallef",
+    "officeHours": "Monday to Friday · 8:00am – 4:00pm",
+    "footerTagline": "A community where every child is known, supported and inspired to flourish",
+    "newsletterUrl": "#",
+    "annualReportUrl": "#"
   },
   "homepage": {
+    "hero": {
+      "heroHeading": "Every child is known, valued and supported to flourish",
+      "heroVideo": "https://assets.mixkit.co/videos/35954/35954-720.mp4"
+    },
+    "welcomeBlock": {
+      "welcomeHeading": "Welcome to St Kevin's",
+      "welcomeTagline": "A community where every child is known, supported and inspired to flourish"
+    },
+    "pillars": [
+      {
+        "heading": "Belonging",
+        "body": "Belonging sits at the heart of life at St Kevin's. When children feel known, safe and valued, they grow in confidence, curiosity and courage to learn.",
+        "tagline": "Every child matters here.",
+        "image": "images/samples/cosmos_1226555780.jpeg"
+      },
+      {
+        "heading": "Learning with purpose",
+        "body": "Learning at St Kevin's is both structured and meaningful, grounded in evidence-informed teaching and rich opportunities for inquiry. We form learners who think deeply and engage with the world around them.",
+        "tagline": "Clear teaching. Curious minds. Deep thinking.",
+        "image": "images/samples/cosmos_1113100871.jpeg"
+      },
+      {
+        "heading": "Faith in action",
+        "body": "Our Catholic faith shapes the spirit of our school and the way we care for one another. Through prayer, service and daily action, students learn to live the Gospel values of respect, compassion and love.",
+        "tagline": "Guided by Christ in all we do.",
+        "image": "images/samples/cosmos_1074538081.jpeg"
+      },
+      {
+        "heading": "Growing together",
+        "body": "St Kevin's is a welcoming and diverse community where families, staff and students work together. It is this partnership that creates the warmth, trust and shared purpose that define our school.",
+        "tagline": "Together we shape the future.",
+        "image": "images/samples/cosmos_226684284.jpeg"
+      }
+    ],
+    "effect": {
+      "effectLabel": "what makes us different",
+      "effectHeading": "The St Kevin's Effect",
+      "effectBody": "Over time, something special happens here. Through strong relationships, high expectations and genuine care, children grow into confident and compassionate young people."
+    },
+    "testimonials": [
+      {
+        "quote": "St Kevin's is more than a school for our family, it is our extended family.",
+        "name": "Tash",
+        "role": "Parent",
+        "image": "images/samples/cosmos_1616537391.jpeg"
+      },
+      {
+        "quote": "Thanks to the nurturing environment and dedicated teachers at St Kevin's, my once very shy daughter has grown into a confident child.",
+        "name": "Karina Rogers",
+        "role": "Parent",
+        "image": "images/samples/cosmos_1226555780.jpeg"
+      },
+      {
+        "quote": "What we appreciate most about St Kevin's is its diversity and the way the school brings families together, creating a strong sense of belonging.",
+        "name": "Shanelle Fairweather",
+        "role": "Parent",
+        "image": "images/samples/cosmos_1113100871.jpeg"
+      }
+    ],
+    "videoGrid": {
+      "videosLabel":   "Video Stories",
+      "videosHeading": "See Our Story",
+      "videosBody":    "Hear from the families, teachers and students who make St Kevin's what it is — a place where every child is known, valued and inspired."
+    },
+    "videoCards": [
+      {
+        "category": "School Life",
+        "duration": "1:48",
+        "title": "A day in Foundation — what learning feels like at St Kevin's",
+        "videoSrc": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
+      },
+      {
+        "category": "Parents",
+        "duration": "2:12",
+        "title": "Meet the parents — why families choose St Kevin's",
+        "videoSrc": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
+      },
+      {
+        "category": "Faith & Community",
+        "duration": "1:55",
+        "title": "Faith in action — how our Catholic values shape every day",
+        "videoSrc": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
+      },
+      {
+        "category": "Enrolments",
+        "duration": "2:30",
+        "title": "Starting the journey — your enrolment questions answered",
+        "videoSrc": "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
+      }
+    ],
+    "enrolmentsCta": {
+      "ctaLabel": "Come and see for yourself",
+      "ctaHeading": "Ready to Begin Your Journey?",
+      "ctaBody": "The best way to experience St Kevin's is to visit and see the community in action. We warmly invite you to come and discover what makes our school such a special place to belong and learn.",
+      "ctaBtnText": "Enrol Now",
+      "ctaBtnUrl": "enrolments.html",
+      "ctaImage": "images/samples/cosmos_1616537391.jpeg"
+    },
     "quotes": [
       {
-        "text": "St Kevin’s welcomed my son without judgement, only genuine care and support.",
+        "text": "St Kevin's welcomed my son without judgement, only genuine care and support.",
         "author": "Julie M"
       },
       {
-        "text": "St Kevin’s is more than a school for our family, it is our extended family.",
+        "text": "St Kevin's is more than a school for our family, it is our extended family.",
         "author": "Tash"
       },
       {
-        "text": "Thanks to the nurturing environment and dedicated teachers at St Kevin’s, my once very shy daughter has grown into a confident child.",
+        "text": "Thanks to the nurturing environment and dedicated teachers at St Kevin's, my once very shy daughter has grown into a confident child.",
         "author": "Karina Rogers"
       },
       {
-        "text": "What we appreciate most about St Kevin’s is its diversity and the way the school brings families together, creating a strong sense of belonging.",
+        "text": "What we appreciate most about St Kevin's is its diversity and the way the school brings families together, creating a strong sense of belonging.",
         "author": "Shanelle Fairweather"
       },
       {
-        "text": "Kindness and love are everywhere at St Kevin’s. You see it when you’re learning, when you’re playing, in church and in the hall.",
+        "text": "Kindness and love are everywhere at St Kevin's. You see it when you're learning, when you're playing, in church and in the hall.",
         "author": "Blaze (Grade 3)"
       },
       {
-        "text": "St Kevin’s is a welcoming school with caring teachers and a strong community that supports every child.",
+        "text": "St Kevin's is a welcoming school with caring teachers and a strong community that supports every child.",
         "author": "Koreti Solo Sakopo"
       }
     ],
@@ -40,7 +142,225 @@
       "linkUrl": ""
     }
   },
+  "about": {
+    "hero": {
+      "heroHeading": "About Us",
+      "heroVideo": "https://assets.mixkit.co/videos/35954/35954-720.mp4"
+    },
+    "aboutIntro": {
+      "heading": "About St Kevin's",
+      "tagline": "faith · learning · belonging",
+      "body": "St Kevin's is a Christ-centred Catholic primary school where every child is known, valued and supported to flourish. In our diverse Hampton Park community, faith, learning and belonging come together to shape young people who grow in confidence, compassion and purpose."
+    },
+    "smv": [
+      {
+        "heading": "Our Story",
+        "body": "St Kevin's has grown alongside the families of Hampton Park since 1988, becoming a vibrant and culturally rich community where many traditions and languages are celebrated. Our story continues to be shaped by the partnership between students, families, parish and staff who share a commitment to learning and faith.",
+        "ctaLabel": "Book a Tour",
+        "ctaUrl": "enrolments.html",
+        "image": "images/samples/cosmos_1074538081.jpeg",
+        "imageLabel": "St Kevin's community gathering"
+      },
+      {
+        "heading": "Our Mission",
+        "body": "We believe education is sacred work. Our mission is to nurture minds, hearts and spirits so that every child can grow into a person who lives with purpose, compassion and responsibility.",
+        "ctaLabel": "Book a Tour",
+        "ctaUrl": "enrolments.html",
+        "image": "images/samples/cosmos_1226555780.jpeg",
+        "imageLabel": "Students learning at St Kevin's"
+      },
+      {
+        "heading": "Our Vision",
+        "body": "At St Kevin's, learning prepares children not just for the next stage of schooling, but for life. We aim to develop curious, confident and compassionate learners who will contribute positively to their communities and the wider world.",
+        "ctaLabel": "Book a Tour",
+        "ctaUrl": "enrolments.html",
+        "image": "images/samples/cosmos_1263936189.jpeg",
+        "imageLabel": "St Kevin's students looking to the future"
+      }
+    ],
+    "principal": {
+      "heading": "Our Principal",
+      "name": "Jason Micallef",
+      "body": "Welcome to St Kevin's. Our school is a place where children are supported to grow academically, socially and spiritually, surrounded by a community that believes deeply in their potential. What I value most about our school is the way people care for one another. When families, teachers and students work together with trust and purpose, remarkable things happen.",
+      "signoff": "— Jason Micallef | Principal",
+      "image": "images/samples/cosmos_1616537391.jpeg"
+    },
+    "peopleIntro": {
+      "heading": "Our People",
+      "script": "dedicated hearts, curious minds",
+      "body": "Our staff share a deep commitment to the growth and wellbeing of every child. Working together across Foundation (Prep), Junior (Gr 1 & 2), Middle (Gr 3 & 4) and Senior levels (Gr 5 & 6), our teachers and support staff create learning environments where students feel safe, challenged and inspired."
+    },
+    "teams": [
+      {
+        "level": "Foundation · Prep",
+        "heading": "Foundation",
+        "body": "Our Foundation team welcomes children into their first year of school with warmth, patience and a deep understanding of early learning. They create safe and joyful classrooms where curiosity, confidence and independence begin to grow.",
+        "quote": "First stories. First friendships. First days of school.",
+        "caption": "First stories. First friendships. First days of school.",
+        "image": "images/samples/cosmos_1074538081.jpeg"
+      },
+      {
+        "level": "Years 1 & 2",
+        "heading": "Junior Team",
+        "body": "Our Junior team helps students build strong foundations in literacy, numeracy and learning habits that will carry them through their schooling. These classrooms are full of questions, discovery and the excitement that comes when children begin to realise what they are capable of.",
+        "quote": "The moment when learning starts to click.",
+        "caption": "The moment when learning starts to click.",
+        "image": "images/samples/cosmos_1226555780.jpeg"
+      },
+      {
+        "level": "Years 3 & 4",
+        "heading": "Middle Team",
+        "body": "The Middle team supports students as their confidence and independence grow. Learning becomes deeper and more collaborative as students explore ideas, ask thoughtful questions and begin to see themselves as capable learners.",
+        "quote": "Questions get bigger. Thinking gets deeper.",
+        "caption": "Questions get bigger. Thinking gets deeper.",
+        "image": "images/samples/cosmos_1263936189.jpeg"
+      },
+      {
+        "level": "Years 5 & 6",
+        "heading": "Senior Team",
+        "body": "Our Senior team prepares students for the transition to secondary school while nurturing leadership, responsibility and strong learning habits. Students are challenged to think critically, take ownership of their learning and contribute positively to the school community.",
+        "quote": "Growing into confident learners and leaders.",
+        "caption": "Growing into confident learners and leaders.",
+        "image": "images/samples/cosmos_547543300.jpeg"
+      }
+    ],
+    "parish": {
+      "heading": "Our Parish Connection",
+      "body": "St Kevin's Primary School is part of the St Kevin's Parish community. Our close partnership with the parish supports the faith formation of our students and connects school life with the wider spiritual life of the community.",
+      "image": "images/samples/cosmos_226684284.jpeg"
+    },
+    "principalMessage": "At St Kevin's, we are privileged to lead a community where every child is known by name and valued for who they are. Our dedicated staff work tirelessly to ensure that learning is purposeful, faith is lived, and every family feels genuinely welcomed.",
+    "missionStatement": "To educate and inspire young people to live the Gospel values through faith, learning and service.",
+    "visionStatement": "A vibrant, inclusive Catholic community where every child is known, valued and empowered to flourish."
+  },
+  "learning": {
+    "hero": {
+      "heroHeading": "Learning with Purpose",
+      "heroBody": "Inspired by faith, guided by purpose — learning at St Kevin's goes beyond the classroom.",
+      "heroImage": "images/samples/cosmos_1113100871.jpeg"
+    },
+    "introQuote": {
+      "quote": "Learning at St Kevin's shapes both the mind and the heart.",
+      "subtitle": "It is about forming young people who are curious, capable and ready to contribute to the world around them."
+    },
+    "sections": [
+      {
+        "eyebrow": "Faith & Formation",
+        "heading": "Faith shapes the way we see the world.",
+        "body": "Through prayer, Religious Education and service, students grow in their relationship with God and in their understanding of what it means to live with compassion, justice and hope.",
+        "image": "images/samples/cosmos_1074538081.jpeg"
+      },
+      {
+        "eyebrow": "Belonging & Wellbeing",
+        "heading": "Every child deserves to feel known.",
+        "body": "Strong relationships create the foundation for learning. When students feel safe and valued, confidence grows and the joy of learning begins to flourish.",
+        "image": "images/samples/cosmos_1226555780.jpeg"
+      },
+      {
+        "eyebrow": "Teaching that Inspires",
+        "heading": "Great teaching sparks curiosity.",
+        "body": "Our teachers combine clear instruction with opportunities to question, explore and create. Learning is purposeful, engaging and designed to build confidence and a love of discovery.",
+        "image": "images/samples/cosmos_1263936189.jpeg"
+      },
+      {
+        "eyebrow": "Learning for Every Child",
+        "heading": "Every learner is different. Every learner matters.",
+        "body": "Our teachers support and challenge each student based on where they are in their learning journey. This ensures every child can grow with confidence and experience success.",
+        "image": "images/samples/cosmos_226684284.jpeg"
+      },
+      {
+        "eyebrow": "Beyond the Classroom",
+        "heading": "Education shaped by experience.",
+        "body": "Learning extends beyond the classroom through projects, excursions, service and creative opportunities. Students discover the excitement of applying their learning in the real world.",
+        "image": "images/samples/cosmos_547543300.jpeg"
+      }
+    ]
+  },
+  "community": {
+    "hero": {
+      "heroHeading": "Our Community",
+      "heroImage": "images/samples/cosmos_1226555780.jpeg"
+    },
+    "intro": {
+      "body": "St Kevin's is more than a school. It is a community where families, staff and students walk together in support, friendship and faith."
+    },
+    "pillars": [
+      {
+        "heading": "A Welcoming Community",
+        "body": "Everyone is welcome here. Families from many cultures and backgrounds form the heart of our school community. Together we create a place where every family feels a sense of belonging.",
+        "tagline": "Where every family belongs.",
+        "image": "images/samples/cosmos_1226555780.jpeg"
+      },
+      {
+        "heading": "Partnerships with Families",
+        "body": "Learning works best when school and home walk together. We value strong relationships with families and believe open communication and partnership help every child flourish.",
+        "tagline": "Together for every child.",
+        "image": "images/samples/cosmos_226684284.jpeg"
+      },
+      {
+        "heading": "Celebrating Together",
+        "body": "Community grows through shared moments. School events, celebrations and gatherings bring families together and strengthen the sense of connection across our community.",
+        "tagline": "Every season, every story.",
+        "image": "images/samples/cosmos_1074538081.jpeg"
+      },
+      {
+        "heading": "Faith in Community",
+        "body": "Our faith brings us together. Masses, prayer and parish celebrations are important moments where our community gathers to reflect, celebrate and grow in faith.",
+        "tagline": "Guided by Christ, shaped by community.",
+        "image": "images/samples/cosmos_1263936189.jpeg"
+      }
+    ],
+    "spirit": {
+      "heading": "The St Kevin's Spirit",
+      "body": "Something special happens when people care for one another. The kindness, generosity and support shown within our community help create a place where children and families truly feel at home.",
+      "tagline": "A community that truly cares."
+    }
+  },
   "enrolments": {
+    "hero": {
+      "heroHeading": "Join Our Community",
+      "heroImage": "images/samples/cosmos_1616537391.jpeg"
+    },
+    "intro": {
+      "body": "Choosing a school is an important decision for every family. We would love to welcome you to St Kevin's and help you discover what makes our community special."
+    },
+    "step1": {
+      "heading": "Visit Us",
+      "body": "The best way to experience St Kevin's is to visit. Throughout the year we offer school tours and open days where families can see learning in action and explore our school.",
+      "openDays": "Open Days — March 18, April 1, April 29, May 13",
+      "tourInfo": "School Tours — Most Wednesdays at 9:30am"
+    },
+    "step2": {
+      "heading": "Start the Conversation",
+      "body": "If you would like to learn more about St Kevin's, we invite you to get in touch. Our team is always happy to answer questions and provide further information about our school.",
+      "btn1Text": "Enrolment Enquiry",
+      "btn1Url": "contact.html",
+      "btn2Text": "Request a Prospectus",
+      "btn2Url": "#"
+    },
+    "step3": {
+      "heading": "The Enrolment Process",
+      "body": "When you are ready to apply, you can complete our enrolment form online. Once submitted, our office team will guide you through the next steps of the enrolment process.",
+      "btnText": "Begin Enrolment Application",
+      "btnUrl": "#"
+    },
+    "transition": {
+      "heading": "Transition to School",
+      "body": "Starting school is an exciting milestone for every child. Our transition program, which runs across three mornings over three weeks in November, helps children become familiar with the school, meet their teachers and begin forming friendships before their first day.",
+      "tagline": "A warm welcome before day one.",
+      "image": "images/samples/cosmos_226684284.jpeg"
+    },
+    "closingCta": {
+      "label": "Every child known",
+      "heading": "Begin Your Journey Here",
+      "body": "At St Kevin's every child is known, supported and encouraged to flourish. We look forward to welcoming your family into our community.",
+      "btn1Text": "Book a School Tour",
+      "btn1Url": "contact.html",
+      "btn2Text": "Enquire Now",
+      "btn2Url": "contact.html",
+      "tagline": "Come and discover St Kevin's.",
+      "image": "images/samples/cosmos_1616537391.jpeg"
+    },
     "tourDates": [
       { "date": "Wednesday 23 July 2025", "time": "9:30 AM" },
       { "date": "Wednesday 13 August 2025", "time": "9:30 AM" },
@@ -48,12 +368,27 @@
     ],
     "enquiryNote": "To begin the enrolment process, or simply find out more, we warmly invite you to visit our school."
   },
-  "about": {
-    "principalMessage": "At St Kevin’s, we are privileged to lead a community where every child is known by name and valued for who they are. Our dedicated staff work tirelessly to ensure that learning is purposeful, faith is lived, and every family feels genuinely welcomed.",
-    "missionStatement": "To educate and inspire young people to live the Gospel values through faith, learning and service.",
-    "visionStatement": "A vibrant, inclusive Catholic community where every child is known, valued and empowered to flourish."
-  },
   "contact": {
+    "hero": {
+      "heroHeading": "Get in Touch",
+      "heroImage": ""
+    },
+    "intro": {
+      "body": "We would love to hear from you. Whether you have a question, would like to visit the school, or simply want to learn more about St Kevin's, our team is here to help."
+    },
+    "getInTouch": {
+      "heading": "Get in Touch"
+    },
     "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3142.8!2d145.257!3d-38.024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSt+Kevin%27s+Primary+School!5e0!3m2!1sen!2sau!4v1"
+  },
+  "policies": {
+    "hero": {
+      "heroHeading": "School Policies"
+    },
+    "intro": {
+      "introHeading": "Our Commitment to Safe and Transparent Schooling",
+      "introBody": "St Kevin's Primary School operates within the policies and governance frameworks of Melbourne Archdiocese Catholic Schools (MACS). The policies that guide our work in areas such as child safety, wellbeing and governance can be accessed below."
+    },
+    "safesmartUrl": "https://safesmartsolutions.com.au/portal/St%20Kevin's%20Primary%20School%20-%20Hampton%20Park/882a137f3d/policy"
   }
 }

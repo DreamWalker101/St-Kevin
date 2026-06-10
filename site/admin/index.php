@@ -5,7 +5,7 @@ $password = 'skhp2026';
 if (isset($_POST['password'])) {
     if ($_POST['password'] === $password) {
         $_SESSION['sk_auth'] = true;
-        header('Location: editor.php');
+        header('Location: /admin/editor.php');
         exit;
     }
     $loginError = true;
@@ -13,12 +13,12 @@ if (isset($_POST['password'])) {
 
 if (isset($_GET['logout'])) {
     session_destroy();
-    header('Location: index.php');
+    header('Location: /admin/index.php');
     exit;
 }
 
 if (isset($_SESSION['sk_auth'])) {
-    header('Location: editor.php');
+    header('Location: /admin/editor.php');
     exit;
 }
 ?>

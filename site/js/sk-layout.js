@@ -16,7 +16,6 @@
     { href: 'community.html',  label: 'Community'  },
     { href: 'enrolments.html', label: 'Enrolments' },
     { href: 'contact.html',    label: 'Contact'    },
-    { href: 'policies.html',   label: 'Policies'   },
   ];
 
   var ARROW = '<span class="sk-nav-arrow-line"></span>'

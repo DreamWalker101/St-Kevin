@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://www.skhamptonpark.catholic.edu.au/sitemap.xml
+
+# Admin area
+Disallow: /admin/
+Disallow: /admin/api.php
+Disallow: /admin/editor.php
+
+# Content data
+Disallow: /content.json

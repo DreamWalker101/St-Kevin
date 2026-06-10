@@ -4,6 +4,27 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>St Kevin's Primary School, Hampton Park</title>
+  <meta name="description" content="St Kevin's Primary School is a Christ-centred Catholic primary school in Hampton Park, Victoria, where every child is known, valued and supported to flourish.">
+  <link rel="canonical" href="https://www.skhamptonpark.catholic.edu.au/">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.skhamptonpark.catholic.edu.au/">
+  <meta property="og:title" content="St Kevin's Primary School, Hampton Park">
+  <meta property="og:description" content="St Kevin's Primary School is a Christ-centred Catholic primary school in Hampton Park, Victoria, where every child is known, valued and supported to flourish.">
+  <meta property="og:image" content="https://www.skhamptonpark.catholic.edu.au/images/logo-sk-colour.png">
+  <meta property="og:site_name" content="St Kevin's Primary School Hampton Park">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="St Kevin's Primary School, Hampton Park">
+  <meta name="twitter:description" content="St Kevin's Primary School is a Christ-centred Catholic primary school in Hampton Park, Victoria, where every child is known, valued and supported to flourish.">
+  <meta name="twitter:image" content="https://www.skhamptonpark.catholic.edu.au/images/logo-sk-colour.png">
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#051E42">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -747,10 +768,10 @@
     }
 
     /* Dark-bg state — applied via JS when section bg is navy or burgundy */
-    #sk-pillar-wrapper { transition: background-color 0s; } /* GSAP controls this */
-    #sk-pillar-wrapper.is-dark .sk-pillar__heading { color: #ffffff; }
-    #sk-pillar-wrapper.is-dark .sk-pillar__text    { color: rgba(255,255,255,0.78); }
-    #sk-pillar-wrapper.is-dark .sk-pillar__tagline { color: rgba(255,255,255,0.90); }
+    #sk-section-pillars { transition: background-color 0s; } /* GSAP controls this */
+    #sk-section-pillars.is-dark .sk-pillar__heading { color: #ffffff; }
+    #sk-section-pillars.is-dark .sk-pillar__text    { color: rgba(255,255,255,0.78); }
+    #sk-section-pillars.is-dark .sk-pillar__tagline { color: rgba(255,255,255,0.90); }
 
     /* Mobile — stacked, interleaved by JS order */
     @media (max-width: 768px) {
@@ -1740,8 +1761,65 @@
       .sk-wave-divider--cream { height: 60px; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["School", "EducationalOrganization"],
+        "@id": "https://www.skhamptonpark.catholic.edu.au/#school",
+        "name": "St Kevin's Primary School Hampton Park",
+        "alternateName": "St Kevin's Primary School",
+        "description": "A Christ-centred Catholic primary school in Hampton Park, Victoria, where every child is known, valued and supported to flourish.",
+        "url": "https://www.skhamptonpark.catholic.edu.au/",
+        "logo": "https://www.skhamptonpark.catholic.edu.au/images/logo-sk-colour.png",
+        "image": "https://www.skhamptonpark.catholic.edu.au/images/logo-sk-colour.png",
+        "telephone": "(03) 9709 8600",
+        "email": "administration@skhamptonpark.catholic.edu.au",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "120 Hallam Rd",
+          "addressLocality": "Hampton Park",
+          "addressRegion": "VIC",
+          "postalCode": "3976",
+          "addressCountry": "AU"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -38.0276,
+          "longitude": 145.2527
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "opens": "08:30",
+            "closes": "15:30"
+          }
+        ],
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "Melbourne Archdiocese Catholic Schools",
+          "alternateName": "MACS",
+          "url": "https://www.macs.edu.au/"
+        },
+        "educationalLevel": "Primary School",
+        "sameAs": ["https://www.facebook.com/skhamptonpark"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.skhamptonpark.catholic.edu.au/#website",
+        "url": "https://www.skhamptonpark.catholic.edu.au/",
+        "name": "St Kevin's Primary School Hampton Park",
+        "publisher": { "@id": "https://www.skhamptonpark.catholic.edu.au/#school" }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
+
+  <h1 class="sr-only">St Kevin's Primary School, Hampton Park</h1>
 
   <!-- Header injected by js/sk-layout.js -->
   <div id="sk-layout-header"></div>
@@ -1750,7 +1828,7 @@
   <!-- ════════════════════════════════
        HERO
   ════════════════════════════════ -->
-  <section class="sk-hero" id="sk-hero" aria-label="Hero">
+  <section class="sk-hero" id="sk-section-hero" aria-label="Hero">
 
     <!-- Background video — autoplay, muted, no controls -->
     <div class="sk-hero-video-wrap" aria-hidden="true">
@@ -1804,7 +1882,7 @@
        6 parent quotes, 6-second auto-cycle, Dancing Script.
        No images — pure typography section.
   ════════════════════════════════ -->
-  <section class="sk-quotes" id="sk-quotes" aria-label="Voices from our community">
+  <section class="sk-quotes" id="sk-section-quotes" aria-label="Voices from our community">
 
     <div class="sk-quotes__track" aria-live="polite" aria-atomic="true">
 
@@ -1856,7 +1934,7 @@
        SECTION 4: WELCOME BLOCK
        Display heading + Dancing Script tagline.
   ════════════════════════════════ -->
-  <section class="sk-welcome" id="sk-welcome" aria-label="Welcome to St Kevin's">
+  <section class="sk-welcome" id="sk-section-welcome" aria-label="Welcome to St Kevin's">
     <h2 class="sk-welcome__heading"><span class="scroll-text-reveal" data-text="Welcome to St Kevin's">Welcome to St Kevin's</span></h2>
     <p class="sk-welcome__tagline">A community where every child is known, supported and inspired to flourish</p>
   </section>
@@ -1870,7 +1948,7 @@
        Background alternates: white → navy → burgundy → navy as images wipe in.
        Images: cosmos sample photos mapped per session 3 decisions.
   ════════════════════════════════ -->
-  <section id="sk-pillar-wrapper" aria-label="Life at St Kevin's">
+  <section id="sk-section-pillars" aria-label="Life at St Kevin's">
 
     <div class="sk-pillar" id="sk-pillar">
 
@@ -2014,7 +2092,7 @@
   <!-- ════════════════════════════════
        SECTION 10 — THE ST KEVIN'S EFFECT
   ════════════════════════════════ -->
-  <section class="sk-effect" id="sk-effect" aria-label="The St Kevin's Effect">
+  <section class="sk-effect" id="sk-section-effect" aria-label="The St Kevin's Effect">
 
     <!-- Floating decorative marks — white-opacity on navy background -->
     <div class="sk-effect__deco" aria-hidden="true">
@@ -2074,7 +2152,7 @@
       <p class="sk-effect__body">Over time, something special happens here. Through strong relationships, high expectations and genuine care, children grow into confident and compassionate young people.</p>
     </div>
 
-    <div class="sk-testimonial-wrapper">
+    <div class="sk-testimonial-wrapper" id="sk-section-testimonials">
       <div class="sk-testimonial-container">
         <div class="sk-testimonial-grid">
 
@@ -2140,7 +2218,7 @@
        "Meet the Parents" style interview videos. 2×2 grid.
        Hover-to-preview (muted), click-to-play/pause.
   ════════════════════════════════ -->
-  <section class="sk-videos" id="sk-videos" aria-label="Video stories">
+  <section class="sk-videos" id="sk-section-videos" aria-label="Video stories">
 
     <!-- Subtle decorative SVG: two large arcs, low-opacity navy -->
     <div class="sk-videos__deco" aria-hidden="true">
@@ -2261,7 +2339,7 @@
   <!-- ════════════════════════════════
        SECTION 13 — ENROLMENTS CTA
   ════════════════════════════════ -->
-  <section class="sk-enrol" id="sk-enrol" aria-label="Enrolments">
+  <section class="sk-enrol" id="sk-section-enrol-cta" aria-label="Enrolments">
     <div class="sk-enrol__card">
 
       <!-- Text column -->
@@ -2568,7 +2646,7 @@
       /* Brand colors per section: start white, then alternate navy/burgundy */
       var sectionBgs    = ['#F6F3EE', '#051E42', '#8A2232', '#051E42'];
       var sectionDark   = [false, true, true, true];
-      var wrapper       = document.getElementById('sk-pillar-wrapper');
+      var wrapper       = document.getElementById('sk-section-pillars');
       var headings      = gsap.utils.toArray('.sk-pillar__heading');
       var bodies        = gsap.utils.toArray('.sk-pillar__text');
       var taglines      = gsap.utils.toArray('.sk-pillar__tagline');
