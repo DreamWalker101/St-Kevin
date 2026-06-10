@@ -5,7 +5,7 @@ session_start([
     'cookie_samesite' => 'Strict',
 ]);
 if (!isset($_SESSION['sk_auth'])) {
-    header('Location: /admin/index.php');
+    header('Location: index.php');
     exit;
 }
 $contentFile = __DIR__ . '/../content.json';

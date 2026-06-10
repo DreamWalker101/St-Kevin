@@ -9,7 +9,7 @@ require_once __DIR__ . '/config.php';
 if (isset($_POST['password'])) {
     if (password_verify($_POST['password'], ADMIN_PASSWORD_HASH)) {
         $_SESSION['sk_auth'] = true;
-        header('Location: /admin/editor.php');
+        header('Location: editor.php');
         exit;
     }
     $loginError = true;
@@ -17,12 +17,12 @@ if (isset($_POST['password'])) {
 
 if (isset($_GET['logout'])) {
     session_destroy();
-    header('Location: /admin/index.php');
+    header('Location: index.php');
     exit;
 }
 
 if (isset($_SESSION['sk_auth'])) {
-    header('Location: /admin/editor.php');
+    header('Location: editor.php');
     exit;
 }
 ?>
