@@ -1,7 +1,11 @@
 <?php
 header('Content-Type: application/json');
 
-session_start();
+session_start([
+    'cookie_httponly' => true,
+    'cookie_secure'   => true,
+    'cookie_samesite' => 'Strict',
+]);
 if (!isset($_SESSION['sk_auth'])) {
     http_response_code(401);
     echo json_encode(['error' => 'Unauthorized']);
@@ -32,7 +36,7 @@ if ($action === 'upload' && $_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
     $ext     = strtolower(pathinfo($_FILES['image']['name'], PATHINFO_EXTENSION));
-    $allowed = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'];
+    $allowed = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
     if (!in_array($ext, $allowed)) {
         http_response_code(400);
         echo json_encode(['error' => 'File type not allowed']);
@@ -53,7 +57,7 @@ if ($action === 'upload' && $_SERVER['REQUEST_METHOD'] === 'POST') {
 if ($action === 'images' && $_SERVER['REQUEST_METHOD'] === 'GET') {
     $images = [];
     if (is_dir($imagesDir)) {
-        $allowed = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'];
+        $allowed = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
         foreach (scandir($imagesDir) as $file) {
             if ($file === '.' || $file === '..') continue;
             $ext = strtolower(pathinfo($file, PATHINFO_EXTENSION));

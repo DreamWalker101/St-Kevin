@@ -44,3 +44,6 @@ coverage/
 # Stitch source exports (large HTML reference files)
 Downloads/
 .gstack/
+
+# Admin credentials — never commit
+site/admin/config.php

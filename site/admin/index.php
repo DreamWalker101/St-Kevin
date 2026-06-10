@@ -1,9 +1,13 @@
 <?php
-session_start();
-$password = 'skhp2026';
+session_start([
+    'cookie_httponly' => true,
+    'cookie_secure'   => true,
+    'cookie_samesite' => 'Strict',
+]);
+require_once __DIR__ . '/config.php';
 
 if (isset($_POST['password'])) {
-    if ($_POST['password'] === $password) {
+    if (password_verify($_POST['password'], ADMIN_PASSWORD_HASH)) {
         $_SESSION['sk_auth'] = true;
         header('Location: /admin/editor.php');
         exit;
@@ -46,13 +50,14 @@ if (isset($_SESSION['sk_auth'])) {
       width: 100%;
     }
     .sk-card-header {
-      background-color: #051E42;
+      background-color: #F6F3EE;
+      border-bottom: 1px solid #E2E6EA;
       border-radius: 16px 16px 0 0;
-      padding: 32px;
+      padding: 28px 32px 24px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
     .sk-cross {
       position: relative;
@@ -89,11 +94,13 @@ if (isset($_SESSION['sk_auth'])) {
     }
     .sk-card-title {
       font-family: 'Montserrat', sans-serif;
-      font-size: 20px;
-      font-weight: 700;
-      color: #ffffff;
+      font-size: 13px;
+      font-weight: 600;
+      color: rgba(5,30,66,0.5);
       text-align: center;
       line-height: 1.2;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
     .sk-card-body {
       padding: 32px;
@@ -184,8 +191,7 @@ if (isset($_SESSION['sk_auth'])) {
 
     <!-- Card header -->
     <div class="sk-card-header">
-      <div class="sk-cross"></div>
-      <span class="sk-label">St Kevin's Hampton Park</span>
+      <img src="../images/logo-sk-macs-combined.png" alt="St Kevin's Primary School, Hampton Park" style="height:56px;width:auto;">
       <h1 class="sk-card-title">Content Admin</h1>
     </div>
 

@@ -1,5 +1,9 @@
 <?php
-session_start();
+session_start([
+    'cookie_httponly' => true,
+    'cookie_secure'   => true,
+    'cookie_samesite' => 'Strict',
+]);
 if (!isset($_SESSION['sk_auth'])) {
     header('Location: /admin/index.php');
     exit;
@@ -55,12 +59,12 @@ function v($val, $default = '') { return htmlspecialchars($val ?? $default, ENT_
       white-space: nowrap;
     }
     .tab-btn.active {
-      background: #ffffff;
-      color: #051E42;
+      background: #8A2232;
+      color: #ffffff;
       font-weight: 600;
-      box-shadow: 0 1px 5px rgba(5,30,66,0.12);
+      box-shadow: 0 2px 8px rgba(138,34,50,0.25);
     }
-    .tab-btn:hover:not(.active) { color: #051E42; }
+    .tab-btn:hover:not(.active) { background: rgba(5,30,66,0.06); color: #051E42; }
 
     /* ── Card sections ── */
     .section-card {
@@ -181,11 +185,11 @@ function v($val, $default = '') { return htmlspecialchars($val ?? $default, ENT_
     /* ── Split layout ── */
     .page-editor-split { display: flex; gap: 36px; align-items: flex-start; }
     .page-editor-left { flex: 1; min-width: 0; }
-    .page-editor-right { width: 640px; flex-shrink: 0; position: sticky; top: 76px; }
+    .page-editor-right { width: 640px; flex-shrink: 0; position: sticky; top: 80px; }
     .preview-panel { background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 1px 4px rgba(5,30,66,0.07); }
     .preview-panel-header { padding: 12px 16px; border-bottom: 1px solid #E2E6EA; display: flex; align-items: center; justify-content: space-between; }
     .preview-panel-title { font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 13px; color: #051E42; }
-    .preview-panel-hint { font-size: 11px; color: rgba(5,30,66,0.4); max-width: 220px; text-align: right; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .preview-panel-hint { font-size: 11px; color: rgba(5,30,66,0.45); margin-top: 2px; }
     /* ── Static section preview ── */
     .section-preview-wrap { background: #F0EDE5; border-radius: 0 0 8px 8px; overflow: hidden; min-height: 300px; }
     .section-preview-img { width: 100%; display: block; }
@@ -475,22 +479,17 @@ function v($val, $default = '') { return htmlspecialchars($val ?? $default, ENT_
 
   <!-- ═══════════════════════════════════════ TOP NAV ═══ -->
   <header style="position:sticky;top:0;z-index:50;background:#ffffff;border-bottom:1px solid #E2E6EA;box-shadow:0 1px 4px rgba(5,30,66,0.06);">
-    <div style="max-width:1800px;margin:0 auto;padding:0 48px;height:56px;display:flex;align-items:center;justify-content:space-between;">
+    <div style="max-width:1800px;margin:0 auto;padding:0 48px;height:60px;display:flex;align-items:center;justify-content:space-between;">
 
-      <!-- Left: logo mark + wordmark -->
-      <div style="display:flex;align-items:center;gap:12px;">
-        <!-- Burgundy cross -->
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect x="10" y="2"  width="4" height="20" rx="2" fill="#8A2232"/>
-          <rect x="2"  y="10" width="20" height="4" rx="2" fill="#8A2232"/>
-        </svg>
-        <span style="font-family:'Montserrat',sans-serif;font-weight:700;font-size:15px;color:#051E42;">St Kevin's</span>
-        <span style="color:#D1D5DB;font-size:14px;margin:0 2px;">|</span>
-        <span style="font-family:'Inter',sans-serif;font-size:14px;color:rgba(5,30,66,0.5);font-weight:400;">Content Editor</span>
+      <!-- Left: combined school logo + label -->
+      <div style="display:flex;align-items:center;gap:16px;">
+        <img src="../images/logo-sk-macs-combined.png" alt="St Kevin's Primary School, Hampton Park" style="height:38px;width:auto;">
+        <span style="width:1px;height:20px;background:#E2E6EA;display:block;flex-shrink:0;"></span>
+        <span style="font-family:'Inter',sans-serif;font-size:13px;color:rgba(5,30,66,0.45);font-weight:400;letter-spacing:0.01em;">Content Editor</span>
       </div>
 
       <!-- Right: actions -->
-      <div style="display:flex;align-items:center;gap:8px;">
+      <div style="display:flex;align-items:center;gap:4px;">
         <a href="../index.html" target="_blank"
            style="display:flex;align-items:center;gap:6px;font-family:'Inter',sans-serif;font-size:13px;color:rgba(5,30,66,0.55);text-decoration:none;padding:6px 14px;border-radius:8px;transition:background 0.15s,color 0.15s;"
            onmouseover="this.style.background='#F0EDE5';this.style.color='#051E42';"
@@ -913,16 +912,16 @@ function v($val, $default = '') { return htmlspecialchars($val ?? $default, ENT_
       </div><!-- /homepage-sec-cta -->
 
 
-          <div class="tab-save-row">
-            <button class="save-btn" onclick="saveTab('homepage', event)">Save Changes</button>
-          </div>
         </div><!-- /page-editor-left -->
 
         <div class="page-editor-right">
           <div class="preview-panel">
             <div class="preview-panel-header">
-              <span class="preview-panel-title">Page Preview</span>
-              <span class="preview-panel-hint" id="homepage-preview-hint">Hero</span>
+              <div>
+                <span class="preview-panel-title">Page Preview</span>
+                <div class="preview-panel-hint" id="homepage-preview-hint">Hero</div>
+              </div>
+              <button class="save-btn" onclick="saveTab('homepage', event)" style="height:38px;padding:0 20px;font-size:13px;">Save Changes</button>
             </div>
             <div class="section-preview-wrap">
               <img id="preview-img-homepage" class="section-preview-img" src="../images/admin-previews/homepage-hero.jpg" alt=""
@@ -1216,16 +1215,16 @@ function v($val, $default = '') { return htmlspecialchars($val ?? $default, ENT_
       </div>
       </div><!-- /about-sec-parish -->
 
-          <div class="tab-save-row">
-            <button class="save-btn" onclick="saveTab('about', event)">Save Changes</button>
-          </div>
         </div><!-- /page-editor-left -->
 
         <div class="page-editor-right">
           <div class="preview-panel">
             <div class="preview-panel-header">
-              <span class="preview-panel-title">Page Preview</span>
-              <span class="preview-panel-hint" id="about-preview-hint">Hero</span>
+              <div>
+                <span class="preview-panel-title">Page Preview</span>
+                <div class="preview-panel-hint" id="about-preview-hint">Hero</div>
+              </div>
+              <button class="save-btn" onclick="saveTab('about', event)" style="height:38px;padding:0 20px;font-size:13px;">Save Changes</button>
             </div>
             <div class="section-preview-wrap">
               <img id="preview-img-about" class="section-preview-img" src="../images/admin-previews/about-hero.jpg" alt=""
@@ -1356,16 +1355,16 @@ function v($val, $default = '') { return htmlspecialchars($val ?? $default, ENT_
       </div><!-- /learning-sec-<?= $sec['id'] ?> -->
       <?php endfor; ?>
 
-          <div class="tab-save-row">
-            <button class="save-btn" onclick="saveTab('learning', event)">Save Changes</button>
-          </div>
         </div><!-- /page-editor-left -->
 
         <div class="page-editor-right">
           <div class="preview-panel">
             <div class="preview-panel-header">
-              <span class="preview-panel-title">Page Preview</span>
-              <span class="preview-panel-hint" id="learning-preview-hint">Hero</span>
+              <div>
+                <span class="preview-panel-title">Page Preview</span>
+                <div class="preview-panel-hint" id="learning-preview-hint">Hero</div>
+              </div>
+              <button class="save-btn" onclick="saveTab('learning', event)" style="height:38px;padding:0 20px;font-size:13px;">Save Changes</button>
             </div>
             <div class="section-preview-wrap">
               <img id="preview-img-learning" class="section-preview-img" src="../images/admin-previews/learning-hero.jpg" alt=""
@@ -1509,16 +1508,16 @@ function v($val, $default = '') { return htmlspecialchars($val ?? $default, ENT_
       </div>
       </div><!-- /community-sec-spirit -->
 
-          <div class="tab-save-row">
-            <button class="save-btn" onclick="saveTab('community', event)">Save Changes</button>
-          </div>
         </div><!-- /page-editor-left -->
 
         <div class="page-editor-right">
           <div class="preview-panel">
             <div class="preview-panel-header">
-              <span class="preview-panel-title">Page Preview</span>
-              <span class="preview-panel-hint" id="community-preview-hint">Hero</span>
+              <div>
+                <span class="preview-panel-title">Page Preview</span>
+                <div class="preview-panel-hint" id="community-preview-hint">Hero</div>
+              </div>
+              <button class="save-btn" onclick="saveTab('community', event)" style="height:38px;padding:0 20px;font-size:13px;">Save Changes</button>
             </div>
             <div class="section-preview-wrap">
               <img id="preview-img-community" class="section-preview-img" src="../images/admin-previews/community-hero.jpg" alt=""
@@ -1831,16 +1830,16 @@ function v($val, $default = '') { return htmlspecialchars($val ?? $default, ENT_
       </div>
       </div><!-- /enrolments-sec-tourdates -->
 
-          <div class="tab-save-row">
-            <button class="save-btn" onclick="saveTab('enrolments', event)">Save Changes</button>
-          </div>
         </div><!-- /page-editor-left -->
 
         <div class="page-editor-right">
           <div class="preview-panel">
             <div class="preview-panel-header">
-              <span class="preview-panel-title">Page Preview</span>
-              <span class="preview-panel-hint" id="enrolments-preview-hint">Hero</span>
+              <div>
+                <span class="preview-panel-title">Page Preview</span>
+                <div class="preview-panel-hint" id="enrolments-preview-hint">Hero</div>
+              </div>
+              <button class="save-btn" onclick="saveTab('enrolments', event)" style="height:38px;padding:0 20px;font-size:13px;">Save Changes</button>
             </div>
             <div class="section-preview-wrap">
               <img id="preview-img-enrolments" class="section-preview-img" src="../images/admin-previews/enrolments-hero.jpg" alt=""
@@ -1937,16 +1936,16 @@ function v($val, $default = '') { return htmlspecialchars($val ?? $default, ENT_
       </div>
       </div><!-- /contact-sec-map -->
 
-          <div class="tab-save-row">
-            <button class="save-btn" onclick="saveTab('contact', event)">Save Changes</button>
-          </div>
         </div><!-- /page-editor-left -->
 
         <div class="page-editor-right">
           <div class="preview-panel">
             <div class="preview-panel-header">
-              <span class="preview-panel-title">Page Preview</span>
-              <span class="preview-panel-hint" id="contact-preview-hint">Hero</span>
+              <div>
+                <span class="preview-panel-title">Page Preview</span>
+                <div class="preview-panel-hint" id="contact-preview-hint">Hero</div>
+              </div>
+              <button class="save-btn" onclick="saveTab('contact', event)" style="height:38px;padding:0 20px;font-size:13px;">Save Changes</button>
             </div>
             <div class="section-preview-wrap">
               <img id="preview-img-contact" class="section-preview-img" src="../images/admin-previews/contact-hero.jpg" alt=""
@@ -2024,16 +2023,16 @@ function v($val, $default = '') { return htmlspecialchars($val ?? $default, ENT_
       </div>
       </div><!-- /policies-sec-safesmart -->
 
-          <div class="tab-save-row">
-            <button class="save-btn" onclick="saveTab('policies', event)">Save Changes</button>
-          </div>
         </div><!-- /page-editor-left -->
 
         <div class="page-editor-right">
           <div class="preview-panel">
             <div class="preview-panel-header">
-              <span class="preview-panel-title">Page Preview</span>
-              <span class="preview-panel-hint" id="policies-preview-hint">Hero</span>
+              <div>
+                <span class="preview-panel-title">Page Preview</span>
+                <div class="preview-panel-hint" id="policies-preview-hint">Hero</div>
+              </div>
+              <button class="save-btn" onclick="saveTab('policies', event)" style="height:38px;padding:0 20px;font-size:13px;">Save Changes</button>
             </div>
             <div class="section-preview-wrap">
               <img id="preview-img-policies" class="section-preview-img" src="../images/admin-previews/policies-hero.jpg" alt=""

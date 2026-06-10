@@ -1,0 +1,30 @@
+# ============================================================
+# St Kevin's Hampton Park — Admin IP Whitelist
+# ============================================================
+# STATUS: DISABLED
+# The whitelist block below is commented out.
+# Activate it once you have the school's static IP address.
+#
+# HOW TO ACTIVATE:
+#   1. Replace SCHOOL_IP_HERE with the school's static IP
+#      (e.g.  Require ip 203.0.113.45)
+#   2. Add any additional IPs (developer, principal's home, etc.)
+#   3. Uncomment the <RequireAny> block
+#   4. Re-upload this file to the server via cPanel File Manager
+#
+# FINDING SCHOOL IP: Ask your ISP or visit whatismyip.com
+# from a computer on the school's network.
+# ============================================================
+
+# Prevent directory listing
+Options -Indexes
+
+# Custom error page for blocked IPs (file lives outside /admin/)
+ErrorDocument 403 /admin-blocked.html
+
+# ── Uncomment the block below to activate IP whitelisting ──
+#
+# <RequireAny>
+#   Require ip SCHOOL_IP_HERE
+#   Require ip DEV_IP_HERE
+# </RequireAny>
