@@ -1,0 +1,324 @@
+<style>
+  /* ── Header ── */
+  .sk-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: var(--z-sticky-header);
+    padding: 20px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background var(--transition-medium), box-shadow var(--transition-medium);
+  }
+
+  /* Transparent over hero */
+  .sk-header.is-transparent {
+    background: transparent;
+  }
+
+  /* Solid white after scroll */
+  .sk-header.is-scrolled {
+    background: var(--color-pure-white);
+    box-shadow: 0 1px 0 var(--color-border-mist);
+  }
+
+  /* Hamburger button */
+  .sk-hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    flex-shrink: 0;
+  }
+
+  .sk-hamburger span {
+    display: block;
+    height: 2px;
+    border-radius: 2px;
+    transition: background var(--transition-medium), transform var(--transition-medium), opacity var(--transition-medium);
+  }
+
+  .is-transparent .sk-hamburger span { background: var(--color-pure-white); }
+  .is-scrolled  .sk-hamburger span { background: var(--color-deep-navy); }
+
+  /* St Kevin's logo — centre */
+  .sk-header-logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .sk-header-logo img {
+    height: 48px;
+    width: auto;
+    display: block;
+    transition: opacity var(--transition-medium);
+  }
+
+  /* Logo placeholder (shown until real image arrives) */
+  .sk-header-logo-placeholder {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sk-header-logo-placeholder .logo-mark {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-weight-bold);
+    font-size: 16px;
+    transition: background var(--transition-medium), color var(--transition-medium);
+  }
+
+  .is-transparent .logo-mark { background: rgba(255,255,255,0.2); color: #fff; border: 2px solid rgba(255,255,255,0.5); }
+  .is-scrolled  .logo-mark { background: var(--color-deep-navy); color: #fff; border: none; }
+
+  .sk-header-logo-placeholder .logo-text {
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-weight-bold);
+    font-size: 13px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    max-width: 120px;
+    transition: color var(--transition-medium);
+  }
+
+  .is-transparent .logo-text { color: var(--color-pure-white); }
+  .is-scrolled  .logo-text { color: var(--color-deep-navy); }
+
+  /* Search button — right */
+  .sk-search-btn {
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background var(--transition-fast);
+    flex-shrink: 0;
+  }
+
+  .sk-search-btn:hover { background: rgba(255,255,255,0.1); }
+  .is-scrolled .sk-search-btn:hover { background: var(--color-cloud-grey); }
+
+  .sk-search-btn svg {
+    transition: stroke var(--transition-medium);
+  }
+
+  .is-transparent .sk-search-btn svg { stroke: var(--color-pure-white); }
+  .is-scrolled  .sk-search-btn svg { stroke: var(--color-deep-navy); }
+
+  /* ── Fullscreen Nav Overlay ── */
+  .sk-nav-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--color-deep-navy);
+    z-index: var(--z-nav-overlay);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-medium);
+  }
+
+  .sk-nav-overlay.is-open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .sk-nav-overlay nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .sk-nav-overlay nav a {
+    font-family: var(--font-montserrat);
+    font-weight: var(--font-weight-bold);
+    font-size: clamp(28px, 5vw, 40px);
+    color: var(--color-pure-white);
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    position: relative;
+    transition: color var(--transition-fast);
+  }
+
+  .sk-nav-overlay nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-burgundy-red);
+    transition: width var(--transition-medium);
+  }
+
+  .sk-nav-overlay nav a:hover { color: rgba(255,255,255,0.75); }
+  .sk-nav-overlay nav a:hover::after { width: 100%; }
+
+  .sk-nav-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-pure-white);
+    font-size: 32px;
+    line-height: 1;
+    border-radius: 50%;
+    transition: background var(--transition-fast);
+  }
+
+  .sk-nav-close:hover { background: rgba(255,255,255,0.1); }
+
+  /* Nav footer — contact strip inside overlay */
+  .sk-nav-footer {
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+  }
+
+  .sk-nav-footer a {
+    font-family: var(--font-inter);
+    font-size: var(--text-caption);
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+
+  .sk-nav-footer a:hover { color: rgba(255,255,255,0.85); }
+
+  @media (max-width: 640px) {
+    .sk-nav-footer { flex-direction: column; align-items: center; gap: 16px; bottom: 32px; }
+  }
+</style>
+
+<!-- ── Shared Header ── -->
+<header class="sk-header is-transparent" id="sk-header">
+
+  <!-- Left: Hamburger -->
+  <button class="sk-hamburger" id="sk-hamburger-btn" aria-label="Open navigation" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <!-- Centre: St Kevin's Logo -->
+  <div class="sk-header-logo">
+    <!-- Replace img below with actual logo files when available -->
+    <!-- White version for transparent state, colour for scrolled state -->
+    <!-- <img src="images/logo-st-kevins-white.png" alt="St Kevin's Primary School Hampton Park" class="logo-white"> -->
+    <!-- <img src="images/logo-st-kevins-colour.png" alt="St Kevin's Primary School Hampton Park" class="logo-colour"> -->
+
+    <!-- Placeholder until real logos are provided -->
+    <div class="sk-header-logo-placeholder">
+      <div class="logo-mark">SK</div>
+      <div class="logo-text">St Kevin's<br>Hampton Park</div>
+    </div>
+  </div>
+
+  <!-- Right: Search -->
+  <button class="sk-search-btn" aria-label="Search">
+    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="9.5" cy="9.5" r="7"/>
+      <line x1="14.5" y1="14.5" x2="21" y2="21"/>
+    </svg>
+  </button>
+
+</header>
+
+<!-- ── Fullscreen Nav Overlay ── -->
+<div class="sk-nav-overlay" id="sk-nav-overlay" role="dialog" aria-modal="true" aria-label="Site navigation">
+
+  <button class="sk-nav-close" id="sk-nav-close-btn" aria-label="Close navigation">&times;</button>
+
+  <nav>
+    <a href="about.html">About Us</a>
+    <a href="learning.html">Learning</a>
+    <a href="community.html">Community</a>
+    <a href="enrolments.html">Enrolments</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="sk-nav-footer">
+    <a href="tel:0397098600">(03) 9709 8600</a>
+    <a href="mailto:administration@skhamptonpark.catholic.edu.au">administration@skhamptonpark.catholic.edu.au</a>
+  </div>
+
+</div>
+
+<script>
+  (function () {
+    const header   = document.getElementById('sk-header');
+    const overlay  = document.getElementById('sk-nav-overlay');
+    const openBtn  = document.getElementById('sk-hamburger-btn');
+    const closeBtn = document.getElementById('sk-nav-close-btn');
+
+    /* Scroll: transparent → white */
+    function onScroll() {
+      const scrolled = window.scrollY > 60;
+      header.classList.toggle('is-scrolled', scrolled);
+      header.classList.toggle('is-transparent', !scrolled);
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    /* Open nav */
+    openBtn.addEventListener('click', function () {
+      overlay.classList.add('is-open');
+      openBtn.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    });
+
+    /* Close nav */
+    function closeNav() {
+      overlay.classList.remove('is-open');
+      openBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    closeBtn.addEventListener('click', closeNav);
+
+    /* Close on Escape */
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeNav();
+    });
+
+    /* Close on overlay link click */
+    overlay.querySelectorAll('nav a').forEach(function (a) {
+      a.addEventListener('click', closeNav);
+    });
+  })();
+</script>

@@ -1,0 +1,25 @@
+# St Kevin's Primary School Hampton Park
+
+> A Christ-centred Catholic primary school in Hampton Park, Victoria, Australia. Part of the Melbourne Archdiocese Catholic Schools (MACS) network.
+
+St Kevin's Primary School (Hampton Park) offers faith-based primary education for students from Prep to Year 6. The school is led by Principal Jason Micallef and serves a diverse multicultural community in Melbourne's south-east. Learning is guided by the values of faith, learning and belonging.
+
+## Key information
+
+- **Address:** 120 Hallam Rd, Hampton Park VIC 3976
+- **Phone:** (03) 9709 8600
+- **Email:** administration@skhamptonpark.catholic.edu.au
+- **Principal:** Jason Micallef
+- **Affiliation:** Melbourne Archdiocese Catholic Schools (MACS)
+- **Year levels:** Prep – Year 6
+- **Website:** https://www.skhamptonpark.catholic.edu.au/
+
+## Pages
+
+- [Home](https://www.skhamptonpark.catholic.edu.au/): Overview of the school, pillars of learning, testimonials, and enrolment CTA
+- [About Us](https://www.skhamptonpark.catholic.edu.au/about.html): School story, mission, vision, principal's message, staff teams, and parish connection
+- [Learning with Purpose](https://www.skhamptonpark.catholic.edu.au/learning.html): The school's approach to faith formation, wellbeing, teaching, differentiated learning and beyond-classroom experiences
+- [Community](https://www.skhamptonpark.catholic.edu.au/community.html): School community life, events, parent involvement and culture
+- [Enrolments](https://www.skhamptonpark.catholic.edu.au/enrolments.html): How to enrol, the application process, tour booking and intake information
+- [Contact Us](https://www.skhamptonpark.catholic.edu.au/contact.html): Phone, email, address, Google Maps and contact enquiry form
+- [Policies & Compliance](https://www.skhamptonpark.catholic.edu.au/policies.html): School policies and compliance documents via SafeSmart

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Access Restricted — St Kevin's Hampton Park</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #FBF9F7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 20px;
+      box-shadow: 0 4px 32px rgba(5, 30, 66, 0.10), 0 1px 4px rgba(5, 30, 66, 0.06);
+      max-width: 420px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .card-header {
+      background-color: #051E42;
+      padding: 36px 32px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .shield {
+      width: 52px;
+      height: 52px;
+      background: rgba(138, 34, 50, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .card-heading {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      color: #ffffff;
+      text-align: center;
+      letter-spacing: 0.01em;
+    }
+
+    .card-subheading {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.5);
+      text-align: center;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .card-body {
+      padding: 32px;
+    }
+
+    .message {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      line-height: 1.65;
+      color: rgba(5, 30, 66, 0.65);
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .divider {
+      height: 1px;
+      background: #E2E6EA;
+      margin-bottom: 24px;
+    }
+
+    .contact-label {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(5, 30, 66, 0.38);
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: #F4F6F8;
+      margin-bottom: 8px;
+    }
+
+    .contact-row:last-child { margin-bottom: 0; }
+
+    .contact-icon {
+      flex-shrink: 0;
+      color: #8A2232;
+    }
+
+    .contact-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: #051E42;
+      font-weight: 500;
+    }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 24px;
+      font-family: 'Inter', sans-serif;
+      font-size: 13px;
+      color: rgba(5, 30, 66, 0.45);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .back-link:hover { color: #051E42; }
+
+    .footer-text {
+      margin-top: 32px;
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: rgba(5, 30, 66, 0.3);
+      text-align: center;
+      letter-spacing: 0.02em;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+
+    <div class="card-header">
+      <img src="images/logo-sk-macs-combined.png" alt="St Kevin's Primary School, Hampton Park" style="height:52px;width:auto;">
+      <div class="shield">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M12 2L4 5.5V11C4 15.42 7.46 19.55 12 21C16.54 19.55 20 15.42 20 11V5.5L12 2Z" stroke="#8A2232" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M9 12l2 2 4-4" stroke="#8A2232" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div>
+        <p class="card-subheading">Content Admin</p>
+        <h1 class="card-heading">Access Restricted</h1>
+      </div>
+    </div>
+
+    <div class="card-body">
+
+      <p class="message">
+        This area is restricted to authorised staff only.<br>
+        Your location is not on the approved access list.
+      </p>
+
+      <div class="divider"></div>
+
+      <p class="contact-label">Need access? Contact the school</p>
+
+      <div class="contact-row">
+        <svg class="contact-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="currentColor"/>
+        </svg>
+        <span class="contact-text">(03) 9709 8600</span>
+      </div>
+
+      <div class="contact-row">
+        <svg class="contact-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" fill="currentColor"/>
+        </svg>
+        <span class="contact-text">administration@skhamptonpark.catholic.edu.au</span>
+      </div>
+
+    </div>
+  </div>
+
+  <a href="/index.html" class="back-link">← Return to school website</a>
+
+  <p class="footer-text">St Kevin's Primary School, Hampton Park &nbsp;·&nbsp; 120 Hallam Rd, Hampton Park VIC 3976</p>
+
+</body>
+</html>

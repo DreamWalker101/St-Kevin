@@ -1,0 +1,3007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>St Kevin's Primary School, Hampton Park</title>
+  <meta name="description" content="St Kevin's Primary School is a Christ-centred Catholic primary school in Hampton Park, Victoria, where every child is known, valued and supported to flourish.">
+  <link rel="canonical" href="https://www.skhamptonpark.catholic.edu.au/">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.skhamptonpark.catholic.edu.au/">
+  <meta property="og:title" content="St Kevin's Primary School, Hampton Park">
+  <meta property="og:description" content="St Kevin's Primary School is a Christ-centred Catholic primary school in Hampton Park, Victoria, where every child is known, valued and supported to flourish.">
+  <meta property="og:image" content="https://www.skhamptonpark.catholic.edu.au/images/logo-sk-colour.png">
+  <meta property="og:site_name" content="St Kevin's Primary School Hampton Park">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="St Kevin's Primary School, Hampton Park">
+  <meta name="twitter:description" content="St Kevin's Primary School is a Christ-centred Catholic primary school in Hampton Park, Victoria, where every child is known, valued and supported to flourish.">
+  <meta name="twitter:image" content="https://www.skhamptonpark.catholic.edu.au/images/logo-sk-colour.png">
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#051E42">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-navy':    '#051E42',
+            'burgundy-red': '#8A2232',
+            'warm-cream':   '#F6F3EE',
+            'cloud-grey':   '#F0EDE5',
+            'border-mist':  '#E2E6EA',
+            'slate-text':   '#6B7280',
+            'navy-tint':    '#0A2D5C',
+            'red-soft':     '#F4E3E6',
+          },
+          fontFamily: {
+            'montserrat': ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            'inter':      ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            'script':     ['Dancing Script', 'cursive'],
+          },
+          maxWidth: { 'content': '1200px' },
+          borderRadius: { 'card': '12px', 'image': '16px' },
+          boxShadow: { 'soft': '0 8px 24px rgba(0, 0, 0, 0.08)' },
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/ScrollTrigger.min.js"></script>
+  <!-- Lenis smooth scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <!-- Shared layout styles -->
+  <link rel="stylesheet" href="css/sk-layout.css?v=2">
+
+
+  <style>
+    /* ── CSS Custom Properties ── */
+    :root {
+      --color-deep-navy:    #051E42;
+      --color-burgundy-red: #8A2232;
+      --color-pure-white:   #FFFFFF;
+      --color-warm-cream:   #F6F3EE;
+      --color-cloud-grey:   #F0EDE5;
+      --color-border-mist:  #E2E6EA;
+      --color-slate-text:   #6B7280;
+      --color-navy-tint:    #0A2D5C;
+      --color-red-soft:     #F4E3E6;
+
+      --font-montserrat:     'Montserrat', ui-sans-serif, system-ui, sans-serif;
+      --font-inter:          'Inter', ui-sans-serif, system-ui, sans-serif;
+      --font-dancing-script: 'Dancing Script', cursive;
+
+      --text-caption:    14px; --leading-caption:    1.6;
+      --text-body:       16px; --leading-body:       1.7;
+      --text-body-lg:    18px; --leading-body-lg:    1.7;
+      --text-tagline:    24px; --leading-tagline:    1.4;
+      --text-heading-sm: 22px; --leading-heading-sm: 1.3;
+      --text-heading:    28px; --leading-heading:    1.25;
+      --text-heading-lg: 36px; --leading-heading-lg: 1.2;
+      --text-display:    48px; --leading-display:    1.1;
+      --text-display-lg: 56px; --leading-display-lg: 1.1;
+
+      --font-weight-regular:   400;
+      --font-weight-medium:    500;
+      --font-weight-semibold:  600;
+      --font-weight-bold:      700;
+      --font-weight-extrabold: 800;
+
+      --spacing-4:   4px;  --spacing-8:   8px;  --spacing-12: 12px;
+      --spacing-16: 16px;  --spacing-24: 24px;  --spacing-32: 32px;
+      --spacing-48: 48px;  --spacing-64: 64px;  --spacing-80: 80px;
+
+      --max-width:               1200px;
+      --section-padding-desktop: 96px;
+      --section-padding-tablet:  64px;
+      --section-padding-mobile:  48px;
+
+      --radius-buttons:  8px;
+      --radius-cards:    12px;
+      --radius-inputs:   8px;
+      --radius-images:   16px;
+      --radius-circular: 50%;
+      --radius-pill:     999px;
+
+      --shadow-soft: 0 8px 24px rgba(0,0,0,0.08);
+
+      --transition-fast:   0.2s ease;
+      --transition-medium: 0.3s ease;
+
+      --z-search:      1100;
+      --z-header:      1000;
+      --z-backdrop:    9000;
+      --z-sidebar:     9100;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: auto; overflow-x: hidden; } /* Lenis handles smooth scroll */
+    body {
+      margin: 0;
+      font-family: var(--font-inter);
+      font-kerning: normal;
+      font-optical-sizing: auto;
+      color: var(--color-deep-navy);
+      background: var(--color-warm-cream);
+      overflow-x: hidden;
+    }
+
+    /* ── Header ── */
+    .sk-header {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: var(--z-header);
+      padding: 20px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background var(--transition-medium), box-shadow var(--transition-medium), transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .sk-header.is-transparent { background: transparent; }
+    .sk-header.is-scrolled {
+      background: rgba(251,249,247,0.96);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.07);
+    }
+    .sk-header.is-hidden { transform: translateY(-100%); }
+
+    /* Hamburger */
+    .sk-hamburger {
+      display: flex; flex-direction: column; justify-content: center; gap: 5px;
+      width: 40px; height: 40px;
+      background: none; border: none; cursor: pointer; padding: 6px; flex-shrink: 0;
+      border-radius: 8px;
+      transition: background var(--transition-fast);
+      touch-action: manipulation;
+    }
+    .sk-hamburger:hover { background: transparent; }
+    .is-scrolled .sk-hamburger:hover { background: transparent; }
+    .sk-hamburger span {
+      display: block; width: 100%; height: 2px; border-radius: 2px;
+      background: var(--color-pure-white);
+      transition: background var(--transition-medium);
+    }
+    .is-scrolled .sk-hamburger span { background: var(--color-deep-navy); }
+
+    /* Two separate logos — hero (white, pre-scroll) and sticky (colour, post-scroll) */
+    .sk-header__logo-link {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      display: block;
+      text-decoration: none;
+    }
+    .sk-logo-hero, .sk-logo-sticky {
+      display: block;
+      width: auto;
+    }
+    /* Position the link wrapper at the correct header top offset */
+    .sk-header__logo-link { top: var(--logo-hero-top, 16px); }
+    .is-scrolled .sk-header__logo-link { top: var(--logo-sticky-top, 12px); }
+    /* Hero logo: white PNG, full-size, shown before scroll */
+    .sk-logo-hero { height: var(--logo-hero-size, 90px); }
+    .is-scrolled .sk-logo-hero { display: none; }
+    /* Sticky logo: colour PNG, smaller, shown when scrolled */
+    .sk-logo-sticky { display: none; height: var(--logo-sticky-size, 52px); }
+    .is-scrolled .sk-logo-sticky { display: block; }
+
+    .sk-sidebar-logo { transition: none; }
+
+    /* Search toggle */
+    .sk-search-btn {
+      width: 40px; height: 40px;
+      background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      transition: background var(--transition-fast);
+      flex-shrink: 0;
+      touch-action: manipulation;
+    }
+    .sk-search-btn:hover { background: rgba(255,255,255,0.12); }
+    .is-scrolled .sk-search-btn:hover { background: var(--color-cloud-grey); }
+    .sk-search-btn svg { transition: stroke var(--transition-medium); }
+    .is-transparent .sk-search-btn svg { stroke: var(--color-pure-white); }
+    .is-scrolled    .sk-search-btn svg { stroke: var(--color-deep-navy); }
+
+    /* ── Search Panel ── */
+    .sk-search-panel {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: var(--z-search);
+      background: var(--color-warm-cream);
+      border-bottom: 1px solid var(--color-border-mist);
+      padding: 20px 24px;
+      visibility: hidden; opacity: 0;
+      /* GSAP controls visibility/opacity — do not set display:none */
+    }
+    .sk-search-inner {
+      max-width: var(--max-width); margin: 0 auto;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .sk-search-form {
+      flex: 1; display: flex; align-items: center; gap: 0;
+      border: 1.5px solid var(--color-border-mist);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--color-cloud-grey);
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+    .sk-search-form:focus-within {
+      border-color: var(--color-deep-navy);
+      box-shadow: 0 0 0 3px rgba(5, 30, 66, 0.08);
+      background: var(--color-warm-cream);
+    }
+    .sk-search-icon {
+      padding: 0 14px 0 16px; display: flex; align-items: center; flex-shrink: 0;
+    }
+    .sk-search-icon svg { display: block; }
+    .sk-search-input {
+      flex: 1; border: none; background: transparent; outline: none;
+      font-family: var(--font-inter); font-size: 16px; font-weight: 400;
+      color: var(--color-deep-navy); padding: 14px 0;
+      line-height: 1.4;
+    }
+    .sk-search-input::placeholder { color: var(--color-slate-text); }
+    .sk-search-submit {
+      padding: 10px 16px; margin: 4px;
+      background: var(--color-deep-navy); border: none; cursor: pointer;
+      border-radius: 7px;
+      font-family: var(--font-montserrat); font-size: 13px; font-weight: 700;
+      color: #fff; letter-spacing: 0.03em;
+      transition: background var(--transition-fast);
+    }
+    .sk-search-submit:hover { background: var(--color-navy-tint); }
+    .sk-search-close-btn {
+      width: 40px; height: 40px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: none; border: none; cursor: pointer;
+      border-radius: 50%;
+      transition: background var(--transition-fast);
+    }
+    .sk-search-close-btn:hover { background: var(--color-cloud-grey); }
+    .sk-search-results {
+      max-width: var(--max-width); margin: 12px auto 0;
+      font-family: var(--font-inter); font-size: 14px;
+      color: var(--color-slate-text); min-height: 0;
+    }
+    .sk-search-results.has-message {
+      padding: 8px 0 4px;
+      border-top: 1px solid var(--color-border-mist);
+    }
+
+    /* ── Nav Backdrop ── */
+    .sk-nav-backdrop {
+      position: fixed; inset: 0;
+      background: rgba(5, 30, 66, 0.6);
+      z-index: var(--z-backdrop);
+      cursor: pointer;
+      visibility: hidden; opacity: 0;
+      /* GSAP drives visibility + opacity */
+    }
+
+    /* ── Nav Sidebar ── */
+    .sk-nav-sidebar {
+      position: fixed; top: 0; left: 0; bottom: 0;
+      width: min(620px, 95vw);
+      z-index: var(--z-sidebar);
+      background: var(--color-warm-cream);
+      display: flex; flex-direction: row;
+      overflow: hidden;
+      box-shadow: 4px 0 40px rgba(5, 30, 66, 0.18);
+      transform: translateX(-100%);
+    }
+
+    /* Left scrollable content */
+    .sk-sidebar-content {
+      width: min(340px, 100%);
+      flex-shrink: 0;
+      display: flex; flex-direction: column;
+      overflow-y: auto; overflow-x: hidden;
+      scrollbar-width: none;
+    }
+    .sk-sidebar-content::-webkit-scrollbar { display: none; }
+
+    /* Right tall image panel — floats with padding so corners are visible */
+    .sk-sidebar-image {
+      flex: 1; min-width: 160px;
+      padding: 12px 12px 12px 0;
+      display: flex;
+    }
+    /* Frame provides the rounded corners + clips the GSAP scale */
+    .sk-sidebar-image-frame {
+      flex: 1;
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+    }
+    .sk-sidebar-image img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+      will-change: transform;
+    }
+
+    @media (max-width: 600px) {
+      .sk-sidebar-image { display: none; }
+      .sk-nav-sidebar   { width: min(340px, 90vw); }
+    }
+
+    /* Logo in sidebar */
+    .sk-sidebar-logo {
+      max-height: var(--logo-sidebar-size, 80px);
+      max-width: 100%;
+      width: auto; height: auto; display: block;
+    }
+
+    /* Sidebar header row */
+    .sk-sidebar-header {
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px 24px 0;
+      flex-shrink: 0;
+    }
+    /* Detach close button from flex flow so logo can truly centre */
+    .sk-sidebar-header .sk-sidebar-close {
+      position: absolute; left: 24px;
+    }
+
+    /* Close button — square with rounded corners, bordered */
+    .sk-sidebar-close {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: none;
+      border: 1.5px solid var(--color-border-mist);
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-deep-navy);
+      transition: border-color var(--transition-fast), background var(--transition-fast);
+      touch-action: manipulation;
+    }
+    .sk-sidebar-close:hover {
+      border-color: var(--color-deep-navy);
+      background: var(--color-cloud-grey);
+    }
+
+    /* Primary nav */
+    .sk-sidebar-nav {
+      padding: 32px 24px 0;
+      display: flex; flex-direction: column; gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .sk-nav-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 0;
+      text-decoration: none;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: none; /* GSAP handles hover */
+    }
+
+    .sk-nav-item-label {
+      font-family: var(--font-montserrat);
+      font-size: clamp(22px, 4vw, 28px);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-deep-navy);
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+      display: inline-block;
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), color 0.28s;
+    }
+    .sk-nav-item:hover .sk-nav-item-label { transform: translateX(6px); }
+
+    /* Arrow — bare, no circle. Grows toward the right on hover. */
+    .sk-nav-arrow {
+      display: flex; align-items: center;
+      color: var(--color-burgundy-red);
+      flex-shrink: 0;
+    }
+.sk-nav-arrow-line {
+      display: block; height: 2px; width: 0;
+      background: currentColor;
+      transition: width 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: left center;
+      border-radius: 2px;
+    }
+    .sk-nav-arrow-chevron {
+      display: flex; align-items: center;
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .sk-nav-item:hover .sk-nav-arrow-line   { width: 20px; }
+    .sk-nav-item:hover .sk-nav-arrow-chevron { transform: translateX(4px); }
+    .sk-nav-item:hover .sk-nav-item-label   { color: var(--color-burgundy-red); }
+
+
+    /* Sidebar footer — icon island */
+    .sk-sidebar-footer {
+      margin-top: auto;
+      padding: 20px 24px 28px;
+      border-top: 1px solid var(--color-border-mist);
+    }
+    /* The island: pill-shaped container grouping all icons */
+    .sk-sidebar-socials {
+      display: inline-flex; align-items: center;
+      background: var(--color-cloud-grey);
+      border-radius: 999px;
+      padding: 5px;
+      gap: 2px;
+    }
+    .sk-social-btn {
+      width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      background: transparent;
+      color: #4B5563;
+      text-decoration: none;
+    }
+    .sk-social-btn svg { display: block; overflow: visible; }
+
+    /* ── Hero ── */
+    .sk-hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      overflow: hidden;
+      background: var(--color-deep-navy);
+    }
+
+    /* Background video — covers like background-size: cover */
+    .sk-hero-video-wrap {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .sk-hero-video-wrap video {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: max(100%, calc(100vh * 16 / 9));
+      height: max(100%, calc(100vw * 9 / 16));
+      min-width: 100%; min-height: 100%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      object-fit: cover;
+    }
+
+    /* Navy overlay — opacity controlled by CSS var for the debug panel */
+    .sk-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: var(--color-deep-navy);
+      opacity: var(--hero-overlay-opacity, 0.60);
+      pointer-events: none;
+      transition: opacity 0.15s ease;
+    }
+
+    /* MACS logo bottom-left (per client revision doc) */
+    .sk-hero-macs {
+      position: absolute;
+      bottom: 32px; left: 32px;
+      z-index: 2;
+    }
+    .sk-hero-macs-placeholder {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px;
+      padding: 8px 14px;
+      font-family: var(--font-montserrat); font-size: 11px;
+      font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+    }
+
+    /* ── Wave Dividers ── */
+    .sk-wave-divider {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      display: block;
+    }
+    /* Burgundy: hero → navy quotes */
+    .sk-wave-divider--burg   { background: var(--color-deep-navy); height: 126px; }
+    /* Navy: white → dark section */
+    .sk-wave-divider--navy   { background: var(--color-warm-cream); height: 120px; }
+    /* Navy inverse: light section → effect (burgundy) section */
+    .sk-wave-divider--navy-inv { background: var(--color-burgundy-red); height: 120px; }
+    /* Navy → Cream: pillar section into testimonials */
+    .sk-wave-divider--cream  { background: var(--color-warm-cream); height: 126px; }
+
+    .sk-wave-svg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: block;
+      transform-origin: top center; /* scaleY anchors from flat top edge */
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      .sk-nav-sidebar, .sk-nav-backdrop, .sk-search-panel {
+        transition: visibility 0s, opacity 0.1s !important;
+      }
+    }
+
+    /* ══════════════════════════════════════════════
+       SECTION 3 — QUOTES CAROUSEL
+    ══════════════════════════════════════════════ */
+    .sk-quotes {
+      background: var(--color-deep-navy);
+      padding: clamp(80px, 12vw, 140px) clamp(32px, 6vw, 64px);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Oversized decorative opening mark — depth layer, not text */
+    .sk-quotes::before {
+      content: '\201C';
+      font-family: var(--font-dancing-script);
+      font-size: clamp(10rem, 18vw, 20rem);
+      line-height: 0.85;
+      color: var(--color-burgundy-red);
+      opacity: 0.13;
+      position: absolute;
+      top: clamp(4px, 2vw, 20px);
+      left: clamp(12px, 4vw, 56px);
+      pointer-events: none;
+      user-select: none;
+    }
+    .sk-quotes__track {
+      position: relative;
+      min-height: clamp(300px, 28vw, 380px);
+      max-width: 820px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .sk-quote-item {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(10px);
+      filter: blur(3px);
+      transition: opacity 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.9s cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+      padding: 16px 0;
+    }
+    .sk-quote-item.is-active {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0);
+      pointer-events: auto;
+    }
+    .sk-quote-text {
+      font-family: var(--font-dancing-script);
+      font-size: clamp(1.75rem, 3.8vw, 3.4rem);
+      line-height: 1.52;
+      color: #fff;
+      max-width: 640px;
+      margin: 0 0 2rem;
+      text-wrap: balance;
+    }
+    .sk-quote-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-inter);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.65);
+    }
+    .sk-quote-author::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 2px;
+      background: var(--color-burgundy-red);
+      flex-shrink: 0;
+    }
+    .sk-quotes__dots {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
+      margin-top: clamp(36px, 5vw, 52px);
+    }
+    .sk-quotes__dot {
+      height: 4px;
+      width: 20px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.25);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.4s ease, width 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      touch-action: manipulation;
+    }
+    .sk-quotes__dot.is-active {
+      background: rgba(255, 255, 255, 0.9);
+      width: 48px;
+    }
+    .sk-quotes__dot:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.6);
+      outline-offset: 4px;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .sk-quote-item {
+        transition: opacity 0.4s ease;
+        transform: none;
+        filter: none;
+      }
+      .sk-quote-item.is-active { transform: none; filter: none; }
+    }
+
+    /* ══════════════════════════════════════════════
+       SECTION 4 — WELCOME BLOCK
+    ══════════════════════════════════════════════ */
+    .sk-welcome {
+      background: var(--color-warm-cream);
+      padding: clamp(64px, 8vw, 96px) clamp(24px, 5vw, 48px) clamp(56px, 7vw, 80px);
+      text-align: center;
+    }
+    .sk-welcome__heading {
+      font-family: var(--font-montserrat);
+      font-size: clamp(2.25rem, 6vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      color: var(--color-deep-navy);
+      line-height: 1.1;
+      margin: 0 0 1.25rem;
+      text-wrap: balance;
+    }
+    .sk-welcome__tagline {
+      font-family: var(--font-dancing-script);
+      font-size: clamp(1.35rem, 2.5vw, 1.85rem);
+      color: var(--color-burgundy-red);
+      line-height: 1.5;
+      margin: 0 auto;
+      max-width: 62ch;
+      text-wrap: balance;
+    }
+
+    /* ══════════════════════════════════════════════
+       SECTIONS 5–8 — PINNED IMAGE SCROLL
+       Adapted from Codrops OnScrollPathAnimations /
+       gsap-pinned-image-mask-reveal pattern.
+       Left: 4 × 100vh scrollable items.
+       Right: pinned image column — clipPath wipe on scroll.
+    ══════════════════════════════════════════════ */
+    .sk-pillar {
+      display: flex;
+      gap: clamp(40px, 6vw, 80px);
+      max-width: 1200px;
+      margin-inline: auto;
+      padding-inline: clamp(20px, 4vw, 40px);
+    }
+
+    /* Left column — scrolls normally */
+    .sk-pillar__left {
+      display: flex;
+      flex-direction: column;
+      flex: 0 0 44%;
+      max-width: 480px;
+      min-width: 0;
+    }
+    .sk-pillar__item {
+      height: 100vh;
+      display: grid;
+      place-items: center;
+    }
+    .sk-pillar__body {
+      max-width: 400px;
+      width: 100%;
+    }
+    .sk-pillar__heading {
+      font-family: var(--font-montserrat);
+      font-size: clamp(1.875rem, 3.5vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      color: var(--color-deep-navy);
+      line-height: 1.1;
+      margin: 0 0 1.125rem;
+      text-wrap: balance;
+    }
+    .sk-pillar__text {
+      font-family: var(--font-inter);
+      font-size: 1.0625rem;
+      line-height: 1.8;
+      color: #374151;
+      max-width: 50ch;
+      margin: 0 0 1.75rem;
+      text-wrap: pretty;
+    }
+    .sk-pillar__tagline {
+      display: block;
+      font-family: var(--font-dancing-script);
+      font-size: clamp(1.35rem, 2.2vw, 1.65rem);
+      color: var(--color-burgundy-red);
+      line-height: 1.45;
+      text-wrap: pretty;
+    }
+
+
+    /* Right column — pinned image stack */
+    .sk-pillar__right {
+      flex: 1;
+      height: 100vh;
+      position: relative;
+      min-width: 0;
+    }
+    .sk-pillar__img-wrap {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 100%;
+      height: clamp(340px, 72vh, 680px);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .sk-pillar__img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+      display: block;
+    }
+
+    /* Dark-bg state — applied via JS when section bg is navy or burgundy */
+    #sk-section-pillars { transition: background-color 0s; } /* GSAP controls this */
+    #sk-section-pillars.is-dark .sk-pillar__heading { color: #ffffff; }
+    #sk-section-pillars.is-dark .sk-pillar__text    { color: rgba(255,255,255,0.78); }
+    #sk-section-pillars.is-dark .sk-pillar__tagline { color: rgba(255,255,255,0.90); }
+
+    /* Mobile — stacked, interleaved by JS order */
+    @media (max-width: 768px) {
+      .sk-pillar {
+        flex-direction: column;
+        gap: 0;
+        padding-inline: 16px;
+      }
+      .sk-pillar__left,
+      .sk-pillar__right {
+        display: contents;
+      }
+      .sk-pillar__img-wrap {
+        position: static;
+        transform: none;
+        height: 300px;
+        max-height: none;
+        margin-bottom: 32px;
+        border-radius: 14px;
+        display: block;
+      }
+      .sk-pillar__item {
+        height: auto;
+        padding-block: 32px;
+        place-items: start;
+      }
+    }
+    @media (max-width: 480px) {
+      .sk-pillar__img-wrap { height: 250px; border-radius: 10px; }
+    }
+
+    /* ══════════════════════════════════════
+       WIPE BUTTON — sk-btn-wipe
+    ══════════════════════════════════════ */
+    .sk-btn-wipe {
+      --btn-color:        #051E42;
+      --btn-color-active: #0A2D5C;
+      font-family: var(--font-montserrat);
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 28px;
+      min-height: 44px;
+      position: relative;
+      cursor: pointer;
+      overflow: hidden;
+      border: 1.5px solid var(--btn-color);
+      border-radius: var(--radius-buttons);
+      transition: color 0.28s, transform 0.12s cubic-bezier(0.16,1,0.3,1);
+      z-index: 1;
+      color: var(--btn-color);
+      background: transparent;
+      text-decoration: none;
+      line-height: 1;
+      white-space: nowrap;
+      touch-action: manipulation;
+    }
+    .sk-btn-wipe:active { transform: scale(0.96); }
+    .sk-btn-wipe::before {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      background: var(--btn-color);
+      height: 220px;
+      width: 280px;
+      border-radius: 50%;
+      top: 100%;
+      left: 100%;
+      transition: top 0.58s cubic-bezier(0.23, 1, 0.32, 1),
+                  left 0.58s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+    .sk-btn-wipe:hover { color: #fff; }
+    .sk-btn-wipe:hover::before { top: -55px; left: -55px; }
+    .sk-btn-wipe:active::before {
+      background: var(--btn-color-active);
+      transition: background 0s;
+    }
+    .sk-btn-wipe--accent {
+      --btn-color:        #8A2232;
+      --btn-color-active: #6d1a27;
+    }
+
+    /* ══════════════════════════════════════
+       SECTION 10 — THE ST KEVIN'S EFFECT
+    ══════════════════════════════════════ */
+    .sk-effect {
+      padding: clamp(80px, 10vw, 120px) 24px clamp(80px, 10vw, 120px);
+      background: #8A2232;
+    }
+    .sk-effect__header {
+      text-align: center;
+      max-width: 720px;
+      margin: 0 auto 64px;
+    }
+    .sk-effect__label {
+      font-family: 'Dancing Script', cursive;
+      color: rgba(255,255,255,0.55);
+      font-size: clamp(20px, 2.4vw, 26px);
+      display: block;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+    .sk-effect__heading {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: clamp(42px, 7vw, 80px);
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      margin: 0 0 28px;
+      line-height: 1.0;
+      text-wrap: balance;
+    }
+    .sk-effect__rule {
+      height: 2px;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.45) 30%, rgba(255,255,255,0.45) 70%, transparent 100%);
+      margin: 0 auto 28px;
+      max-width: 320px;
+      transform-origin: center;
+    }
+    .sk-effect__body {
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(16px, 1.5vw, 18px);
+      color: rgba(255,255,255,0.78);
+      line-height: 1.82;
+      margin: 0 auto;
+      max-width: 58ch;
+      text-wrap: pretty;
+    }
+
+    /* Testimonial component */
+    .sk-testimonial-wrapper {
+      max-width: var(--tst-img-w, 1060px);
+      margin: 0 auto;
+    }
+    .sk-testimonial-container { padding: 0 clamp(0px, 2vw, 2rem); }
+    .sk-testimonial-grid {
+      display: grid;
+      gap: clamp(40px, 6vw, 80px);
+      align-items: center;
+    }
+    @media (min-width: 768px) {
+      .sk-testimonial-grid { grid-template-columns: 1fr 1.1fr; }
+    }
+    .sk-testimonial-image-container {
+      position: relative;
+      aspect-ratio: 1;
+      max-width: clamp(260px, 38vw, 460px);
+      width: 100%;
+      margin: 0 auto;
+      perspective: 1000px;
+    }
+    .sk-testimonial-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.28), 0 20px 56px rgba(0,0,0,0.32);
+      transition: all 0.8s cubic-bezier(.4,2,.3,1);
+    }
+    .sk-testimonial-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: clamp(260px, 38vw, 460px);
+      overflow: hidden;
+    }
+    .sk-testimonial-quote-wrap {
+      opacity: 1;
+      position: relative;
+    }
+    .sk-testimonial-qmark {
+      display: block;
+      width: 34px;
+      height: auto;
+      margin-bottom: 20px;
+      flex-shrink: 0;
+    }
+    .sk-testimonial-quote-wrap.is-animating {
+      animation: skFadeQuote 0.4s ease-out both;
+    }
+    @keyframes skFadeQuote {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Floating decorative accent animations ── */
+    @keyframes skAccentUp {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-14px); }
+    }
+    @keyframes skAccentDown {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(12px); }
+    }
+    @keyframes skAccentSpin {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50%       { transform: translateY(-10px) rotate(20deg); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .sk-accent { animation: none !important; }
+    }
+
+    /* ── Testimonial section deco layer ── */
+    .sk-effect { position: relative; }
+    .sk-effect__deco {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .sk-effect__deco > svg { position: absolute; }
+    .sk-effect__header,
+    .sk-testimonial-wrapper { position: relative; z-index: 1; }
+
+    /* ── Pillar section deco layer ── */
+    .sk-pillar__deco {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: visible;
+      z-index: 5;
+    }
+    .sk-pillar__deco > svg { position: absolute; }
+    @media (max-width: 768px) {
+      .sk-pillar__deco { display: none; }
+    }
+    .sk-testimonial-quote {
+      font-family: 'Dancing Script', cursive;
+      font-size: var(--tst-quote-size, 26px);
+      color: rgba(255,255,255,0.92);
+      line-height: 1.6;
+      margin: 0 0 28px;
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+      text-wrap: pretty;
+    }
+    .sk-testimonial-attr {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    .sk-testimonial-attr__rule {
+      width: 24px;
+      height: 2px;
+      background: rgba(255,255,255,0.38);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+    .sk-testimonial-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: #ffffff;
+      margin: 0 0 3px;
+      letter-spacing: 0.01em;
+      line-height: 1.3;
+      position: relative;
+      z-index: 1;
+    }
+    .sk-testimonial-role {
+      font-family: 'Inter', sans-serif;
+      font-size: 11px;
+      color: rgba(255,255,255,0.58);
+      font-style: normal;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin: 0;
+      position: relative;
+      z-index: 1;
+    }
+    .sk-testimonial-arrows {
+      display: flex;
+      gap: 14px;
+      padding-top: 2.5rem;
+    }
+    @media (min-width: 768px) {
+      .sk-testimonial-arrows { padding-top: 2rem; }
+    }
+    .sk-testimonial-arrow {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      background: transparent;
+      color: rgba(255,255,255,0.72);
+      transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+      flex-shrink: 0;
+      padding: 0;
+      touch-action: manipulation;
+    }
+    .sk-testimonial-arrow svg { width: 20px; height: 20px; display: block; }
+    .sk-testimonial-arrow:hover {
+      border-color: #051E42;
+      background: #051E42;
+      color: #ffffff;
+    }
+    #sk-testimonial-prev:hover { transform: translateX(-3px); }
+    #sk-testimonial-next:hover { transform: translateX(3px); }
+    @media (max-width: 767px) {
+      .sk-effect { padding: 72px 20px 80px; }
+      .sk-testimonial-container { padding: 0; }
+      .sk-testimonial-image-container { max-width: 280px; }
+      .sk-testimonial-quote { font-size: 22px; }
+      .sk-testimonial-arrows { justify-content: center; gap: 35px; }
+    }
+
+    /* Light button variant — for use on dark backgrounds */
+    .sk-btn-wipe--light {
+      --btn-color:        #ffffff;
+      --btn-color-active: rgba(255,255,255,0.88);
+    }
+    .sk-btn-wipe--light:hover { color: var(--color-deep-navy); }
+    @media (prefers-reduced-motion: reduce) {
+      .sk-btn-wipe::before { transition: none; }
+      .sk-btn-wipe { transition: background 0.1s, color 0.1s, border-color 0.1s; }
+    }
+
+    /* ══════════════════════════════════════
+       SECTION 12 — VIDEO GRID
+    ══════════════════════════════════════ */
+    .sk-videos {
+      background: var(--color-warm-cream);
+      padding: clamp(80px, 10vw, 120px) clamp(20px, 4vw, 48px);
+      position: relative;
+      overflow: hidden;
+    }
+    .sk-videos__deco {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .sk-videos__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .sk-videos__header {
+      text-align: center;
+      margin-bottom: clamp(40px, 5vw, 64px);
+    }
+    .sk-videos__label {
+      display: inline-block;
+      font-family: var(--font-inter);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-burgundy-red);
+      margin-bottom: 16px;
+    }
+    .sk-videos__heading {
+      font-family: var(--font-montserrat);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: var(--color-deep-navy);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      margin: 0 0 16px;
+    }
+    .sk-videos__body {
+      font-family: var(--font-inter);
+      font-size: clamp(1rem, 1.3vw, 1.0625rem);
+      color: var(--color-slate-text);
+      max-width: 52ch;
+      margin: 0 auto;
+      line-height: 1.72;
+      text-wrap: pretty;
+    }
+    .sk-videos__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: clamp(16px, 2.5vw, 28px);
+    }
+    @media (max-width: 640px) {
+      .sk-videos__grid { grid-template-columns: 1fr; }
+    }
+
+    /* Video card */
+    .sk-vcard {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      aspect-ratio: 16 / 9;
+      cursor: pointer;
+      box-shadow:
+        0 4px 16px rgba(5, 30, 66, 0.12),
+        0 1px 4px  rgba(5, 30, 66, 0.07);
+      transform: translateY(0) scale(1);
+      transition:
+        transform 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+      background: var(--color-deep-navy);
+      will-change: transform;
+    }
+    .sk-vcard:hover {
+      transform: translateY(-6px) scale(1.006);
+      box-shadow:
+        0 24px 52px rgba(5, 30, 66, 0.26),
+        0 8px  20px rgba(5, 30, 66, 0.14),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.07);
+    }
+    .sk-vcard__video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      opacity: 0;
+      transition: opacity 0.6s ease;
+    }
+    .sk-vcard__video.is-loaded { opacity: 1; }
+    .sk-vcard__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(5, 30, 66, 0.97) 0%,
+        rgba(9, 36, 82, 0.82) 38%,
+        rgba(9, 36, 82, 0.82) 62%,
+        rgba(5, 30, 66, 0.97) 100%
+      );
+      display: flex;
+      flex-direction: column;
+      z-index: 2;
+    }
+    /* Top bar: category + duration */
+    .sk-vcard__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      padding: 16px 18px 0;
+    }
+    .sk-vcard__cat {
+      font-family: var(--font-inter);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.14);
+      padding: 4px 10px;
+      border-radius: 99px;
+    }
+    .sk-vcard__dur {
+      font-family: var(--font-inter);
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.52);
+      letter-spacing: 0.04em;
+    }
+    /* Centre: logo + play button */
+    .sk-vcard__centre {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+    }
+    .sk-vcard__logo {
+      width: auto;
+      height: clamp(32px, 5vw, 44px);
+      opacity: 0.24;
+      display: block;
+      transition: opacity 0.35s ease;
+    }
+    .sk-vcard:hover .sk-vcard__logo { opacity: 0.15; }
+    .sk-vcard__play {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: rgba(138, 34, 50, 0.92);
+      border: none;
+      box-shadow:
+        0 6px 24px rgba(0, 0, 0, 0.35),
+        0 0 0 1.5px rgba(255, 255, 255, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition:
+        transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+        background 0.25s ease,
+        box-shadow 0.35s ease;
+      flex-shrink: 0;
+    }
+    .sk-vcard:hover .sk-vcard__play {
+      transform: scale(1.1);
+      background: #8A2232;
+      box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.30),
+        0 0 0 8px rgba(138, 34, 50, 0.22),
+        0 0 28px rgba(138, 34, 50, 0.40);
+    }
+    /* Play/pause icon states — SVG polygon is optically centred; no margin needed */
+    .sk-vcard__play .sk-play-icon  { display: block; }
+    .sk-vcard__play .sk-pause-icon { display: none; }
+    .sk-vcard.is-playing .sk-vcard__play .sk-play-icon  { display: none; }
+    .sk-vcard.is-playing .sk-vcard__play .sk-pause-icon { display: block; }
+    /* Bottom: title */
+    .sk-vcard__bottom {
+      padding: 0 18px 20px;
+    }
+    .sk-vcard__title {
+      font-family: var(--font-montserrat);
+      font-size: clamp(0.875rem, 1.2vw, 1rem);
+      font-weight: 700;
+      color: rgba(255, 255, 255, 0.92);
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      text-wrap: balance;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .sk-vcard { transition: box-shadow 0.2s ease; will-change: auto; }
+      .sk-vcard:hover { transform: none; }
+      .sk-vcard__play { transition: background 0.2s ease; }
+      .sk-vcard:hover .sk-vcard__play { transform: none; }
+    }
+
+    /* ══════════════════════════════════════
+       SECTION 13 — ENROLMENTS CTA
+    ══════════════════════════════════════ */
+    .sk-enrol {
+      padding: 60px clamp(16px, 3vw, 48px) 80px;
+      background: var(--color-warm-cream);
+    }
+    .sk-enrol__card {
+      max-width: 1200px;
+      margin: 0 auto;
+      background: var(--color-deep-navy);
+      border-radius: 20px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 480px;
+    }
+    .sk-enrol__text {
+      padding: clamp(48px, 6vw, 88px) clamp(36px, 5vw, 72px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .sk-enrol__label {
+      font-family: var(--font-dancing-script);
+      color: rgba(255,255,255,0.68);
+      font-size: clamp(18px, 2vw, 22px);
+      display: block;
+      margin: 0 0 16px;
+      font-style: italic;
+    }
+    .sk-enrol__heading {
+      font-family: var(--font-montserrat);
+      font-weight: 800;
+      font-size: clamp(36px, 4.5vw, 60px);
+      color: var(--color-pure-white);
+      text-transform: uppercase;
+      letter-spacing: -0.025em;
+      line-height: 1.0;
+      margin: 0 0 24px;
+      text-wrap: balance;
+    }
+    @media (min-width: 769px) {
+      .sk-enrol__heading { white-space: nowrap; }
+    }
+    .sk-enrol__body {
+      font-family: var(--font-inter);
+      font-size: clamp(16px, 1.4vw, 17px);
+      color: rgba(255,255,255,0.78);
+      line-height: 1.8;
+      margin: 0 0 40px;
+      max-width: 46ch;
+      text-wrap: pretty;
+    }
+    .sk-enrol__buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+    /* Visual / illustration column */
+    .sk-enrol__visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: radial-gradient(ellipse at 55% 50%, #0A2D5C 0%, #051E42 68%);
+    }
+    .sk-enrol__deco {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+    }
+    .sk-enrol__circle-img {
+      position: relative;
+      z-index: 1;
+      width: clamp(190px, 25vw, 270px);
+      height: clamp(190px, 25vw, 270px);
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 12px rgba(255,255,255,0.08),
+        0 0 0 26px rgba(255,255,255,0.045),
+        0 28px 56px rgba(0,0,0,0.4);
+      flex-shrink: 0;
+    }
+    .sk-enrol__circle-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 20%;
+    }
+    @media (max-width: 768px) {
+      .sk-enrol__card { grid-template-columns: 1fr; }
+      .sk-enrol__text { padding: 52px 28px 44px; order: 2; }
+      .sk-enrol__visual { order: 1; min-height: 280px; }
+      .sk-enrol__circle-img {
+        width: 170px;
+        height: 170px;
+      }
+      .sk-enrol__heading { letter-spacing: -0.02em; }
+    }
+
+    /* ── CTA visual — ring breathing ── */
+    @keyframes skRingBreathe {
+      0%, 100% { opacity: 0.05; }
+      50%       { opacity: 0.16; }
+    }
+    .sk-enrol__ring-outer {
+      animation: skRingBreathe 4.5s ease-in-out infinite;
+    }
+    .sk-enrol__ring-inner {
+      animation: skRingBreathe 4.5s ease-in-out infinite 2s;
+    }
+
+    /* ── CTA visual — floating accent dots ── */
+    @keyframes skEnrolFloat {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-9px); }
+    }
+    .sk-enrol__dot-f1 { animation: skEnrolFloat 6s   ease-in-out infinite; }
+    .sk-enrol__dot-f2 { animation: skEnrolFloat 8s   ease-in-out infinite 1.4s; }
+    .sk-enrol__dot-f3 { animation: skEnrolFloat 5.5s ease-in-out infinite 3s; }
+
+    /* ── CTA visual — image ring hover expansion ── */
+    .sk-enrol__circle-img {
+      transition: box-shadow 0.45s cubic-bezier(0.16,1,0.3,1);
+      will-change: clip-path;
+    }
+    .sk-enrol__visual:hover .sk-enrol__circle-img {
+      box-shadow:
+        0 0 0 16px rgba(255,255,255,0.11),
+        0 0 0 34px rgba(255,255,255,0.055),
+        0 32px 60px rgba(0,0,0,0.48);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sk-enrol__ring-outer,
+      .sk-enrol__ring-inner,
+      .sk-enrol__dot-f1,
+      .sk-enrol__dot-f2,
+      .sk-enrol__dot-f3 { animation: none !important; }
+    }
+
+    /* ══════════════════════════════════════════════
+       SECTION 14 — FOOTER
+    ══════════════════════════════════════════════ */
+    .sk-footer {
+      background: var(--color-deep-navy);
+      position: relative;
+      overflow: hidden;
+    }
+    .sk-footer__deco {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      user-select: none;
+    }
+    .sk-footer__inner {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(56px, 8vw, 96px) clamp(24px, 5vw, 64px) 0;
+      z-index: 1;
+    }
+
+    /* Script tagline — emotional signature moment */
+    .sk-footer__tagline {
+      font-family: var(--font-dancing-script);
+      font-size: clamp(1.45rem, 3.2vw, 2.4rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.65);
+      text-align: center;
+      line-height: 1.45;
+      margin: 0 auto clamp(32px, 5vw, 52px);
+      max-width: 640px;
+    }
+
+    /* Burgundy gradient rule */
+    .sk-footer__rule {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(138,34,50,0.65) 30%, rgba(138,34,50,0.65) 70%, transparent 100%);
+      margin-bottom: clamp(36px, 5.5vw, 56px);
+      transform-origin: center;
+    }
+
+    /* Logos row */
+    .sk-footer__logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--footer-logo-gap, 60px);
+      margin-bottom: clamp(44px, 6vw, 64px);
+      flex-wrap: wrap;
+    }
+    .sk-footer__logo-link {
+      display: block;
+      opacity: 0.82;
+      transition: opacity 0.25s ease;
+    }
+    .sk-footer__logo-link:hover,
+    .sk-footer__logo-link:focus-visible { opacity: 1; }
+    .sk-footer__logo-img { width: auto; display: block; }
+    .sk-footer__logo-img--macs { height: var(--footer-logo-h, 110px); }
+    .sk-footer__logo-img--sk   { height: var(--footer-logo-h, 110px); }
+
+    /* Three columns */
+    .sk-footer__cols {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr 1fr;
+      gap: clamp(28px, 5vw, 72px);
+      margin-bottom: clamp(44px, 6vw, 64px);
+    }
+    @media (max-width: 900px) {
+      .sk-footer__cols { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 540px) {
+      .sk-footer__cols { grid-template-columns: 1fr; gap: 36px; }
+      .sk-footer__logos { justify-content: center; }
+    }
+
+    /* Column heading */
+    .sk-footer__col-head {
+      font-family: var(--font-montserrat);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-burgundy-red);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    /* Contact column */
+    .sk-footer__address {
+      font-style: normal;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .sk-footer__contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      font-family: var(--font-inter);
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.68);
+    }
+    .sk-footer__contact-row svg {
+      flex-shrink: 0;
+      margin-top: 3px;
+      opacity: 0.6;
+    }
+    .sk-footer__contact-row a {
+      color: rgba(255,255,255,0.68);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .sk-footer__contact-row a:hover { color: rgba(255,255,255,0.95); }
+    .sk-footer__hours {
+      font-family: var(--font-inter);
+      font-size: 12px;
+      color: rgba(255,255,255,0.34);
+      letter-spacing: 0.02em;
+      margin-top: 2px;
+    }
+
+    /* Links column */
+    .sk-footer__nav {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .sk-footer__link {
+      font-family: var(--font-inter);
+      font-size: 14px;
+      color: rgba(255,255,255,0.68);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      transition: color 0.2s ease;
+    }
+    .sk-footer__link::before {
+      content: '';
+      display: inline-block;
+      width: 14px;
+      height: 1px;
+      background: var(--color-burgundy-red);
+      opacity: 0.6;
+      flex-shrink: 0;
+      transition: width 0.35s cubic-bezier(0.16,1,0.3,1), opacity 0.2s ease;
+    }
+    .sk-footer__link:hover { color: rgba(255,255,255,0.95); }
+    .sk-footer__link:hover::before { width: 22px; opacity: 1; }
+
+    /* About + social column */
+    .sk-footer__about {
+      font-family: var(--font-inter);
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.58);
+      margin-bottom: 20px;
+      text-wrap: pretty;
+    }
+    .sk-footer__social {
+      display: flex;
+      gap: 10px;
+    }
+    .sk-footer__social-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.16);
+      color: rgba(255,255,255,0.68);
+      text-decoration: none;
+      transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+    }
+    .sk-footer__social-btn:hover {
+      border-color: rgba(138,34,50,0.75);
+      background: rgba(138,34,50,0.14);
+      color: #fff;
+    }
+    .sk-footer__social-btn:focus-visible {
+      outline: 2px solid var(--color-burgundy-red);
+      outline-offset: 3px;
+    }
+
+    /* Bottom bar */
+    .sk-footer__bottom {
+      border-top: 1px solid rgba(255,255,255,0.09);
+      padding: 22px 0 clamp(28px, 4vw, 44px);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .sk-footer__copy {
+      font-family: var(--font-inter);
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+    }
+    .sk-footer__bottom-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sk-footer__bottom-link {
+      font-family: var(--font-inter);
+      font-size: 12px;
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .sk-footer__bottom-link:hover { color: rgba(255,255,255,0.65); }
+    .sk-footer__bottom-sep {
+      color: rgba(255,255,255,0.18);
+      font-size: 10px;
+    }
+
+    /* ── Character-by-character heading reveal ── */
+    .scroll-text-word {
+      display: inline-flex;
+      overflow: hidden;
+      vertical-align: bottom;
+    }
+    .scroll-text-char {
+      display: inline-block;
+      transform: translateY(108%);
+      opacity: 0;
+      transition:
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity   0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      transition-delay: calc(var(--char-index, 0) * 28ms);
+      will-change: transform, opacity;
+    }
+    .scroll-text-reveal.is-visible .scroll-text-char {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-text-char {
+        transition: none !important;
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+      }
+    }
+
+    /* ══════════════════════════════════════════════
+       MOBILE RESPONSIVE ENHANCEMENTS
+    ══════════════════════════════════════════════ */
+
+
+
+    /* MACS logo — scale down on mobile so it doesn't dominate the hero */
+    @media (max-width: 600px) {
+      :root { --logo-macs-size: 64px; }
+      .sk-hero-macs { bottom: 20px; left: 20px; }
+    }
+    @media (max-width: 380px) {
+      :root { --logo-macs-size: 50px; }
+      .sk-hero-macs { bottom: 14px; left: 14px; }
+    }
+
+    /* Testimonial content — release fixed height so quotes never clip on mobile */
+    @media (max-width: 767px) {
+      .sk-testimonial-content {
+        height: auto;
+        overflow: visible;
+      }
+      .sk-testimonial-arrows {
+        padding-top: 2rem;
+      }
+    }
+
+    /* Enrolment CTA — full-width stacked buttons on tiny screens */
+    @media (max-width: 400px) {
+      .sk-enrol__text { padding: 40px 20px 36px; }
+      .sk-enrol__buttons {
+        flex-direction: column;
+        align-items: stretch;
+        width: 100%;
+      }
+      .sk-enrol__buttons .sk-btn-wipe {
+        justify-content: center;
+        width: 100%;
+      }
+    }
+    @media (max-width: 767px) {
+      .sk-wave-divider--burg,
+      .sk-wave-divider--navy,
+      .sk-wave-divider--navy-inv,
+      .sk-wave-divider--cream { height: 72px; }
+    }
+    @media (max-width: 480px) {
+      .sk-wave-divider--burg,
+      .sk-wave-divider--navy,
+      .sk-wave-divider--navy-inv,
+      .sk-wave-divider--cream { height: 60px; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["School", "EducationalOrganization"],
+        "@id": "https://www.skhamptonpark.catholic.edu.au/#school",
+        "name": "St Kevin's Primary School Hampton Park",
+        "alternateName": "St Kevin's Primary School",
+        "description": "A Christ-centred Catholic primary school in Hampton Park, Victoria, where every child is known, valued and supported to flourish.",
+        "url": "https://www.skhamptonpark.catholic.edu.au/",
+        "logo": "https://www.skhamptonpark.catholic.edu.au/images/logo-sk-colour.png",
+        "image": "https://www.skhamptonpark.catholic.edu.au/images/logo-sk-colour.png",
+        "telephone": "(03) 9709 8600",
+        "email": "administration@skhamptonpark.catholic.edu.au",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "120 Hallam Rd",
+          "addressLocality": "Hampton Park",
+          "addressRegion": "VIC",
+          "postalCode": "3976",
+          "addressCountry": "AU"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": -38.0276,
+          "longitude": 145.2527
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "opens": "08:30",
+            "closes": "15:30"
+          }
+        ],
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "Melbourne Archdiocese Catholic Schools",
+          "alternateName": "MACS",
+          "url": "https://www.macs.edu.au/"
+        },
+        "educationalLevel": "Primary School",
+        "sameAs": ["https://www.facebook.com/skhamptonpark"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.skhamptonpark.catholic.edu.au/#website",
+        "url": "https://www.skhamptonpark.catholic.edu.au/",
+        "name": "St Kevin's Primary School Hampton Park",
+        "publisher": { "@id": "https://www.skhamptonpark.catholic.edu.au/#school" }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <h1 class="sr-only">St Kevin's Primary School, Hampton Park</h1>
+
+  <!-- Header injected by js/sk-layout.js -->
+  <div id="sk-layout-header"></div>
+
+
+  <!-- ════════════════════════════════
+       HERO
+  ════════════════════════════════ -->
+  <section class="sk-hero" id="sk-section-hero" aria-label="Hero">
+
+    <!-- Background video — autoplay, muted, no controls -->
+    <div class="sk-hero-video-wrap" aria-hidden="true">
+      <video
+        id="sk-hero-video"
+        src="https://assets.mixkit.co/videos/35954/35954-720.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+        disablepictureinpicture
+        disableremoteplayback
+        preload="none"
+        poster="images/samples/cosmos_1226555780.jpeg"
+      ></video>
+    </div>
+
+    <!-- Navy colour overlay — opacity driven by --hero-overlay-opacity CSS var -->
+    <div class="sk-hero-overlay" id="sk-hero-overlay" aria-hidden="true"></div>
+
+    <!-- MACS logo — bottom-left per client revision doc -->
+    <div class="sk-hero-macs" aria-hidden="true">
+      <img src="images/macs-logo-white.png" alt="Melbourne Archdiocese Catholic Schools" id="sk-macs-logo" style="display:block;height:var(--logo-macs-size,90px);width:auto;transition:filter var(--transition-medium);">
+    </div>
+
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTION 2: WAVE DIVIDER (Burgundy — morphs on scroll)
+       On-scroll SVG path morph: gentle rest → dramatic peak as divider
+       traverses the viewport. GSAP ScrollTrigger attr.d scrub.
+       Sections 9 + 11 use the same pattern (navy fill).
+  ════════════════════════════════ -->
+  <div class="sk-wave-divider sk-wave-divider--burg"
+       id="sk-wave-divider-2"
+       aria-hidden="true">
+    <svg class="sk-wave-svg"
+         viewBox="0 0 1440 120"
+         preserveAspectRatio="none"
+         xmlns="http://www.w3.org/2000/svg">
+      <path id="sk-wave-path-2"
+            d="M 0 0 L 1440 0 L 1440 14 C 1080 22 360 76 0 88 Z"
+            fill="#8A2232"/>
+    </svg>
+  </div>
+
+
+  <!-- ════════════════════════════════
+       SECTION 3: QUOTES CAROUSEL
+       6 parent quotes, 6-second auto-cycle, Dancing Script.
+       No images — pure typography section.
+  ════════════════════════════════ -->
+  <section class="sk-quotes" id="sk-section-quotes" aria-label="Voices from our community">
+
+    <div class="sk-quotes__track" aria-live="polite" aria-atomic="true">
+
+      <div class="sk-quote-item is-active">
+        <p class="sk-quote-text">St Kevin's welcomed my son without judgement, only genuine care and support.</p>
+        <span class="sk-quote-author">Julie M</span>
+      </div>
+
+      <div class="sk-quote-item">
+        <p class="sk-quote-text">St Kevin's is more than a school for our family, it is our extended family.</p>
+        <span class="sk-quote-author">Tash</span>
+      </div>
+
+      <div class="sk-quote-item">
+        <p class="sk-quote-text">Thanks to the nurturing environment and dedicated teachers at St Kevin's, my once very shy daughter has grown into a confident child.</p>
+        <span class="sk-quote-author">Karina Rogers</span>
+      </div>
+
+      <div class="sk-quote-item">
+        <p class="sk-quote-text">What we appreciate most about St Kevin's is its diversity and the way the school brings families together, creating a strong sense of belonging.</p>
+        <span class="sk-quote-author">Shanelle Fairweather</span>
+      </div>
+
+      <div class="sk-quote-item">
+        <p class="sk-quote-text">Kindness and love are everywhere at St Kevin's. You see it when you're learning, when you're playing, in church and in the hall.</p>
+        <span class="sk-quote-author">Blaze, Grade 3</span>
+      </div>
+
+      <div class="sk-quote-item">
+        <p class="sk-quote-text">St Kevin's is a welcoming school with caring teachers and a strong community that supports every child.</p>
+        <span class="sk-quote-author">Koreti Solo Sakopo</span>
+      </div>
+
+    </div>
+
+    <div class="sk-quotes__dots" role="tablist" aria-label="Navigate quotes">
+      <button class="sk-quotes__dot is-active" role="tab" aria-selected="true"  aria-label="Quote 1" data-qi="0"></button>
+      <button class="sk-quotes__dot"            role="tab" aria-selected="false" aria-label="Quote 2" data-qi="1"></button>
+      <button class="sk-quotes__dot"            role="tab" aria-selected="false" aria-label="Quote 3" data-qi="2"></button>
+      <button class="sk-quotes__dot"            role="tab" aria-selected="false" aria-label="Quote 4" data-qi="3"></button>
+      <button class="sk-quotes__dot"            role="tab" aria-selected="false" aria-label="Quote 5" data-qi="4"></button>
+      <button class="sk-quotes__dot"            role="tab" aria-selected="false" aria-label="Quote 6" data-qi="5"></button>
+    </div>
+
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTION 4: WELCOME BLOCK
+       Display heading + Dancing Script tagline.
+  ════════════════════════════════ -->
+  <section class="sk-welcome" id="sk-section-welcome" aria-label="Welcome to St Kevin's">
+    <h2 class="sk-welcome__heading"><span class="scroll-text-reveal" data-text="Welcome to St Kevin's">Welcome to St Kevin's</span></h2>
+    <p class="sk-welcome__tagline">A community where every child is known, supported and inspired to flourish</p>
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTIONS 5–8: PINNED IMAGE SCROLL
+       Codrops gsap-pinned-image-mask-reveal pattern adapted.
+       Left: 4 × 100vh scrollable content items.
+       Right: pinned image column — clipPath wipe top-to-bottom on scrub.
+       Background alternates: white → navy → burgundy → navy as images wipe in.
+       Images: cosmos sample photos mapped per session 3 decisions.
+  ════════════════════════════════ -->
+  <section id="sk-section-pillars" aria-label="Life at St Kevin's">
+
+    <div class="sk-pillar" id="sk-pillar">
+
+      <!-- Left — scrollable content blocks -->
+      <div class="sk-pillar__left">
+
+        <div class="sk-pillar__item" id="sk-belonging">
+          <div class="sk-pillar__body">
+            <h2 class="sk-pillar__heading"><span class="scroll-text-reveal" data-text="Belonging">Belonging</span></h2>
+            <p  class="sk-pillar__text">Belonging sits at the heart of life at St Kevin's. When children feel known, safe and valued, they grow in confidence, curiosity and courage to learn.</p>
+            <span class="sk-pillar__tagline">Every child matters here.</span>
+          </div>
+        </div>
+
+        <div class="sk-pillar__item" id="sk-learning">
+          <div class="sk-pillar__body">
+            <h2 class="sk-pillar__heading"><span class="scroll-text-reveal" data-text="Learning with purpose">Learning with purpose</span></h2>
+            <p  class="sk-pillar__text">Learning at St Kevin's is both structured and meaningful, grounded in evidence-informed teaching and rich opportunities for inquiry. We form learners who think deeply and engage with the world around them.</p>
+            <span class="sk-pillar__tagline">Clear teaching. Curious minds. Deep thinking.</span>
+          </div>
+        </div>
+
+        <div class="sk-pillar__item" id="sk-faith">
+          <div class="sk-pillar__body">
+            <h2 class="sk-pillar__heading"><span class="scroll-text-reveal" data-text="Faith in action">Faith in action</span></h2>
+            <p  class="sk-pillar__text">Our Catholic faith shapes the spirit of our school and the way we care for one another. Through prayer, service and daily action, students learn to live the Gospel values of respect, compassion and love.</p>
+            <span class="sk-pillar__tagline">Guided by Christ in all we do.</span>
+          </div>
+        </div>
+
+        <div class="sk-pillar__item" id="sk-growing">
+          <div class="sk-pillar__body">
+            <h2 class="sk-pillar__heading"><span class="scroll-text-reveal" data-text="Growing together">Growing together</span></h2>
+            <p  class="sk-pillar__text">St Kevin's is a welcoming and diverse community where families, staff and students work together. It is this partnership that creates the warmth, trust and shared purpose that define our school.</p>
+            <span class="sk-pillar__tagline">Together we shape the future.</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right — pinned image stack (data-order sets z-index: higher = shown first) -->
+      <div class="sk-pillar__right" id="sk-pillar-right">
+
+        <div class="sk-pillar__img-wrap" data-order="4">
+          <!-- Belonging: cosmos_1226555780 — warm, 3 kids writing -->
+          <img src="images/samples/cosmos_1226555780.jpeg"
+               alt="Students writing and learning together at St Kevin's"
+               loading="lazy">
+        </div>
+
+        <div class="sk-pillar__img-wrap" data-order="3">
+          <!-- Learning: cosmos_1113100871 — classroom moment -->
+          <img src="images/samples/cosmos_1113100871.jpeg"
+               alt="Engaged learning in a St Kevin's classroom"
+               loading="lazy">
+        </div>
+
+        <div class="sk-pillar__img-wrap" data-order="2">
+          <!-- Faith: cosmos_1074538081 — art/craft group -->
+          <img src="images/samples/cosmos_1074538081.jpeg"
+               alt="Students participating in creative and faith activities"
+               loading="lazy">
+        </div>
+
+        <div class="sk-pillar__img-wrap" data-order="1">
+          <!-- Growing Together: cosmos_226684284 — floor activity -->
+          <img src="images/samples/cosmos_226684284.jpeg"
+               alt="St Kevin's community — families and students together"
+               loading="lazy">
+        </div>
+
+        <!-- Floating accent marks around the image stack -->
+        <div class="sk-pillar__deco" aria-hidden="true">
+
+          <!-- Top-right: 3×3 dot grid -->
+          <svg class="sk-accent" style="top: 9%; right: 6px; animation: skAccentUp 9s ease-in-out infinite;" width="46" height="46" viewBox="0 0 46 46" fill="none">
+            <circle cx="6"  cy="6"  r="3" fill="rgba(255,255,255,0.18)"/>
+            <circle cx="23" cy="6"  r="3" fill="rgba(255,255,255,0.18)"/>
+            <circle cx="40" cy="6"  r="3" fill="rgba(255,255,255,0.18)"/>
+            <circle cx="6"  cy="23" r="3" fill="rgba(255,255,255,0.13)"/>
+            <circle cx="23" cy="23" r="3" fill="rgba(255,255,255,0.13)"/>
+            <circle cx="40" cy="23" r="3" fill="rgba(255,255,255,0.13)"/>
+            <circle cx="6"  cy="40" r="3" fill="rgba(255,255,255,0.08)"/>
+            <circle cx="23" cy="40" r="3" fill="rgba(255,255,255,0.08)"/>
+            <circle cx="40" cy="40" r="3" fill="rgba(255,255,255,0.08)"/>
+          </svg>
+
+          <!-- Mid-right: 6-point asterisk -->
+          <svg class="sk-accent" style="top: 45%; right: 4px; animation: skAccentSpin 14s ease-in-out infinite 2.5s;" width="44" height="44" viewBox="0 0 44 44" fill="none">
+            <line x1="22" y1="4"   x2="22" y2="40"  stroke="rgba(255,255,255,0.18)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="5"  y1="13"  x2="39" y2="31"  stroke="rgba(255,255,255,0.18)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="39" y1="13"  x2="5"  y2="31"  stroke="rgba(255,255,255,0.18)" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+
+          <!-- Bottom-right: cross + small offset dot -->
+          <svg class="sk-accent" style="bottom: 13%; right: 8px; animation: skAccentDown 11s ease-in-out infinite 1.2s;" width="46" height="46" viewBox="0 0 46 46" fill="none">
+            <line x1="23" y1="6"  x2="23" y2="40" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-linecap="round"/>
+            <line x1="6"  y1="23" x2="40" y2="23" stroke="rgba(255,255,255,0.15)" stroke-width="2" stroke-linecap="round"/>
+            <circle cx="38" cy="8" r="3.5" fill="rgba(255,255,255,0.12)"/>
+          </svg>
+
+          <!-- Top-left of image area: diamond outline -->
+          <svg class="sk-accent" style="top: 17%; left: 8px; animation: skAccentUp 12s ease-in-out infinite 3.8s;" width="32" height="32" viewBox="0 0 32 32" fill="none">
+            <path d="M16 2 L30 16 L16 30 L2 16 Z" stroke="rgba(255,255,255,0.14)" stroke-width="1.6"/>
+          </svg>
+
+          <!-- Bottom-left: concentric circles -->
+          <svg class="sk-accent" style="bottom: 24%; left: 10px; animation: skAccentDown 8s ease-in-out infinite 5s;" width="34" height="34" viewBox="0 0 34 34" fill="none">
+            <circle cx="17" cy="17" r="14" stroke="rgba(255,255,255,0.10)" stroke-width="1.4"/>
+            <circle cx="17" cy="17" r="7"  stroke="rgba(255,255,255,0.14)" stroke-width="1.4"/>
+            <circle cx="17" cy="17" r="2.5" fill="rgba(255,255,255,0.18)"/>
+          </svg>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTION 9: WAVE DIVIDER (Navy-inv — warm cream → deep navy)
+       Transitions pillar sections into the dark Effect section.
+  ════════════════════════════════ -->
+  <div class="sk-wave-divider sk-wave-divider--navy-inv"
+       id="sk-wave-divider-9"
+       aria-hidden="true">
+    <svg class="sk-wave-svg"
+         viewBox="0 0 1440 120"
+         preserveAspectRatio="none"
+         xmlns="http://www.w3.org/2000/svg">
+      <path id="sk-wave-path-9"
+            d="M 0 0 L 1440 0 L 1440 14 C 1080 22 360 76 0 88 Z"
+            fill="#051E42"/>
+    </svg>
+  </div>
+
+
+  <!-- ════════════════════════════════
+       SECTION 10 — THE ST KEVIN'S EFFECT
+  ════════════════════════════════ -->
+  <section class="sk-effect" id="sk-section-effect" aria-label="The St Kevin's Effect">
+
+    <!-- Floating decorative marks — white-opacity on navy background -->
+    <div class="sk-effect__deco" aria-hidden="true">
+
+      <!-- Top-left: 4×3 dot grid -->
+      <svg class="sk-accent" style="top: 48px; left: clamp(14px, 4vw, 64px); animation: skAccentDown 11s ease-in-out infinite;" width="54" height="42" viewBox="0 0 54 42" fill="none">
+        <circle cx="6"  cy="6"  r="2.5" fill="rgba(255,255,255,0.12)"/>
+        <circle cx="22" cy="6"  r="2.5" fill="rgba(255,255,255,0.12)"/>
+        <circle cx="38" cy="6"  r="2.5" fill="rgba(255,255,255,0.12)"/>
+        <circle cx="54" cy="6"  r="2"   fill="rgba(255,255,255,0.08)"/>
+        <circle cx="6"  cy="22" r="2.5" fill="rgba(255,255,255,0.12)"/>
+        <circle cx="22" cy="22" r="2.5" fill="rgba(255,255,255,0.12)"/>
+        <circle cx="38" cy="22" r="2.5" fill="rgba(255,255,255,0.12)"/>
+        <circle cx="54" cy="22" r="2"   fill="rgba(255,255,255,0.08)"/>
+        <circle cx="6"  cy="38" r="2.5" fill="rgba(255,255,255,0.12)"/>
+        <circle cx="22" cy="38" r="2.5" fill="rgba(255,255,255,0.12)"/>
+        <circle cx="38" cy="38" r="2.5" fill="rgba(255,255,255,0.12)"/>
+        <circle cx="54" cy="38" r="2"   fill="rgba(255,255,255,0.08)"/>
+      </svg>
+
+      <!-- Top-right: 6-point asterisk -->
+      <svg class="sk-accent" style="top: 28px; right: clamp(14px, 5vw, 80px); animation: skAccentSpin 9s ease-in-out infinite 1.4s;" width="52" height="52" viewBox="0 0 52 52" fill="none">
+        <line x1="26" y1="4"   x2="26" y2="48"  stroke="rgba(255,255,255,0.14)" stroke-width="2" stroke-linecap="round"/>
+        <line x1="6"  y1="15"  x2="46" y2="37"  stroke="rgba(255,255,255,0.14)" stroke-width="2" stroke-linecap="round"/>
+        <line x1="46" y1="15"  x2="6"  y2="37"  stroke="rgba(255,255,255,0.14)" stroke-width="2" stroke-linecap="round"/>
+      </svg>
+
+      <!-- Bottom-left: diamond outline in burgundy -->
+      <svg class="sk-accent" style="bottom: 72px; left: clamp(20px, 3vw, 52px); animation: skAccentUp 8s ease-in-out infinite 2.2s;" width="40" height="40" viewBox="0 0 40 40" fill="none">
+        <path d="M20 2 L38 20 L20 38 L2 20 Z" stroke="rgba(255,255,255,0.22)" stroke-width="1.8"/>
+      </svg>
+
+      <!-- Bottom-right: arc with endpoints -->
+      <svg class="sk-accent" style="bottom: 56px; right: clamp(14px, 4vw, 60px); animation: skAccentDown 13s ease-in-out infinite 0.6s;" width="70" height="56" viewBox="0 0 70 56" fill="none">
+        <path d="M7 46 C 16 20 54 12 63 30" stroke="rgba(255,255,255,0.12)" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <circle cx="7"  cy="46" r="4" fill="rgba(255,255,255,0.12)"/>
+        <circle cx="63" cy="30" r="4" fill="rgba(255,255,255,0.12)"/>
+      </svg>
+
+      <!-- Mid-right edge: small cross in burgundy -->
+      <svg class="sk-accent" style="top: 46%; right: clamp(18px, 2.5vw, 36px); animation: skAccentSpin 16s ease-in-out infinite 3.2s;" width="30" height="30" viewBox="0 0 30 30" fill="none">
+        <line x1="15" y1="2"  x2="15" y2="28" stroke="rgba(255,255,255,0.22)" stroke-width="1.8" stroke-linecap="round"/>
+        <line x1="2"  y1="15" x2="28" y2="15" stroke="rgba(255,255,255,0.22)" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+
+      <!-- Mid-left: concentric circle outline -->
+      <svg class="sk-accent" style="top: 40%; left: clamp(12px, 2vw, 28px); animation: skAccentUp 10s ease-in-out infinite 4.1s;" width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="15" stroke="rgba(255,255,255,0.11)" stroke-width="1.5"/>
+        <circle cx="18" cy="18" r="7"  stroke="rgba(255,255,255,0.08)" stroke-width="1.2"/>
+      </svg>
+
+    </div>
+
+    <div class="sk-effect__header">
+      <h2 class="sk-effect__heading"><span class="scroll-text-reveal" data-text="The St Kevin's Effect">The St Kevin's Effect</span></h2>
+      <div class="sk-effect__rule" aria-hidden="true"></div>
+      <p class="sk-effect__body">Over time, something special happens here. Through strong relationships, high expectations and genuine care, children grow into confident and compassionate young people.</p>
+    </div>
+
+    <div class="sk-testimonial-wrapper" id="sk-section-testimonials">
+      <div class="sk-testimonial-container">
+        <div class="sk-testimonial-grid">
+
+          <div class="sk-testimonial-image-container" id="sk-testimonial-images"></div>
+
+          <div class="sk-testimonial-content">
+            <div class="sk-testimonial-quote-wrap" id="sk-testimonial-quote-wrap">
+              <!-- Minimal SVG opening quotation mark — intentional size, not a giant font character -->
+              <svg class="sk-testimonial-qmark" width="34" height="26" viewBox="0 0 34 26" fill="none" aria-hidden="true">
+                <path d="M14 0H0V13C0 20.2 5 25.2 14 26V21C10.2 20.2 8 17.5 8 13.5H14V0Z" fill="rgba(255,255,255,0.3)"/>
+                <path d="M34 0H20V13C20 20.2 25 25.2 34 26V21C30.2 20.2 28 17.5 28 13.5H34V0Z" fill="rgba(255,255,255,0.3)"/>
+              </svg>
+              <!-- Quote first — the most impactful element -->
+              <p class="sk-testimonial-quote" id="sk-testimonial-quote"></p>
+              <!-- Attribution: thin rule + name + role -->
+              <div class="sk-testimonial-attr">
+                <div class="sk-testimonial-attr__rule"></div>
+                <div>
+                  <h3 class="sk-testimonial-name" id="sk-testimonial-name"></h3>
+                  <p class="sk-testimonial-role" id="sk-testimonial-role"></p>
+                </div>
+              </div>
+            </div>
+            <div class="sk-testimonial-arrows">
+              <button class="sk-testimonial-arrow" id="sk-testimonial-prev" aria-label="Previous testimonial">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M18 12H6M11 7l-5 5 5 5"/>
+                </svg>
+              </button>
+              <button class="sk-testimonial-arrow" id="sk-testimonial-next" aria-label="Next testimonial">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 12h12M13 7l5 5-5 5"/>
+                </svg>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ════════════════════════════════
+       SECTION 11: WAVE DIVIDER (Navy — deep navy → warm cream)
+       Transitions Effect section into Video Grid.
+  ════════════════════════════════ -->
+  <div class="sk-wave-divider sk-wave-divider--navy"
+       id="sk-wave-divider-11"
+       aria-hidden="true">
+    <svg class="sk-wave-svg"
+         viewBox="0 0 1440 120"
+         preserveAspectRatio="none"
+         xmlns="http://www.w3.org/2000/svg">
+      <path id="sk-wave-path-11"
+            d="M 0 0 L 1440 0 L 1440 14 C 1080 22 360 76 0 88 Z"
+            fill="#8A2232"/>
+    </svg>
+  </div>
+
+  <!-- ════════════════════════════════
+       SECTION 12 — VIDEO GRID
+       "Meet the Parents" style interview videos. 2×2 grid.
+       Hover-to-preview (muted), click-to-play/pause.
+  ════════════════════════════════ -->
+  <section class="sk-videos" id="sk-section-videos" aria-label="Video stories">
+
+    <!-- Subtle decorative SVG: two large arcs, low-opacity navy -->
+    <div class="sk-videos__deco" aria-hidden="true">
+      <svg width="700" height="700" viewBox="0 0 700 700" fill="none"
+           style="position:absolute;top:-180px;right:-200px;opacity:0.045;">
+        <circle cx="350" cy="350" r="320" stroke="#051E42" stroke-width="1.2"/>
+        <circle cx="350" cy="350" r="240" stroke="#051E42" stroke-width="1"/>
+        <circle cx="350" cy="350" r="160" stroke="#051E42" stroke-width="0.8"/>
+        <circle cx="350" cy="350" r="80"  stroke="#051E42" stroke-width="0.6"/>
+      </svg>
+      <svg width="320" height="320" viewBox="0 0 320 320" fill="none"
+           style="position:absolute;bottom:-60px;left:-80px;opacity:0.035;">
+        <circle cx="160" cy="160" r="140" stroke="#8A2232" stroke-width="1"/>
+        <circle cx="160" cy="160" r="90"  stroke="#8A2232" stroke-width="0.8"/>
+      </svg>
+    </div>
+
+    <div class="sk-videos__inner">
+
+      <div class="sk-videos__header">
+        <h2 class="sk-videos__heading">See Our Story</h2>
+        <p class="sk-videos__body">Hear from the families, teachers and students who make St Kevin's what it is — a place where every child is known, valued and inspired.</p>
+      </div>
+
+      <div class="sk-videos__grid">
+
+        <!-- Card 1 -->
+        <div class="sk-vcard" data-src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4">
+          <video class="sk-vcard__video" muted playsinline preload="none" aria-hidden="true"></video>
+          <div class="sk-vcard__overlay">
+            <div class="sk-vcard__top">
+              <span class="sk-vcard__cat">School Life</span>
+              <span class="sk-vcard__dur">1:48</span>
+            </div>
+            <div class="sk-vcard__centre">
+              <img src="images/logo-sk-white.png" alt="" class="sk-vcard__logo">
+              <button class="sk-vcard__play" aria-label="Play video">
+                <svg class="sk-play-icon"  width="22" height="22" viewBox="0 0 24 24" fill="white"><polygon points="8,3 20,12 8,21"/></svg>
+                <svg class="sk-pause-icon" width="20" height="20" viewBox="0 0 24 24" fill="white"><rect x="5" y="4" width="4" height="16" rx="1"/><rect x="15" y="4" width="4" height="16" rx="1"/></svg>
+              </button>
+            </div>
+            <div class="sk-vcard__bottom">
+              <p class="sk-vcard__title">A day in Foundation — what learning feels like at St Kevin's</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="sk-vcard" data-src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4">
+          <video class="sk-vcard__video" muted playsinline preload="none" aria-hidden="true"></video>
+          <div class="sk-vcard__overlay">
+            <div class="sk-vcard__top">
+              <span class="sk-vcard__cat">Parents</span>
+              <span class="sk-vcard__dur">2:12</span>
+            </div>
+            <div class="sk-vcard__centre">
+              <img src="images/logo-sk-white.png" alt="" class="sk-vcard__logo">
+              <button class="sk-vcard__play" aria-label="Play video">
+                <svg class="sk-play-icon"  width="22" height="22" viewBox="0 0 24 24" fill="white"><polygon points="8,3 20,12 8,21"/></svg>
+                <svg class="sk-pause-icon" width="20" height="20" viewBox="0 0 24 24" fill="white"><rect x="5" y="4" width="4" height="16" rx="1"/><rect x="15" y="4" width="4" height="16" rx="1"/></svg>
+              </button>
+            </div>
+            <div class="sk-vcard__bottom">
+              <p class="sk-vcard__title">Meet the parents — why families choose St Kevin's</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="sk-vcard" data-src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4">
+          <video class="sk-vcard__video" muted playsinline preload="none" aria-hidden="true"></video>
+          <div class="sk-vcard__overlay">
+            <div class="sk-vcard__top">
+              <span class="sk-vcard__cat">Faith &amp; Community</span>
+              <span class="sk-vcard__dur">1:55</span>
+            </div>
+            <div class="sk-vcard__centre">
+              <img src="images/logo-sk-white.png" alt="" class="sk-vcard__logo">
+              <button class="sk-vcard__play" aria-label="Play video">
+                <svg class="sk-play-icon"  width="22" height="22" viewBox="0 0 24 24" fill="white"><polygon points="8,3 20,12 8,21"/></svg>
+                <svg class="sk-pause-icon" width="20" height="20" viewBox="0 0 24 24" fill="white"><rect x="5" y="4" width="4" height="16" rx="1"/><rect x="15" y="4" width="4" height="16" rx="1"/></svg>
+              </button>
+            </div>
+            <div class="sk-vcard__bottom">
+              <p class="sk-vcard__title">Faith in action — how our Catholic values shape every day</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div class="sk-vcard" data-src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4">
+          <video class="sk-vcard__video" muted playsinline preload="none" aria-hidden="true"></video>
+          <div class="sk-vcard__overlay">
+            <div class="sk-vcard__top">
+              <span class="sk-vcard__cat">Enrolments</span>
+              <span class="sk-vcard__dur">2:30</span>
+            </div>
+            <div class="sk-vcard__centre">
+              <img src="images/logo-sk-white.png" alt="" class="sk-vcard__logo">
+              <button class="sk-vcard__play" aria-label="Play video">
+                <svg class="sk-play-icon"  width="22" height="22" viewBox="0 0 24 24" fill="white"><polygon points="8,3 20,12 8,21"/></svg>
+                <svg class="sk-pause-icon" width="20" height="20" viewBox="0 0 24 24" fill="white"><rect x="5" y="4" width="4" height="16" rx="1"/><rect x="15" y="4" width="4" height="16" rx="1"/></svg>
+              </button>
+            </div>
+            <div class="sk-vcard__bottom">
+              <p class="sk-vcard__title">Starting the journey — your enrolment questions answered</p>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /.sk-videos__grid -->
+
+    </div><!-- /.sk-videos__inner -->
+
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTION 13 — ENROLMENTS CTA
+  ════════════════════════════════ -->
+  <section class="sk-enrol" id="sk-section-enrol-cta" aria-label="Enrolments">
+    <div class="sk-enrol__card">
+
+      <!-- Text column -->
+      <div class="sk-enrol__text">
+        <span class="sk-enrol__label">Come and see for yourself</span>
+        <h2 class="sk-enrol__heading"><span class="scroll-text-reveal" data-text="Enrolments">Enrolments</span></h2>
+        <p class="sk-enrol__body">The best way to experience St Kevin's is to visit and see the community in action. We warmly invite you to come and discover what makes our school such a special place to belong and learn.</p>
+        <div class="sk-enrol__buttons">
+          <a href="mailto:administration@skhamptonpark.catholic.edu.au"
+             class="sk-btn-wipe sk-btn-wipe--light">Enquire</a>
+          <a href="https://www.skhamptonpark.catholic.edu.au/enrolments"
+             class="sk-btn-wipe sk-btn-wipe--accent">Book a tour</a>
+        </div>
+      </div>
+
+      <!-- Visual column — decorative SVG + circular photo -->
+      <div class="sk-enrol__visual" aria-hidden="true">
+
+        <!-- Background decorative elements -->
+        <svg class="sk-enrol__deco" viewBox="0 0 500 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <!-- Concentric rings around image centre — breathing via CSS -->
+          <circle class="sk-enrol__ring-outer" cx="250" cy="240" r="175" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+          <circle class="sk-enrol__ring-inner" cx="250" cy="240" r="128" stroke="rgba(255,255,255,0.04)" stroke-width="1"/>
+
+          <!-- Dots — white -->
+          <circle class="sk-enrol__dot-f2" cx="88"  cy="96"  r="5"   fill="rgba(255,255,255,0.22)"/>
+          <circle cx="134" cy="46"  r="3"   fill="rgba(255,255,255,0.15)"/>
+          <circle cx="410" cy="120" r="4.5" fill="rgba(255,255,255,0.18)"/>
+          <circle cx="448" cy="360" r="3.5" fill="rgba(255,255,255,0.13)"/>
+          <circle cx="62"  cy="380" r="4"   fill="rgba(255,255,255,0.16)"/>
+          <circle cx="380" cy="430" r="2.5" fill="rgba(255,255,255,0.12)"/>
+
+          <!-- Dots — burgundy accent (two float) -->
+          <circle class="sk-enrol__dot-f1" cx="390" cy="80"  r="5.5" fill="#8A2232" opacity="0.65"/>
+          <circle class="sk-enrol__dot-f3" cx="60"  cy="290" r="4"   fill="#8A2232" opacity="0.55"/>
+          <circle cx="290" cy="448" r="3.5" fill="#8A2232" opacity="0.5"/>
+
+          <!-- Plus cross — top right -->
+          <rect x="430" y="194" width="14" height="3"  rx="1.5" fill="rgba(255,255,255,0.35)"/>
+          <rect x="435" y="189" width="3"  height="14" rx="1.5" fill="rgba(255,255,255,0.35)"/>
+
+          <!-- Plus cross — bottom left -->
+          <rect x="52"  y="310" width="12" height="3"  rx="1.5" fill="#8A2232" opacity="0.6"/>
+          <rect x="57"  y="305" width="3"  height="12" rx="1.5" fill="#8A2232" opacity="0.6"/>
+
+          <!-- Plus cross — mid left -->
+          <rect x="70"  y="178" width="10" height="2.5" rx="1.25" fill="rgba(255,255,255,0.2)"/>
+          <rect x="74"  y="174" width="2.5" height="10" rx="1.25" fill="rgba(255,255,255,0.2)"/>
+
+          <!-- Six-point asterisk — top centre (true 60° spacing, r=12) -->
+          <line x1="302" y1="52"  x2="302" y2="76"  stroke="rgba(255,255,255,0.28)" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="292" y1="58"  x2="312" y2="70"  stroke="rgba(255,255,255,0.28)" stroke-width="1.8" stroke-linecap="round"/>
+          <line x1="292" y1="70"  x2="312" y2="58"  stroke="rgba(255,255,255,0.28)" stroke-width="1.8" stroke-linecap="round"/>
+
+          <!-- Small diamond — lower right -->
+          <rect x="414" y="302" width="9" height="9" rx="1" fill="rgba(255,255,255,0.18)" transform="rotate(45 418.5 306.5)"/>
+
+          <!-- Loose arc — decorative curve bottom left -->
+          <path d="M 48 420 Q 80 390 110 420" stroke="rgba(255,255,255,0.12)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+        </svg>
+
+        <!-- Circular photo -->
+        <div class="sk-enrol__circle-img">
+          <img src="images/samples/cosmos_1616537391.jpeg"
+               alt=""
+               loading="lazy">
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════
+       WAVE: Enrolments → Footer (navy bg + cream wave)
+  ════════════════════════════════ -->
+  <div class="sk-wave-divider sk-wave-divider--burg" aria-hidden="true">
+    <svg class="sk-wave-svg"
+         viewBox="0 0 1440 120"
+         preserveAspectRatio="none"
+         xmlns="http://www.w3.org/2000/svg">
+      <path d="M 0 0 L 1440 0 L 1440 14 C 1080 22 360 76 0 88 Z"
+            fill="#F6F3EE"/>
+    </svg>
+  </div>
+
+
+  <!-- Footer injected by js/sk-layout.js -->
+  <div id="sk-layout-footer"></div>
+
+
+  <!-- ════════════════════════════════
+       SCRIPTS
+  ════════════════════════════════ -->
+
+  <!-- Shared layout JS -->
+  <script src="js/sk-layout.js?v=2"></script>
+
+  <!-- Wave dividers: on-scroll SVG path morph (Codrops OnScrollPathAnimations pattern) -->
+  <script>
+  (function () {
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    gsap.registerPlugin(ScrollTrigger);
+
+    /*
+      Wave config array.
+      dA = resting state (gentle wave, enters viewport at bottom).
+      dB = peak state (dramatic wave, divider mid-viewport).
+      Paths share identical M C C L L Z command structure → GSAP attr.d
+      interpolates cleanly without MorphSVGPlugin.
+
+      Add Section 9 (navy) and Section 11 (navy-inv) entries here
+      when those HTML sections are built.
+    */
+    var WAVES = [
+      {
+        pathId:    'sk-wave-path-2',
+        wrapperId: 'sk-wave-divider-2',
+        dA: 'M 0 0 L 1440 0 L 1440 14 C 1080 22 360 76 0 88 Z',
+        dB: 'M 0 0 L 1440 0 L 1440 14 C 1080 92 360 -8 0 88 Z'
+      },
+      {
+        pathId:    'sk-wave-path-9',
+        wrapperId: 'sk-wave-divider-9',
+        dA: 'M 0 0 L 1440 0 L 1440 14 C 1080 22 360 76 0 88 Z',
+        dB: 'M 0 0 L 1440 0 L 1440 14 C 1080 92 360 -8 0 88 Z'
+      },
+      {
+        pathId:    'sk-wave-path-11',
+        wrapperId: 'sk-wave-divider-11',
+        dA: 'M 0 0 L 1440 0 L 1440 14 C 1080 22 360 76 0 88 Z',
+        dB: 'M 0 0 L 1440 0 L 1440 14 C 1080 92 360 -8 0 88 Z'
+      }
+    ];
+
+    WAVES.forEach(function (cfg) {
+      var path    = document.getElementById(cfg.pathId);
+      var wrapper = document.getElementById(cfg.wrapperId);
+      if (!path || !wrapper) return;
+
+      gsap.set(path, { attr: { d: cfg.dA } });
+
+      if (reduced) return;
+
+      /* Expand then compress: dA → dB → dA as divider passes through viewport */
+      var tl = gsap.timeline({
+        scrollTrigger: {
+          id:      cfg.pathId + '-morph',
+          trigger: wrapper,
+          start:   'top 100%',
+          end:     'bottom 0%',
+          scrub:   1.6
+        }
+      });
+      tl.fromTo(path, { attr: { d: cfg.dA } }, { attr: { d: cfg.dB }, ease: 'sine.inOut' })
+        .to(path, { attr: { d: cfg.dA }, ease: 'sine.inOut' });
+    });
+
+    /* ── Enrolments CTA — entrance animation ── */
+    (function () {
+      var enrol = document.getElementById('sk-enrol');
+      if (!enrol || reduced) return;
+
+      var card    = enrol.querySelector('.sk-enrol__card');
+      var label   = enrol.querySelector('.sk-enrol__label');
+      var heading = enrol.querySelector('.sk-enrol__heading');
+      var body    = enrol.querySelector('.sk-enrol__body');
+      var btns    = enrol.querySelectorAll('.sk-enrol__buttons a');
+      var imgWrap = enrol.querySelector('.sk-enrol__circle-img');
+
+      /* Card starts invisible and slightly shrunk */
+      gsap.set(card, { opacity: 0, y: 44, scale: 0.97, transformOrigin: 'center bottom' });
+
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: enrol,
+          start: 'top 82%',
+          toggleActions: 'play none none none'
+        }
+      })
+      /* Card lifts and settles into place */
+      .to(card, {
+        opacity: 1, y: 0, scale: 1,
+        duration: 0.75, ease: 'expo.out'
+      })
+      /* Label and body cascade in from left */
+      .fromTo(label,
+        { x: -20, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.55, ease: 'expo.out' },
+        '-=0.42'
+      )
+      .fromTo(body,
+        { x: -18, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.6, ease: 'expo.out' },
+        '-=0.38'
+      )
+      /* Buttons stagger up */
+      .fromTo(btns,
+        { y: 14, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5, ease: 'expo.out', stagger: 0.1 },
+        '-=0.35'
+      )
+      /* Circular image: clip-path expands outward from centre */
+      .fromTo(imgWrap,
+        { clipPath: 'circle(0% at 50% 50%)', opacity: 0 },
+        { clipPath: 'circle(80% at 50% 50%)', opacity: 1, duration: 0.9, ease: 'expo.out' },
+        '-=0.7'
+      );
+    })();
+
+  })();
+  </script>
+
+  <!-- Quotes carousel — 6-second auto-cycle, dot navigation, accessible -->
+  <script>
+  (function () {
+    var items   = document.querySelectorAll('.sk-quote-item');
+    var dots    = document.querySelectorAll('.sk-quotes__dot');
+    var current = 0;
+    var timer;
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    function show(idx) {
+      items[current].classList.remove('is-active');
+      dots[current].classList.remove('is-active');
+      dots[current].setAttribute('aria-selected', 'false');
+      current = (idx + items.length) % items.length;
+      items[current].classList.add('is-active');
+      dots[current].classList.add('is-active');
+      dots[current].setAttribute('aria-selected', 'true');
+    }
+
+    function tick() { show(current + 1); }
+
+    function resetTimer() {
+      clearInterval(timer);
+      if (!reduced) timer = setInterval(tick, 6000);
+    }
+
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () {
+        show(parseInt(dot.getAttribute('data-qi'), 10));
+        resetTimer();
+      });
+    });
+
+    resetTimer();
+  })();
+  </script>
+
+  <!-- Pillar pinned image scroll (Codrops gsap-pinned-image-mask-reveal adapted) -->
+  <script>
+  (function () {
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* Assign z-index from data-order so highest-order image sits on top */
+    document.querySelectorAll('.sk-pillar__img-wrap').forEach(function (el) {
+      var o = el.getAttribute('data-order');
+      if (o !== null) el.style.zIndex = o;
+    });
+
+    /* Mobile: interleave text items and image items using CSS order */
+    function layoutMobile() {
+      var isMob    = window.matchMedia('(max-width: 768px)').matches;
+      var textEls  = gsap.utils.toArray('.sk-pillar__item');
+      var imgEls   = gsap.utils.toArray('.sk-pillar__img-wrap');
+      if (isMob) {
+        textEls.forEach(function (el, i) { el.style.order = i * 2;     });
+        imgEls.forEach(function  (el, i) { el.style.order = i * 2 + 1; });
+      } else {
+        textEls.forEach(function (el) { el.style.order = ''; });
+        imgEls.forEach(function  (el) { el.style.order = ''; });
+      }
+    }
+    var resizeT;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeT);
+      resizeT = setTimeout(layoutMobile, 100);
+    }, { passive: true });
+    layoutMobile();
+
+    /* ── Desktop: pinned image + clipPath wipe ── */
+    var mm = gsap.matchMedia();
+
+    mm.add('(min-width: 769px)', function () {
+      var imgs = gsap.utils.toArray('.sk-pillar__img-wrap img');
+
+      gsap.set(imgs, {
+        clipPath:       'inset(0)',
+        objectPosition: '50% 30%'
+      });
+
+      var mainTl = gsap.timeline({
+        scrollTrigger: {
+          trigger: '#sk-pillar',
+          start:   'top top',
+          end:     'bottom bottom',
+          pin:     '#sk-pillar-right',
+          scrub:   true
+        }
+      });
+
+      /* Brand colors per section: start white, then alternate navy/burgundy */
+      var sectionBgs    = ['#F6F3EE', '#051E42', '#8A2232', '#051E42'];
+      var sectionDark   = [false, true, true, true];
+      var wrapper       = document.getElementById('sk-section-pillars');
+      var headings      = gsap.utils.toArray('.sk-pillar__heading');
+      var bodies        = gsap.utils.toArray('.sk-pillar__text');
+      var taglines      = gsap.utils.toArray('.sk-pillar__tagline');
+
+      /* Set initial state */
+      gsap.set(wrapper, { backgroundColor: sectionBgs[0] });
+
+      imgs.forEach(function (_, i) {
+        var cur  = imgs[i];
+        var next = imgs[i + 1] || null;
+        var seg  = gsap.timeline();
+
+        if (next) {
+          var nextBg   = sectionBgs[i + 1];
+          var isDark   = sectionDark[i + 1];
+          var textCol  = isDark ? '#ffffff' : '#051E42';
+          var bodyCol  = isDark ? 'rgba(255,255,255,0.78)' : '#374151';
+          var tagCol   = isDark ? 'rgba(255,255,255,0.90)' : '#8A2232';
+
+          seg
+            .to(cur, {
+              clipPath:       'inset(0px 0px 100%)',
+              objectPosition: '50% 60%',
+              duration:       1.5,
+              ease:           'none'
+            }, 0)
+            .to(next, {
+              objectPosition: '50% 40%',
+              duration:       1.5,
+              ease:           'none'
+            }, 0)
+            /* Background + text colors change mid-wipe */
+            .to(wrapper, {
+              backgroundColor: nextBg,
+              duration:        0.6,
+              ease:            'power2.inOut'
+            }, 0.6)
+            .to(headings[i + 1], { color: textCol, duration: 0.4 }, 0.6)
+            .to(bodies[i + 1],   { color: bodyCol, duration: 0.4 }, 0.6)
+            .to(taglines[i + 1], { color: tagCol,  duration: 0.4 }, 0.6)
+        }
+
+        mainTl.add(seg);
+      });
+
+      /* Text entrance — each body block fades/rises as its item enters */
+      if (!reduced) {
+        gsap.utils.toArray('.sk-pillar__item').forEach(function (item) {
+          var p       = item.querySelector('.sk-pillar__text');
+          var tagline = item.querySelector('.sk-pillar__tagline');
+
+          gsap.timeline({
+            scrollTrigger: {
+              trigger:       item,
+              start:         'top 72%',
+              end:           'top 28%',
+              toggleActions: 'play none none reverse'
+            }
+          })
+          .fromTo(p,
+            { y: 20, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.6, ease: 'expo.out' }
+          )
+          .fromTo(tagline,
+            { y: 14, opacity: 0 },
+            { y: 0, opacity: 1, duration: 0.55, ease: 'expo.out' },
+            '-=0.35'
+          );
+        });
+      }
+
+      return function () {};   /* cleanup — gsap.matchMedia handles it */
+    });
+  })();
+  </script>
+
+  <!-- Social icon micro-animations via GSAP -->
+  <script>
+  (function () {
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return;
+
+    /* ══════════════════════════════════════
+       SECTION 10 — Circular Testimonials
+    ══════════════════════════════════════ */
+    (function () {
+      var skTestimonials = [
+        {
+          quote: 'St Kevin\'s is more than a school for our family, it is our extended family.',
+          name: 'Tash',
+          role: 'Parent',
+          src: 'images/samples/cosmos_1616537391.jpeg'
+        },
+        {
+          quote: 'Thanks to the nurturing environment and dedicated teachers at St Kevin\'s, my once very shy daughter has grown into a confident child.',
+          name: 'Karina Rogers',
+          role: 'Parent',
+          src: 'images/samples/cosmos_1226555780.jpeg'
+        },
+        {
+          quote: 'What we appreciate most about St Kevin\'s is its diversity and the way the school brings families together, creating a strong sense of belonging.',
+          name: 'Shanelle Fairweather',
+          role: 'Parent',
+          src: 'images/samples/cosmos_1113100871.jpeg'
+        }
+      ];
+
+      var activeIndex   = 0;
+      var autoplayTimer = null;
+      var imageContainer = document.getElementById('sk-testimonial-images');
+      var nameEl         = document.getElementById('sk-testimonial-name');
+      var roleEl         = document.getElementById('sk-testimonial-role');
+      var quoteEl        = document.getElementById('sk-testimonial-quote');
+      var quoteWrap      = document.getElementById('sk-testimonial-quote-wrap');
+      var prevBtn        = document.getElementById('sk-testimonial-prev');
+      var nextBtn        = document.getElementById('sk-testimonial-next');
+      var contentEl      = document.querySelector('.sk-testimonial-content');
+
+      if (!imageContainer || !nameEl) return;
+
+      /* Build image elements */
+      skTestimonials.forEach(function (t, i) {
+        var img = document.createElement('img');
+        img.src = t.src;
+        img.alt = t.name;
+        img.className = 'sk-testimonial-img';
+        img.dataset.index = i;
+        imageContainer.appendChild(img);
+      });
+
+      var imgs = imageContainer.querySelectorAll('.sk-testimonial-img');
+
+      function calcGap() {
+        var w = imageContainer.offsetWidth || 480;
+        var minW = 480, maxW = 800, minG = 48, maxG = 72;
+        if (w <= minW) return minG;
+        if (w >= maxW) return maxG;
+        return minG + (maxG - minG) * ((w - minW) / (maxW - minW));
+      }
+
+      function getStyle(i) {
+        var gap     = calcGap();
+        var stickUp = gap * 0.8;
+        var n       = skTestimonials.length;
+        var isActive = i === activeIndex;
+        var isLeft   = (activeIndex - 1 + n) % n === i;
+        var isRight  = (activeIndex + 1) % n === i;
+
+        if (isActive) return { zIndex: 3, opacity: 1, pointerEvents: 'auto',
+          transform: 'translateX(0px) translateY(0px) scale(1) rotateY(0deg)' };
+        if (isLeft)   return { zIndex: 2, opacity: 1, pointerEvents: 'auto',
+          transform: 'translateX(-' + gap + 'px) translateY(-' + stickUp + 'px) scale(0.85) rotateY(15deg)' };
+        if (isRight)  return { zIndex: 2, opacity: 1, pointerEvents: 'auto',
+          transform: 'translateX(' + gap + 'px) translateY(-' + stickUp + 'px) scale(0.85) rotateY(-15deg)' };
+        return { zIndex: 1, opacity: 0, pointerEvents: 'none', transform: 'scale(0.75)' };
+      }
+
+      function render() {
+        var t = skTestimonials[activeIndex];
+        nameEl.textContent  = t.name;
+        roleEl.textContent  = t.role;
+        quoteEl.textContent = t.quote;
+
+        /* restart fade animation via class toggle */
+        quoteWrap.classList.remove('is-animating');
+        void quoteWrap.offsetWidth; /* reflow */
+        quoteWrap.classList.add('is-animating');
+
+        imgs.forEach(function (img, i) {
+          var s = getStyle(i);
+          img.style.zIndex       = s.zIndex;
+          img.style.opacity      = s.opacity;
+          img.style.pointerEvents = s.pointerEvents;
+          img.style.transform    = s.transform;
+        });
+      }
+
+      function stopAutoplay() {
+        if (autoplayTimer) { clearInterval(autoplayTimer); autoplayTimer = null; }
+      }
+
+      function goNext() {
+        activeIndex = (activeIndex + 1) % skTestimonials.length;
+        render();
+        stopAutoplay();
+      }
+      function goPrev() {
+        activeIndex = (activeIndex - 1 + skTestimonials.length) % skTestimonials.length;
+        render();
+        stopAutoplay();
+      }
+
+      /* Lock content height to tallest quote on mobile so switching quotes never snaps the section height */
+      function lockMobileHeight() {
+        if (!contentEl) return;
+        if (window.innerWidth > 767) { contentEl.style.minHeight = ''; return; }
+        contentEl.style.minHeight = '';
+        var savedQ = quoteEl.textContent, savedN = nameEl.textContent, savedR = roleEl.textContent;
+        var maxH = 0;
+        skTestimonials.forEach(function (t) {
+          quoteEl.textContent = t.quote;
+          nameEl.textContent  = t.name;
+          roleEl.textContent  = t.role;
+          var h = contentEl.offsetHeight;
+          if (h > maxH) maxH = h;
+        });
+        quoteEl.textContent = savedQ;
+        nameEl.textContent  = savedN;
+        roleEl.textContent  = savedR;
+        contentEl.style.minHeight = maxH + 'px';
+      }
+
+      nextBtn.addEventListener('click', goNext);
+      prevBtn.addEventListener('click', goPrev);
+      var resizeTimer;
+      window.addEventListener('resize', function () {
+        render();
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(lockMobileHeight, 150);
+      });
+
+      autoplayTimer = setInterval(function () {
+        activeIndex = (activeIndex + 1) % skTestimonials.length;
+        render();
+      }, 5000);
+
+      render();
+      document.fonts.ready.then(lockMobileHeight);
+    })();
+
+
+    /* ══════════════════════════════════════
+       SECTION 12 — VIDEO GRID
+    ══════════════════════════════════════ */
+    (function () {
+      var section = document.getElementById('sk-videos');
+      if (!section) return;
+
+      /* Scroll entrance */
+      if (!reduced) {
+        var header = section.querySelector('.sk-videos__header');
+        gsap.from(header.children, {
+          scrollTrigger: { trigger: header, start: 'top 82%' },
+          opacity: 0, y: 28, duration: 0.7, ease: 'expo.out',
+          stagger: 0.12
+        });
+        gsap.from(section.querySelectorAll('.sk-vcard'), {
+          scrollTrigger: { trigger: '.sk-videos__grid', start: 'top 85%' },
+          opacity: 0, y: 44, duration: 0.75, ease: 'expo.out',
+          stagger: { amount: 0.35, from: 'start' }
+        });
+      }
+
+      /* Hover-to-preview + click-to-play/pause */
+      section.querySelectorAll('.sk-vcard').forEach(function (card) {
+        var video   = card.querySelector('.sk-vcard__video');
+        var overlay = card.querySelector('.sk-vcard__overlay');
+        var clicked = false;
+        var srcSet  = false;
+
+        /* Lazy-load src on first interaction — prevents eager network requests */
+        function ensureSrc() {
+          if (!srcSet) { video.src = card.dataset.src; srcSet = true; }
+        }
+
+        function showOverlay()  { gsap.to(overlay, { opacity: 1,    duration: 0.4, ease: 'power2.out' }); }
+        function dimOverlay()   { gsap.to(overlay, { opacity: 0.28, duration: 0.5, ease: 'power2.out' }); }
+        function hideOverlay()  { gsap.to(overlay, { opacity: 0,    duration: 0.45, ease: 'power2.out' }); }
+
+        card.addEventListener('mouseenter', function () {
+          if (clicked) return;
+          ensureSrc();
+          video.muted = true;
+          video.play().catch(function(){});
+          dimOverlay();
+        });
+
+        card.addEventListener('mouseleave', function () {
+          if (!clicked) {
+            video.pause();
+            video.currentTime = 0;
+            showOverlay();
+          }
+        });
+
+        card.addEventListener('click', function () {
+          if (video.paused) {
+            ensureSrc();
+            video.muted = true;
+            video.play().catch(function(){});
+            clicked = true;
+            card.classList.add('is-playing');
+            hideOverlay();
+          } else {
+            video.pause();
+            clicked = false;
+            card.classList.remove('is-playing');
+            showOverlay();
+          }
+        });
+
+        /* Fade video in once enough data is buffered */
+        video.addEventListener('loadeddata', function () {
+          video.classList.add('is-loaded');
+        });
+      });
+    })();
+
+    /* ══════════════════════════════════════
+       SECTION 10 — EFFECT — Scroll entrance
+    ══════════════════════════════════════ */
+    (function () {
+      if (reduced) return;
+
+      var effect = document.getElementById('sk-effect');
+      if (!effect) return;
+
+      var label   = effect.querySelector('.sk-effect__label');
+      var heading = effect.querySelector('.sk-effect__heading');
+      var rule    = effect.querySelector('.sk-effect__rule');
+      var body    = effect.querySelector('.sk-effect__body');
+      var imgWrap = effect.querySelector('.sk-testimonial-image-container');
+      var content = effect.querySelector('.sk-testimonial-content');
+
+      gsap.set(rule, { scaleX: 0 });
+
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: effect,
+          start: 'top 82%',
+          toggleActions: 'play none none none'
+        }
+      })
+      .fromTo(label,
+        { y: 16, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.7, ease: 'expo.out' }
+      )
+      .to(rule,
+        { scaleX: 1, duration: 0.65, ease: 'expo.out', transformOrigin: 'center' },
+        '-=0.35'
+      )
+      .fromTo(body,
+        { y: 14, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: 'expo.out' },
+        '-=0.35'
+      )
+      .fromTo([imgWrap, content],
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.85, ease: 'expo.out', stagger: 0.15 },
+        '-=0.3'
+      );
+    })();
+
+  })();
+  </script>
+
+</body>
+</html>

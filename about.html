@@ -1,0 +1,2087 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — St Kevin's Primary School, Hampton Park</title>
+  <meta name="description" content="Learn about St Kevin's story, mission, vision and the people who make our Hampton Park Catholic primary school a place where every child is known, valued and supported.">
+  <link rel="canonical" href="https://www.skhamptonpark.catholic.edu.au/about.html">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.skhamptonpark.catholic.edu.au/about.html">
+  <meta property="og:title" content="About Us — St Kevin's Primary School, Hampton Park">
+  <meta property="og:description" content="Learn about St Kevin's story, mission, vision and the people who make our Hampton Park Catholic primary school a place where every child is known, valued and supported.">
+  <meta property="og:image" content="https://www.skhamptonpark.catholic.edu.au/images/logo-sk-colour.png">
+  <meta property="og:site_name" content="St Kevin's Primary School Hampton Park">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About Us — St Kevin's Primary School, Hampton Park">
+  <meta name="twitter:description" content="Learn about St Kevin's story, mission, vision and the people who make our Hampton Park Catholic primary school a place where every child is known, valued and supported.">
+  <meta name="twitter:image" content="https://www.skhamptonpark.catholic.edu.au/images/logo-sk-colour.png">
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#051E42">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@400;500&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-navy':    '#051E42',
+            'burgundy-red': '#8A2232',
+            'warm-cream':   '#F6F3EE',
+            'cloud-grey':   '#F0EDE5',
+            'border-mist':  '#E2E6EA',
+            'slate-text':   '#6B7280',
+            'navy-tint':    '#0A2D5C',
+            'red-soft':     '#F4E3E6',
+          },
+          fontFamily: {
+            'montserrat': ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            'inter':      ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            'script':     ['Dancing Script', 'cursive'],
+          },
+          maxWidth: { 'content': '1200px' },
+          borderRadius: { 'card': '12px', 'image': '16px' },
+          boxShadow: { 'soft': '0 8px 24px rgba(0, 0, 0, 0.08)' },
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/ScrollTrigger.min.js"></script>
+  <!-- Lenis smooth scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <!-- Shared layout styles -->
+  <link rel="stylesheet" href="css/sk-layout.css?v=2">
+
+
+  <style>
+    /* ── CSS Custom Properties ── */
+    :root {
+      --color-deep-navy:    #051E42;
+      --color-burgundy-red: #8A2232;
+      --color-pure-white:   #FFFFFF;
+      --color-warm-cream:   #F6F3EE;
+      --color-cloud-grey:   #F0EDE5;
+      --color-border-mist:  #E2E6EA;
+      --color-slate-text:   #6B7280;
+      --color-navy-tint:    #0A2D5C;
+      --color-red-soft:     #F4E3E6;
+
+      --font-montserrat:     'Montserrat', ui-sans-serif, system-ui, sans-serif;
+      --font-inter:          'Inter', ui-sans-serif, system-ui, sans-serif;
+      --font-dancing-script: 'Dancing Script', cursive;
+
+      --text-caption:    14px; --leading-caption:    1.6;
+      --text-body:       16px; --leading-body:       1.7;
+      --text-body-lg:    18px; --leading-body-lg:    1.7;
+      --text-tagline:    24px; --leading-tagline:    1.4;
+      --text-heading-sm: 22px; --leading-heading-sm: 1.3;
+      --text-heading:    28px; --leading-heading:    1.25;
+      --text-heading-lg: 36px; --leading-heading-lg: 1.2;
+      --text-display:    48px; --leading-display:    1.1;
+      --text-display-lg: 56px; --leading-display-lg: 1.1;
+
+      --font-weight-regular:   400;
+      --font-weight-medium:    500;
+      --font-weight-semibold:  600;
+      --font-weight-bold:      700;
+      --font-weight-extrabold: 800;
+
+      --spacing-4:   4px;  --spacing-8:   8px;  --spacing-12: 12px;
+      --spacing-16: 16px;  --spacing-24: 24px;  --spacing-32: 32px;
+      --spacing-48: 48px;  --spacing-64: 64px;  --spacing-80: 80px;
+
+      --max-width:               1200px;
+      --section-padding-desktop: 96px;
+      --section-padding-tablet:  64px;
+      --section-padding-mobile:  48px;
+
+      --radius-buttons:  8px;
+      --radius-cards:    12px;
+      --radius-inputs:   8px;
+      --radius-images:   16px;
+      --radius-circular: 50%;
+      --radius-pill:     999px;
+
+      --shadow-soft: 0 8px 24px rgba(0,0,0,0.08);
+
+      --transition-fast:   0.2s ease;
+      --transition-medium: 0.3s ease;
+
+      --z-search:      1100;
+      --z-header:      1000;
+      --z-backdrop:    9000;
+      --z-sidebar:     9100;
+
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { overflow-x: hidden; }
+    html { scroll-behavior: auto; } /* Lenis handles smooth scroll */
+    body {
+      margin: 0;
+      font-family: var(--font-inter);
+      color: var(--color-deep-navy);
+      background: var(--color-warm-cream);
+      font-kerning: normal;
+      font-optical-sizing: auto;
+    }
+
+    /* ── Header ── */
+    .sk-header {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: var(--z-header);
+      padding: 20px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background var(--transition-medium), box-shadow var(--transition-medium), transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .sk-header.is-transparent { background: transparent; }
+    .sk-header.is-scrolled {
+      background: rgba(251,249,247,0.96);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.07);
+    }
+    .sk-header.is-hidden { transform: translateY(-100%); }
+
+    /* Hamburger */
+    .sk-hamburger {
+      display: flex; flex-direction: column; justify-content: center; gap: 5px;
+      width: 40px; height: 40px;
+      background: none; border: none; cursor: pointer; padding: 6px; flex-shrink: 0;
+      border-radius: 8px;
+      transition: background var(--transition-fast);
+    }
+    .sk-hamburger:hover { background: transparent; }
+    .is-scrolled .sk-hamburger:hover { background: transparent; }
+    .sk-hamburger span {
+      display: block; width: 100%; height: 2px; border-radius: 2px;
+      background: var(--color-pure-white);
+      transition: background var(--transition-medium);
+    }
+    .is-scrolled .sk-hamburger span { background: var(--color-deep-navy); }
+
+    /* Two separate logos — hero (white, pre-scroll) and sticky (colour, post-scroll) */
+    .sk-logo-hero, .sk-logo-sticky { display: block; width: auto; }
+    .sk-logo-hero { height: var(--logo-hero-size, 90px); }
+    .is-scrolled .sk-logo-hero { display: none; }
+    .sk-logo-sticky { display: none; height: var(--logo-sticky-size, 52px); }
+    .is-scrolled .sk-logo-sticky { display: block; }
+
+    .sk-sidebar-logo { transition: none; }
+
+    /* Search toggle */
+    .sk-search-btn {
+      width: 40px; height: 40px;
+      background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      transition: background var(--transition-fast);
+      flex-shrink: 0;
+    }
+    .sk-search-btn:hover { background: rgba(255,255,255,0.12); }
+    .is-scrolled .sk-search-btn:hover { background: var(--color-cloud-grey); }
+    .sk-search-btn svg { transition: stroke var(--transition-medium); }
+    .is-transparent .sk-search-btn svg { stroke: var(--color-pure-white); }
+    .is-scrolled    .sk-search-btn svg { stroke: var(--color-deep-navy); }
+
+    /* ── Search Panel ── */
+    .sk-search-panel {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: var(--z-search);
+      background: var(--color-warm-cream);
+      border-bottom: 1px solid var(--color-border-mist);
+      padding: 20px 24px;
+      visibility: hidden; opacity: 0;
+    }
+    .sk-search-inner {
+      max-width: var(--max-width); margin: 0 auto;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .sk-search-form {
+      flex: 1; display: flex; align-items: center; gap: 0;
+      border: 1.5px solid var(--color-border-mist);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--color-cloud-grey);
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+    .sk-search-form:focus-within {
+      border-color: var(--color-deep-navy);
+      box-shadow: 0 0 0 3px rgba(5, 30, 66, 0.08);
+      background: var(--color-warm-cream);
+    }
+    .sk-search-icon {
+      padding: 0 14px 0 16px; display: flex; align-items: center; flex-shrink: 0;
+    }
+    .sk-search-icon svg { display: block; }
+    .sk-search-input {
+      flex: 1; border: none; background: transparent; outline: none;
+      font-family: var(--font-inter); font-size: 16px; font-weight: 400;
+      color: var(--color-deep-navy); padding: 14px 0;
+      line-height: 1.4;
+    }
+    .sk-search-input::placeholder { color: var(--color-slate-text); }
+    .sk-search-submit {
+      padding: 10px 16px; margin: 4px;
+      background: var(--color-deep-navy); border: none; cursor: pointer;
+      border-radius: 7px;
+      font-family: var(--font-montserrat); font-size: 13px; font-weight: 700;
+      color: #fff; letter-spacing: 0.03em;
+      transition: background var(--transition-fast);
+    }
+    .sk-search-submit:hover { background: var(--color-navy-tint); }
+    .sk-search-close-btn {
+      width: 40px; height: 40px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: none; border: none; cursor: pointer;
+      border-radius: 50%;
+      transition: background var(--transition-fast);
+    }
+    .sk-search-close-btn:hover { background: var(--color-cloud-grey); }
+    .sk-search-results {
+      max-width: var(--max-width); margin: 12px auto 0;
+      font-family: var(--font-inter); font-size: 14px;
+      color: var(--color-slate-text); min-height: 0;
+    }
+    .sk-search-results.has-message {
+      padding: 8px 0 4px;
+      border-top: 1px solid var(--color-border-mist);
+    }
+
+    /* ── Nav Backdrop ── */
+    .sk-nav-backdrop {
+      position: fixed; inset: 0;
+      background: rgba(5, 30, 66, 0.6);
+      z-index: var(--z-backdrop);
+      cursor: pointer;
+      visibility: hidden; opacity: 0;
+    }
+
+    /* ── Nav Sidebar ── */
+    .sk-nav-sidebar {
+      position: fixed; top: 0; left: 0; bottom: 0;
+      width: min(620px, 95vw);
+      z-index: var(--z-sidebar);
+      background: var(--color-warm-cream);
+      display: flex; flex-direction: row;
+      overflow: hidden;
+      box-shadow: 4px 0 40px rgba(5, 30, 66, 0.18);
+      transform: translateX(-100%);
+    }
+
+    .sk-sidebar-content {
+      width: min(340px, 100%);
+      flex-shrink: 0;
+      display: flex; flex-direction: column;
+      overflow-y: auto; overflow-x: hidden;
+      scrollbar-width: none;
+    }
+    .sk-sidebar-content::-webkit-scrollbar { display: none; }
+
+    .sk-sidebar-image {
+      flex: 1; min-width: 160px;
+      padding: 12px 12px 12px 0;
+      display: flex;
+    }
+    .sk-sidebar-image-frame {
+      flex: 1;
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+    }
+    .sk-sidebar-image img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      .sk-sidebar-image { display: none; }
+      .sk-nav-sidebar   { width: min(340px, 90vw); }
+    }
+
+    .sk-sidebar-logo {
+      max-height: var(--logo-sidebar-size, 80px);
+      max-width: 100%;
+      width: auto; height: auto; display: block;
+    }
+
+    .sk-sidebar-header {
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px 24px 0;
+      flex-shrink: 0;
+    }
+    .sk-sidebar-header .sk-sidebar-close {
+      position: absolute; left: 24px;
+    }
+
+    .sk-sidebar-close {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: none;
+      border: 1.5px solid var(--color-border-mist);
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-deep-navy);
+      transition: border-color var(--transition-fast), background var(--transition-fast);
+    }
+    .sk-sidebar-close:hover {
+      border-color: var(--color-deep-navy);
+      background: var(--color-cloud-grey);
+    }
+
+    .sk-sidebar-nav {
+      padding: 32px 24px 0;
+      display: flex; flex-direction: column; gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .sk-nav-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 0;
+      text-decoration: none;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: none;
+    }
+
+    .sk-nav-item-label {
+      font-family: var(--font-montserrat);
+      font-size: clamp(22px, 4vw, 28px);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-deep-navy);
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+      display: inline-block;
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), color 0.28s;
+    }
+    .sk-nav-item:hover .sk-nav-item-label { transform: translateX(6px); }
+
+    .sk-nav-arrow {
+      display: flex; align-items: center;
+      color: var(--color-burgundy-red);
+      flex-shrink: 0;
+    }
+    .sk-nav-arrow-line {
+      display: block; height: 2px; width: 0;
+      background: currentColor;
+      transition: width 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: left center;
+      border-radius: 2px;
+    }
+    .sk-nav-arrow-chevron {
+      display: flex; align-items: center;
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .sk-nav-item:hover .sk-nav-arrow-line    { width: 20px; }
+    .sk-nav-item:hover .sk-nav-arrow-chevron { transform: translateX(4px); }
+    .sk-nav-item:hover .sk-nav-item-label    { color: var(--color-burgundy-red); }
+
+    .sk-sidebar-footer {
+      margin-top: auto;
+      padding: 20px 24px 28px;
+      border-top: 1px solid var(--color-border-mist);
+    }
+    .sk-sidebar-socials {
+      display: inline-flex; align-items: center;
+      background: var(--color-cloud-grey);
+      border-radius: 999px;
+      padding: 5px;
+      gap: 2px;
+    }
+    .sk-social-btn {
+      width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      background: transparent;
+      color: #4B5563;
+      text-decoration: none;
+    }
+    .sk-social-btn svg { display: block; overflow: visible; }
+
+    /* ── Hero ── */
+    .sk-hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      overflow: hidden;
+      background: var(--color-deep-navy);
+    }
+    /* About page: shorter sub-page hero */
+    .sk-hero--short { min-height: 60vh; }
+
+    .sk-hero-video-wrap {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .sk-hero-video-wrap video {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: max(100%, calc(100vh * 16 / 9));
+      height: max(100%, calc(100vw * 9 / 16));
+      min-width: 100%; min-height: 100%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      object-fit: cover;
+    }
+
+    .sk-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: var(--color-deep-navy);
+      opacity: var(--hero-overlay-opacity, 0.60);
+      pointer-events: none;
+      transition: opacity 0.15s ease;
+    }
+
+    .sk-hero-macs {
+      position: absolute;
+      bottom: 32px; left: 32px;
+      z-index: 2;
+    }
+
+    /* ── Wave Dividers ── */
+    .sk-wave-divider {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      display: block;
+    }
+    .sk-wave-divider--burg    { background: var(--color-warm-cream); height: 126px; }
+    .sk-wave-divider--navy    { background: var(--color-warm-cream); height: 120px; }
+    .sk-wave-divider--navy-inv { background: var(--color-navy);      height: 120px; }
+    .sk-wave-divider--cream   { background: var(--color-warm-cream); height: 126px; }
+
+    .sk-wave-svg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: block;
+      transform-origin: top center;
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      .sk-nav-sidebar, .sk-nav-backdrop, .sk-search-panel {
+        transition: visibility 0s, opacity 0.1s !important;
+      }
+      .sk-smv__copy { transition: opacity 0.1s !important; transform: none !important; }
+    }
+
+    /* ══════════════════════════════════════════════
+       SECTIONS 4–6 — STORY / MISSION / VISION
+       Scroll-driven sticky panel, 3 slides × 100vh
+    ══════════════════════════════════════════════ */
+    .sk-smv { background: var(--color-warm-cream); }
+    .sk-smv__track { height: 300vh; position: relative; }
+    .sk-smv__sticky {
+      position: sticky; top: 0;
+      height: 100vh;
+      display: flex; align-items: stretch;
+      overflow: hidden;
+    }
+    .sk-smv__grid {
+      width: 100%; max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      height: 100%;
+    }
+    .sk-smv__left {
+      position: relative;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 64px;
+      background: var(--color-warm-cream);
+      border-right: 1px solid rgba(5,30,66,0.1);
+      min-width: 0;
+    }
+    .sk-smv__pagination {
+      position: absolute; top: 56px; left: 64px;
+      display: flex; gap: 8px; z-index: 2;
+    }
+    .sk-smv__dot {
+      height: 6px; width: 24px;
+      border: 0; padding: 0; border-radius: 999px; cursor: pointer;
+      background: rgba(5,30,66,0.32);
+      transition: width 0.5s cubic-bezier(0.4,0,0.2,1), background 0.5s ease;
+    }
+    .sk-smv__dot.is-active { width: 48px; background: var(--color-deep-navy); }
+    .sk-smv__copy-wrap { position: relative; min-height: 320px; }
+    .sk-smv__copy {
+      position: absolute; inset: 0;
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+      pointer-events: none;
+    }
+    .sk-smv__copy.is-active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .sk-smv__heading {
+      margin: 0 0 1.25rem;
+      font-family: var(--font-dancing-script);
+      font-size: clamp(3rem, 5.5vw, 5.25rem);
+      font-weight: 700;
+      color: var(--color-deep-navy);
+      line-height: 1.05;
+    }
+    .sk-smv__body {
+      margin: 0; max-width: 480px;
+      font-family: var(--font-inter);
+      font-size: clamp(1rem, 1.5vw, 1.075rem);
+      line-height: 1.82;
+      color: var(--color-deep-navy);
+      opacity: 0.84;
+      text-wrap: pretty;
+    }
+    .sk-smv__cta-wrap {
+      position: absolute; left: 64px; bottom: 64px; z-index: 2;
+    }
+    /* Wipe button — matches global sk-btn-wipe on homepage */
+    .sk-btn-wipe {
+      --btn-color:        #051E42;
+      --btn-color-active: #0A2D5C;
+      font-family: var(--font-montserrat);
+      font-weight: 600; font-size: 13px;
+      letter-spacing: 0.09em; text-transform: uppercase;
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 14px 28px; min-height: 44px;
+      position: relative; cursor: pointer; overflow: hidden;
+      border: 1.5px solid var(--btn-color);
+      border-radius: var(--radius-buttons);
+      transition: color 0.28s, transform 0.12s cubic-bezier(0.16,1,0.3,1);
+      z-index: 1; color: var(--btn-color);
+      background: transparent; text-decoration: none;
+      line-height: 1; white-space: nowrap;
+    }
+    .sk-btn-wipe:active { transform: scale(0.96); }
+    .sk-btn-wipe::before {
+      content: ''; position: absolute; z-index: -1;
+      background: var(--btn-color);
+      height: 220px; width: 280px; border-radius: 50%;
+      top: 100%; left: 100%;
+      transition: top 0.58s cubic-bezier(0.23,1,0.32,1),
+                  left 0.58s cubic-bezier(0.23,1,0.32,1);
+    }
+    .sk-btn-wipe:hover { color: #fff; }
+    .sk-btn-wipe:hover::before { top: -55px; left: -55px; }
+    .sk-btn-wipe:active::before { background: var(--btn-color-active); transition: background 0s; }
+    .sk-btn-wipe--accent { --btn-color: #8A2232; --btn-color-active: #6d1a27; }
+    .sk-smv__right {
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      padding: 48px; overflow: hidden;
+      background-image:
+        linear-gradient(to right,  rgba(5,30,66,0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(5,30,66,0.045) 1px, transparent 1px);
+      background-size: 3.5rem 3.5rem;
+    }
+    .sk-smv__frame {
+      position: relative;
+      width: 80%; height: 72vh;
+      max-width: 88%; min-width: 240px;
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 28px 70px rgba(5,30,66,0.16);
+    }
+    .sk-smv__img-track {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      transition: transform 0.65s cubic-bezier(0.4,0,0.2,1);
+    }
+    .sk-smv__img-slide {
+      width: 100%; height: 100%;
+      overflow: hidden;
+      background: #2a3444;
+      position: relative;
+    }
+    .sk-smv__img-photo {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);
+    }
+    .sk-smv__img-slide:hover .sk-smv__img-photo { transform: scale(1.03); }
+    .sk-smv__img-label {
+      font-family: var(--font-montserrat); font-size: 12px; font-weight: 600;
+      color: rgba(255,255,255,0.4); letter-spacing: 0.1em; text-transform: uppercase;
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    @media (max-width: 900px) {
+      .sk-smv__track { height: auto; }
+      .sk-smv__sticky { position: relative; height: auto; }
+      .sk-smv__grid { grid-template-columns: 1fr; }
+      .sk-smv__left {
+        min-height: 56vh; padding: 48px 28px 28px;
+        border-right: 0; border-bottom: 1px solid rgba(5,30,66,0.1);
+      }
+      .sk-smv__pagination { top: 24px; left: 28px; }
+      .sk-smv__copy-wrap { min-height: 280px; margin-top: 32px; }
+      .sk-smv__cta-wrap { position: relative; left: auto; bottom: auto; margin-top: 32px; padding-bottom: 8px; }
+      .sk-smv__right { min-height: 44vh; padding: 28px; }
+      .sk-smv__frame { height: 38vh; width: 80%; min-width: 200px; max-width: 88%; }
+    }
+
+    /* ══════════════════════════════════════════════
+       SECTION 3 — ABOUT ST KEVIN'S INTRO (bold editorial)
+    ══════════════════════════════════════════════ */
+    .sk-about-intro {
+      padding: clamp(72px, 9vw, 120px) clamp(24px, 5vw, 80px);
+      background: var(--color-warm-cream);
+      overflow: hidden;
+    }
+    .sk-about-intro__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 0.62fr;
+      gap: clamp(40px, 7vw, 96px);
+      align-items: center;
+    }
+    .sk-about-intro__heading {
+      font-family: var(--font-montserrat);
+      font-size: clamp(3rem, 9.5vw, 7.25rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 0.94;
+      color: var(--color-deep-navy);
+      text-transform: uppercase;
+      margin: 0 0 2rem;
+      text-wrap: balance;
+    }
+    .sk-about-intro__rule {
+      width: 56px; height: 3px;
+      background: var(--color-burgundy-red);
+      border: none; border-radius: 2px;
+      display: block;
+    }
+    .sk-about-intro__right { padding-top: 0.25rem; }
+    .sk-about-intro__tagline {
+      font-family: var(--font-dancing-script);
+      font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+      font-weight: 700;
+      color: var(--color-burgundy-red);
+      line-height: 1.3;
+      margin: 0 0 1.5rem;
+    }
+    .sk-about-intro__body {
+      font-family: var(--font-inter);
+      font-size: clamp(1rem, 1.45vw, 1.075rem);
+      font-weight: 400;
+      color: var(--color-deep-navy);
+      line-height: 1.82;
+      margin: 0;
+      max-width: 50ch;
+      opacity: 0.82;
+      text-wrap: pretty;
+    }
+    @media (max-width: 860px) {
+      .sk-about-intro__inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .sk-about-intro__heading {
+        font-size: clamp(2.75rem, 10.5vw, 4rem);
+        margin-bottom: 1.25rem;
+      }
+      .sk-about-intro__body { max-width: 58ch; }
+    }
+
+    /* ══════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════ */
+    .sk-footer {
+      background: var(--color-deep-navy);
+      position: relative;
+      overflow: hidden;
+    }
+    .sk-footer__deco {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      user-select: none;
+    }
+    .sk-footer__inner {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(56px, 8vw, 96px) clamp(24px, 5vw, 64px) 0;
+      z-index: 1;
+    }
+    .sk-footer__tagline {
+      font-family: var(--font-dancing-script);
+      font-size: clamp(1.45rem, 3.2vw, 2.4rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.65);
+      text-align: center;
+      line-height: 1.52;
+      margin: 0 auto clamp(32px, 5vw, 52px);
+      max-width: 640px;
+      text-wrap: balance;
+    }
+    .sk-footer__rule {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(138,34,50,0.65) 30%, rgba(138,34,50,0.65) 70%, transparent 100%);
+      margin-bottom: clamp(36px, 5.5vw, 56px);
+      transform-origin: center;
+    }
+    .sk-footer__logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--footer-logo-gap, 60px);
+      margin-bottom: clamp(44px, 6vw, 64px);
+      flex-wrap: wrap;
+    }
+    .sk-footer__logo-link {
+      display: block;
+      opacity: 0.82;
+      transition: opacity 0.25s ease;
+    }
+    .sk-footer__logo-link:hover,
+    .sk-footer__logo-link:focus-visible { opacity: 1; }
+    .sk-footer__logo-img { width: auto; display: block; }
+    .sk-footer__logo-img--macs { height: var(--footer-logo-h, 110px); }
+    .sk-footer__logo-img--sk   { height: var(--footer-logo-h, 110px); }
+    .sk-footer__cols {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr 1fr;
+      gap: clamp(28px, 5vw, 72px);
+      margin-bottom: clamp(44px, 6vw, 64px);
+    }
+    @media (max-width: 900px) {
+      .sk-footer__cols { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 540px) {
+      .sk-footer__cols { grid-template-columns: 1fr; gap: 36px; }
+      .sk-footer__logos { justify-content: center; }
+    }
+    .sk-footer__col-head {
+      font-family: var(--font-montserrat);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-burgundy-red);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .sk-footer__address {
+      font-style: normal;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .sk-footer__contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      font-family: var(--font-inter);
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.68);
+    }
+    .sk-footer__contact-row svg { flex-shrink: 0; margin-top: 3px; opacity: 0.6; }
+    .sk-footer__contact-row a { color: rgba(255,255,255,0.68); text-decoration: none; transition: color 0.2s ease; }
+    .sk-footer__contact-row a:hover { color: rgba(255,255,255,0.95); }
+    .sk-footer__hours {
+      font-family: var(--font-inter);
+      font-size: 12px;
+      color: rgba(255,255,255,0.34);
+      letter-spacing: 0.02em;
+      margin-top: 2px;
+    }
+    .sk-footer__nav { display: flex; flex-direction: column; gap: 8px; }
+    .sk-footer__link {
+      font-family: var(--font-inter);
+      font-size: 14px;
+      color: rgba(255,255,255,0.68);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      transition: color 0.2s ease;
+    }
+    .sk-footer__link::before {
+      content: '';
+      display: inline-block;
+      width: 14px; height: 1px;
+      background: var(--color-burgundy-red);
+      opacity: 0.6; flex-shrink: 0;
+      transition: width 0.35s cubic-bezier(0.16,1,0.3,1), opacity 0.2s ease;
+    }
+    .sk-footer__link:hover { color: rgba(255,255,255,0.95); }
+    .sk-footer__link:hover::before { width: 22px; opacity: 1; }
+    .sk-footer__about {
+      font-family: var(--font-inter);
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.58);
+      margin-bottom: 20px;
+      text-wrap: pretty;
+    }
+    .sk-footer__social { display: flex; gap: 10px; }
+    .sk-footer__social-btn {
+      display: flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.16);
+      color: rgba(255,255,255,0.68);
+      text-decoration: none;
+      transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+    }
+    .sk-footer__social-btn:hover {
+      border-color: rgba(138,34,50,0.75);
+      background: rgba(138,34,50,0.14);
+      color: #fff;
+    }
+    .sk-footer__social-btn:focus-visible { outline: 2px solid var(--color-burgundy-red); outline-offset: 3px; }
+    .sk-footer__bottom {
+      border-top: 1px solid rgba(255,255,255,0.09);
+      padding: 22px 0 clamp(28px, 4vw, 44px);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; flex-wrap: wrap;
+    }
+    .sk-footer__copy { font-family: var(--font-inter); font-size: 12px; color: rgba(255,255,255,0.35); }
+    .sk-footer__bottom-links { display: flex; align-items: center; gap: 8px; }
+    .sk-footer__bottom-link {
+      font-family: var(--font-inter); font-size: 12px;
+      color: rgba(255,255,255,0.35); text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .sk-footer__bottom-link:hover { color: rgba(255,255,255,0.65); }
+    .sk-footer__bottom-sep { color: rgba(255,255,255,0.18); font-size: 10px; }
+
+
+    /* ══════════════════════════════════════════════
+       SECTION 7 — OUR PRINCIPAL
+    ══════════════════════════════════════════════ */
+    /* ── Section 7: Our Principal ── */
+    .sk-principal {
+      background: var(--color-warm-cream);
+      padding: clamp(64px, 9vw, 112px) clamp(24px, 5vw, 80px);
+    }
+    /* Outer blue container — shows through the gap as a mat */
+    .sk-principal__outer {
+      max-width: 1160px; margin: 0 auto;
+      background: #051E42;
+      border-radius: 28px;
+      padding: 16px;
+      box-shadow: none;
+    }
+    /* Two-column grid — gap reveals the container bg as a seam */
+    .sk-principal__inner {
+      display: grid;
+      grid-template-columns: 42% 1fr;
+      gap: 16px;
+    }
+    /* LEFT: photo */
+    .sk-principal__media {
+      position: relative; overflow: hidden;
+      border-radius: 20px;
+      background: #02152e;
+      cursor: pointer; margin: 0; min-height: 520px;
+    }
+    .sk-principal__poster {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.75s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .sk-principal__media:hover .sk-principal__poster { transform: scale(1.04); }
+    .sk-principal__play-overlay {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: rgba(5,30,66,0.15); transition: background 0.3s ease;
+      border-radius: 20px;
+    }
+    .sk-principal__media:hover .sk-principal__play-overlay { background: rgba(5,30,66,0.28); }
+    .sk-principal__play-btn {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: var(--color-burgundy-red);
+      display: flex; align-items: center; justify-content: center;
+      border: none; cursor: pointer;
+      box-shadow: 0 8px 32px rgba(138,34,50,0.55);
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), box-shadow 0.35s ease;
+    }
+    .sk-principal__play-btn:hover,
+    .sk-principal__media:hover .sk-principal__play-btn {
+      transform: scale(1.1);
+      box-shadow: 0 14px 48px rgba(138,34,50,0.7);
+    }
+    .sk-principal__play-btn:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+    /* RIGHT: text card */
+    .sk-principal__panel {
+      background: #0d2f5e;
+      border-radius: 20px;
+      padding: clamp(40px, 6vw, 68px) clamp(32px, 5vw, 60px);
+      display: flex; flex-direction: column; justify-content: center;
+      color: #ffffff;
+    }
+    .sk-principal__heading {
+      font-family: var(--font-montserrat);
+      font-size: clamp(2.25rem, 4vw, 3.25rem);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.0;
+      color: #ffffff; text-transform: uppercase;
+      margin: 0 0 clamp(8px, 1.2vw, 14px); text-wrap: balance;
+    }
+    .sk-principal__name {
+      font-family: var(--font-inter); font-size: clamp(1rem, 1.1vw, 1rem);
+      font-weight: 500; letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.92);
+      margin: 0 0 clamp(28px, 4.5vw, 48px);
+    }
+    .sk-principal__body {
+      font-family: var(--font-inter); font-size: clamp(1rem, 1.3vw, 1.05rem);
+      line-height: 1.9; color: rgba(255,255,255,0.82);
+      max-width: 50ch; text-wrap: pretty; margin: 0 0 clamp(24px, 4vw, 40px);
+    }
+    .sk-principal__signoff {
+      font-family: var(--font-dancing-script); font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+      font-weight: 700; font-style: italic;
+      color: rgba(255,255,255,0.46);
+    }
+
+    @media (max-width: 860px) {
+      .sk-principal__inner { grid-template-columns: 1fr; gap: 12px; }
+      .sk-principal__outer { padding: 12px; border-radius: 24px; }
+      .sk-principal__media { min-height: 280px; aspect-ratio: 4/3; }
+      .sk-principal__panel { padding: 36px 28px 44px; }
+    }
+
+    /* ══════════════════════════════════════════════
+       SECTION 9 — OUR PEOPLE INTRO
+    ══════════════════════════════════════════════ */
+    .sk-people-intro {
+      background: var(--color-deep-navy);
+      padding: clamp(80px, 12vw, 140px) clamp(24px, 5vw, 48px) clamp(72px, 10vw, 120px);
+      text-align: center; overflow: hidden; position: relative;
+    }
+    .sk-people-intro::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.048) 1px, transparent 1px);
+      background-size: 36px 36px; pointer-events: none;
+    }
+    .sk-people-intro__inner { position: relative; z-index: 1; }
+    .sk-people-intro__heading {
+      font-family: var(--font-montserrat); font-size: clamp(3rem, 10vw, 6rem);
+      font-weight: 800; letter-spacing: -0.04em; line-height: 0.88;
+      color: #fff; text-transform: uppercase;
+      margin: 0 0 clamp(16px, 3vw, 28px); text-wrap: balance;
+    }
+    .sk-people-intro__script {
+      display: block; font-family: var(--font-dancing-script);
+      font-size: clamp(1.3rem, 2.8vw, 2rem); font-weight: 700;
+      color: #8A2232; line-height: 1.45;
+      margin-bottom: clamp(28px, 5vw, 48px); font-style: italic;
+    }
+    .sk-people-intro__divider { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: clamp(20px, 3vw, 32px); }
+    .sk-people-intro__divider-line { flex: 1; max-width: 80px; height: 1px; background: rgba(138,34,50,0.5); }
+    .sk-people-intro__divider-dot { width: 7px; height: 7px; border: 1.5px solid rgba(138,34,50,0.8); transform: rotate(45deg); flex-shrink: 0; display: block; }
+    .sk-people-intro__body {
+      font-family: var(--font-inter); font-size: clamp(1rem, 1.5vw, 1.1rem);
+      line-height: 1.84; color: rgba(255,255,255,0.78);
+      max-width: 58ch; margin: 0 auto; text-wrap: pretty;
+    }
+
+    /* ══════════════════════════════════════════════
+       SECTIONS 10-13 — TEAM BLOCKS
+    ══════════════════════════════════════════════ */
+    .sk-team { background: var(--color-deep-navy); display: grid; grid-template-columns: 1fr 1fr; height: clamp(560px, 74vh, 860px); position: relative; overflow: hidden; }
+    .sk-team__visual { position: relative; overflow: hidden; }
+    .sk-team__img { display: block; position: absolute; top: -30%; left: 0; right: 0; bottom: -30%; width: 100%; object-fit: cover; will-change: transform; }
+    .sk-team__content { display: flex; flex-direction: column; justify-content: center; padding: clamp(48px, 7vw, 88px) clamp(32px, 5vw, 72px); }
+    .sk-team__level { font-family: var(--font-montserrat); font-size: 11px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #8A2232; display: inline-flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    .sk-team__level::before { content: ''; display: inline-block; width: 22px; height: 1.5px; background: #8A2232; flex-shrink: 0; }
+    .sk-team__heading { font-family: var(--font-montserrat); font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; color: #fff; text-transform: uppercase; margin: 0 0 clamp(16px, 2.5vw, 24px); text-wrap: balance; }
+    .sk-team__body { font-family: var(--font-inter); font-size: clamp(1rem, 1.35vw, 1.0625rem); line-height: 1.82; color: rgba(255,255,255,0.78); max-width: 46ch; text-wrap: pretty; margin: 0 0 clamp(20px, 3vw, 28px); }
+    .sk-team__quotes { list-style: none; padding: 0; margin: 0 0 clamp(20px, 3vw, 28px); display: flex; flex-direction: column; gap: 10px; }
+    .sk-team__quote { font-family: var(--font-dancing-script); font-size: clamp(1rem, 1.5vw, 1.2rem); font-weight: 600; color: rgba(255,255,255,0.65); font-style: italic; line-height: 1.5; padding-left: 20px; position: relative; }
+    .sk-team__quote::before { content: "\201C"; position: absolute; left: 0; top: -3px; font-family: var(--font-dancing-script); font-size: 1.45em; color: #8A2232; line-height: 1; font-style: normal; }
+    .sk-team__caption { font-family: var(--font-dancing-script); font-size: clamp(1.05rem, 1.7vw, 1.35rem); font-weight: 700; color: #8A2232; font-style: italic; line-height: 1.4; }
+    .sk-team--burg { background: #8A2232; }
+    .sk-team--burg .sk-team__level { color: #ffffff; }
+    .sk-team--burg .sk-team__level::before { background: #ffffff; }
+    .sk-team--burg .sk-team__quote::before { color: rgba(255,255,255,0.7); }
+    .sk-team--burg .sk-team__caption { color: #ffffff; }
+    @media (max-width: 800px) {
+      .sk-team { grid-template-columns: 1fr; height: auto; }
+      .sk-team__visual { height: 62vw; min-height: 260px; }
+      .sk-team__img { top: 0; bottom: 0; height: 100%; will-change: auto; transform: none !important; }
+      .sk-team__content { padding: 40px 24px 48px; }
+      .sk-team__body { max-width: 100%; }
+    }
+
+    /* ══════════════════════════════════════════════
+       SECTIONS 15–16 — SPECIALIST TEACHERS & SUPPORT STAFF
+       Portrait card grid
+    ══════════════════════════════════════════════ */
+    .sk-staff-section {
+      background: var(--color-warm-cream);
+      padding: clamp(80px, 10vw, 128px) clamp(24px, 5vw, 80px);
+    }
+    .sk-staff-section--alt { background: var(--color-cloud-grey); }
+    .sk-staff__container { max-width: 1120px; margin: 0 auto; }
+    .sk-staff__rule {
+      height: 1px; background: rgba(5,30,66,0.12); border: none;
+      margin: 0 0 clamp(52px, 7vw, 80px);
+    }
+    .sk-staff__intro {
+      display: grid; grid-template-columns: 0.72fr 1.28fr;
+      gap: clamp(32px, 5vw, 56px); align-items: start;
+      margin-bottom: clamp(48px, 7vw, 72px);
+    }
+    .sk-staff__heading {
+      font-family: var(--font-montserrat);
+      font-size: clamp(2.2rem, 4.5vw, 3.5rem); font-weight: 800;
+      letter-spacing: -0.04em; line-height: 0.96;
+      color: var(--color-deep-navy); text-transform: uppercase;
+      margin: 0; text-wrap: balance;
+    }
+    .sk-staff__body {
+      font-family: var(--font-inter); font-size: clamp(1rem, 1.35vw, 1.0625rem);
+      line-height: 1.82; color: var(--color-slate-text);
+      max-width: 52ch; text-wrap: pretty; margin: 0 0 clamp(20px, 3vw, 28px);
+    }
+    .sk-staff__chips { display: flex; flex-wrap: wrap; gap: 10px; }
+    .sk-staff__chip {
+      display: inline-flex; align-items: center; border-radius: 999px;
+      padding: 7px 14px; background: rgba(255,255,255,0.78);
+      border: 1px solid rgba(5,30,66,0.1); color: var(--color-deep-navy);
+      font-family: var(--font-inter); font-size: 14px;
+      font-weight: 500; font-style: normal; line-height: 1.3;
+    }
+    .sk-staff__grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .sk-staff__card {
+      overflow: hidden; border-radius: 20px; background: #ffffff;
+      border: 1px solid rgba(5,30,66,0.07);
+      box-shadow: 0 12px 40px rgba(5,30,66,0.06);
+      transition: transform 0.45s cubic-bezier(0.25,0.46,0.45,0.94),
+                  box-shadow 0.45s ease, border-color 0.45s ease;
+    }
+    .sk-staff__card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 64px rgba(5,30,66,0.13);
+      border-color: rgba(138,34,50,0.16);
+    }
+    .sk-staff__img-wrap {
+      width: 100%; height: 360px; overflow: hidden;
+      border-radius: 18px 18px 10px 10px; background: #c8d0dc;
+      transition: height 0.45s cubic-bezier(0.25,0.46,0.45,0.94), border-radius 0.45s ease;
+    }
+    .sk-staff__card:hover .sk-staff__img-wrap { height: 330px; border-radius: 20px; }
+    .sk-staff__img-wrap img {
+      width: 100%; height: 100%; display: block;
+      object-fit: cover; object-position: top center;
+      transform: scale(1.03);
+      transition: transform 0.5s ease;
+    }
+    .sk-staff__card:hover .sk-staff__img-wrap img { transform: scale(1.07); }
+    .sk-staff__card-foot {
+      padding: 14px 16px 18px;
+      display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    }
+    .sk-staff__name {
+      font-family: var(--font-montserrat); font-size: 15px; font-weight: 700;
+      letter-spacing: -0.02em; color: var(--color-deep-navy);
+      margin: 0; line-height: 1.2; transition: letter-spacing 0.4s ease;
+    }
+    .sk-staff__card:hover .sk-staff__name { letter-spacing: 0.03em; }
+    .sk-staff__num {
+      font-family: var(--font-inter); font-size: 11px; font-weight: 700;
+      color: var(--color-burgundy-red); letter-spacing: 0.06em; flex-shrink: 0;
+    }
+    .sk-staff__caption {
+      font-family: var(--font-dancing-script);
+      font-size: clamp(1rem, 1.6vw, 1.3rem); font-weight: 700;
+      color: var(--color-burgundy-red); font-style: italic;
+      text-align: right; margin-top: clamp(20px, 3vw, 32px); line-height: 1.4;
+    }
+    @media (max-width: 900px) {
+      .sk-staff__intro { grid-template-columns: 1fr; gap: 20px; }
+      .sk-staff__grid  { grid-template-columns: repeat(2,1fr); }
+      .sk-staff__img-wrap { height: 340px; }
+      .sk-staff__card:hover .sk-staff__img-wrap { height: 310px; }
+    }
+    @media (max-width: 540px) {
+      .sk-staff-section { padding: 60px 20px 72px; }
+      .sk-staff__grid { grid-template-columns: 1fr; gap: 20px; }
+      .sk-staff__img-wrap,
+      .sk-staff__card:hover .sk-staff__img-wrap { height: 380px; }
+      .sk-staff__card:hover { transform: none; }
+      .sk-staff__card:hover .sk-staff__img-wrap img,
+      .sk-staff__img-wrap img { transform: none; }
+    }
+
+    /* ══════════════════════════════════════════════
+       SECTION 17 — OUR PARISH CONNECTION
+       Split layout · Warm Cream bg
+    ══════════════════════════════════════════════ */
+    .sk-parish {
+      background: var(--color-warm-cream);
+      padding: clamp(80px, 10vw, 128px) clamp(24px, 5vw, 80px);
+    }
+    .sk-parish__inner {
+      max-width: 1160px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: clamp(40px, 6vw, 80px); align-items: center;
+    }
+    .sk-parish__img-wrap {
+      border-radius: 20px; overflow: hidden;
+      aspect-ratio: 4 / 3; background: var(--color-cloud-grey); margin: 0;
+    }
+    .sk-parish__img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .sk-parish__level {
+      font-family: var(--font-montserrat); font-size: 11px; font-weight: 700;
+      letter-spacing: 0.13em; text-transform: uppercase; color: var(--color-burgundy-red);
+      display: inline-flex; align-items: center; gap: 10px; margin-bottom: 20px;
+    }
+    .sk-parish__level::before {
+      content: ''; display: inline-block; width: 22px; height: 1.5px;
+      background: var(--color-burgundy-red); flex-shrink: 0;
+    }
+    .sk-parish__heading {
+      font-family: var(--font-montserrat);
+      font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 800;
+      letter-spacing: -0.03em; line-height: 1.05;
+      color: var(--color-deep-navy); text-transform: uppercase;
+      margin: 0 0 clamp(16px, 2.5vw, 24px); text-wrap: balance;
+    }
+    .sk-parish__body {
+      font-family: var(--font-inter); font-size: clamp(1rem, 1.35vw, 1.0625rem);
+      line-height: 1.82; color: var(--color-slate-text);
+      max-width: 46ch; text-wrap: pretty; margin: 0;
+    }
+    @media (max-width: 768px) {
+      .sk-parish__inner { grid-template-columns: 1fr; }
+      .sk-parish__img-wrap { aspect-ratio: 16/9; }
+    }
+
+    /* ── Character-by-character heading reveal ── */
+    .scroll-text-word {
+      display: inline-flex;
+      overflow: hidden;
+      vertical-align: bottom;
+    }
+    .scroll-text-char {
+      display: inline-block;
+      transform: translateY(108%);
+      opacity: 0;
+      transition:
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity   0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      transition-delay: calc(var(--char-index, 0) * 28ms);
+      will-change: transform, opacity;
+    }
+    .scroll-text-reveal.is-visible .scroll-text-char {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-text-char {
+        transition: none !important;
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+      }
+    }
+
+    /* ══════════════════════════════════════════════
+       MOBILE RESPONSIVENESS OVERRIDES
+    ══════════════════════════════════════════════ */
+
+    /* MACS logo in hero: reduce on small phones via custom property */
+    @media (max-width: 480px) {
+      :root { --logo-macs-size: 60px; }
+    }
+
+    /* SMV copy-wrap: fixed height clips long body text on small phones */
+    @media (max-width: 480px) {
+      .sk-smv__copy-wrap { min-height: 320px; }
+    }
+    @media (max-width: 375px) {
+      .sk-smv__copy-wrap { min-height: 360px; }
+    }
+
+    /* SMV image frame: prevent frame collapsing too small on very short viewports */
+    @media (max-width: 480px) {
+      .sk-smv__frame { height: 46vw; min-height: 180px; }
+    }
+
+    /* SMV pagination dots: expand tap target to 44px */
+    @media (max-width: 900px) {
+      .sk-smv__dot {
+        min-height: 44px;
+        padding: 19px 10px;
+        box-sizing: content-box;
+      }
+    }
+
+    /* Principal media: prevent excessive height on very small phones */
+    @media (max-width: 480px) {
+      .sk-principal__media { min-height: 0; aspect-ratio: 3/2; }
+    }
+
+    /* Staff cards: reduce image height on very small phones */
+    @media (max-width: 375px) {
+      .sk-staff__img-wrap,
+      .sk-staff__card:hover .sk-staff__img-wrap { height: 280px; }
+    }
+
+    /* Footer email: prevent long address overflowing on narrow screens */
+    @media (max-width: 480px) {
+      .sk-footer__contact-row a { word-break: break-all; }
+    }
+
+    /* SMV left panel: tighten padding further on very small phones */
+    @media (max-width: 375px) {
+      .sk-smv__left { padding: 44px 20px 24px; }
+      .sk-smv__pagination { left: 20px; }
+    }
+
+    /* About intro heading: avoid overflow at 320px edge case */
+    @media (max-width: 375px) {
+      .sk-about-intro__heading {
+        font-size: clamp(2.5rem, 12vw, 3rem);
+        letter-spacing: -0.03em;
+      }
+    }
+
+    /* ── Screen reader only utility ── */
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+    /* ══════════════════════════════════════════════
+       FIX 1 — SMV sticky: restore sticky + image above text on mobile
+       (overrides the earlier @media (max-width: 900px) block)
+    ══════════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      .sk-smv__track { height: 300vh; }
+      .sk-smv__sticky { position: sticky; top: 80px; height: calc(100vh - 80px); overflow: hidden; }
+      .sk-smv__grid { display: flex; flex-direction: column; height: 100%; }
+      .sk-smv__right { order: -1; height: 40vh; min-height: 0; padding: 8px 12px; flex-shrink: 0; }
+      .sk-smv__frame { height: 100%; width: 100%; max-width: 100%; border-radius: 10px; min-width: 0; }
+      .sk-smv__left { flex: 1; min-height: 0; overflow: hidden; padding: 14px 24px 12px; border-right: 0; border-bottom: 0; justify-content: flex-start; display: flex; flex-direction: column; }
+      .sk-smv__pagination { position: static; margin-bottom: 10px; }
+      .sk-smv__heading { font-size: clamp(1.6rem, 5.5vw, 2.4rem); margin-bottom: 0.75rem; }
+      .sk-smv__copy-wrap { height: 260px; min-height: 0; margin-top: 0; }
+      .sk-smv__cta-wrap { position: static; left: auto; bottom: auto; margin-top: 30px; flex-shrink: 0; padding-bottom: 0; }
+      /* Shrink dot tap targets to proportionate size on mobile */
+      .sk-smv__dot { min-height: 0; padding: 0; }
+    }
+    @media (max-width: 480px) {
+      .sk-smv__right { height: 36vh; }
+      .sk-smv__left { padding: 10px 18px 10px; }
+      .sk-smv__copy-wrap { height: 250px; min-height: 0; }
+      .sk-smv__heading { font-size: clamp(1.45rem, 5vw, 2rem); }
+    }
+
+    /* ══════════════════════════════════════════════
+       FIX 2 — Team sections: visual (image) always first on mobile
+    ══════════════════════════════════════════════ */
+    @media (max-width: 800px) {
+      .sk-team__visual { order: -1; }
+    }
+
+    /* ══════════════════════════════════════════════
+       FIX 3 — Wave dividers: reduce height on mobile
+       (only classes present in this file)
+    ══════════════════════════════════════════════ */
+    @media (max-width: 767px) {
+      .sk-wave-divider--burg,
+      .sk-wave-divider--navy { height: 72px; }
+    }
+    @media (max-width: 480px) {
+      .sk-wave-divider--burg,
+      .sk-wave-divider--navy { height: 60px; }
+    }
+
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "AboutPage",
+        "@id": "https://www.skhamptonpark.catholic.edu.au/about.html#webpage",
+        "url": "https://www.skhamptonpark.catholic.edu.au/about.html",
+        "name": "About Us — St Kevin's Primary School Hampton Park",
+        "description": "Learn about St Kevin's story, mission, vision and the people who make our Hampton Park Catholic primary school a place where every child is known, valued and supported.",
+        "isPartOf": { "@id": "https://www.skhamptonpark.catholic.edu.au/#website" },
+        "about": { "@id": "https://www.skhamptonpark.catholic.edu.au/#school" },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.skhamptonpark.catholic.edu.au/" },
+            { "@type": "ListItem", "position": 2, "name": "About Us", "item": "https://www.skhamptonpark.catholic.edu.au/about.html" }
+          ]
+        }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://www.skhamptonpark.catholic.edu.au/about.html#principal",
+        "name": "Jason Micallef",
+        "jobTitle": "Principal",
+        "worksFor": { "@id": "https://www.skhamptonpark.catholic.edu.au/#school" }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Header injected by js/sk-layout.js -->
+  <div id="sk-layout-header"></div>
+
+
+  <!-- ════════════════════════════════
+       SECTION 1 — HERO (60vh)
+  ════════════════════════════════ -->
+  <section class="sk-hero sk-hero--short" id="sk-section-hero" aria-label="Hero">
+
+    <h1 class="sr-only">About Us — St Kevin's Primary School</h1>
+
+    <div class="sk-hero-video-wrap" aria-hidden="true">
+      <video
+        id="sk-hero-video"
+        src="https://assets.mixkit.co/videos/35954/35954-720.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+        disablepictureinpicture
+        disableremoteplayback
+        preload="auto"
+      ></video>
+    </div>
+
+    <div class="sk-hero-overlay" id="sk-hero-overlay" aria-hidden="true"></div>
+
+    <div class="sk-hero-macs" aria-hidden="true">
+      <img src="images/macs-logo-white.png" alt="" id="sk-macs-logo" style="display:block;height:var(--logo-macs-size,90px);width:auto;transition:filter var(--transition-medium);">
+    </div>
+
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTION 2 — WAVE DIVIDER (Burgundy)
+  ════════════════════════════════ -->
+  <div class="sk-wave-divider sk-wave-divider--burg"
+       id="sk-wave-divider-2"
+       aria-hidden="true">
+    <svg class="sk-wave-svg"
+         viewBox="0 0 1440 120"
+         preserveAspectRatio="none"
+         xmlns="http://www.w3.org/2000/svg">
+      <path id="sk-wave-path-2"
+            d="M 0 0 L 1440 0 L 1440 14 C 1080 22 360 76 0 88 Z"
+            fill="#8A2232"/>
+    </svg>
+  </div>
+
+
+  <!-- ════════════════════════════════
+       SECTION 3 — ABOUT ST KEVIN'S INTRO
+       Centred text block · Warm Cream bg
+  ════════════════════════════════ -->
+  <section class="sk-about-intro" id="sk-section-about-intro" aria-label="About St Kevin's">
+    <div class="sk-about-intro__inner">
+
+      <!-- Left: display heading -->
+      <div class="sk-about-intro__left">
+        <h2 class="sk-about-intro__heading"><span class="scroll-text-reveal" data-text="About St Kevin's">About<br>St Kevin's</span></h2>
+        <div class="sk-about-intro__rule" aria-hidden="true"></div>
+      </div>
+
+      <!-- Right: accent tagline + body -->
+      <div class="sk-about-intro__right">
+        <p class="sk-about-intro__tagline">faith · learning · belonging</p>
+        <p class="sk-about-intro__body">St Kevin's is a Christ-centred Catholic primary school where every child is known, valued and supported to flourish. In our diverse Hampton Park community, faith, learning and belonging come together to shape young people who grow in confidence, compassion and purpose.</p>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTIONS 4–6 — OUR STORY / MISSION / VISION
+       Scroll-driven sticky panel · Warm Cream bg
+  ════════════════════════════════ -->
+  <div class="sk-smv" id="sk-section-smv">
+    <div class="sk-smv__track" id="sk-smv-track">
+      <div class="sk-smv__sticky" id="sk-smv-sticky">
+        <div class="sk-smv__grid">
+
+          <!-- Left: pagination + copy + CTA -->
+          <div class="sk-smv__left">
+            <div class="sk-smv__pagination" id="sk-smv-pag" role="tablist" aria-label="Navigate slides"></div>
+            <div class="sk-smv__copy-wrap" id="sk-smv-copies" aria-live="polite" aria-atomic="true"></div>
+            <div class="sk-smv__cta-wrap">
+              <a class="sk-btn-wipe sk-btn-wipe--accent" href="enrolments.html" id="sk-smv-cta">Book a Tour</a>
+            </div>
+          </div>
+
+          <!-- Right: image column -->
+          <div class="sk-smv__right" aria-hidden="true">
+            <div class="sk-smv__frame">
+              <div class="sk-smv__img-track" id="sk-smv-imgs"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ════════════════════════════════
+       SECTION 7 — OUR PRINCIPAL
+       Video thumbnail + text · Warm Cream bg
+  ════════════════════════════════ -->
+  <section class="sk-principal" id="sk-section-principal" aria-label="Our Principal">
+    <div class="sk-principal__outer">
+      <div class="sk-principal__inner">
+
+        <figure class="sk-principal__media">
+          <img class="sk-principal__poster"
+               src="images/samples/cosmos_1616537391.jpeg"
+               alt="Jason Micallef, Principal of St Kevin's Primary School"
+               loading="lazy">
+          <div class="sk-principal__play-overlay">
+            <button class="sk-principal__play-btn" aria-label="Play principal's welcome video">
+              <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+                <path d="M8.5 6.5L17 11L8.5 15.5V6.5Z" fill="white"/>
+              </svg>
+            </button>
+          </div>
+        </figure>
+
+        <div class="sk-principal__panel">
+          <h2 class="sk-principal__heading"><span class="scroll-text-reveal" data-text="Our Principal">Our<br>Principal</span></h2>
+          <p class="sk-principal__name">Jason Micallef &middot; Principal</p>
+          <p class="sk-principal__body">Welcome to St Kevin's. Our school is a place where children are supported to grow academically, socially and spiritually, surrounded by a community that believes deeply in their potential. What I value most about our school is the way people care for one another. When families, teachers and students work together with trust and purpose, remarkable things happen.</p>
+          <p class="sk-principal__signoff"><em>— Jason Micallef | Principal</em></p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTION 8 — WAVE DIVIDER (warm cream → navy)
+  ════════════════════════════════ -->
+  <div class="sk-wave-divider sk-wave-divider--navy"
+       style="background:#F6F3EE"
+       aria-hidden="true">
+    <svg class="sk-wave-svg"
+         viewBox="0 0 1440 120"
+         preserveAspectRatio="none"
+         xmlns="http://www.w3.org/2000/svg">
+      <path d="M 0 88 C 360 76 1080 22 1440 14 L 1440 120 L 0 120 Z" fill="#051E42"/>
+    </svg>
+  </div>
+
+
+  <!-- ════════════════════════════════
+       SECTION 9 — OUR PEOPLE INTRO
+       Centred · Deep Navy bg
+  ════════════════════════════════ -->
+  <section class="sk-people-intro" id="sk-section-people" aria-label="Our People">
+    <div class="sk-people-intro__inner">
+      <h2 class="sk-people-intro__heading"><span class="scroll-text-reveal" data-text="Our People">Our<br>People</span></h2>
+      <em class="sk-people-intro__script">dedicated hearts, curious minds</em>
+      <div class="sk-people-intro__divider" aria-hidden="true">
+        <span class="sk-people-intro__divider-line"></span>
+        <span class="sk-people-intro__divider-dot"></span>
+        <span class="sk-people-intro__divider-line"></span>
+      </div>
+      <p class="sk-people-intro__body">Our staff share a deep commitment to the growth and wellbeing of every child. Working together across Foundation (Prep), Junior (Gr 1 &amp; 2), Middle (Gr 3 &amp; 4) and Senior levels (Gr 5 &amp; 6), our teachers and support staff create learning environments where students feel safe, challenged and inspired.</p>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTION 10 — FOUNDATION TEAM
+       Image RIGHT, text left · Navy bg
+  ════════════════════════════════ -->
+  <section class="sk-team" id="sk-section-teams" aria-label="Foundation Team">
+    <div class="sk-team__content">
+      <span class="sk-team__level">Foundation · Prep</span>
+      <h2 class="sk-team__heading"><span class="scroll-text-reveal" data-text="Foundation">Foundation</span></h2>
+      <p class="sk-team__body">Our Foundation team welcomes children into their first year of school with warmth, patience and a deep understanding of early learning. They create safe and joyful classrooms where curiosity, confidence and independence begin to grow.</p>
+      <ul class="sk-team__quotes" aria-label="Things you might hear them say">
+        <li class="sk-team__quote">Let's try that again together.</li>
+        <li class="sk-team__quote">You can do hard things.</li>
+        <li class="sk-team__quote">Who would like to share their thinking?</li>
+      </ul>
+      <p class="sk-team__caption"><em>First stories. First friendships. First days of school.</em></p>
+    </div>
+    <div class="sk-team__visual" data-parallax-img>
+      <img class="sk-team__img"
+           src="images/samples/cosmos_1074538081.jpeg"
+           alt="St Kevin's Foundation team"
+           loading="lazy">
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTION 11 — JUNIOR TEAM
+       Image LEFT, text right · Navy bg
+  ════════════════════════════════ -->
+  <section class="sk-team" id="sk-team-junior" aria-label="Junior Team">
+    <div class="sk-team__visual" data-parallax-img>
+      <img class="sk-team__img"
+           src="images/samples/cosmos_1226555780.jpeg"
+           alt="St Kevin's Junior team"
+           loading="lazy">
+    </div>
+    <div class="sk-team__content">
+      <span class="sk-team__level">Years 1 &amp; 2</span>
+      <h2 class="sk-team__heading"><span class="scroll-text-reveal" data-text="Junior Team">Junior<br>Team</span></h2>
+      <p class="sk-team__body">Our Junior team helps students build strong foundations in literacy, numeracy and learning habits that will carry them through their schooling. These classrooms are full of questions, discovery and the excitement that comes when children begin to realise what they are capable of.</p>
+      <ul class="sk-team__quotes" aria-label="Things you might hear them say">
+        <li class="sk-team__quote">Tell me how you figured that out.</li>
+        <li class="sk-team__quote">That's a great strategy.</li>
+        <li class="sk-team__quote">Who noticed something interesting?</li>
+      </ul>
+      <p class="sk-team__caption"><em>The moment when learning starts to click.</em></p>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTION 12 — MIDDLE TEAM
+       Image RIGHT, text left · Navy bg
+  ════════════════════════════════ -->
+  <section class="sk-team" id="sk-team-middle" aria-label="Middle Team">
+    <div class="sk-team__content">
+      <span class="sk-team__level">Years 3 &amp; 4</span>
+      <h2 class="sk-team__heading"><span class="scroll-text-reveal" data-text="Middle Team">Middle<br>Team</span></h2>
+      <p class="sk-team__body">The Middle team supports students as their confidence and independence grow. Learning becomes deeper and more collaborative as students explore ideas, ask thoughtful questions and begin to see themselves as capable learners.</p>
+      <ul class="sk-team__quotes" aria-label="Things you might hear them say">
+        <li class="sk-team__quote">Convince me.</li>
+        <li class="sk-team__quote">What makes you think that?</li>
+        <li class="sk-team__quote">Let's dig a little deeper.</li>
+      </ul>
+      <p class="sk-team__caption"><em>Questions get bigger. Thinking gets deeper.</em></p>
+    </div>
+    <div class="sk-team__visual" data-parallax-img>
+      <img class="sk-team__img"
+           src="images/samples/cosmos_1263936189.jpeg"
+           alt="St Kevin's Middle team"
+           loading="lazy">
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTION 13 — SENIOR TEAM
+       Image LEFT, text right · Navy bg
+  ════════════════════════════════ -->
+  <section class="sk-team" id="sk-team-senior" aria-label="Senior Team">
+    <div class="sk-team__visual" data-parallax-img>
+      <img class="sk-team__img"
+           src="images/samples/cosmos_547543300.jpeg"
+           alt="St Kevin's Senior team"
+           loading="lazy">
+    </div>
+    <div class="sk-team__content">
+      <span class="sk-team__level">Years 5 &amp; 6</span>
+      <h2 class="sk-team__heading"><span class="scroll-text-reveal" data-text="Senior Team">Senior<br>Team</span></h2>
+      <p class="sk-team__body">Our Senior team prepares students for the transition to secondary school while nurturing leadership, responsibility and strong learning habits. Students are challenged to think critically, take ownership of their learning and contribute positively to the school community.</p>
+      <ul class="sk-team__quotes" aria-label="Things you might hear them say">
+        <li class="sk-team__quote">Show me your reasoning.</li>
+        <li class="sk-team__quote">What could you try next?</li>
+        <li class="sk-team__quote">How can we make this even better?</li>
+      </ul>
+      <p class="sk-team__caption"><em>Growing into confident learners and leaders.</em></p>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTION 15 — SPECIALIST TEACHERS
+       Portrait card grid · Warm Cream bg
+  ════════════════════════════════ -->
+  <section class="sk-staff-section" id="sk-staff-specialists" aria-label="Specialist Teachers">
+    <div class="sk-staff__container">
+      <div class="sk-staff__rule" role="separator" aria-hidden="true"></div>
+      <div class="sk-staff__intro">
+        <div>
+          <h2 class="sk-staff__heading"><span class="scroll-text-reveal" data-text="Specialist Teachers">Specialist<br>Teachers</span></h2>
+        </div>
+        <div>
+          <p class="sk-staff__body">Our Specialist teachers bring creativity, movement and new ways of thinking into the learning experience. Through Physical Education, Performing Arts, Visual Arts, STEM, Languages and Critical &amp; Creative Thinking, students discover new talents, interests and ways to express themselves.</p>
+          <div class="sk-staff__chips" aria-label="Things you might hear them say">
+            <span class="sk-staff__chip">"Let's give it a go."</span>
+            <span class="sk-staff__chip">"There's more than one way to solve that."</span>
+            <span class="sk-staff__chip">"Who's ready to perform, build, create or explore?"</span>
+          </div>
+        </div>
+      </div>
+      <div class="sk-staff__grid">
+        <article class="sk-staff__card">
+          <div class="sk-staff__img-wrap">
+            <img src="images/samples/cosmos_1074538081.jpeg" alt="Ms. Rachel Huynh" loading="lazy">
+          </div>
+          <div class="sk-staff__card-foot">
+            <p class="sk-staff__name">Ms. Rachel Huynh</p>
+          </div>
+        </article>
+        <article class="sk-staff__card">
+          <div class="sk-staff__img-wrap">
+            <img src="images/samples/cosmos_1263936189.jpeg" alt="Mr. Daniel Walsh" loading="lazy">
+          </div>
+          <div class="sk-staff__card-foot">
+            <p class="sk-staff__name">Mr. Daniel Walsh</p>
+          </div>
+        </article>
+        <article class="sk-staff__card">
+          <div class="sk-staff__img-wrap">
+            <img src="images/samples/cosmos_226684284.jpeg" alt="Ms. Priya Sharma" loading="lazy">
+          </div>
+          <div class="sk-staff__card-foot">
+            <p class="sk-staff__name">Ms. Priya Sharma</p>
+          </div>
+        </article>
+      </div>
+      <p class="sk-staff__caption"><em>Creativity, movement and discovery.</em></p>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTION 16 — SUPPORT STAFF
+       Portrait card grid · Cloud Grey bg
+  ════════════════════════════════ -->
+  <section class="sk-staff-section sk-staff-section--alt" id="sk-staff-support" aria-label="Support Staff">
+    <div class="sk-staff__container">
+      <div class="sk-staff__rule" role="separator" aria-hidden="true"></div>
+      <div class="sk-staff__intro">
+        <div>
+          <h2 class="sk-staff__heading"><span class="scroll-text-reveal" data-text="Support Staff">Support<br>Staff</span></h2>
+        </div>
+        <div>
+          <p class="sk-staff__body">Behind every great school is a team of people working together to support students and families. Our leaders, coaches, administration team, library staff and intervention specialists help ensure every child is known, supported and able to thrive.</p>
+          <div class="sk-staff__chips" aria-label="Things you might hear them say">
+            <span class="sk-staff__chip">"How can I help?"</span>
+            <span class="sk-staff__chip">"Let's work this out together."</span>
+            <span class="sk-staff__chip">"Everyone belongs here."</span>
+          </div>
+        </div>
+      </div>
+      <div class="sk-staff__grid">
+        <article class="sk-staff__card">
+          <div class="sk-staff__img-wrap">
+            <img src="images/samples/cosmos_1226555780.jpeg" alt="Mrs. Karen Walsh" loading="lazy">
+          </div>
+          <div class="sk-staff__card-foot">
+            <p class="sk-staff__name">Mrs. Karen Walsh</p>
+          </div>
+        </article>
+        <article class="sk-staff__card">
+          <div class="sk-staff__img-wrap">
+            <img src="images/samples/cosmos_547543300.jpeg" alt="Mr. James Nguyen" loading="lazy">
+          </div>
+          <div class="sk-staff__card-foot">
+            <p class="sk-staff__name">Mr. James Nguyen</p>
+          </div>
+        </article>
+        <article class="sk-staff__card">
+          <div class="sk-staff__img-wrap">
+            <img src="images/samples/cosmos_1113100871.jpeg" alt="Ms. Fatima Al-Hassan" loading="lazy">
+          </div>
+          <div class="sk-staff__card-foot">
+            <p class="sk-staff__name">Ms. Fatima Al-Hassan</p>
+          </div>
+        </article>
+      </div>
+      <p class="sk-staff__caption"><em>The people who make everything work.</em></p>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTION 17 — OUR PARISH CONNECTION
+       Split layout · Warm Cream bg
+  ════════════════════════════════ -->
+  <section class="sk-parish" id="sk-section-parish" aria-label="Our Parish Connection">
+    <div class="sk-parish__inner">
+      <figure class="sk-parish__img-wrap">
+        <img class="sk-parish__img"
+             src="images/samples/cosmos_226684284.jpeg"
+             alt="St Kevin's Parish community"
+             loading="lazy">
+      </figure>
+      <div class="sk-parish__content">
+        <span class="sk-parish__level">Faith &amp; Community</span>
+        <h2 class="sk-parish__heading"><span class="scroll-text-reveal" data-text="Our Parish Connection">Our Parish<br>Connection</span></h2>
+        <p class="sk-parish__body">St Kevin's Primary School is part of the St Kevin's Parish community. Our close partnership with the parish supports the faith formation of our students and connects school life with the wider spiritual life of the community.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTION 18 — FOOTER
+       Deep Navy bg
+  ════════════════════════════════ -->
+  <footer class="sk-footer" id="sk-footer" role="contentinfo">
+    <div class="sk-footer__deco" aria-hidden="true"></div>
+    <div class="sk-footer__inner">
+
+      <p class="sk-footer__tagline"><em>A community where every child is known, supported and inspired to flourish</em></p>
+      <div class="sk-footer__rule" aria-hidden="true"></div>
+
+      <div class="sk-footer__logos">
+        <a class="sk-footer__logo-link"
+           href="https://www.macs.edu.au"
+           target="_blank" rel="noopener noreferrer"
+           aria-label="Melbourne Archdiocese Catholic Schools">
+          <img class="sk-footer__logo-img sk-footer__logo-img--macs"
+               src="images/macs-logo-white.png"
+               alt="MACS logo">
+        </a>
+        <a class="sk-footer__logo-link" href="index.html" aria-label="St Kevin's Primary School Hampton Park">
+          <img class="sk-footer__logo-img sk-footer__logo-img--sk"
+               src="images/logo-sk-white.png"
+               alt="St Kevin's Primary School logo">
+        </a>
+      </div>
+
+      <div class="sk-footer__cols">
+
+        <div>
+          <p class="sk-footer__col-head">Contact Us</p>
+          <address class="sk-footer__address">
+            <span class="sk-footer__contact-row">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              120 Hallam Rd, Hampton Park VIC 3976
+            </span>
+            <span class="sk-footer__contact-row">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91A16 16 0 0 0 15 16.82l.81-.81a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <a href="tel:0397098600">(03) 9709 8600</a>
+            </span>
+            <span class="sk-footer__contact-row">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:administration@skhamptonpark.catholic.edu.au">administration@skhamptonpark.catholic.edu.au</a>
+            </span>
+          </address>
+          <p class="sk-footer__hours">Monday &ndash; Friday &nbsp; 8:00 am &ndash; 4:00 pm</p>
+        </div>
+
+        <div>
+          <p class="sk-footer__col-head">Quick Links</p>
+          <nav class="sk-footer__nav" aria-label="Footer navigation">
+            <a class="sk-footer__link" href="about.html">About Us</a>
+            <a class="sk-footer__link" href="learning.html">Learning</a>
+            <a class="sk-footer__link" href="community.html">Community</a>
+            <a class="sk-footer__link" href="enrolments.html">Enrolments</a>
+            <a class="sk-footer__link" href="contact.html">Contact</a>
+            <a class="sk-footer__link" href="policies.html">Policies &amp; Compliance</a>
+          </nav>
+        </div>
+
+        <div>
+          <p class="sk-footer__col-head">Resources</p>
+          <p class="sk-footer__about">St Kevin's Primary School is part of Melbourne Archdiocese Catholic Schools (MACS) — a system of 300 Catholic schools serving the Archdiocese of Melbourne.</p>
+          <div class="sk-footer__social">
+            <a class="sk-footer__social-btn"
+               href="https://www.facebook.com/StKevinsPrimaryHamptonPark"
+               target="_blank" rel="noopener noreferrer"
+               aria-label="Follow St Kevin's on Facebook">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a class="sk-footer__social-btn" href="#" aria-label="Subscribe to Schoolzine newsletter">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="sk-footer__inner" style="padding-top:0">
+      <div class="sk-footer__bottom">
+        <p class="sk-footer__copy">&copy; 2025 St Kevin's Primary School, Hampton Park. All rights reserved.</p>
+        <div class="sk-footer__bottom-links">
+          <a class="sk-footer__bottom-link" href="policies.html">Privacy Policy</a>
+          <span class="sk-footer__bottom-sep" aria-hidden="true">&middot;</span>
+          <a class="sk-footer__bottom-link" href="policies.html">Policies</a>
+        </div>
+      </div>
+    </div>
+
+  </footer>
+
+
+  <!-- Shared layout: header + nav + footer injection -->
+  <script src="js/sk-layout.js?v=2"></script>
+
+  <!-- Sections 4–6: Story / Mission / Vision — scroll-driven sticky panel -->
+  <script>
+  (function () {
+    var pagEl    = document.getElementById('sk-smv-pag');
+    var copiesEl = document.getElementById('sk-smv-copies');
+    var imgsEl   = document.getElementById('sk-smv-imgs');
+    var track    = document.getElementById('sk-smv-track');
+
+    if (!pagEl || !copiesEl || !imgsEl) return;
+
+    var SLIDES = [
+      {
+        heading: 'Our Story',
+        body:    'St Kevin\'s has grown alongside the families of Hampton Park since 1988, becoming a vibrant and culturally rich community where many traditions and languages are celebrated. Our story continues to be shaped by the partnership between students, families, parish and staff who share a commitment to learning and faith.',
+        img:     'images/samples/cosmos_1074538081.jpeg',
+        alt:     'St Kevin\'s community gathering',
+      },
+      {
+        heading: 'Our Mission',
+        body:    'We believe education is sacred work. Our mission is to nurture minds, hearts and spirits so that every child can grow into a person who lives with purpose, compassion and responsibility.',
+        img:     'images/samples/cosmos_1226555780.jpeg',
+        alt:     'Students learning at St Kevin\'s',
+      },
+      {
+        heading: 'Our Vision',
+        body:    'At St Kevin\'s, learning prepares children not just for the next stage of schooling, but for life. We aim to develop curious, confident and compassionate learners who will contribute positively to their communities and the wider world.',
+        img:     'images/samples/cosmos_1263936189.jpeg',
+        alt:     'St Kevin\'s students looking to the future',
+      },
+    ];
+
+    /* ── Build pagination dots ── */
+    SLIDES.forEach(function (_, i) {
+      var btn = document.createElement('button');
+      btn.className = 'sk-smv__dot' + (i === 0 ? ' is-active' : '');
+      btn.setAttribute('role', 'tab');
+      btn.setAttribute('aria-label', SLIDES[i].heading);
+      btn.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+      btn.dataset.idx = i;
+      pagEl.appendChild(btn);
+    });
+
+    /* ── Build copy panels ── */
+    SLIDES.forEach(function (slide, i) {
+      var div = document.createElement('div');
+      div.className = 'sk-smv__copy' + (i === 0 ? ' is-active' : '');
+      div.setAttribute('role', 'tabpanel');
+      div.innerHTML = '<h2 class="sk-smv__heading">' + slide.heading + '</h2>'
+        + '<p class="sk-smv__body">' + slide.body + '</p>';
+      copiesEl.appendChild(div);
+    });
+
+    /* ── Build image slides (crossfade, all absolutely stacked) ── */
+    SLIDES.forEach(function (slide, i) {
+      var div = document.createElement('div');
+      div.className = 'sk-smv__img-slide';
+      div.style.cssText = 'position:absolute;inset:0;opacity:' + (i === 0 ? '1' : '0') + ';transition:none;';
+      div.innerHTML = '<img class="sk-smv__img-photo" src="' + slide.img + '" alt="' + slide.alt + '" loading="' + (i === 0 ? 'eager' : 'lazy') + '">';
+      imgsEl.appendChild(div);
+    });
+
+    var current   = 0;
+    var dots      = pagEl.querySelectorAll('.sk-smv__dot');
+    var copies    = copiesEl.querySelectorAll('.sk-smv__copy');
+    var imgSlides = imgsEl.querySelectorAll('.sk-smv__img-slide');
+
+    function goTo(idx) {
+      if (idx === current && copies[current].classList.contains('is-active')) return;
+      gsap.to(imgSlides[current], { opacity: 0, duration: 0.55, ease: 'power2.inOut' });
+      dots[current].classList.remove('is-active');
+      dots[current].setAttribute('aria-selected', 'false');
+      copies[current].classList.remove('is-active');
+      current = idx;
+      gsap.to(imgSlides[current], { opacity: 1, duration: 0.65, ease: 'power2.inOut' });
+      dots[current].classList.add('is-active');
+      dots[current].setAttribute('aria-selected', 'true');
+      copies[current].classList.add('is-active');
+    }
+
+    /* ── Dot click ── */
+    dots.forEach(function (dot) {
+      dot.addEventListener('click', function () { goTo(parseInt(dot.dataset.idx, 10)); });
+    });
+
+    /* ── Scroll-driven switching (desktop sticky) ── */
+    if (track && typeof ScrollTrigger !== 'undefined') {
+      ScrollTrigger.create({
+        trigger: track,
+        start:   'top top',
+        end:     'bottom bottom',
+        onUpdate: function (self) {
+          var idx = Math.min(SLIDES.length - 1, Math.floor(self.progress * SLIDES.length));
+          goTo(idx);
+        }
+      });
+    }
+  })();
+  </script>
+
+  <!-- Section 9: Our People Intro entrance -->
+  <script>
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var section = document.getElementById('sk-section-people');
+    if (!section || typeof gsap === 'undefined') return;
+    var heading = section.querySelector('.sk-people-intro__heading');
+    var script  = section.querySelector('.sk-people-intro__script');
+    var divider = section.querySelector('.sk-people-intro__divider');
+    var body    = section.querySelector('.sk-people-intro__body');
+    gsap.set(divider, { opacity: 0, y: 10 });
+    gsap.timeline({
+      scrollTrigger: { trigger: section, start: 'top 72%', toggleActions: 'play none none none' }
+    })
+    .fromTo(heading, { y: 70, opacity: 0 }, { y: 0, opacity: 1, duration: 1.05, ease: 'expo.out' })
+    .fromTo(script,  { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7,  ease: 'expo.out' }, '-=0.6')
+    .to(divider,     { opacity: 1, y: 0, duration: 0.55, ease: 'expo.out' }, '-=0.35')
+    .fromTo(body,    { y: 22, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7,  ease: 'expo.out' }, '-=0.3');
+  })();
+  </script>
+
+  <!-- Sections 10-13: Team block parallax -->
+  <script>
+  (function () {
+    var isMobile = window.matchMedia('(max-width: 800px)').matches;
+    if (isMobile) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var wraps = Array.prototype.slice.call(document.querySelectorAll('[data-parallax-img]'));
+    var imgs  = wraps.map(function (w) { return w.querySelector('.sk-team__img'); });
+    if (!wraps.length || typeof gsap === 'undefined') return;
+    gsap.ticker.add(function () {
+      var vh = window.innerHeight;
+      for (var i = 0; i < wraps.length; i++) {
+        var rect = wraps[i].getBoundingClientRect();
+        var progress = (vh - rect.top) / (vh + rect.height);
+        progress = Math.max(0, Math.min(1, progress));
+        var shift = (0.5 - progress) * 30;
+        if (imgs[i]) imgs[i].style.transform = 'translateY(' + shift.toFixed(2) + '%)';
+      }
+    });
+  })();
+  </script>
+
+  <!-- Sections 10-13: Team block content entrance animations -->
+  <script>
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+    var teams = [
+      { id: 'sk-team-foundation', xDir: -1 },
+      { id: 'sk-team-junior',     xDir:  1 },
+      { id: 'sk-team-middle',     xDir: -1 },
+      { id: 'sk-team-senior',     xDir:  1 },
+    ];
+
+    teams.forEach(function (cfg) {
+      var section = document.getElementById(cfg.id);
+      if (!section) return;
+      var content = section.querySelector('.sk-team__content');
+      var level   = content.querySelector('.sk-team__level');
+      var heading = content.querySelector('.sk-team__heading');
+      var body    = content.querySelector('.sk-team__body');
+      var quotes  = content.querySelectorAll('.sk-team__quote');
+      var caption = content.querySelector('.sk-team__caption');
+
+      gsap.timeline({
+        scrollTrigger: { trigger: section, start: 'top 75%', toggleActions: 'play none none none' }
+      })
+      .fromTo(level,   { x: cfg.xDir * 20, opacity: 0 }, { x: 0, opacity: 1, duration: 0.6,  ease: 'expo.out' })
+      .fromTo(heading, { x: cfg.xDir * 32, opacity: 0 }, { x: 0, opacity: 1, duration: 0.85, ease: 'expo.out' }, '-=0.35')
+      .fromTo(body,    { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.65, ease: 'expo.out' }, '-=0.45')
+      .fromTo(quotes,  { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: 'expo.out', stagger: 0.1 }, '-=0.35')
+      .fromTo(caption, { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5,  ease: 'expo.out' }, '-=0.2');
+    });
+  })();
+  </script>
+
+  <!-- Section 7: Our Principal entrance -->
+  <script>
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var section = document.getElementById('sk-section-principal');
+    if (!section || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+    var outer   = section.querySelector('.sk-principal__outer');
+    var media   = section.querySelector('.sk-principal__media');
+    var panel   = section.querySelector('.sk-principal__panel');
+    var heading = panel.querySelector('.sk-principal__heading');
+    var name    = panel.querySelector('.sk-principal__name');
+    var body    = panel.querySelector('.sk-principal__body');
+    var signoff = panel.querySelector('.sk-principal__signoff');
+    gsap.timeline({
+      scrollTrigger: { trigger: section, start: 'top 72%', toggleActions: 'play none none none' }
+    })
+    .fromTo(outer,   { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.85, ease: 'expo.out' })
+    .fromTo(media,   { opacity: 0, x: -28 }, { opacity: 1, x: 0, duration: 0.85, ease: 'expo.out' }, '-=0.55')
+    .fromTo(panel,   { opacity: 0, x: 28 }, { opacity: 1, x: 0, duration: 0.85, ease: 'expo.out' }, '<')
+    .fromTo(heading, { y: 22, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7,  ease: 'expo.out' }, '-=0.45')
+    .fromTo(name,    { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, ease: 'expo.out' }, '-=0.35')
+    .fromTo(body,    { y: 14, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6,  ease: 'expo.out' }, '-=0.3')
+    .fromTo(signoff, { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5,  ease: 'expo.out' }, '-=0.3');
+  })();
+  </script>
+
+  <!-- Sections 15-16: Staff card entrance animations -->
+  <script>
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+    ['sk-staff-specialists', 'sk-staff-support'].forEach(function (id) {
+      var section = document.getElementById(id);
+      if (!section) return;
+      var heading = section.querySelector('.sk-staff__heading');
+      var body    = section.querySelector('.sk-staff__body');
+      var chips   = section.querySelectorAll('.sk-staff__chip');
+      var cards   = section.querySelectorAll('.sk-staff__card');
+      var caption = section.querySelector('.sk-staff__caption');
+      gsap.timeline({
+        scrollTrigger: { trigger: section, start: 'top 75%', toggleActions: 'play none none none' }
+      })
+      .fromTo(heading, { y: 40, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9,  ease: 'expo.out' })
+      .fromTo(body,    { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7,  ease: 'expo.out' }, '-=0.5')
+      .fromTo(chips,   { y: 12, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5,  ease: 'expo.out', stagger: 0.08 }, '-=0.35')
+      .fromTo(cards,   { y: 36, opacity: 0 }, { y: 0, opacity: 1, duration: 0.75, ease: 'expo.out', stagger: 0.12 }, '-=0.2')
+      .fromTo(caption, { y: 10, opacity: 0 }, { y: 0, opacity: 1, duration: 0.5,  ease: 'expo.out' }, '-=0.2');
+    });
+  })();
+  </script>
+
+  <!-- Section 17: Parish Connection entrance -->
+  <script>
+  (function () {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var section = document.getElementById('sk-parish');
+    if (!section || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+    var img     = section.querySelector('.sk-parish__img-wrap');
+    var level   = section.querySelector('.sk-parish__level');
+    var heading = section.querySelector('.sk-parish__heading');
+    var body    = section.querySelector('.sk-parish__body');
+    gsap.timeline({
+      scrollTrigger: { trigger: section, start: 'top 75%', toggleActions: 'play none none none' }
+    })
+    .fromTo(img,     { x: -40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.9,  ease: 'expo.out' })
+    .fromTo(level,   { y: 16, opacity: 0 },  { y: 0, opacity: 1, duration: 0.6,  ease: 'expo.out' }, '-=0.5')
+    .fromTo(heading, { y: 28, opacity: 0 },  { y: 0, opacity: 1, duration: 0.8,  ease: 'expo.out' }, '-=0.4')
+    .fromTo(body,    { y: 18, opacity: 0 },  { y: 0, opacity: 1, duration: 0.7,  ease: 'expo.out' }, '-=0.4');
+  })();
+  </script>
+
+</body>
+</html>

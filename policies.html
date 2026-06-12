@@ -1,0 +1,973 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Policies &amp; Compliance — St Kevin's Primary School, Hampton Park</title>
+  <meta name="description" content="Access school policies and compliance documents for St Kevin's Primary School, Hampton Park, via the SafeSmart portal.">
+  <link rel="canonical" href="https://www.skhamptonpark.catholic.edu.au/policies.html">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.skhamptonpark.catholic.edu.au/policies.html">
+  <meta property="og:title" content="Policies &amp; Compliance — St Kevin's Primary School, Hampton Park">
+  <meta property="og:description" content="Access school policies and compliance documents for St Kevin's Primary School, Hampton Park, via the SafeSmart portal.">
+  <meta property="og:image" content="https://www.skhamptonpark.catholic.edu.au/images/logo-sk-colour.png">
+  <meta property="og:site_name" content="St Kevin's Primary School Hampton Park">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Policies &amp; Compliance — St Kevin's Primary School, Hampton Park">
+  <meta name="twitter:description" content="Access school policies and compliance documents for St Kevin's Primary School, Hampton Park, via the SafeSmart portal.">
+  <meta name="twitter:image" content="https://www.skhamptonpark.catholic.edu.au/images/logo-sk-colour.png">
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#051E42">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@400;500&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-navy':    '#051E42',
+            'burgundy-red': '#8A2232',
+            'warm-cream':   '#F6F3EE',
+            'cloud-grey':   '#F0EDE5',
+            'border-mist':  '#E2E6EA',
+            'slate-text':   '#6B7280',
+            'navy-tint':    '#0A2D5C',
+            'red-soft':     '#F4E3E6',
+          },
+          fontFamily: {
+            'montserrat': ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            'inter':      ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            'script':     ['Dancing Script', 'cursive'],
+          },
+          maxWidth: { 'content': '1200px' },
+          borderRadius: { 'card': '12px', 'image': '16px' },
+          boxShadow: { 'soft': '0 8px 24px rgba(0, 0, 0, 0.08)' },
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/ScrollTrigger.min.js"></script>
+  <!-- Lenis smooth scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <!-- Shared layout styles -->
+  <link rel="stylesheet" href="css/sk-layout.css?v=2">
+  <!-- Shared layout JS (nav, header, click-spark) -->
+  <script src="js/sk-layout.js?v=2"></script>
+
+  <style>
+    :root {
+      --color-deep-navy:    #051E42;
+      --color-burgundy-red: #8A2232;
+      --color-pure-white:   #FFFFFF;
+      --color-warm-cream:   #F6F3EE;
+      --color-cloud-grey:   #F0EDE5;
+      --color-border-mist:  #E2E6EA;
+      --color-slate-text:   #6B7280;
+      --color-navy-tint:    #0A2D5C;
+      --color-red-soft:     #F4E3E6;
+
+      --font-montserrat:     'Montserrat', ui-sans-serif, system-ui, sans-serif;
+      --font-inter:          'Inter', ui-sans-serif, system-ui, sans-serif;
+      --font-dancing-script: 'Dancing Script', cursive;
+
+      --section-padding-desktop: 96px;
+      --section-padding-mobile:  48px;
+      --max-width: 1200px;
+      --safesmart-frame-height: 1250px;
+    }
+
+    html, body { overflow-x: hidden; }
+
+    body {
+      margin: 0;
+      font-family: var(--font-inter);
+      font-kerning: normal;
+      font-optical-sizing: auto;
+      color: var(--color-deep-navy);
+      background: var(--color-warm-cream);
+      overflow-x: hidden;
+    }
+
+    .sk-hero--policy {
+      min-height: 40vh;
+      background: var(--color-deep-navy);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .sk-policy-hero__inner {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .sk-policy-hero__heading {
+      font-family: var(--font-montserrat);
+      font-size: clamp(2.25rem, 5.5vw, 4rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      color: var(--color-pure-white);
+      margin: 0 0 20px;
+      text-wrap: balance;
+    }
+
+    .sk-policy-hero__deco {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .sk-policy-hero__rings {
+      position: absolute;
+      fill: none;
+      stroke: var(--color-pure-white);
+      stroke-width: 1;
+    }
+
+    .sk-policy-hero__rings--top {
+      top: -80px;
+      right: -80px;
+      width: 500px;
+      height: 500px;
+      opacity: 0.07;
+    }
+
+    .sk-policy-hero__rings--bottom {
+      bottom: -60px;
+      left: -60px;
+      width: 360px;
+      height: 360px;
+      opacity: 0.07;
+    }
+
+    .sk-hero-macs {
+      position: absolute;
+      left: 32px;
+      bottom: 32px;
+      z-index: 2;
+    }
+
+    .sk-hero-macs img {
+      display: block;
+      height: 80px;
+      width: auto;
+    }
+
+    .sk-wave-divider {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      display: block;
+    }
+
+    .sk-wave-divider--burg {
+      background: var(--color-warm-cream);
+      height: 126px;
+      margin-top: -2px;
+    }
+
+    .sk-wave-svg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      transform-origin: top center;
+    }
+
+    .sk-policy-intro {
+      background: var(--color-warm-cream);
+      padding: var(--section-padding-desktop) 24px;
+      text-align: center;
+    }
+
+    .sk-policy-intro__inner {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .sk-policy-intro__heading {
+      font-family: var(--font-montserrat);
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--color-deep-navy);
+      margin: 0 0 20px;
+      text-wrap: balance;
+    }
+
+    .sk-policy-intro__body {
+      font-family: var(--font-inter);
+      font-size: clamp(1rem, 1.5vw, 1.125rem);
+      line-height: 1.8;
+      color: var(--color-deep-navy);
+      opacity: 0.82;
+      margin: 0;
+      text-wrap: pretty;
+    }
+
+    .sk-safesmart {
+      background: var(--color-warm-cream);
+      padding: 0 24px var(--section-padding-desktop);
+    }
+
+    .sk-safesmart__inner {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    .sk-safesmart__frame {
+      border-radius: var(--radius-cards);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--color-border-mist);
+      min-height: var(--safesmart-frame-height);
+      background: var(--color-cloud-grey);
+    }
+
+    .sk-safesmart__frame iframe {
+      width: 100%;
+      min-height: var(--safesmart-frame-height);
+      border: 0;
+      display: block;
+      background: var(--color-warm-cream);
+    }
+
+    /* ── Character-by-character heading reveal ── */
+    .scroll-text-word {
+      display: inline-flex;
+      overflow: hidden;
+      vertical-align: bottom;
+    }
+    .scroll-text-char {
+      display: inline-block;
+      transform: translateY(108%);
+      opacity: 0;
+      transition:
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity   0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      transition-delay: calc(var(--char-index, 0) * 28ms);
+      will-change: transform, opacity;
+    }
+    .scroll-text-reveal.is-visible .scroll-text-char {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-text-char {
+        transition: none !important;
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .sk-hero--policy {
+        min-height: 42vh;
+        padding: 112px 24px 72px;
+      }
+
+      .sk-policy-hero__heading {
+        max-width: 9ch;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: clamp(2rem, 10vw, 2.45rem);
+      }
+
+      .sk-hero-macs {
+        left: 20px;
+        bottom: 24px;
+      }
+
+      .sk-hero-macs img {
+        height: 58px;
+      }
+
+      .sk-policy-intro {
+        padding: var(--section-padding-mobile) 24px;
+      }
+
+      .sk-policy-intro__inner {
+        max-width: 19rem;
+      }
+
+      .sk-safesmart {
+        padding: 0 16px var(--section-padding-mobile);
+      }
+
+      .sk-safesmart__frame,
+      .sk-safesmart__frame iframe {
+        min-height: var(--safesmart-frame-height);
+      }
+    }
+
+    .sk-hero--policy {
+      min-height: 40vh;
+    }
+
+    @media (max-width: 768px) {
+      .sk-hero--policy {
+        min-height: 42vh;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .sk-hero--policy {
+        padding: 100px 20px 68px;
+      }
+
+      .sk-hero-macs img {
+        height: 48px;
+      }
+
+      .sk-hero-macs {
+        left: 16px;
+        bottom: 20px;
+      }
+
+      .sk-policy-intro {
+        padding: var(--section-padding-mobile) 20px;
+      }
+
+      .sk-policy-intro__inner {
+        max-width: 100%;
+      }
+
+      .sk-safesmart {
+        padding: 0 12px var(--section-padding-mobile);
+      }
+    }
+
+    @media (max-width: 375px) {
+      .sk-hero--policy {
+        padding: 96px 16px 60px;
+      }
+
+      .sk-policy-intro {
+        padding: var(--section-padding-mobile) 16px;
+      }
+
+      .sk-policy-intro__inner {
+        max-width: 100%;
+      }
+
+      .sk-safesmart {
+        padding: 0 8px var(--section-padding-mobile);
+      }
+    }
+
+    @media (max-width: 767px) {
+      :root { --safesmart-frame-height: 780px; }
+    }
+
+    @media (max-width: 767px) {
+      .sk-wave-divider--burg { height: 72px; }
+    }
+    @media (max-width: 480px) {
+      .sk-wave-divider--burg { height: 60px; }
+    }
+
+    /* Touch targets — ensure all in-page interactive elements meet 44px minimum */
+    .sk-footer__link,
+    .sk-footer__bottom-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+    }
+
+    /* Concentric ring deco — prevent overflow on very small viewports */
+    @media (max-width: 480px) {
+      .sk-policy-hero__rings--top {
+        width: min(400px, 90vw);
+        height: auto;
+      }
+      .sk-policy-hero__rings--bottom {
+        width: min(280px, 75vw);
+        height: auto;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://www.skhamptonpark.catholic.edu.au/policies.html#webpage",
+        "url": "https://www.skhamptonpark.catholic.edu.au/policies.html",
+        "name": "Policies & Compliance — St Kevin's Primary School Hampton Park",
+        "description": "Access school policies and compliance documents for St Kevin's Primary School, Hampton Park, via the SafeSmart portal.",
+        "isPartOf": { "@id": "https://www.skhamptonpark.catholic.edu.au/#website" },
+        "about": { "@id": "https://www.skhamptonpark.catholic.edu.au/#school" },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.skhamptonpark.catholic.edu.au/" },
+            { "@type": "ListItem", "position": 2, "name": "Policies & Compliance", "item": "https://www.skhamptonpark.catholic.edu.au/policies.html" }
+          ]
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+<div id="sk-layout-header"></div>
+
+  <div class="sk-search-panel" id="sk-search-panel" role="search" aria-label="Site search">
+    <div class="sk-search-inner">
+      <form class="sk-search-form" id="sk-search-form" autocomplete="off">
+        <span class="sk-search-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 22 22" fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="9.5" cy="9.5" r="7"/><line x1="14.5" y1="14.5" x2="21" y2="21"/>
+          </svg>
+        </span>
+        <input type="search" class="sk-search-input" id="sk-search-input" placeholder="Search St Kevin's..." aria-label="Search">
+        <button type="submit" class="sk-search-submit">Search</button>
+      </form>
+      <button class="sk-search-close-btn" id="sk-search-close-btn" aria-label="Close search">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <line x1="2" y1="2" x2="16" y2="16"/><line x1="16" y1="2" x2="2" y2="16"/>
+        </svg>
+      </button>
+    </div>
+    <div class="sk-search-results" id="sk-search-results" aria-live="polite"></div>
+  </div>
+
+  <div class="sk-nav-backdrop" id="sk-nav-backdrop"></div>
+
+  <nav class="sk-nav-sidebar" id="sk-nav-sidebar" aria-label="Site navigation">
+    <div class="sk-sidebar-content">
+      <div class="sk-sidebar-header">
+        <button class="sk-sidebar-close" id="sk-sidebar-close" aria-label="Close navigation">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+            <line x1="2" y1="2" x2="14" y2="14"/><line x1="14" y1="2" x2="2" y2="14"/>
+          </svg>
+        </button>
+        <img src="images/logo-sk-macs-combined.png" alt="St Kevin's Primary School, Hampton Park" class="sk-sidebar-logo">
+      </div>
+      <div class="sk-sidebar-nav" aria-label="Primary navigation">
+        <a href="about.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">About Us</span>
+          <span class="sk-nav-arrow" aria-hidden="true"><span class="sk-nav-arrow-line"></span><span class="sk-nav-arrow-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg></span></span>
+        </a>
+        <a href="learning.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">Learning</span>
+          <span class="sk-nav-arrow" aria-hidden="true"><span class="sk-nav-arrow-line"></span><span class="sk-nav-arrow-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg></span></span>
+        </a>
+        <a href="community.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">Community</span>
+          <span class="sk-nav-arrow" aria-hidden="true"><span class="sk-nav-arrow-line"></span><span class="sk-nav-arrow-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg></span></span>
+        </a>
+        <a href="enrolments.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">Enrolments</span>
+          <span class="sk-nav-arrow" aria-hidden="true"><span class="sk-nav-arrow-line"></span><span class="sk-nav-arrow-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg></span></span>
+        </a>
+        <a href="contact.html" class="sk-nav-item">
+          <span class="sk-nav-item-label">Contact</span>
+          <span class="sk-nav-arrow" aria-hidden="true"><span class="sk-nav-arrow-line"></span><span class="sk-nav-arrow-chevron"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="5,3 11,8 5,13"/></svg></span></span>
+        </a>
+      </div>
+      <div class="sk-sidebar-footer">
+        <div class="sk-sidebar-socials">
+          <a href="tel:0397098600" class="sk-social-btn sk-social-btn--phone" aria-label="Call us: (03) 9709 8600">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 5.5 5.5l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </a>
+          <a href="mailto:administration@skhamptonpark.catholic.edu.au" class="sk-social-btn sk-social-btn--mail" aria-label="Email us">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect class="env-body" x="2" y="4" width="20" height="16" rx="2"/>
+              <polyline class="env-flap" points="22,6 12,13 2,6"/>
+            </svg>
+          </a>
+          <a href="https://www.facebook.com/skhamptonpark" class="sk-social-btn sk-social-btn--fb" aria-label="Find us on Facebook" target="_blank" rel="noopener noreferrer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="sk-sidebar-image" aria-hidden="true">
+      <div class="sk-sidebar-image-frame">
+        <img src="images/samples/cosmos_1616537391.jpeg" alt="" loading="eager">
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="sk-hero--policy" id="sk-section-hero" aria-label="Policies and compliance">
+      <div class="sk-policy-hero__deco" aria-hidden="true">
+        <svg class="sk-policy-hero__rings sk-policy-hero__rings--top" viewBox="0 0 500 500">
+          <circle cx="250" cy="250" r="200"/>
+          <circle cx="250" cy="250" r="140"/>
+          <circle cx="250" cy="250" r="80"/>
+        </svg>
+        <svg class="sk-policy-hero__rings sk-policy-hero__rings--bottom" viewBox="0 0 360 360">
+          <circle cx="180" cy="180" r="150"/>
+          <circle cx="180" cy="180" r="100"/>
+        </svg>
+      </div>
+      <div class="sk-policy-hero__inner">
+        <h1 class="sk-policy-hero__heading"><span class="scroll-text-reveal" data-text="School Policies">School Policies</span></h1>
+      </div>
+      <div class="sk-hero-macs" aria-hidden="true">
+        <img src="images/macs-logo-white.png" alt="">
+      </div>
+    </section>
+
+    <div class="sk-wave-divider sk-wave-divider--burg" id="sk-wave-divider-2" aria-hidden="true">
+      <svg class="sk-wave-svg" viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path id="sk-wave-path-2" d="M 0 0 L 1440 0 L 1440 14 C 1080 22 360 76 0 88 Z" fill="#8A2232"/>
+      </svg>
+    </div>
+
+    <section class="sk-policy-intro" id="sk-section-intro" aria-label="School Policies">
+      <div class="sk-policy-intro__inner">
+        <h2 class="sk-policy-intro__heading"><span class="scroll-text-reveal" data-text="Our Commitment to Safe and Transparent Schooling">Our Commitment to Safe and Transparent Schooling</span></h2>
+        <p class="sk-policy-intro__body">St Kevin's Primary School operates within the policies and governance frameworks of Melbourne Archdiocese Catholic Schools (MACS). The policies that guide our work in areas such as child safety, wellbeing and governance can be accessed below.</p>
+      </div>
+    </section>
+
+    <section class="sk-safesmart" id="sk-section-safesmart" aria-label="School Policies Portal">
+      <div class="sk-safesmart__inner">
+        <div class="sk-safesmart__frame">
+          <iframe
+            src="https://safesmartsolutions.com.au/portal/St%20Kevin's%20Primary%20School%20-%20Hampton%20Park/882a137f3d/policy"
+            title="St Kevin's School Policies — SafeSmart Portal"
+            loading="lazy"
+            allowfullscreen
+            sandbox="allow-scripts allow-same-origin allow-popups allow-forms">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <div class="sk-wave-divider" style="height:80px;background:#F6F3EE;" aria-hidden="true">
+      <svg class="sk-wave-svg" viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="#051E42"/>
+      </svg>
+    </div>
+  </main>
+
+  <footer class="sk-footer" id="sk-footer" aria-label="Site footer">
+    <svg class="sk-footer__deco" viewBox="0 0 1440 560" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <circle cx="64" cy="72" r="2.8" fill="rgba(255,255,255,0.04)"/>
+      <circle cx="96" cy="72" r="2.8" fill="rgba(255,255,255,0.04)"/>
+      <circle cx="128" cy="72" r="2.8" fill="rgba(255,255,255,0.04)"/>
+      <circle cx="1312" cy="444" r="2.4" fill="rgba(255,255,255,0.033)"/>
+      <circle cx="1344" cy="444" r="2.4" fill="rgba(255,255,255,0.033)"/>
+      <circle cx="1376" cy="444" r="2.4" fill="rgba(255,255,255,0.033)"/>
+      <circle cx="1420" cy="88" r="5" fill="#8A2232" opacity="0.22"/>
+      <circle cx="38" cy="480" r="4" fill="#8A2232" opacity="0.18"/>
+      <path d="M 1298 530 Q 1350 502 1402 530" stroke="rgba(255,255,255,0.055)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    </svg>
+    <div class="sk-footer__inner">
+      <p class="sk-footer__tagline">A community where every child is known, supported and inspired to flourish</p>
+      <div class="sk-footer__rule" aria-hidden="true"></div>
+      <div class="sk-footer__logos">
+        <a href="https://www.macs.edu.au" class="sk-footer__logo-link" aria-label="Melbourne Archdiocese Catholic Schools — opens in new tab" target="_blank" rel="noopener noreferrer">
+          <img src="images/macs-logo-white.png" alt="Melbourne Archdiocese Catholic Schools" class="sk-footer__logo-img sk-footer__logo-img--macs" loading="lazy">
+        </a>
+        <a href="index.html" class="sk-footer__logo-link" aria-label="St Kevin's Primary School — Home">
+          <img src="images/logo-sk-white.png" alt="St Kevin's Primary School Hampton Park" class="sk-footer__logo-img sk-footer__logo-img--sk" loading="lazy">
+        </a>
+      </div>
+      <div class="sk-footer__cols">
+        <div class="sk-footer__col">
+          <h3 class="sk-footer__col-head">Contact Us</h3>
+          <address class="sk-footer__address">
+            <div class="sk-footer__contact-row">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>120 Hallam Rd, Hampton Park VIC 3976</span>
+            </div>
+            <div class="sk-footer__contact-row">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.95-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <a href="tel:0397098600">(03) 9709 8600</a>
+            </div>
+            <div class="sk-footer__contact-row">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <a href="mailto:administration@skhamptonpark.catholic.edu.au">administration@<wbr>skhamptonpark.catholic.edu.au</a>
+            </div>
+          </address>
+          <p class="sk-footer__hours">Monday to Friday &nbsp;&middot;&nbsp; 8:00am – 4:00pm</p>
+        </div>
+        <div class="sk-footer__col">
+          <h3 class="sk-footer__col-head">Quick Links</h3>
+          <nav class="sk-footer__nav" aria-label="Footer navigation">
+            <a href="contact.html" class="sk-footer__link">Contact</a>
+            <a href="enrolments.html" class="sk-footer__link">Enrolments</a>
+            <a href="enrolments.html" class="sk-footer__link">School Tours</a>
+            <a href="#" class="sk-footer__link">Newsletter</a>
+            <a href="#" class="sk-footer__link">Annual Report</a>
+            <a href="policies.html" class="sk-footer__link">Policies &amp; Compliance</a>
+          </nav>
+        </div>
+        <div class="sk-footer__col">
+          <h3 class="sk-footer__col-head">Stay Connected</h3>
+          <p class="sk-footer__about">St Kevin's is a Christ-centred Catholic primary school in Hampton Park, Melbourne. Part of the Melbourne Archdiocese Catholic Schools community.</p>
+          <div class="sk-footer__social">
+            <a href="https://www.facebook.com/skhamptonpark" class="sk-footer__social-btn sk-footer__social-btn--fb" aria-label="St Kevin's on Facebook" target="_blank" rel="noopener noreferrer">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="https://www.skhamptonpark.catholic.edu.au" class="sk-footer__social-btn sk-footer__social-btn--web" aria-label="St Kevin's website" target="_blank" rel="noopener noreferrer">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="sk-footer__bottom">
+        <p class="sk-footer__copy">© 2026 St Kevin's Primary School Hampton Park</p>
+        <div class="sk-footer__bottom-links">
+          <a href="policies.html" class="sk-footer__bottom-link">Policies</a>
+          <span class="sk-footer__bottom-sep" aria-hidden="true">·</span>
+          <a href="contact.html" class="sk-footer__bottom-link">Contact</a>
+          <span class="sk-footer__bottom-sep" aria-hidden="true">·</span>
+          <a href="https://www.skhamptonpark.catholic.edu.au" class="sk-footer__bottom-link" target="_blank" rel="noopener noreferrer">skhamptonpark.catholic.edu.au</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+
+  <script>
+  (function () {
+    'use strict';
+
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var skipEntrances = Boolean(window.location.hash);
+    gsap.registerPlugin(ScrollTrigger);
+
+    var isTouch = window.matchMedia('(pointer: coarse)').matches || ('ontouchstart' in window);
+    if (!reduced && !isTouch && typeof Lenis !== 'undefined') {
+      var lenis = new Lenis({
+        autoRaf: false,
+        duration: 1.15,
+        easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }
+      });
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
+      gsap.ticker.lagSmoothing(0);
+    }
+
+    var header = document.getElementById('sk-header');
+    var hamburger = document.getElementById('sk-hamburger-btn');
+    var sidebar = document.getElementById('sk-nav-sidebar');
+    var backdrop = document.getElementById('sk-nav-backdrop');
+    var closeBtn = document.getElementById('sk-sidebar-close');
+    var searchBtn = document.getElementById('sk-search-btn');
+    var searchPanel = document.getElementById('sk-search-panel');
+    var searchClose = document.getElementById('sk-search-close-btn');
+    var searchInput = document.getElementById('sk-search-input');
+    var searchForm = document.getElementById('sk-search-form');
+    var searchRes = document.getElementById('sk-search-results');
+    var navItems = sidebar.querySelectorAll('.sk-nav-item');
+    var footerLinks = sidebar.querySelectorAll('.sk-social-btn');
+    var sideHead = sidebar.querySelector('.sk-sidebar-header');
+    var sideImg = sidebar.querySelector('.sk-sidebar-image img');
+    var navOpen = false;
+    var searchOpen = false;
+    var lastScrollY = 0;
+
+    gsap.set(sidebar, { x: '-100%' });
+    gsap.set(backdrop, { autoAlpha: 0 });
+    gsap.set(searchPanel, { autoAlpha: 0, y: -8 });
+
+    function onScroll() {
+      var y = window.scrollY;
+      var scrolled = y > 60;
+      header.classList.toggle('is-scrolled', scrolled);
+      header.classList.toggle('is-transparent', !scrolled);
+      if (y > 140) {
+        header.classList.toggle('is-hidden', y > lastScrollY);
+      } else {
+        header.classList.remove('is-hidden');
+      }
+      lastScrollY = y;
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    function openNav() {
+      navOpen = true;
+      hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      var tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+      tl.to(backdrop, { autoAlpha: 1, duration: reduced ? 0.01 : 0.65 }, 0);
+      tl.to(sidebar, { x: '0%', duration: reduced ? 0.01 : 0.78 }, 0);
+      if (sideImg && !reduced) {
+        tl.from(sideImg, { scale: 1.1, duration: 1.1, ease: 'power3.out', clearProps: 'transform' }, 0);
+      }
+      tl.from(sideHead, { autoAlpha: 0, y: 8, duration: reduced ? 0 : 0.45, clearProps: 'all' }, reduced ? 0 : 0.32);
+      tl.from(navItems, { autoAlpha: 0, x: -22, y: 10, duration: reduced ? 0 : 0.55, stagger: reduced ? 0 : { each: 0.09 }, clearProps: 'all' }, reduced ? 0 : 0.38);
+      tl.from(footerLinks, { autoAlpha: 0, y: 8, duration: reduced ? 0 : 0.4, stagger: reduced ? 0 : { each: 0.07 }, ease: 'power3.out', clearProps: 'all' }, reduced ? 0 : 0.76);
+      tl.call(function () { closeBtn.focus(); });
+    }
+
+    function closeNav() {
+      navOpen = false;
+      hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      var tl = gsap.timeline();
+      tl.to(sidebar, { x: '-100%', duration: reduced ? 0.01 : 0.56, ease: 'power4.inOut' }, 0);
+      tl.to(backdrop, { autoAlpha: 0, duration: reduced ? 0.01 : 0.42, ease: 'power2.in' }, reduced ? 0 : 0.08);
+    }
+
+    hamburger.addEventListener('click', openNav);
+    closeBtn.addEventListener('click', closeNav);
+    backdrop.addEventListener('click', closeNav);
+    navItems.forEach(function (link) { link.addEventListener('click', closeNav); });
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        if (navOpen) closeNav();
+        if (searchOpen) closeSearch();
+      }
+    });
+
+    sidebar.addEventListener('keydown', function (event) {
+      if (!navOpen || event.key !== 'Tab') return;
+      var focusable = Array.from(sidebar.querySelectorAll('button, a, input, [tabindex]:not([tabindex="-1"])')).filter(function (el) { return !el.disabled; });
+      if (!focusable.length) return;
+      var first = focusable[0];
+      var last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    });
+
+    function openSearch() {
+      searchOpen = true;
+      searchBtn.setAttribute('aria-expanded', 'true');
+      gsap.to(searchPanel, { autoAlpha: 1, y: 0, duration: 0.28, ease: 'power2.out' });
+      requestAnimationFrame(function () { searchInput.focus(); });
+    }
+
+    function closeSearch() {
+      searchOpen = false;
+      searchBtn.setAttribute('aria-expanded', 'false');
+      searchInput.value = '';
+      searchRes.textContent = '';
+      searchRes.classList.remove('has-message');
+      gsap.to(searchPanel, { autoAlpha: 0, y: -8, duration: 0.22, ease: 'power2.in' });
+    }
+
+    searchBtn.addEventListener('click', function () {
+      if (searchOpen) closeSearch();
+      else openSearch();
+    });
+    searchClose.addEventListener('click', closeSearch);
+
+    searchForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      var query = searchInput.value.trim();
+      if (!query) return;
+      searchRes.classList.add('has-message');
+      searchRes.textContent = 'No results found for "' + query + '" - full search will be available once all pages are live.';
+    });
+
+    searchInput.addEventListener('input', function () {
+      if (searchRes.classList.contains('has-message')) {
+        searchRes.textContent = '';
+        searchRes.classList.remove('has-message');
+      }
+    });
+
+    if (!reduced) {
+      var spans = hamburger.querySelectorAll('span');
+      hamburger.addEventListener('mouseenter', function () {
+        gsap.to(spans[0], { y: -3, duration: 0.38, ease: 'expo.out' });
+        gsap.to(spans[2], { y: 3, duration: 0.38, ease: 'expo.out' });
+      });
+      hamburger.addEventListener('mouseleave', function () {
+        gsap.to([spans[0], spans[2]], { y: 0, duration: 0.28, ease: 'expo.out' });
+      });
+      hamburger.addEventListener('click', function () {
+        gsap.set([spans[0], spans[2]], { y: 0 });
+      });
+
+      var phoneBtn = document.querySelector('.sk-social-btn--phone');
+      if (phoneBtn) {
+        var phoneSvg = phoneBtn.querySelector('svg');
+        var phoneTl  = gsap.timeline({ paused: true });
+        phoneTl
+          .to(phoneSvg, { rotation: 18, duration: 0.18, ease: 'power2.out', transformOrigin: '50% 50%' })
+          .to(phoneSvg, { rotation: 0,  duration: 0.5,  ease: 'elastic.out(1, 0.5)' });
+        phoneBtn.addEventListener('mouseenter', function () { phoneTl.restart(); });
+      }
+
+      var mailBtn = document.querySelector('.sk-social-btn--mail');
+      if (mailBtn) {
+        var flap   = mailBtn.querySelector('.env-flap');
+        var mailTl = gsap.timeline({ paused: true });
+        mailTl
+          .to(flap, { attr: { points: '22,5 12,2 2,5'  }, duration: 0.2,  ease: 'power2.out' })
+          .to(flap, { attr: { points: '22,6 12,13 2,6' }, duration: 0.38, ease: 'power3.inOut' });
+        mailBtn.addEventListener('mouseenter', function () { mailTl.restart(); });
+      }
+
+      var fbBtn = document.querySelector('.sk-social-btn--fb');
+      if (fbBtn) {
+        var fbSvg = fbBtn.querySelector('svg');
+        var fbTl  = gsap.timeline({ paused: true });
+        fbTl
+          .to(fbSvg, { y: -4, duration: 0.2,  ease: 'power2.out' })
+          .to(fbSvg, { y:  0, duration: 0.45, ease: 'elastic.out(1, 0.45)' });
+        fbBtn.addEventListener('mouseenter', function () { fbTl.restart(); });
+      }
+    }
+
+    var WAVES = [
+      {
+        wrapperId: 'sk-wave-divider-2',
+        pathId: 'sk-wave-path-2',
+        dA: 'M 0 0 L 1440 0 L 1440 14 C 1080 22 360 76 0 88 Z',
+        dB: 'M 0 0 L 1440 0 L 1440 6 C 1080 32 360 96 0 110 Z',
+        start: 'top 95%',
+        end: 'bottom 0%'
+      }
+    ];
+
+    WAVES.forEach(function (cfg) {
+      var path = document.getElementById(cfg.pathId);
+      var wrapper = document.getElementById(cfg.wrapperId);
+      if (!path || !wrapper) return;
+      gsap.set(path, { attr: { d: cfg.dA } });
+      if (reduced) return;
+      var timeline = gsap.timeline({
+        scrollTrigger: {
+          id: cfg.pathId + '-morph',
+          trigger: wrapper,
+          start: cfg.start,
+          end: cfg.end,
+          scrub: 1.6
+        }
+      });
+      timeline.fromTo(path, { attr: { d: cfg.dA } }, { attr: { d: cfg.dB }, ease: 'sine.inOut' })
+        .to(path, { attr: { d: cfg.dA }, ease: 'sine.inOut' });
+    });
+
+    if (!reduced && !skipEntrances) {
+      window.addEventListener('load', function () {
+        var heading = document.querySelector('.sk-policy-hero__heading');
+        var img = document.querySelector('.sk-policy-hero__image img');
+        if (heading) {
+          gsap.set(heading, { y: 28 });
+          var tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+          if (img) tl.to(img, { scale: 1.04, duration: 1.6, ease: 'power3.out' }, 0);
+          tl.to(heading, { y: 0, duration: 1.05 }, 0.15);
+        }
+      });
+
+      gsap.from(['.sk-policy-intro__heading', '.sk-policy-intro__body'], {
+        autoAlpha: 0,
+        y: 32,
+        duration: 1,
+        ease: 'expo.out',
+        stagger: 0.12,
+        scrollTrigger: { trigger: '.sk-policy-intro', start: 'top 80%' }
+      });
+
+      var footer = document.getElementById('sk-footer');
+      var rule = footer.querySelector('.sk-footer__rule');
+      gsap.set(rule, { scaleX: 0 });
+      gsap.set([footer.querySelector('.sk-footer__tagline'), footer.querySelector('.sk-footer__logos'), footer.querySelectorAll('.sk-footer__col'), footer.querySelector('.sk-footer__bottom')], { opacity: 0 });
+      gsap.timeline({
+        scrollTrigger: { trigger: footer, start: 'top 88%', toggleActions: 'play none none none' }
+      })
+      .fromTo(footer.querySelector('.sk-footer__tagline'), { y: 22, opacity: 0 }, { y: 0, opacity: 1, duration: 0.85, ease: 'expo.out' })
+      .to(rule, { scaleX: 1, duration: 0.7, ease: 'expo.out', transformOrigin: 'center' }, '-=0.5')
+      .fromTo(footer.querySelector('.sk-footer__logos'), { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, ease: 'expo.out' }, '-=0.35')
+      .fromTo(footer.querySelectorAll('.sk-footer__col'), { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.65, ease: 'expo.out', stagger: 0.12 }, '-=0.3')
+      .fromTo(footer.querySelector('.sk-footer__bottom'), { opacity: 0 }, { opacity: 1, duration: 0.5, ease: 'expo.out' }, '-=0.15');
+    }
+
+  })();
+
+  /* ── Character-by-character heading reveal ── */
+  (function () {
+    function splitGraphemes(text) {
+      if (typeof Intl !== 'undefined' && 'Segmenter' in Intl) {
+        var seg = new Intl.Segmenter('en', { granularity: 'grapheme' });
+        return Array.from(seg.segment(text), function (s) { return s.segment; });
+      }
+      return Array.from(text);
+    }
+    function setup() {
+      var red = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var reveals = document.querySelectorAll('.scroll-text-reveal');
+      reveals.forEach(function (el) {
+        var text  = el.dataset.text || el.textContent.trim();
+        var words = text.split(' ');
+        el.innerHTML = '';
+        var charIdx = 0;
+        words.forEach(function (word, wi) {
+          var wordSpan = document.createElement('span');
+          wordSpan.className = 'scroll-text-word';
+          splitGraphemes(word).forEach(function (char) {
+            var charSpan = document.createElement('span');
+            charSpan.className = 'scroll-text-char';
+            charSpan.textContent = char;
+            if (!red) charSpan.style.setProperty('--char-index', charIdx);
+            wordSpan.appendChild(charSpan);
+            charIdx++;
+          });
+          el.appendChild(wordSpan);
+          if (wi < words.length - 1) el.appendChild(document.createTextNode(' '));
+        });
+        if (red) el.classList.add('is-visible');
+      });
+      document.body.classList.add('js-loaded');
+      if (red) return;
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+      reveals.forEach(function (el) { observer.observe(el); });
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setup);
+    } else {
+      setup();
+    }
+  })();
+  </script>
+</body>
+</html>

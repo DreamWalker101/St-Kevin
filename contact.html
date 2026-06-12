@@ -1,0 +1,2759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us — St Kevin's Primary School, Hampton Park</title>
+  <meta name="description" content="Get in touch with St Kevin's Primary School, Hampton Park. Call (03) 9709 8600, email us or fill in our online enquiry form.">
+  <link rel="canonical" href="https://www.skhamptonpark.catholic.edu.au/contact.html">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.skhamptonpark.catholic.edu.au/contact.html">
+  <meta property="og:title" content="Contact Us — St Kevin's Primary School, Hampton Park">
+  <meta property="og:description" content="Get in touch with St Kevin's Primary School, Hampton Park. Call (03) 9709 8600, email us or fill in our online enquiry form.">
+  <meta property="og:image" content="https://www.skhamptonpark.catholic.edu.au/images/logo-sk-colour.png">
+  <meta property="og:site_name" content="St Kevin's Primary School Hampton Park">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact Us — St Kevin's Primary School, Hampton Park">
+  <meta name="twitter:description" content="Get in touch with St Kevin's Primary School, Hampton Park. Call (03) 9709 8600, email us or fill in our online enquiry form.">
+  <meta name="twitter:image" content="https://www.skhamptonpark.catholic.edu.au/images/logo-sk-colour.png">
+  <!-- Favicons -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="96x96" href="images/favicon-96x96.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#051E42">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Inter:wght@400;500&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'deep-navy':    '#051E42',
+            'burgundy-red': '#8A2232',
+            'warm-cream':   '#F6F3EE',
+            'cloud-grey':   '#F0EDE5',
+            'border-mist':  '#E2E6EA',
+            'slate-text':   '#6B7280',
+            'navy-tint':    '#0A2D5C',
+            'red-soft':     '#F4E3E6',
+          },
+          fontFamily: {
+            'montserrat': ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            'inter':      ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+            'script':     ['Dancing Script', 'cursive'],
+          },
+          maxWidth: { 'content': '1200px' },
+          borderRadius: { 'card': '12px', 'image': '16px' },
+          boxShadow: { 'soft': '0 8px 24px rgba(0, 0, 0, 0.08)' },
+        }
+      }
+    }
+  </script>
+
+  <!-- GSAP + ScrollTrigger -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/ScrollTrigger.min.js"></script>
+  <!-- Lenis smooth scroll -->
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <!-- Shared layout styles -->
+  <link rel="stylesheet" href="css/sk-layout.css?v=2">
+
+
+  <style>
+    /* ── CSS Custom Properties ── */
+    :root {
+      --color-deep-navy:    #051E42;
+      --color-burgundy-red: #8A2232;
+      --color-pure-white:   #FFFFFF;
+      --color-warm-cream:   #F6F3EE;
+      --color-cloud-grey:   #F0EDE5;
+      --color-border-mist:  #E2E6EA;
+      --color-slate-text:   #4B5563;
+      --color-navy-tint:    #0A2D5C;
+      --color-red-soft:     #F4E3E6;
+
+      --font-montserrat:     'Montserrat', ui-sans-serif, system-ui, sans-serif;
+      --font-inter:          'Inter', ui-sans-serif, system-ui, sans-serif;
+      --font-dancing-script: 'Dancing Script', cursive;
+
+      --text-caption:    14px; --leading-caption:    1.6;
+      --text-body:       16px; --leading-body:       1.7;
+      --text-body-lg:    18px; --leading-body-lg:    1.7;
+      --text-tagline:    24px; --leading-tagline:    1.4;
+      --text-heading-sm: 22px; --leading-heading-sm: 1.3;
+      --text-heading:    28px; --leading-heading:    1.25;
+      --text-heading-lg: 36px; --leading-heading-lg: 1.2;
+      --text-display:    48px; --leading-display:    1.1;
+      --text-display-lg: 56px; --leading-display-lg: 1.1;
+
+      --font-weight-regular:   400;
+      --font-weight-medium:    500;
+      --font-weight-semibold:  600;
+      --font-weight-bold:      700;
+      --font-weight-extrabold: 800;
+
+      --spacing-4:   4px;  --spacing-8:   8px;  --spacing-12: 12px;
+      --spacing-16: 16px;  --spacing-24: 24px;  --spacing-32: 32px;
+      --spacing-48: 48px;  --spacing-64: 64px;  --spacing-80: 80px;
+
+      --max-width:               1200px;
+      --section-padding-desktop: 96px;
+      --section-padding-tablet:  64px;
+      --section-padding-mobile:  48px;
+
+      --radius-buttons:  8px;
+      --radius-cards:    12px;
+      --radius-inputs:   8px;
+      --radius-images:   16px;
+      --radius-circular: 50%;
+      --radius-pill:     999px;
+
+      --shadow-soft: 0 8px 24px rgba(0,0,0,0.08);
+
+      --transition-fast:   0.2s ease;
+      --transition-medium: 0.3s ease;
+
+      --z-search:      1100;
+      --z-header:      1000;
+      --z-backdrop:    9000;
+      --z-sidebar:     9100;
+
+    }
+
+    .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: auto; } /* Lenis handles smooth scroll */
+    body {
+      margin: 0;
+      font-family: var(--font-inter);
+      color: var(--color-deep-navy);
+      background: var(--color-warm-cream);
+      font-kerning: normal;
+      font-optical-sizing: auto;
+    }
+
+    /* ── Header ── */
+    .sk-header {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: var(--z-header);
+      padding: 20px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background var(--transition-medium), box-shadow var(--transition-medium), transform 0.32s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .sk-header.is-transparent { background: transparent; }
+    .sk-header.is-scrolled {
+      background: rgba(246,243,238,0.96);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 1px 0 rgba(0,0,0,0.07);
+    }
+    .sk-header.is-hidden { transform: translateY(-100%); }
+
+    /* Hamburger */
+    .sk-hamburger {
+      display: flex; flex-direction: column; justify-content: center; gap: 5px;
+      width: 40px; height: 40px;
+      background: none; border: none; cursor: pointer; padding: 6px; flex-shrink: 0;
+      border-radius: 8px;
+      transition: background var(--transition-fast);
+    }
+    .sk-hamburger:hover { background: transparent; }
+    .is-scrolled .sk-hamburger:hover { background: transparent; }
+    .sk-hamburger span {
+      display: block; width: 100%; height: 2px; border-radius: 2px;
+      background: var(--color-pure-white);
+      transition: background var(--transition-medium);
+    }
+    .is-scrolled .sk-hamburger span { background: var(--color-deep-navy); }
+
+    /* Two separate logos — hero (white, pre-scroll) and sticky (colour, post-scroll) */
+    .sk-logo-hero, .sk-logo-sticky { display: block; width: auto; }
+    .sk-logo-hero { height: var(--logo-hero-size, 90px); }
+    .is-scrolled .sk-logo-hero { display: none; }
+    .sk-logo-sticky { display: none; height: var(--logo-sticky-size, 52px); }
+    .is-scrolled .sk-logo-sticky { display: block; }
+
+    .sk-sidebar-logo { transition: none; }
+
+    /* Search toggle */
+    .sk-search-btn {
+      width: 40px; height: 40px;
+      background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      transition: background var(--transition-fast);
+      flex-shrink: 0;
+    }
+    .sk-search-btn:hover { background: rgba(255,255,255,0.12); }
+    .is-scrolled .sk-search-btn:hover { background: var(--color-cloud-grey); }
+    .sk-search-btn svg { transition: stroke var(--transition-medium); }
+    .is-transparent .sk-search-btn svg { stroke: var(--color-pure-white); }
+    .is-scrolled    .sk-search-btn svg { stroke: var(--color-deep-navy); }
+
+    /* ── Search Panel ── */
+    .sk-search-panel {
+      position: fixed; top: 0; left: 0; right: 0;
+      z-index: var(--z-search);
+      background: var(--color-warm-cream);
+      border-bottom: 1px solid var(--color-border-mist);
+      padding: 20px 24px;
+      visibility: hidden; opacity: 0;
+    }
+    .sk-search-inner {
+      max-width: var(--max-width); margin: 0 auto;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .sk-search-form {
+      flex: 1; display: flex; align-items: center; gap: 0;
+      border: 1.5px solid var(--color-border-mist);
+      border-radius: 10px;
+      overflow: hidden;
+      background: var(--color-cloud-grey);
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+    .sk-search-form:focus-within {
+      border-color: var(--color-deep-navy);
+      box-shadow: 0 0 0 3px rgba(5, 30, 66, 0.08);
+      background: var(--color-warm-cream);
+    }
+    .sk-search-icon {
+      padding: 0 14px 0 16px; display: flex; align-items: center; flex-shrink: 0;
+    }
+    .sk-search-icon svg { display: block; }
+    .sk-search-input {
+      flex: 1; border: none; background: transparent; outline: none;
+      font-family: var(--font-inter); font-size: 16px; font-weight: 400;
+      color: var(--color-deep-navy); padding: 14px 0;
+      line-height: 1.4;
+    }
+    .sk-search-input::placeholder { color: var(--color-slate-text); }
+    .sk-search-submit {
+      padding: 10px 16px; margin: 4px;
+      background: var(--color-deep-navy); border: none; cursor: pointer;
+      border-radius: 7px;
+      font-family: var(--font-montserrat); font-size: 13px; font-weight: 700;
+      color: #fff; letter-spacing: 0.03em;
+      transition: background var(--transition-fast);
+    }
+    .sk-search-submit:hover { background: var(--color-navy-tint); }
+    .sk-search-close-btn {
+      width: 40px; height: 40px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: none; border: none; cursor: pointer;
+      border-radius: 50%;
+      transition: background var(--transition-fast);
+    }
+    .sk-search-close-btn:hover { background: var(--color-cloud-grey); }
+    .sk-search-results {
+      max-width: var(--max-width); margin: 12px auto 0;
+      font-family: var(--font-inter); font-size: 14px;
+      color: var(--color-slate-text); min-height: 0;
+    }
+    .sk-search-results.has-message {
+      padding: 8px 0 4px;
+      border-top: 1px solid var(--color-border-mist);
+    }
+
+    /* ── Nav Backdrop ── */
+    .sk-nav-backdrop {
+      position: fixed; inset: 0;
+      background: rgba(5, 30, 66, 0.6);
+      z-index: var(--z-backdrop);
+      cursor: pointer;
+      visibility: hidden; opacity: 0;
+    }
+
+    /* ── Nav Sidebar ── */
+    .sk-nav-sidebar {
+      position: fixed; top: 0; left: 0; bottom: 0;
+      width: min(620px, 95vw);
+      z-index: var(--z-sidebar);
+      background: var(--color-warm-cream);
+      display: flex; flex-direction: row;
+      overflow: hidden;
+      box-shadow: 4px 0 40px rgba(5, 30, 66, 0.18);
+      transform: translateX(-100%);
+    }
+
+    .sk-sidebar-content {
+      width: min(340px, 100%);
+      flex-shrink: 0;
+      display: flex; flex-direction: column;
+      overflow-y: auto; overflow-x: hidden;
+      scrollbar-width: none;
+    }
+    .sk-sidebar-content::-webkit-scrollbar { display: none; }
+
+    .sk-sidebar-image {
+      flex: 1; min-width: 160px;
+      padding: 12px 12px 12px 0;
+      display: flex;
+    }
+    .sk-sidebar-image-frame {
+      flex: 1;
+      border-radius: 18px;
+      overflow: hidden;
+      position: relative;
+    }
+    .sk-sidebar-image img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+
+    @media (max-width: 600px) {
+      .sk-sidebar-image { display: none; }
+      .sk-nav-sidebar   { width: min(340px, 90vw); }
+    }
+
+    .sk-sidebar-logo {
+      max-height: var(--logo-sidebar-size, 80px);
+      max-width: 100%;
+      width: auto; height: auto; display: block;
+    }
+
+    .sk-sidebar-header {
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px 24px 0;
+      flex-shrink: 0;
+    }
+    .sk-sidebar-header .sk-sidebar-close {
+      position: absolute; left: 24px;
+    }
+
+    .sk-sidebar-close {
+      width: 40px; height: 40px; flex-shrink: 0;
+      background: none;
+      border: 1.5px solid var(--color-border-mist);
+      border-radius: 10px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-deep-navy);
+      transition: border-color var(--transition-fast), background var(--transition-fast);
+    }
+    .sk-sidebar-close:hover {
+      border-color: var(--color-deep-navy);
+      background: var(--color-cloud-grey);
+    }
+
+    .sk-sidebar-nav {
+      padding: 32px 24px 0;
+      display: flex; flex-direction: column; gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .sk-nav-item {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 0;
+      text-decoration: none;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: none;
+    }
+
+    .sk-nav-item-label {
+      font-family: var(--font-montserrat);
+      font-size: clamp(22px, 4vw, 28px);
+      font-weight: var(--font-weight-bold);
+      color: var(--color-deep-navy);
+      letter-spacing: -0.01em;
+      line-height: 1.15;
+      display: inline-block;
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1), color 0.28s;
+    }
+    .sk-nav-item:hover .sk-nav-item-label { transform: translateX(6px); }
+
+    .sk-nav-arrow {
+      display: flex; align-items: center;
+      color: var(--color-burgundy-red);
+      flex-shrink: 0;
+    }
+    .sk-nav-arrow-line {
+      display: block; height: 2px; width: 0;
+      background: currentColor;
+      transition: width 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+      transform-origin: left center;
+      border-radius: 2px;
+    }
+    .sk-nav-arrow-chevron {
+      display: flex; align-items: center;
+      transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .sk-nav-item:hover .sk-nav-arrow-line    { width: 20px; }
+    .sk-nav-item:hover .sk-nav-arrow-chevron { transform: translateX(4px); }
+    .sk-nav-item:hover .sk-nav-item-label    { color: var(--color-burgundy-red); }
+
+    .sk-sidebar-footer {
+      margin-top: auto;
+      padding: 20px 24px 28px;
+      border-top: 1px solid var(--color-border-mist);
+    }
+    .sk-sidebar-socials {
+      display: inline-flex; align-items: center;
+      background: var(--color-cloud-grey);
+      border-radius: 999px;
+      padding: 5px;
+      gap: 2px;
+    }
+    .sk-social-btn {
+      width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      background: transparent;
+      color: #4B5563;
+      text-decoration: none;
+    }
+    .sk-social-btn svg { display: block; overflow: visible; }
+
+    /* ── Hero ── */
+    .sk-hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      overflow: hidden;
+      background: var(--color-deep-navy);
+    }
+    /* About page: shorter sub-page hero */
+    .sk-hero--short { min-height: 60vh; }
+
+    .sk-hero-video-wrap {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .sk-hero-video-wrap video {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: max(100%, calc(100vh * 16 / 9));
+      height: max(100%, calc(100vw * 9 / 16));
+      min-width: 100%; min-height: 100%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      object-fit: cover;
+    }
+
+    .sk-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: var(--color-deep-navy);
+      opacity: var(--hero-overlay-opacity, 0.60);
+      pointer-events: none;
+      transition: opacity 0.15s ease;
+    }
+
+    .sk-hero-macs {
+      position: absolute;
+      bottom: 32px; left: 32px;
+      z-index: 2;
+    }
+
+    /* ── Wave Dividers ── */
+    .sk-wave-divider {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      line-height: 0;
+      display: block;
+    }
+    .sk-wave-divider--burg    { background: var(--color-warm-cream); height: 126px; }
+    .sk-wave-divider--navy    { background: var(--color-warm-cream); height: 120px; }
+    .sk-wave-divider--navy-inv { background: var(--color-navy);      height: 120px; }
+    .sk-wave-divider--cream   { background: var(--color-warm-cream); height: 126px; }
+    .sk-wave-divider--enquiry-top {
+      background: var(--color-deep-navy);
+      height: clamp(72px, 7vw, 104px);
+      margin-bottom: -1px;
+    }
+    .sk-wave-divider--enquiry-bottom {
+      background: var(--color-warm-cream);
+      height: clamp(72px, 7vw, 104px);
+      margin-top: -1px;
+    }
+
+    .sk-wave-svg {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: block;
+      transform-origin: top center;
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      .sk-nav-sidebar, .sk-nav-backdrop, .sk-search-panel {
+        transition: visibility 0s, opacity 0.1s !important;
+      }
+      .sk-smv__copy { transition: opacity 0.1s !important; transform: none !important; }
+    }
+
+    /* ══════════════════════════════════════════════
+       SECTIONS 4–6 — STORY / MISSION / VISION
+       Scroll-driven sticky panel, 3 slides × 100vh
+    ══════════════════════════════════════════════ */
+    .sk-smv { background: var(--color-warm-cream); }
+    .sk-smv__track { height: 300vh; position: relative; }
+    .sk-smv__sticky {
+      position: sticky; top: 0;
+      height: 100vh;
+      display: flex; align-items: stretch;
+      overflow: hidden;
+    }
+    .sk-smv__grid {
+      width: 100%; max-width: 1280px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      height: 100%;
+    }
+    .sk-smv__left {
+      position: relative;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 64px;
+      background: var(--color-warm-cream);
+      border-right: 1px solid rgba(5,30,66,0.1);
+      min-width: 0;
+    }
+    .sk-smv__pagination {
+      position: absolute; top: 56px; left: 64px;
+      display: flex; gap: 8px; z-index: 2;
+    }
+    .sk-smv__dot {
+      height: 6px; width: 24px;
+      border: 0; padding: 0; border-radius: 999px; cursor: pointer;
+      background: rgba(5,30,66,0.32);
+      transition: width 0.5s cubic-bezier(0.4,0,0.2,1), background 0.5s ease;
+    }
+    .sk-smv__dot.is-active { width: 48px; background: var(--color-deep-navy); }
+    .sk-smv__copy-wrap { position: relative; height: 320px; }
+    .sk-smv__copy {
+      position: absolute; inset: 0;
+      opacity: 0; transform: translateY(28px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+      pointer-events: none;
+    }
+    .sk-smv__copy.is-active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+    .sk-smv__heading {
+      margin: 0 0 1.25rem;
+      font-family: var(--font-dancing-script);
+      font-size: clamp(3rem, 5.5vw, 5.25rem);
+      font-weight: 700;
+      color: var(--color-deep-navy);
+      line-height: 1.05;
+    }
+    .sk-smv__body {
+      margin: 0; max-width: 480px;
+      font-family: var(--font-inter);
+      font-size: clamp(1rem, 1.5vw, 1.075rem);
+      line-height: 1.82;
+      color: var(--color-deep-navy);
+      opacity: 0.84;
+      text-wrap: pretty;
+    }
+    .sk-smv__cta-wrap {
+      position: absolute; left: 64px; bottom: 64px; z-index: 2;
+    }
+    .sk-smv__cta {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 0 34px; height: 52px; border-radius: 999px;
+      background: var(--color-burgundy-red); color: #fff;
+      text-decoration: none;
+      font-family: var(--font-montserrat); font-weight: 700;
+      font-size: 13px; letter-spacing: 0.07em; text-transform: uppercase;
+      position: relative; overflow: hidden;
+    }
+    .sk-smv__cta::before {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(255,255,255,0.12);
+      transform: translateX(-101%);
+      transition: transform 0.45s cubic-bezier(0.4,0,0.2,1);
+    }
+    .sk-smv__cta:hover::before { transform: translateX(0); }
+    .sk-smv__cta-label { position: relative; z-index: 1; }
+    .sk-smv__cta-arrow {
+      position: relative; z-index: 1;
+      display: inline-block; font-size: 1.15em; line-height: 1;
+    }
+    .sk-smv__right {
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      padding: 48px; overflow: hidden;
+      background-image:
+        linear-gradient(to right,  rgba(5,30,66,0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(5,30,66,0.045) 1px, transparent 1px);
+      background-size: 3.5rem 3.5rem;
+    }
+    .sk-smv__frame {
+      position: relative;
+      width: 80%; height: 72vh;
+      max-width: 88%; min-width: 240px;
+      border-radius: 16px; overflow: hidden;
+      box-shadow: 0 28px 70px rgba(5,30,66,0.16);
+    }
+    .sk-smv__img-track {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      transition: transform 0.65s cubic-bezier(0.4,0,0.2,1);
+    }
+    .sk-smv__img-slide {
+      width: 100%; height: 100%;
+      overflow: hidden;
+      background: #2a3444;
+      position: relative;
+    }
+    .sk-smv__img-photo {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      display: block;
+      transition: transform 0.7s cubic-bezier(0.4,0,0.2,1);
+    }
+    .sk-smv__img-slide:hover .sk-smv__img-photo { transform: scale(1.03); }
+    .sk-smv__img-label {
+      font-family: var(--font-montserrat); font-size: 12px; font-weight: 600;
+      color: rgba(255,255,255,0.4); letter-spacing: 0.1em; text-transform: uppercase;
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    @media (max-width: 900px) {
+      .sk-smv__track { height: auto; }
+      .sk-smv__sticky { position: relative; height: auto; }
+      .sk-smv__grid { grid-template-columns: 1fr; }
+      .sk-smv__left {
+        min-height: 56vh; padding: 48px 28px 28px;
+        border-right: 0; border-bottom: 1px solid rgba(5,30,66,0.1);
+      }
+      .sk-smv__pagination { top: 24px; left: 28px; }
+      .sk-smv__copy-wrap { height: 280px; margin-top: 32px; }
+      .sk-smv__cta-wrap { position: relative; left: auto; bottom: auto; margin-top: 32px; }
+      .sk-smv__right { min-height: 44vh; padding: 28px; }
+      .sk-smv__frame { height: 38vh; width: 80%; min-width: 200px; max-width: 88%; }
+    }
+
+    /* ══════════════════════════════════════════════
+       SECTION 3 — ABOUT ST KEVIN'S INTRO (bold editorial)
+    ══════════════════════════════════════════════ */
+    .sk-about-intro {
+      padding: clamp(72px, 9vw, 120px) clamp(24px, 5vw, 80px);
+      background: var(--color-warm-cream);
+      overflow: hidden;
+    }
+    .sk-about-intro__inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 0.62fr;
+      gap: clamp(40px, 7vw, 96px);
+      align-items: center;
+    }
+    .sk-about-intro__heading {
+      font-family: var(--font-montserrat);
+      font-size: clamp(3rem, 9.5vw, 7.25rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 0.94;
+      color: var(--color-deep-navy);
+      text-transform: uppercase;
+      margin: 0 0 2rem;
+      text-wrap: balance;
+    }
+    .sk-about-intro__rule {
+      width: 56px; height: 3px;
+      background: var(--color-burgundy-red);
+      border: none; border-radius: 2px;
+      display: block;
+    }
+    .sk-about-intro__right { padding-top: 0.25rem; }
+    .sk-about-intro__tagline {
+      font-family: var(--font-dancing-script);
+      font-size: clamp(1.4rem, 2.4vw, 1.9rem);
+      font-weight: 700;
+      color: var(--color-burgundy-red);
+      line-height: 1.3;
+      margin: 0 0 1.5rem;
+    }
+    .sk-about-intro__body {
+      font-family: var(--font-inter);
+      font-size: clamp(1rem, 1.45vw, 1.075rem);
+      font-weight: 400;
+      color: var(--color-deep-navy);
+      line-height: 1.82;
+      margin: 0;
+      max-width: 50ch;
+      opacity: 0.82;
+      text-wrap: pretty;
+    }
+    @media (max-width: 860px) {
+      .sk-about-intro__inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .sk-about-intro__heading {
+        font-size: clamp(2.75rem, 10.5vw, 4rem);
+        margin-bottom: 1.25rem;
+      }
+      .sk-about-intro__body { max-width: 58ch; }
+    }
+
+    /* ══════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════ */
+    .sk-footer {
+      background: var(--color-deep-navy);
+      position: relative;
+      overflow: hidden;
+    }
+    .sk-footer__deco {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      user-select: none;
+    }
+    .sk-footer__inner {
+      position: relative;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: clamp(56px, 8vw, 96px) clamp(24px, 5vw, 64px) 0;
+      z-index: 1;
+    }
+    .sk-footer__tagline {
+      font-family: var(--font-dancing-script);
+      font-size: clamp(1.45rem, 3.2vw, 2.4rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.65);
+      text-align: center;
+      line-height: 1.52;
+      margin: 0 auto clamp(32px, 5vw, 52px);
+      max-width: 640px;
+      text-wrap: balance;
+    }
+    .sk-footer__rule {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(138,34,50,0.65) 30%, rgba(138,34,50,0.65) 70%, transparent 100%);
+      margin-bottom: clamp(36px, 5.5vw, 56px);
+      transform-origin: center;
+    }
+    .sk-footer__logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--footer-logo-gap, 60px);
+      margin-bottom: clamp(44px, 6vw, 64px);
+      flex-wrap: wrap;
+    }
+    .sk-footer__logo-link {
+      display: block;
+      opacity: 0.82;
+      transition: opacity 0.25s ease;
+    }
+    .sk-footer__logo-link:hover,
+    .sk-footer__logo-link:focus-visible { opacity: 1; }
+    .sk-footer__logo-img { width: auto; display: block; }
+    .sk-footer__cols {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr 1fr;
+      gap: clamp(28px, 5vw, 72px);
+      margin-bottom: clamp(44px, 6vw, 64px);
+    }
+    @media (max-width: 900px) {
+      .sk-footer__cols { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 540px) {
+      .sk-footer__cols { grid-template-columns: 1fr; gap: 36px; }
+    }
+    .sk-footer__col-head {
+      font-family: var(--font-montserrat);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-burgundy-red);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+    .sk-footer__address {
+      font-style: normal;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .sk-footer__contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      font-family: var(--font-inter);
+      font-size: 14px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.68);
+    }
+    .sk-footer__contact-row svg { flex-shrink: 0; margin-top: 3px; opacity: 0.6; }
+    .sk-footer__contact-row a { color: rgba(255,255,255,0.68); text-decoration: none; transition: color 0.2s ease; }
+    .sk-footer__contact-row a:hover { color: rgba(255,255,255,0.95); }
+    .sk-footer__hours {
+      font-family: var(--font-inter);
+      font-size: 12px;
+      color: rgba(255,255,255,0.34);
+      letter-spacing: 0.02em;
+      margin-top: 2px;
+    }
+    .sk-footer__nav { display: flex; flex-direction: column; gap: 8px; }
+    .sk-footer__link {
+      font-family: var(--font-inter);
+      font-size: 14px;
+      color: rgba(255,255,255,0.68);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      transition: color 0.2s ease;
+    }
+    .sk-footer__link::before {
+      content: '';
+      display: inline-block;
+      width: 14px; height: 1px;
+      background: var(--color-burgundy-red);
+      opacity: 0.6; flex-shrink: 0;
+      transition: width 0.35s cubic-bezier(0.16,1,0.3,1), opacity 0.2s ease;
+    }
+    .sk-footer__link:hover { color: rgba(255,255,255,0.95); }
+    .sk-footer__link:hover::before { width: 22px; opacity: 1; }
+    .sk-footer__about {
+      font-family: var(--font-inter);
+      font-size: 14px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.58);
+      margin-bottom: 20px;
+      text-wrap: pretty;
+    }
+    .sk-footer__social { display: flex; gap: 10px; }
+    .sk-footer__social-btn {
+      display: flex; align-items: center; justify-content: center;
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.16);
+      color: rgba(255,255,255,0.68);
+      text-decoration: none;
+      transition: border-color 0.25s ease, background 0.25s ease, color 0.25s ease;
+    }
+    .sk-footer__social-btn:hover {
+      border-color: rgba(138,34,50,0.75);
+      background: rgba(138,34,50,0.14);
+      color: #fff;
+    }
+    .sk-footer__social-btn:focus-visible { outline: 2px solid var(--color-burgundy-red); outline-offset: 3px; }
+    .sk-footer__bottom {
+      border-top: 1px solid rgba(255,255,255,0.09);
+      padding: 22px 0 clamp(28px, 4vw, 44px);
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; flex-wrap: wrap;
+    }
+    .sk-footer__copy { font-family: var(--font-inter); font-size: 12px; color: rgba(255,255,255,0.35); }
+    .sk-footer__bottom-links { display: flex; align-items: center; gap: 8px; }
+    .sk-footer__bottom-link {
+      font-family: var(--font-inter); font-size: 12px;
+      color: rgba(255,255,255,0.35); text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .sk-footer__bottom-link:hover { color: rgba(255,255,255,0.65); }
+    .sk-footer__bottom-sep { color: rgba(255,255,255,0.18); font-size: 10px; }
+
+
+    /* ══════════════════════════════════════════════
+       SECTION 7 — OUR PRINCIPAL
+    ══════════════════════════════════════════════ */
+    /* ── Section 7: Our Principal ── */
+    .sk-principal {
+      background: var(--color-warm-cream);
+      padding: clamp(64px, 9vw, 112px) clamp(24px, 5vw, 80px);
+    }
+    /* Outer blue container — shows through the gap as a mat */
+    .sk-principal__outer {
+      max-width: 1160px; margin: 0 auto;
+      background: #051E42;
+      border-radius: 28px;
+      padding: 16px;
+      box-shadow: 0 32px 96px rgba(5,30,66,0.22), 0 8px 24px rgba(5,30,66,0.1);
+    }
+    /* Two-column grid — gap reveals the container bg as a seam */
+    .sk-principal__inner {
+      display: grid;
+      grid-template-columns: 42% 1fr;
+      gap: 16px;
+    }
+    /* LEFT: photo */
+    .sk-principal__media {
+      position: relative; overflow: hidden;
+      border-radius: 20px;
+      background: #02152e;
+      cursor: pointer; margin: 0; min-height: 520px;
+    }
+    .sk-principal__poster {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 0.75s cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+    .sk-principal__media:hover .sk-principal__poster { transform: scale(1.04); }
+    .sk-principal__play-overlay {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      background: rgba(5,30,66,0.15); transition: background 0.3s ease;
+      border-radius: 20px;
+    }
+    .sk-principal__media:hover .sk-principal__play-overlay { background: rgba(5,30,66,0.28); }
+    .sk-principal__play-btn {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: var(--color-burgundy-red);
+      display: flex; align-items: center; justify-content: center;
+      border: none; cursor: pointer;
+      box-shadow: 0 8px 32px rgba(138,34,50,0.55);
+      transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), box-shadow 0.35s ease;
+    }
+    .sk-principal__play-btn:hover,
+    .sk-principal__media:hover .sk-principal__play-btn {
+      transform: scale(1.1);
+      box-shadow: 0 14px 48px rgba(138,34,50,0.7);
+    }
+    .sk-principal__play-btn:focus-visible { outline: 3px solid #fff; outline-offset: 4px; }
+    /* RIGHT: text card */
+    .sk-principal__panel {
+      background: #0d2f5e;
+      border-radius: 20px;
+      padding: clamp(40px, 6vw, 68px) clamp(32px, 5vw, 60px);
+      display: flex; flex-direction: column; justify-content: center;
+      color: #ffffff;
+    }
+    .sk-principal__heading {
+      font-family: var(--font-montserrat);
+      font-size: clamp(2.25rem, 4vw, 3.25rem);
+      font-weight: 800; letter-spacing: -0.03em; line-height: 1.0;
+      color: #ffffff; text-transform: uppercase;
+      margin: 0 0 clamp(8px, 1.2vw, 14px); text-wrap: balance;
+    }
+    .sk-principal__name {
+      font-family: var(--font-inter); font-size: clamp(1rem, 1.1vw, 1rem);
+      font-weight: 500; letter-spacing: 0.04em;
+      color: rgba(255,255,255,0.52);
+      margin: 0 0 clamp(28px, 4.5vw, 48px);
+    }
+    .sk-principal__body {
+      font-family: var(--font-inter); font-size: clamp(1rem, 1.3vw, 1.05rem);
+      line-height: 1.9; color: rgba(255,255,255,0.82);
+      max-width: 50ch; text-wrap: pretty; margin: 0 0 clamp(24px, 4vw, 40px);
+    }
+    .sk-principal__signoff {
+      font-family: var(--font-dancing-script); font-size: clamp(1.1rem, 1.8vw, 1.4rem);
+      font-weight: 700; font-style: italic;
+      color: rgba(255,255,255,0.46);
+    }
+
+    @media (max-width: 860px) {
+      .sk-principal__inner { grid-template-columns: 1fr; gap: 12px; }
+      .sk-principal__outer { padding: 12px; border-radius: 24px; }
+      .sk-principal__media { min-height: 280px; aspect-ratio: 4/3; }
+      .sk-principal__panel { padding: 36px 28px 44px; }
+    }
+
+    /* ══════════════════════════════════════════════
+       SECTION 9 — OUR PEOPLE INTRO
+    ══════════════════════════════════════════════ */
+    .sk-people-intro {
+      background: var(--color-deep-navy);
+      padding: clamp(80px, 12vw, 140px) clamp(24px, 5vw, 48px) clamp(72px, 10vw, 120px);
+      text-align: center; overflow: hidden; position: relative;
+    }
+    .sk-people-intro::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.048) 1px, transparent 1px);
+      background-size: 36px 36px; pointer-events: none;
+    }
+    .sk-people-intro__inner { position: relative; z-index: 1; }
+    .sk-people-intro__heading {
+      font-family: var(--font-montserrat); font-size: clamp(3rem, 10vw, 6rem);
+      font-weight: 800; letter-spacing: -0.04em; line-height: 0.88;
+      color: #fff; text-transform: uppercase;
+      margin: 0 0 clamp(16px, 3vw, 28px); text-wrap: balance;
+    }
+    .sk-people-intro__script {
+      display: block; font-family: var(--font-dancing-script);
+      font-size: clamp(1.3rem, 2.8vw, 2rem); font-weight: 700;
+      color: #8A2232; line-height: 1.45;
+      margin-bottom: clamp(28px, 5vw, 48px); font-style: italic;
+    }
+    .sk-people-intro__divider { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: clamp(20px, 3vw, 32px); }
+    .sk-people-intro__divider-line { flex: 1; max-width: 80px; height: 1px; background: rgba(138,34,50,0.5); }
+    .sk-people-intro__divider-dot { width: 7px; height: 7px; border: 1.5px solid rgba(138,34,50,0.8); transform: rotate(45deg); flex-shrink: 0; display: block; }
+    .sk-people-intro__body {
+      font-family: var(--font-inter); font-size: clamp(1rem, 1.5vw, 1.1rem);
+      line-height: 1.84; color: rgba(255,255,255,0.78);
+      max-width: 58ch; margin: 0 auto; text-wrap: pretty;
+    }
+
+    /* ══════════════════════════════════════════════
+       SECTIONS 10-13 — TEAM BLOCKS
+    ══════════════════════════════════════════════ */
+    .sk-team { background: var(--color-deep-navy); display: grid; grid-template-columns: 1fr 1fr; height: clamp(560px, 74vh, 860px); position: relative; overflow: hidden; }
+    .sk-team__visual { position: relative; overflow: hidden; }
+    .sk-team__img { display: block; position: absolute; top: -30%; left: 0; right: 0; bottom: -30%; width: 100%; object-fit: cover; will-change: transform; }
+    .sk-team__content { display: flex; flex-direction: column; justify-content: center; padding: clamp(48px, 7vw, 88px) clamp(32px, 5vw, 72px); }
+    .sk-team__level { font-family: var(--font-montserrat); font-size: 11px; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; color: #8A2232; display: inline-flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+    .sk-team__level::before { content: ''; display: inline-block; width: 22px; height: 1.5px; background: #8A2232; flex-shrink: 0; }
+    .sk-team__heading { font-family: var(--font-montserrat); font-size: clamp(2rem, 4vw, 3.25rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; color: #fff; text-transform: uppercase; margin: 0 0 clamp(16px, 2.5vw, 24px); text-wrap: balance; }
+    .sk-team__body { font-family: var(--font-inter); font-size: clamp(1rem, 1.35vw, 1.0625rem); line-height: 1.82; color: rgba(255,255,255,0.78); max-width: 46ch; text-wrap: pretty; margin: 0 0 clamp(20px, 3vw, 28px); }
+    .sk-team__quotes { list-style: none; padding: 0; margin: 0 0 clamp(20px, 3vw, 28px); display: flex; flex-direction: column; gap: 10px; }
+    .sk-team__quote { font-family: var(--font-dancing-script); font-size: clamp(1rem, 1.5vw, 1.2rem); font-weight: 600; color: rgba(255,255,255,0.65); font-style: italic; line-height: 1.5; padding-left: 20px; position: relative; }
+    .sk-team__quote::before { content: "\201C"; position: absolute; left: 0; top: -3px; font-family: var(--font-dancing-script); font-size: 1.45em; color: #8A2232; line-height: 1; font-style: normal; }
+    .sk-team__caption { font-family: var(--font-dancing-script); font-size: clamp(1.05rem, 1.7vw, 1.35rem); font-weight: 700; color: #8A2232; font-style: italic; line-height: 1.4; }
+    .sk-team--burg { background: #8A2232; }
+    .sk-team--burg .sk-team__level { color: #ffffff; }
+    .sk-team--burg .sk-team__level::before { background: #ffffff; }
+    .sk-team--burg .sk-team__quote::before { color: rgba(255,255,255,0.7); }
+    .sk-team--burg .sk-team__caption { color: #ffffff; }
+    @media (max-width: 800px) {
+      .sk-team { grid-template-columns: 1fr; height: auto; }
+      .sk-team__visual { height: 62vw; min-height: 260px; }
+      .sk-team__img { transform: none !important; }
+      .sk-team__content { padding: 40px 24px 48px; }
+      .sk-team__body { max-width: 100%; }
+    }
+
+    /* ══════════════════════════════════════════════
+       CONTACT PAGE
+    ══════════════════════════════════════════════ */
+    html, body { overflow-x: hidden; }
+    .sk-hero-image-wrap {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .sk-hero-image-wrap img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transform: scale(1.04);
+    }
+    .sk-hero-image-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(5,30,66,0.18) 0%, rgba(5,30,66,0.02) 42%, rgba(5,30,66,0.3) 100%),
+        radial-gradient(circle at 50% 52%, rgba(246,243,238,0.08), transparent 34%);
+      pointer-events: none;
+    }
+    .sk-contact-hero-copy {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 120px 24px 96px;
+    }
+    .sk-contact-hero__heading {
+      width: 100%;
+      max-width: 980px;
+      font-family: var(--font-montserrat);
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 0.98;
+      color: var(--color-pure-white);
+      margin: 0;
+      text-wrap: balance;
+      text-shadow: 0 20px 60px rgba(5,30,66,0.42);
+    }
+    .sk-contact-intro {
+      background: var(--color-warm-cream);
+      padding: clamp(72px, 9vw, 116px) 24px clamp(84px, 10vw, 132px);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .sk-contact-intro::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 44px;
+      width: min(220px, 48vw);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(138,34,50,0.58), transparent);
+      transform: translateX(-50%);
+    }
+    .sk-contact-intro__inner { max-width: 760px; margin: 0 auto; position: relative; z-index: 1; }
+    .sk-contact-intro__body {
+      font-family: var(--font-inter);
+      font-size: clamp(1.0625rem, 2vw, 1.25rem);
+      line-height: 1.8;
+      color: var(--color-deep-navy);
+      opacity: 0.9;
+      margin: 0;
+      text-wrap: pretty;
+    }
+    @media (max-width: 768px) {
+      .sk-contact-intro { padding: var(--section-padding-mobile) 24px; }
+    }
+
+    .sk-get-in-touch {
+      background: var(--color-deep-navy);
+      padding: clamp(84px, 10vw, 128px) 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .sk-get-in-touch::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(to right, rgba(255,255,255,0.045) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255,255,255,0.045) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+      pointer-events: none;
+    }
+    .sk-get-in-touch::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      width: min(900px, 70vw);
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(138,34,50,0.78), transparent);
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+    .sk-get-in-touch__grid {
+      position: relative;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(320px, 0.82fr) minmax(0, 1.18fr);
+      gap: clamp(48px, 6vw, 76px);
+      align-items: center;
+    }
+    .sk-get-in-touch__details {
+      position: relative;
+      z-index: 1;
+      font-style: normal;
+      padding: clamp(30px, 4vw, 42px);
+      border-radius: 18px;
+      background: var(--color-warm-cream);
+      border: 1px solid rgba(255,255,255,0.16);
+      box-shadow: 0 26px 80px rgba(0,0,0,0.22);
+    }
+    .sk-get-in-touch__details::before {
+      content: '';
+      position: absolute;
+      left: clamp(30px, 4vw, 42px);
+      right: clamp(30px, 4vw, 42px);
+      top: 0;
+      height: 4px;
+      border-radius: 0 0 999px 999px;
+      background: var(--color-burgundy-red);
+    }
+    .sk-get-in-touch__heading {
+      font-family: var(--font-montserrat);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 800;
+      letter-spacing: 0;
+      line-height: 0.98;
+      color: var(--color-deep-navy);
+      margin: 0 0 38px;
+      text-transform: uppercase;
+      text-wrap: balance;
+    }
+    .sk-contact-detail {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 22px;
+    }
+    .sk-contact-detail > div { flex: 1 1 0; min-width: 0; }
+    .sk-contact-detail:last-child { margin-bottom: 0; }
+    .sk-contact-detail__icon {
+      width: 46px; height: 46px;
+      border-radius: 12px;
+      background: var(--color-deep-navy);
+      border: 1px solid rgba(5,30,66,0.18);
+      color: var(--color-pure-white);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 8px 22px rgba(5,30,66,0.06);
+    }
+    .sk-contact-detail__icon svg { stroke: currentColor; }
+    .sk-contact-detail__icon svg { display: block; }
+    .sk-contact-detail__label {
+      font-family: var(--font-montserrat);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-slate-text);
+      margin: 0 0 4px;
+      display: block;
+    }
+    .sk-contact-detail__value {
+      font-family: var(--font-inter);
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--color-deep-navy);
+      display: block;
+      max-width: 100%;
+      margin: 0;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
+    @media (max-width: 640px) {
+      .sk-contact-hero-copy { padding-inline: 28px; }
+      .sk-contact-hero__heading {
+        width: 280px;
+        max-width: 100%;
+        font-size: clamp(2rem, 10vw, 2.35rem);
+      }
+      .sk-contact-intro { padding-inline: 32px; }
+      .sk-contact-intro__inner {
+        width: 280px;
+        max-width: 100%;
+      }
+      .sk-contact-intro__body { font-size: 1rem; }
+    }
+    a.sk-contact-detail__value:hover { color: var(--color-burgundy-red); }
+    a.sk-contact-detail__value { word-break: break-all; }
+    .sk-map-frame {
+      position: relative;
+      z-index: 1;
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: 0 26px 80px rgba(5,30,66,0.16);
+      height: clamp(360px, 34vw, 470px);
+      background: var(--color-cloud-grey);
+      border: 10px solid rgba(246,243,238,0.94);
+    }
+    .sk-map-frame::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      box-shadow: inset 0 0 0 1px rgba(5,30,66,0.08);
+    }
+    .sk-map-frame iframe {
+      width: 100%; height: 100%;
+      border: 0; display: block;
+      filter: saturate(0.88) contrast(0.96);
+    }
+    @media (max-width: 900px) {
+      .sk-get-in-touch__grid { grid-template-columns: minmax(0, 1fr); gap: 40px; min-width: 0; }
+      .sk-get-in-touch { padding: var(--section-padding-mobile) 24px; }
+      .sk-get-in-touch__details,
+      .sk-map-frame { width: 100%; max-width: 100%; min-width: 0; }
+      .sk-map-frame { height: 320px; border-width: 8px; }
+    }
+    @media (max-width: 640px) {
+      .sk-get-in-touch { padding: var(--section-padding-mobile) 20px; }
+      .sk-get-in-touch__details { padding: 30px 24px; border-radius: 16px; }
+      .sk-get-in-touch__details::before { left: 24px; right: 24px; }
+      .sk-get-in-touch__heading { font-size: clamp(1.7rem, 8vw, 2.1rem); margin-bottom: 30px; }
+      .sk-contact-detail { gap: 12px; }
+      .sk-contact-detail__icon { width: 42px; height: 42px; border-radius: 10px; }
+      .sk-contact-detail__label { font-size: 10px; }
+      .sk-contact-detail__value { font-size: 14px; max-width: 190px; }
+      .sk-map-frame { height: 300px; border-width: 6px; border-radius: 16px; }
+    }
+
+    .sk-social-chip {
+      display: inline-flex; align-items: center; gap: 10px;
+      min-height: 48px;
+      padding: 12px 22px;
+      border-radius: 999px;
+      background: var(--color-cloud-grey);
+      border: 1px solid var(--color-border-mist);
+      text-decoration: none;
+      font-family: var(--font-montserrat);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-deep-navy);
+      transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+    .sk-social-chip:hover { background: var(--color-deep-navy); color: var(--color-pure-white); border-color: var(--color-deep-navy); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(5,30,66,0.16); }
+    .sk-social-chip svg { flex-shrink: 0; }
+    .sk-enquiry {
+      background: var(--color-warm-cream);
+      padding: clamp(84px, 10vw, 128px) 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .sk-enquiry::before {
+      content: '';
+      position: absolute;
+      inset: auto 0 0;
+      height: 42%;
+      background: var(--color-cloud-grey);
+      pointer-events: none;
+    }
+    .sk-enquiry__grid {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1.28fr);
+      gap: clamp(28px, 5vw, 64px);
+      align-items: stretch;
+    }
+    .sk-enquiry__panel {
+      background: var(--color-deep-navy);
+      border-radius: 18px;
+      padding: clamp(34px, 5vw, 56px);
+      color: var(--color-pure-white);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100%;
+      box-shadow: 0 24px 70px rgba(5,30,66,0.18);
+    }
+    .sk-enquiry__eyebrow,
+    .sk-next__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-montserrat);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-burgundy-red);
+      margin: 0 0 18px;
+    }
+    .sk-enquiry__eyebrow::before,
+    .sk-next__eyebrow::before {
+      content: '';
+      width: 24px;
+      height: 2px;
+      border-radius: 999px;
+      background: currentColor;
+    }
+    .sk-enquiry__heading {
+      font-family: var(--font-montserrat);
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      font-weight: 800;
+      letter-spacing: 0;
+      line-height: 1.02;
+      margin: 0 0 24px;
+      text-transform: uppercase;
+      text-wrap: balance;
+    }
+    .sk-enquiry__body {
+      font-family: var(--font-inter);
+      font-size: 16px;
+      line-height: 1.75;
+      color: rgba(255,255,255,0.78);
+      margin: 0;
+      text-wrap: pretty;
+    }
+    .sk-enquiry__hours {
+      margin-top: clamp(34px, 5vw, 54px);
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.14);
+      font-family: var(--font-inter);
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.72);
+    }
+    .sk-enquiry__hours strong {
+      display: block;
+      font-family: var(--font-montserrat);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-pure-white);
+      margin-bottom: 6px;
+    }
+    .sk-enquiry-form {
+      background: var(--color-warm-cream);
+      border: 1px solid rgba(226,230,234,0.95);
+      border-radius: 18px;
+      padding: clamp(28px, 4vw, 44px);
+      box-shadow: 0 24px 70px rgba(5,30,66,0.11);
+    }
+    .sk-enquiry-form__grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .sk-form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 0;
+    }
+    .sk-form-field--full { grid-column: 1 / -1; }
+    .sk-form-label {
+      font-family: var(--font-montserrat);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-slate-text);
+    }
+    .sk-form-input,
+    .sk-form-select,
+    .sk-form-textarea {
+      width: 100%;
+      border: 1px solid rgba(226,230,234,0.95);
+      border-radius: 10px;
+      background: var(--color-cloud-grey);
+      color: var(--color-deep-navy);
+      font-family: var(--font-inter);
+      font-size: 16px;
+      line-height: 1.5;
+      padding: 14px 15px;
+      outline: none;
+      transition: border-color var(--transition-fast), background var(--transition-fast), box-shadow var(--transition-fast);
+    }
+    .sk-form-textarea {
+      min-height: 136px;
+      resize: vertical;
+    }
+    .sk-form-input:focus-visible,
+    .sk-form-select:focus-visible,
+    .sk-form-textarea:focus-visible {
+      border-color: var(--color-deep-navy);
+      background: var(--color-warm-cream);
+      outline: 2px solid var(--color-deep-navy);
+      outline-offset: 0;
+      box-shadow: 0 0 0 4px rgba(5,30,66,0.12);
+    }
+    .sk-enquiry-form .sk-btn-wipe:focus-visible {
+      outline: 2px solid var(--color-deep-navy);
+      outline-offset: 3px;
+    }
+    .sk-enquiry-form__actions {
+      margin-top: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+    .sk-enquiry-form__note {
+      max-width: 310px;
+      font-family: var(--font-inter);
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--color-slate-text);
+      margin: 0;
+    }
+    .sk-next {
+      background: var(--color-warm-cream);
+      padding: clamp(76px, 9vw, 116px) 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .sk-next::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, transparent, rgba(5,30,66,0.05), transparent),
+        linear-gradient(to bottom, transparent 0%, var(--color-cloud-grey) 100%);
+      pointer-events: none;
+    }
+    .sk-next__grid {
+      position: relative;
+      z-index: 1;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+    .sk-next-card {
+      min-height: 100%;
+      border-radius: 18px;
+      padding: clamp(30px, 4vw, 44px);
+      border: 1px solid rgba(226,230,234,0.9);
+      background: var(--color-warm-cream);
+      box-shadow: 0 18px 54px rgba(5,30,66,0.08);
+    }
+    .sk-next-card--tour {
+      background: var(--color-deep-navy);
+      color: var(--color-pure-white);
+      border-color: rgba(255,255,255,0.14);
+    }
+    .sk-next-card--tour .sk-next__heading,
+    .sk-next-card--tour .sk-next__body { color: var(--color-pure-white); }
+    .sk-next-card--tour .sk-next__body { opacity: 0.78; }
+    .sk-next__heading {
+      font-family: var(--font-montserrat);
+      font-size: clamp(1.45rem, 3vw, 2.1rem);
+      font-weight: 800;
+      letter-spacing: 0;
+      line-height: 1.08;
+      color: var(--color-deep-navy);
+      margin: 0 0 18px;
+      text-wrap: balance;
+    }
+    .sk-next__body {
+      font-family: var(--font-inter);
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--color-deep-navy);
+      opacity: 0.82;
+      margin: 0 0 30px;
+      text-wrap: pretty;
+    }
+    .sk-next__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    @media (max-width: 860px) {
+      .sk-enquiry__grid,
+      .sk-next__grid { grid-template-columns: 1fr; }
+      .sk-enquiry__panel { min-height: auto; }
+    }
+    @media (max-width: 640px) {
+      .sk-enquiry,
+      .sk-next { padding-inline: 20px; }
+      .sk-enquiry-form__grid { grid-template-columns: 1fr; }
+      .sk-enquiry-form__actions { align-items: stretch; }
+      .sk-enquiry-form__actions .sk-btn-wipe { justify-content: center; width: 100%; }
+      .sk-enquiry-form__note { max-width: none; }
+      .sk-next__actions { flex-direction: column; }
+      .sk-next__actions .sk-btn-wipe,
+      .sk-social-chip { width: 100%; justify-content: center; }
+    }
+
+    /* ── Character-by-character heading reveal ── */
+    .scroll-text-word {
+      display: inline-flex;
+      overflow: hidden;
+      vertical-align: bottom;
+    }
+    .scroll-text-char {
+      display: inline-block;
+      transform: translateY(108%);
+      opacity: 0;
+      transition:
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity   0.5s cubic-bezier(0.22, 1, 0.36, 1);
+      transition-delay: calc(var(--char-index, 0) * 28ms);
+      will-change: transform, opacity;
+    }
+    .scroll-text-reveal.is-visible .scroll-text-char {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .scroll-text-char {
+        transition: none !important;
+        transform: translateY(0) !important;
+        opacity: 1 !important;
+      }
+    }
+
+    /* ══════════════════════════════════════════════
+       MOBILE RESPONSIVENESS OVERRIDES
+    ══════════════════════════════════════════════ */
+
+    /* ── ≤ 767px  (tablet/mobile split) ── */
+    @media (max-width: 767px) {
+      /* Tighten hero copy padding so text doesn't crowd MACS badge */
+      .sk-contact-hero-copy {
+        padding-top: 96px;
+        padding-bottom: 72px;
+      }
+
+      /* SMV sticky section: relax fixed copy-wrap height so text never clips */
+      .sk-smv__copy-wrap { height: auto; min-height: 220px; }
+
+      /* SMV left panel: drop the viewport-relative min-height on mobile */
+      .sk-smv__left { min-height: auto; }
+
+      /* Shrink MACS hero badge so it doesn't overlap at narrow widths */
+      .sk-hero-macs {
+        bottom: 20px;
+        left: 20px;
+      }
+      .sk-hero-macs img { height: 56px !important; }
+    }
+
+    /* ── ≤ 480px  (small phones) ── */
+    @media (max-width: 480px) {
+      /* Hero copy: reduce top padding further, keep text centred */
+      .sk-contact-hero-copy {
+        padding-top: 80px;
+        padding-bottom: 56px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+
+      /* Contact intro: tighten side padding */
+      .sk-contact-intro {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .sk-contact-intro__inner {
+        width: 100%;
+        max-width: 100%;
+      }
+
+      /* Get-in-touch section: tighten horizontal padding */
+      .sk-get-in-touch { padding-left: 16px; padding-right: 16px; }
+
+      /* Details card: allow full email to wrap, remove capped max-width */
+      .sk-contact-detail__value { max-width: 100%; font-size: 14px; }
+
+      /* Map: reduce height so it doesn't dominate on small screen */
+      .sk-map-frame { height: 260px; }
+
+      /* Enquiry section: tighten horizontal padding */
+      .sk-enquiry { padding-left: 16px; padding-right: 16px; }
+
+      /* Enquiry panel: tighten padding */
+      .sk-enquiry__panel {
+        padding: 28px 20px 32px;
+        border-radius: 14px;
+      }
+
+      /* Enquiry form: tighten padding */
+      .sk-enquiry-form {
+        padding: 24px 18px;
+        border-radius: 14px;
+      }
+
+      /* Form note: legible size on very small screens */
+      .sk-enquiry-form__note { font-size: 12px; }
+
+      /* Next section: tighten horizontal padding */
+      .sk-next { padding-left: 16px; padding-right: 16px; }
+
+      /* Next cards: tighten padding */
+      .sk-next-card { padding: 24px 20px; border-radius: 14px; }
+
+      /* Ensure all interactive buttons meet 44px minimum touch target */
+      .sk-btn-wipe,
+      .sk-social-chip {
+        min-height: 44px;
+      }
+    }
+
+    /* ── ≤ 375px  (very small phones) ── */
+    @media (max-width: 375px) {
+      /* Hero heading: clamp to fit 320–375px viewport */
+      .sk-contact-hero__heading {
+        font-size: clamp(1.75rem, 9vw, 2.1rem);
+        width: 100%;
+        max-width: 100%;
+      }
+
+      /* Reduce hero copy padding to minimum */
+      .sk-contact-hero-copy {
+        padding-top: 72px;
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      /* Get-in-touch heading: prevent overflow at 320px */
+      .sk-get-in-touch__heading { font-size: clamp(1.5rem, 8vw, 1.75rem); }
+
+      /* Enquiry heading: prevent overflow at 320px */
+      .sk-enquiry__heading { font-size: clamp(1.5rem, 8vw, 1.75rem); }
+
+      /* Contact detail: full width, tight gap */
+      .sk-contact-detail { gap: 10px; }
+      .sk-contact-detail__icon { width: 38px; height: 38px; border-radius: 8px; }
+      .sk-contact-detail__value { font-size: 13px; }
+
+      /* Form inputs: guarantee 16px to prevent iOS zoom */
+      .sk-form-input,
+      .sk-form-select,
+      .sk-form-textarea { font-size: 16px; padding: 13px 12px; }
+
+      /* Enquiry panel and form: compress further */
+      .sk-enquiry__panel { padding: 24px 16px 28px; }
+      .sk-enquiry-form { padding: 20px 14px; }
+
+      /* Next cards: minimum comfortable padding */
+      .sk-next-card { padding: 20px 16px; }
+    }
+
+    @media (max-width: 767px) {
+      .sk-wave-divider--burg,
+      .sk-wave-divider--navy,
+      .sk-wave-divider--navy-inv,
+      .sk-wave-divider--cream,
+      .sk-wave-divider--enquiry-top { height: 72px; }
+    }
+    @media (max-width: 480px) {
+      .sk-wave-divider--burg,
+      .sk-wave-divider--navy,
+      .sk-wave-divider--navy-inv,
+      .sk-wave-divider--cream,
+      .sk-wave-divider--enquiry-top { height: 60px; }
+    }
+
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ContactPage",
+        "@id": "https://www.skhamptonpark.catholic.edu.au/contact.html#webpage",
+        "url": "https://www.skhamptonpark.catholic.edu.au/contact.html",
+        "name": "Contact Us — St Kevin's Primary School Hampton Park",
+        "description": "Get in touch with St Kevin's Primary School, Hampton Park. Call (03) 9709 8600, email us or fill in our online enquiry form.",
+        "isPartOf": { "@id": "https://www.skhamptonpark.catholic.edu.au/#website" },
+        "about": { "@id": "https://www.skhamptonpark.catholic.edu.au/#school" },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.skhamptonpark.catholic.edu.au/" },
+            { "@type": "ListItem", "position": 2, "name": "Contact Us", "item": "https://www.skhamptonpark.catholic.edu.au/contact.html" }
+          ]
+        }
+      },
+      {
+        "@type": ["School", "EducationalOrganization"],
+        "@id": "https://www.skhamptonpark.catholic.edu.au/#school",
+        "name": "St Kevin's Primary School Hampton Park",
+        "telephone": "(03) 9709 8600",
+        "email": "administration@skhamptonpark.catholic.edu.au",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "120 Hallam Rd",
+          "addressLocality": "Hampton Park",
+          "addressRegion": "VIC",
+          "postalCode": "3976",
+          "addressCountry": "AU"
+        },
+        "url": "https://www.skhamptonpark.catholic.edu.au/"
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+  <!-- Header injected by shared layout script -->
+  <div id="sk-layout-header"></div>
+
+
+  <!-- ════════════════════════════════
+       SECTION 1 — HERO (60vh)
+  ════════════════════════════════ -->
+  <section class="sk-hero sk-hero--short" id="sk-section-hero" aria-label="Contact Us">
+
+    <div class="sk-hero-image-wrap" aria-hidden="true">
+      <img src="images/samples/cosmos_547543300.jpeg" alt="" loading="eager">
+    </div>
+
+    <div class="sk-hero-overlay" id="sk-hero-overlay" aria-hidden="true" style="background: rgba(5,30,66,0.60); opacity: 1;"></div>
+
+    <div class="sk-contact-hero-copy">
+      <h1 class="sk-contact-hero__heading"><span class="scroll-text-reveal" data-text="We'd Love to Hear From You">We'd Love to Hear From You</span></h1>
+    </div>
+
+    <div class="sk-hero-macs" aria-hidden="true">
+      <img src="images/macs-logo-white.png" alt="" id="sk-macs-logo" style="display:block;height:var(--logo-macs-size,90px);width:auto;transition:filter var(--transition-medium);">
+    </div>
+
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTION 2 — WAVE DIVIDER (Burgundy)
+  ════════════════════════════════ -->
+  <div class="sk-wave-divider sk-wave-divider--burg" id="sk-wave-divider-2" aria-hidden="true">
+    <svg class="sk-wave-svg" viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path id="sk-wave-path-2" d="M 0 0 L 1440 0 L 1440 14 C 1080 22 360 76 0 88 Z" fill="#8A2232"/>
+    </svg>
+  </div>
+
+
+  <!-- ════════════════════════════════
+       SECTION 3 — INTRO
+  ════════════════════════════════ -->
+  <section class="sk-contact-intro" id="sk-section-intro" aria-label="Contact introduction">
+    <div class="sk-contact-intro__inner">
+      <h2 class="sr-only">Get in Touch</h2>
+      <p class="sk-contact-intro__body">We would love to hear from you. Whether you have a question, would like to visit the school, or simply want to learn more about St Kevin's, our team is here to help.</p>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTION 4 — GET IN TOUCH
+  ════════════════════════════════ -->
+  <section class="sk-get-in-touch" id="sk-section-contact-details" aria-label="Get in Touch">
+    <div class="sk-get-in-touch__grid">
+      <address class="sk-get-in-touch__details">
+        <h2 class="sk-get-in-touch__heading"><span class="scroll-text-reveal" data-text="Get in Touch">Get in Touch</span></h2>
+
+        <div class="sk-contact-detail">
+          <span class="sk-contact-detail__icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-deep-navy)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.95-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+          </span>
+          <div>
+            <span class="sk-contact-detail__label">Phone</span>
+            <a class="sk-contact-detail__value" href="tel:0397098600">(03) 9709 8600</a>
+          </div>
+        </div>
+
+        <div class="sk-contact-detail">
+          <span class="sk-contact-detail__icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-deep-navy)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="5" width="18" height="14" rx="2"/>
+              <path d="M3 7l9 6 9-6"/>
+            </svg>
+          </span>
+          <div>
+            <span class="sk-contact-detail__label">Email</span>
+            <a class="sk-contact-detail__value" href="mailto:administration@skhamptonpark.catholic.edu.au">administration@skhamptonpark.catholic.edu.au</a>
+          </div>
+        </div>
+
+        <div class="sk-contact-detail">
+          <span class="sk-contact-detail__icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--color-deep-navy)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 1 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </span>
+          <div>
+            <span class="sk-contact-detail__label">Address</span>
+            <p class="sk-contact-detail__value">120 Hallam Rd, Hampton Park VIC 3976</p>
+          </div>
+        </div>
+      </address>
+
+      <div class="sk-map-frame">
+        <iframe
+          src="https://www.google.com/maps?q=St%20Kevin%27s%20Primary%20School%2C%20120%20Hallam%20Rd%2C%20Hampton%20Park%20VIC%203976&output=embed"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="St Kevin's Primary School location"
+          aria-label="Google Maps showing St Kevin's Primary School at 120 Hallam Rd, Hampton Park VIC 3976">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════════════════
+       SECTION 5 — ENQUIRY FORM
+  ════════════════════════════════ -->
+  <div class="sk-wave-divider sk-wave-divider--enquiry-top" id="sk-wave-divider-enquiry-top" aria-hidden="true">
+    <svg class="sk-wave-svg" viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path id="sk-wave-path-enquiry-top" d="M 0 120 L 1440 120 L 1440 34 C 1080 48 360 98 0 72 Z" fill="#F6F3EE"/>
+    </svg>
+  </div>
+
+  <section class="sk-enquiry" id="sk-enquiry" aria-label="General Enquiry Form">
+    <div class="sk-enquiry__grid">
+      <div class="sk-enquiry__panel">
+        <div>
+          <p class="sk-enquiry__eyebrow">General Enquiry</p>
+          <h2 class="sk-enquiry__heading"><span class="scroll-text-reveal" data-text="Send Us a Message">Send Us a Message</span></h2>
+          <p class="sk-enquiry__body">If you have a question or would like more information, you are welcome to contact us using the enquiry form.</p>
+        </div>
+        <p class="sk-enquiry__hours">
+          <strong>School Office Hours</strong>
+          Monday to Friday: 8:00am – 4:00pm
+        </p>
+      </div>
+
+      <form class="sk-enquiry-form" action="contact.php" method="post">
+        <div class="sk-enquiry-form__grid">
+          <label class="sk-form-field">
+            <span class="sk-form-label">Name</span>
+            <input class="sk-form-input" type="text" name="name" autocomplete="name" required>
+          </label>
+          <label class="sk-form-field">
+            <span class="sk-form-label">Email</span>
+            <input class="sk-form-input" type="email" name="email" autocomplete="email" required>
+          </label>
+          <label class="sk-form-field">
+            <span class="sk-form-label">Phone</span>
+            <input class="sk-form-input" type="tel" name="phone" autocomplete="tel">
+          </label>
+          <label class="sk-form-field">
+            <span class="sk-form-label">Enquiry Type</span>
+            <select class="sk-form-select" name="enquiry-type">
+              <option value="">Please select</option>
+              <option>General enquiry</option>
+              <option>School tour</option>
+              <option>Enrolments</option>
+              <option>Newsletter</option>
+            </select>
+          </label>
+          <label class="sk-form-field sk-form-field--full">
+            <span class="sk-form-label">Message</span>
+            <textarea class="sk-form-textarea" name="message" required></textarea>
+          </label>
+        </div>
+        <div class="sk-enquiry-form__actions">
+          <p class="sk-enquiry-form__note">Our team will respond during school office hours.</p>
+          <button class="sk-btn-wipe" type="submit">Send Enquiry</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+
+
+  <!-- ════════════════════════════════
+       SECTION 6 — VISIT + STAY CONNECTED
+  ════════════════════════════════ -->
+  <section class="sk-next" id="sk-next-steps" aria-label="Visit Our School and Stay Connected">
+    <div class="sk-next__grid">
+      <article class="sk-next-card sk-next-card--tour">
+        <p class="sk-next__eyebrow">Visit Our School</p>
+        <h2 class="sk-next__heading"><span class="scroll-text-reveal" data-text="Book a School Tour">Book a School Tour</span></h2>
+        <p class="sk-next__body">We always welcome families who would like to see St Kevin's in action. School tours run throughout the year and provide the opportunity to explore our learning spaces and meet members of our community.</p>
+        <div class="sk-next__actions">
+          <a class="sk-btn-wipe sk-btn-wipe--light" href="#">Book a School Tour</a>
+        </div>
+      </article>
+
+      <article class="sk-next-card">
+        <p class="sk-next__eyebrow">Stay Connected</p>
+        <h2 class="sk-next__heading"><span class="scroll-text-reveal" data-text="School Communications">School Communications</span></h2>
+        <p class="sk-next__body">Follow along with life at St Kevin's through our school communications and social media.</p>
+        <div class="sk-next__actions">
+          <a class="sk-social-chip" href="#">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+            </svg>
+            <span>Facebook</span>
+          </a>
+          <a class="sk-social-chip" href="#">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              <path d="M8 7h8"/>
+              <path d="M8 11h8"/>
+            </svg>
+            <span>School Newsletter</span>
+          </a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+
+  <!-- Footer injected by shared layout script -->
+  <div id="sk-layout-footer"></div>
+
+
+  <!-- ════════════════════════════════
+       SCRIPTS
+  ════════════════════════════════ -->
+  <script>
+/* ════════════════════════════════════════════════════════════════
+   sk-layout.js — Shared header/footer injection + global behaviours
+   Load at end of <body>, before page-specific scripts.
+════════════════════════════════════════════════════════════════ */
+(function () {
+  'use strict';
+
+  /* ── Active page detection ── */
+  var rawPage = window.location.pathname.split('/').pop() || '';
+  var page    = rawPage.replace('.html', '') || 'index';
+
+  /* ── Nav items ── */
+  var NAV_ITEMS = [
+    { href: 'about.html',      label: 'About Us'   },
+    { href: 'learning.html',   label: 'Learning'   },
+    { href: 'community.html',  label: 'Community'  },
+    { href: 'enrolments.html', label: 'Enrolments' },
+    { href: 'contact.html',    label: 'Contact'    },
+    { href: 'policies.html',   label: 'Policies'   },
+  ];
+
+  var ARROW = '<span class="sk-nav-arrow-line"></span>'
+    + '<span class="sk-nav-arrow-chevron">'
+    + '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">'
+    + '<polyline points="5,3 11,8 5,13"/></svg></span>';
+
+  function buildNavItems() {
+    return NAV_ITEMS.map(function (item) {
+      var id       = item.href.replace('.html', '');
+      var isActive = id === page;
+      var cls      = isActive ? ' class="sk-nav-item is-active" aria-current="page"' : ' class="sk-nav-item"';
+      return '<a href="' + item.href + '"' + cls + '>'
+        + '<span class="sk-nav-item-label">' + item.label + '</span>'
+        + '<span class="sk-nav-arrow" aria-hidden="true">' + ARROW + '</span>'
+        + '</a>';
+    }).join('');
+  }
+
+  /* ════════════════════════════════
+     HEADER HTML
+  ════════════════════════════════ */
+  var headerHTML = [
+    '<header class="sk-header is-transparent" id="sk-header">',
+    '  <button class="sk-hamburger" id="sk-hamburger-btn" aria-label="Open navigation" aria-expanded="false">',
+    '    <span></span><span></span><span></span>',
+    '  </button>',
+    '  <a href="index.html" class="sk-header__logo-link" aria-label="St Kevin\'s Primary School — Home">',
+    '    <img id="sk-logo-hero" src="images/logo-sk-white.png" alt="St Kevin\'s Primary School, Hampton Park" class="sk-logo-hero">',
+    '    <img id="sk-logo-sticky" src="images/logo-sk-colour.png" alt="" class="sk-logo-sticky" aria-hidden="true">',
+    '  </a>',
+    '  <button class="sk-search-btn" id="sk-search-btn" aria-label="Search site" aria-expanded="false">',
+    '    <svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">',
+    '      <circle cx="9.5" cy="9.5" r="7"/><line x1="14.5" y1="14.5" x2="21" y2="21"/>',
+    '    </svg>',
+    '  </button>',
+    '</header>',
+
+    '<div class="sk-search-panel" id="sk-search-panel" role="search" aria-label="Site search">',
+    '  <div class="sk-search-inner">',
+    '    <form class="sk-search-form" id="sk-search-form" autocomplete="off">',
+    '      <span class="sk-search-icon" aria-hidden="true">',
+    '        <svg width="18" height="18" viewBox="0 0 22 22" fill="none" stroke="#6B7280" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">',
+    '          <circle cx="9.5" cy="9.5" r="7"/><line x1="14.5" y1="14.5" x2="21" y2="21"/>',
+    '        </svg>',
+    '      </span>',
+    '      <input type="search" class="sk-search-input" id="sk-search-input" placeholder="Search St Kevin\'s…" aria-label="Search">',
+    '      <button type="submit" class="sk-search-submit">Search</button>',
+    '    </form>',
+    '    <button class="sk-search-close-btn" id="sk-search-close-btn" aria-label="Close search">',
+    '      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="#374151" stroke-width="2" stroke-linecap="round">',
+    '        <line x1="2" y1="2" x2="16" y2="16"/><line x1="16" y1="2" x2="2" y2="16"/>',
+    '      </svg>',
+    '    </button>',
+    '  </div>',
+    '  <div class="sk-search-results" id="sk-search-results" aria-live="polite"></div>',
+    '</div>',
+
+    '<div class="sk-nav-backdrop" id="sk-nav-backdrop"></div>',
+
+    '<aside class="sk-nav-sidebar" id="sk-nav-sidebar" role="dialog" aria-modal="true" aria-label="Site navigation">',
+    '  <div class="sk-sidebar-content">',
+    '    <div class="sk-sidebar-header">',
+    '      <button class="sk-sidebar-close" id="sk-sidebar-close" aria-label="Close navigation">',
+    '        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">',
+    '          <line x1="2" y1="2" x2="14" y2="14"/><line x1="14" y1="2" x2="2" y2="14"/>',
+    '        </svg>',
+    '      </button>',
+    '      <img src="images/logo-sk-macs-combined.png" alt="St Kevin\'s Primary School, Hampton Park" class="sk-sidebar-logo">',
+    '    </div>',
+    '    <nav class="sk-sidebar-nav" aria-label="Primary navigation">',
+    buildNavItems(),
+    '    </nav>',
+    '    <div class="sk-sidebar-footer">',
+    '      <div class="sk-sidebar-socials">',
+    '        <a href="tel:0397098600" class="sk-social-btn sk-social-btn--phone" aria-label="Call us: (03) 9709 8600">',
+    '          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">',
+    '            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.37 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.91a16 16 0 0 0 5.5 5.5l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>',
+    '          </svg>',
+    '        </a>',
+    '        <a href="mailto:administration@skhamptonpark.catholic.edu.au" class="sk-social-btn sk-social-btn--mail" aria-label="Email us">',
+    '          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">',
+    '            <rect class="env-body" x="2" y="4" width="20" height="16" rx="2"/>',
+    '            <polyline class="env-flap" points="22,6 12,13 2,6"/>',
+    '          </svg>',
+    '        </a>',
+    '        <a href="#" class="sk-social-btn sk-social-btn--fb" aria-label="Find us on Facebook" target="_blank" rel="noopener noreferrer">',
+    '          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">',
+    '            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>',
+    '          </svg>',
+    '        </a>',
+    '      </div>',
+    '    </div>',
+    '  </div>',
+    '  <div class="sk-sidebar-image" aria-hidden="true">',
+    '    <div class="sk-sidebar-image-frame">',
+    '      <img src="images/samples/cosmos_1616537391.jpeg" alt="" loading="eager">',
+    '    </div>',
+    '  </div>',
+    '</aside>',
+  ].join('\n');
+
+  /* ════════════════════════════════
+     FOOTER HTML
+  ════════════════════════════════ */
+  var footerHTML = [
+    '<footer class="sk-footer" id="sk-footer" aria-label="Site footer">',
+    '  <svg class="sk-footer__deco" viewBox="0 0 1440 560" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">',
+    '    <circle cx="64"  cy="72"  r="2.8" fill="rgba(255,255,255,0.04)"/>',
+    '    <circle cx="96"  cy="72"  r="2.8" fill="rgba(255,255,255,0.04)"/>',
+    '    <circle cx="128" cy="72"  r="2.8" fill="rgba(255,255,255,0.04)"/>',
+    '    <circle cx="64"  cy="104" r="2.8" fill="rgba(255,255,255,0.04)"/>',
+    '    <circle cx="96"  cy="104" r="2.8" fill="rgba(255,255,255,0.04)"/>',
+    '    <circle cx="128" cy="104" r="2.8" fill="rgba(255,255,255,0.04)"/>',
+    '    <circle cx="64"  cy="136" r="2.8" fill="rgba(255,255,255,0.04)"/>',
+    '    <circle cx="96"  cy="136" r="2.8" fill="rgba(255,255,255,0.04)"/>',
+    '    <circle cx="128" cy="136" r="2.8" fill="rgba(255,255,255,0.04)"/>',
+    '    <circle cx="1312" cy="444" r="2.4" fill="rgba(255,255,255,0.033)"/>',
+    '    <circle cx="1344" cy="444" r="2.4" fill="rgba(255,255,255,0.033)"/>',
+    '    <circle cx="1376" cy="444" r="2.4" fill="rgba(255,255,255,0.033)"/>',
+    '    <circle cx="1312" cy="476" r="2.4" fill="rgba(255,255,255,0.033)"/>',
+    '    <circle cx="1344" cy="476" r="2.4" fill="rgba(255,255,255,0.033)"/>',
+    '    <circle cx="1376" cy="476" r="2.4" fill="rgba(255,255,255,0.033)"/>',
+    '    <circle cx="1420" cy="88"  r="5"   fill="#8A2232" opacity="0.22"/>',
+    '    <circle cx="38"   cy="480" r="4"   fill="#8A2232" opacity="0.18"/>',
+    '    <rect x="1378" y="180" width="16"  height="2.5" rx="1.25" fill="rgba(255,255,255,0.09)"/>',
+    '    <rect x="1385" y="173" width="2.5" height="16"  rx="1.25" fill="rgba(255,255,255,0.09)"/>',
+    '    <rect x="54"   y="370" width="12" height="2"  rx="1" fill="#8A2232" opacity="0.28"/>',
+    '    <rect x="59"   y="365" width="2"  height="12" rx="1" fill="#8A2232" opacity="0.28"/>',
+    '    <path d="M 1298 530 Q 1350 502 1402 530" stroke="rgba(255,255,255,0.055)" stroke-width="1.5" stroke-linecap="round" fill="none"/>',
+    '  </svg>',
+    '  <div class="sk-footer__inner">',
+    '    <p class="sk-footer__tagline">A community where every child is known, supported and inspired to flourish</p>',
+    '    <div class="sk-footer__rule" aria-hidden="true"></div>',
+    '    <div class="sk-footer__logos">',
+    '      <a href="https://www.macs.edu.au" class="sk-footer__logo-link" aria-label="Melbourne Archdiocese Catholic Schools — opens in new tab" target="_blank" rel="noopener noreferrer">',
+    '        <img src="images/macs-logo-white.png" alt="Melbourne Archdiocese Catholic Schools" class="sk-footer__logo-img sk-footer__logo-img--macs" loading="lazy">',
+    '      </a>',
+    '      <a href="index.html" class="sk-footer__logo-link" aria-label="St Kevin\'s Primary School — Home">',
+    '        <img src="images/logo-sk-white.png" alt="St Kevin\'s Primary School Hampton Park" class="sk-footer__logo-img sk-footer__logo-img--sk" loading="lazy">',
+    '      </a>',
+    '    </div>',
+    '    <div class="sk-footer__cols">',
+    '      <div class="sk-footer__col">',
+    '        <h3 class="sk-footer__col-head">Contact Us</h3>',
+    '        <address class="sk-footer__address">',
+    '          <div class="sk-footer__contact-row">',
+    '            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>',
+    '            <span>120 Hallam Rd, Hampton Park VIC 3976</span>',
+    '          </div>',
+    '          <div class="sk-footer__contact-row">',
+    '            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.18h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.06 6.06l.95-.94a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>',
+    '            <a href="tel:0397098600">(03) 9709 8600</a>',
+    '          </div>',
+    '          <div class="sk-footer__contact-row">',
+    '            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>',
+    '            <a href="mailto:administration@skhamptonpark.catholic.edu.au">administration@<wbr>skhamptonpark.catholic.edu.au</a>',
+    '          </div>',
+    '        </address>',
+    '        <p class="sk-footer__hours">Monday to Friday &nbsp;&middot;&nbsp; 8:00am – 4:00pm</p>',
+    '      </div>',
+    '      <div class="sk-footer__col">',
+    '        <h3 class="sk-footer__col-head">Quick Links</h3>',
+    '        <nav class="sk-footer__nav" aria-label="Footer navigation">',
+    '          <a href="contact.html"    class="sk-footer__link">Contact</a>',
+    '          <a href="enrolments.html" class="sk-footer__link">Enrolments</a>',
+    '          <a href="enrolments.html" class="sk-footer__link">School Tours</a>',
+    '          <a href="#"               class="sk-footer__link">Newsletter</a>',
+    '          <a href="#"               class="sk-footer__link">Annual Report</a>',
+    '          <a href="policies.html"   class="sk-footer__link">Policies &amp; Compliance</a>',
+    '        </nav>',
+    '      </div>',
+    '      <div class="sk-footer__col">',
+    '        <h3 class="sk-footer__col-head">Stay Connected</h3>',
+    '        <p class="sk-footer__about">St Kevin\'s is a Christ-centred Catholic primary school in Hampton Park, Melbourne. Part of the Melbourne Archdiocese Catholic Schools community.</p>',
+    '        <div class="sk-footer__social">',
+    '          <a href="https://www.facebook.com/skhamptonpark" class="sk-footer__social-btn sk-footer__social-btn--fb" aria-label="St Kevin\'s on Facebook" target="_blank" rel="noopener noreferrer">',
+    '            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>',
+    '          </a>',
+    '          <a href="https://www.skhamptonpark.catholic.edu.au" class="sk-footer__social-btn sk-footer__social-btn--web" aria-label="St Kevin\'s website" target="_blank" rel="noopener noreferrer">',
+    '            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>',
+    '          </a>',
+    '        </div>',
+    '      </div>',
+    '    </div>',
+    '    <div class="sk-footer__bottom">',
+    '      <p class="sk-footer__copy">© 2026 St Kevin\'s Primary School Hampton Park</p>',
+    '      <div class="sk-footer__bottom-links">',
+    '        <a href="policies.html" class="sk-footer__bottom-link">Policies</a>',
+    '        <span class="sk-footer__bottom-sep" aria-hidden="true">·</span>',
+    '        <a href="contact.html"  class="sk-footer__bottom-link">Contact</a>',
+    '        <span class="sk-footer__bottom-sep" aria-hidden="true">·</span>',
+    '        <a href="https://www.skhamptonpark.catholic.edu.au" class="sk-footer__bottom-link" target="_blank" rel="noopener noreferrer">skhamptonpark.catholic.edu.au</a>',
+    '      </div>',
+    '    </div>',
+    '  </div>',
+    '</footer>',
+  ].join('\n');
+
+  /* ── Inject header ── */
+  var headerRoot = document.getElementById('sk-layout-header');
+  if (headerRoot) {
+    headerRoot.outerHTML = headerHTML;
+  } else {
+    /* Fallback: replace existing header by ID if placeholder is absent */
+    var existingHeader = document.getElementById('sk-header');
+    if (existingHeader) existingHeader.outerHTML = headerHTML;
+  }
+
+  /* ── Inject footer ── */
+  var footerRoot = document.getElementById('sk-layout-footer');
+  if (footerRoot) {
+    footerRoot.outerHTML = footerHTML;
+  } else {
+    var existingFooter = document.getElementById('sk-footer');
+    if (existingFooter) existingFooter.outerHTML = footerHTML;
+  }
+
+  /* ── Inject click spark canvas ── */
+  if (!document.getElementById('global-click-spark')) {
+    var sparkCanvas = document.createElement('canvas');
+    sparkCanvas.id = 'global-click-spark';
+    sparkCanvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;pointer-events:none;mix-blend-mode:difference;z-index:9999;';
+    document.body.appendChild(sparkCanvas);
+  }
+
+  /* ── Grab elements now that HTML is in the DOM ── */
+  var header      = document.getElementById('sk-header');
+  var hamburger   = document.getElementById('sk-hamburger-btn');
+  var sidebar     = document.getElementById('sk-nav-sidebar');
+  var backdrop    = document.getElementById('sk-nav-backdrop');
+  var closeBtn    = document.getElementById('sk-sidebar-close');
+  var searchBtn   = document.getElementById('sk-search-btn');
+  var searchPanel = document.getElementById('sk-search-panel');
+  var searchClose = document.getElementById('sk-search-close-btn');
+  var searchInput = document.getElementById('sk-search-input');
+  var searchForm  = document.getElementById('sk-search-form');
+  var searchRes   = document.getElementById('sk-search-results');
+
+  var navItems    = sidebar.querySelectorAll('.sk-nav-item');
+  var footerLinks = sidebar.querySelectorAll('.sk-social-btn');
+  var sideHead    = sidebar.querySelector('.sk-sidebar-header');
+  var sideImg     = sidebar.querySelector('.sk-sidebar-image img');
+
+  var navOpen    = false;
+  var searchOpen = false;
+  var lastScrollY       = 0;
+  var HIDE_AFTER        = 140;
+  var STICKY_THRESHOLD  = 60;
+
+  /* ── Initial GSAP states ── */
+  gsap.set(sidebar,     { x: '-100%' });
+  gsap.set(backdrop,    { autoAlpha: 0 });
+  gsap.set(searchPanel, { autoAlpha: 0, y: -8 });
+
+  /* ── Header: transparent → sticky + hide/show on scroll ── */
+  function onScroll() {
+    var y       = window.scrollY;
+    var scrolled = y > STICKY_THRESHOLD;
+    header.classList.toggle('is-scrolled',    scrolled);
+    header.classList.toggle('is-transparent', !scrolled);
+    if (y > HIDE_AFTER) {
+      header.classList.toggle('is-hidden', y > lastScrollY);
+    } else {
+      header.classList.remove('is-hidden');
+    }
+    lastScrollY = y;
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  /* ── Open sidebar ── */
+  function openNav() {
+    navOpen = true;
+    hamburger.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+    tl.to(backdrop, { autoAlpha: 1, duration: rm ? 0.01 : 0.65 }, 0);
+    tl.to(sidebar,  { x: '0%',     duration: rm ? 0.01 : 0.78 }, 0);
+    if (sideImg && !rm) {
+      tl.from(sideImg, { scale: 1.1, duration: 1.1, ease: 'power3.out', clearProps: 'transform' }, 0);
+    }
+    tl.from(sideHead, {
+      autoAlpha: 0, y: 8,
+      duration: rm ? 0 : 0.45, clearProps: 'all'
+    }, rm ? 0 : 0.32);
+    tl.from(navItems, {
+      autoAlpha: 0, x: -22, y: 10,
+      duration: rm ? 0 : 0.55,
+      stagger:  rm ? 0 : { each: 0.09 },
+      clearProps: 'all'
+    }, rm ? 0 : 0.38);
+    tl.from(footerLinks, {
+      autoAlpha: 0, y: 8,
+      duration: rm ? 0 : 0.4,
+      stagger:  rm ? 0 : { each: 0.07 },
+      ease: 'power3.out', clearProps: 'all'
+    }, rm ? 0 : 0.76);
+    tl.call(function () { closeBtn.focus(); });
+  }
+
+  /* ── Close sidebar ── */
+  function closeNav() {
+    navOpen = false;
+    hamburger.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var tl = gsap.timeline();
+    tl.to(sidebar,  { x: '-100%', duration: rm ? 0.01 : 0.56, ease: 'power4.inOut' }, 0);
+    tl.to(backdrop, { autoAlpha: 0, duration: rm ? 0.01 : 0.42, ease: 'power2.in' }, rm ? 0 : 0.08);
+  }
+
+  hamburger.addEventListener('click', openNav);
+  closeBtn.addEventListener('click',  closeNav);
+  backdrop.addEventListener('click',  closeNav);
+  navItems.forEach(function (a) { a.addEventListener('click', closeNav); });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      if (navOpen)    closeNav();
+      if (searchOpen) closeSearch();
+    }
+  });
+
+  sidebar.addEventListener('keydown', function (e) {
+    if (!navOpen || e.key !== 'Tab') return;
+    var focusable = Array.from(
+      sidebar.querySelectorAll('button, a, input, [tabindex]:not([tabindex="-1"])')
+    ).filter(function (el) { return !el.disabled; });
+    if (!focusable.length) return;
+    var first = focusable[0];
+    var last  = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault(); last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault(); first.focus();
+    }
+  });
+
+  /* ── Search ── */
+  function openSearch() {
+    searchOpen = true;
+    searchBtn.setAttribute('aria-expanded', 'true');
+    gsap.to(searchPanel, { autoAlpha: 1, y: 0, duration: 0.28, ease: 'power2.out' });
+    requestAnimationFrame(function () { searchInput.focus(); });
+  }
+  function closeSearch() {
+    searchOpen = false;
+    searchBtn.setAttribute('aria-expanded', 'false');
+    searchInput.value = '';
+    searchRes.textContent = '';
+    searchRes.classList.remove('has-message');
+    gsap.to(searchPanel, { autoAlpha: 0, y: -8, duration: 0.22, ease: 'power2.in' });
+  }
+
+  searchBtn.addEventListener('click',  function () { if (searchOpen) closeSearch(); else openSearch(); });
+  searchClose.addEventListener('click', closeSearch);
+
+  searchForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var q = searchInput.value.trim();
+    if (!q) return;
+    searchRes.classList.add('has-message');
+    searchRes.innerHTML = '<span style="color:#374151">No results found for “'
+      + escapeHtml(q) + '” — full search will be available once all pages are live.</span>';
+  });
+  searchInput.addEventListener('input', function () {
+    if (searchRes.classList.contains('has-message')) {
+      searchRes.textContent = '';
+      searchRes.classList.remove('has-message');
+    }
+  });
+  function escapeHtml(str) {
+    return str.replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  /* ── Hamburger hover: top rises, bottom drops ── */
+  (function () {
+    var rm    = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (rm) return;
+    var spans = hamburger.querySelectorAll('span');
+    var top   = spans[0];
+    var bot   = spans[2];
+    hamburger.addEventListener('mouseenter', function () {
+      gsap.to(top, { y: -3, duration: 0.38, ease: 'expo.out' });
+      gsap.to(bot, { y:  3, duration: 0.38, ease: 'expo.out' });
+    });
+    hamburger.addEventListener('mouseleave', function () {
+      gsap.to(top, { y: 0, duration: 0.28, ease: 'expo.out' });
+      gsap.to(bot, { y: 0, duration: 0.28, ease: 'expo.out' });
+    });
+    hamburger.addEventListener('click', function () {
+      gsap.set([top, bot], { y: 0 });
+    });
+  })();
+
+  /* ── Sidebar social icon micro-animations ── */
+  (function () {
+    var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (rm) return;
+
+    var phoneBtn = document.querySelector('.sk-social-btn--phone');
+    if (phoneBtn) {
+      var phoneSvg = phoneBtn.querySelector('svg');
+      var phoneTl  = gsap.timeline({ paused: true });
+      phoneTl
+        .to(phoneSvg, { rotation: 18, duration: 0.18, ease: 'power2.out', transformOrigin: '50% 50%' })
+        .to(phoneSvg, { rotation: 0,  duration: 0.5,  ease: 'elastic.out(1, 0.5)' });
+      phoneBtn.addEventListener('mouseenter', function () { phoneTl.restart(); });
+    }
+
+    var mailBtn = document.querySelector('.sk-social-btn--mail');
+    if (mailBtn) {
+      var flap   = mailBtn.querySelector('.env-flap');
+      var mailTl = gsap.timeline({ paused: true });
+      mailTl
+        .to(flap, { attr: { points: '22,5 12,2 2,5'  }, duration: 0.2,  ease: 'power2.out' })
+        .to(flap, { attr: { points: '22,6 12,13 2,6' }, duration: 0.38, ease: 'power3.inOut' });
+      mailBtn.addEventListener('mouseenter', function () { mailTl.restart(); });
+    }
+
+    var fbBtn = document.querySelector('.sk-social-btn--fb');
+    if (fbBtn) {
+      var fbSvg = fbBtn.querySelector('svg');
+      var fbTl  = gsap.timeline({ paused: true });
+      fbTl
+        .to(fbSvg, { y: -4, duration: 0.2,  ease: 'power2.out' })
+        .to(fbSvg, { y:  0, duration: 0.45, ease: 'elastic.out(1, 0.45)' });
+      fbBtn.addEventListener('mouseenter', function () { fbTl.restart(); });
+    }
+  })();
+
+  /* ── Lenis smooth scroll + ScrollTrigger sync ── */
+  (function () {
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    var isTouch  = window.matchMedia('(pointer: coarse)').matches || ('ontouchstart' in window);
+    gsap.registerPlugin(ScrollTrigger);
+    if (!reduced && !isTouch && typeof Lenis !== 'undefined') {
+      var lenis = new Lenis({
+        duration: 1.15,
+        easing: function (t) { return Math.min(1, 1.001 - Math.pow(2, -10 * t)); }
+      });
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add(function (time) { lenis.raf(time * 1000); });
+      gsap.ticker.lagSmoothing(0);
+    }
+  })();
+
+  /* ── Footer entrance animation ── */
+  (function () {
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return;
+    var footer = document.getElementById('sk-footer');
+    if (!footer) return;
+    var tagline = footer.querySelector('.sk-footer__tagline');
+    var rule    = footer.querySelector('.sk-footer__rule');
+    var logos   = footer.querySelector('.sk-footer__logos');
+    var cols    = footer.querySelectorAll('.sk-footer__col');
+    var bottom  = footer.querySelector('.sk-footer__bottom');
+    gsap.set(rule, { scaleX: 0 });
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: footer,
+        start:   'top 88%',
+        toggleActions: 'play none none none'
+      }
+    })
+    .fromTo(tagline, { y: 22, opacity: 0 }, { y: 0, opacity: 1, duration: 0.85, ease: 'expo.out' })
+    .to(rule,        { scaleX: 1, duration: 0.7, ease: 'expo.out', transformOrigin: 'center' }, '-=0.5')
+    .fromTo(logos,   { y: 16, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6,  ease: 'expo.out' }, '-=0.35')
+    .fromTo(cols,    { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.65, ease: 'expo.out', stagger: 0.12 }, '-=0.3')
+    .fromTo(bottom,  { opacity: 0 },        { opacity: 1,        duration: 0.5,  ease: 'expo.out' }, '-=0.15');
+  })();
+
+  /* ── Character-by-character heading reveal ── */
+  (function () {
+    function splitGraphemes(text) {
+      if (typeof Intl !== 'undefined' && 'Segmenter' in Intl) {
+        var seg = new Intl.Segmenter('en', { granularity: 'grapheme' });
+        return Array.from(seg.segment(text), function (s) { return s.segment; });
+      }
+      return Array.from(text);
+    }
+
+    function setup() {
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var reveals = document.querySelectorAll('.scroll-text-reveal');
+
+      reveals.forEach(function (el) {
+        var text  = el.dataset.text || el.textContent.trim();
+        var words = text.split(' ');
+        el.innerHTML = '';
+        var charIdx = 0;
+
+        words.forEach(function (word, wi) {
+          var wordSpan = document.createElement('span');
+          wordSpan.className = 'scroll-text-word';
+
+          splitGraphemes(word).forEach(function (char) {
+            var charSpan = document.createElement('span');
+            charSpan.className = 'scroll-text-char';
+            charSpan.textContent = char;
+            if (!reduced) charSpan.style.setProperty('--char-index', charIdx);
+            wordSpan.appendChild(charSpan);
+            charIdx++;
+          });
+
+          el.appendChild(wordSpan);
+          if (wi < words.length - 1) el.appendChild(document.createTextNode(' '));
+        });
+
+        if (reduced) el.classList.add('is-visible');
+      });
+
+      if (reduced) return;
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.2 });
+
+      reveals.forEach(function (el) { observer.observe(el); });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', setup);
+    } else {
+      setup();
+    }
+  })();
+
+  /* ── Click spark ── */
+  (function () {
+    var canvas = document.getElementById('global-click-spark');
+    if (!canvas) return;
+    var ctx    = canvas.getContext('2d');
+    var sparks = [];
+    var dpr    = window.devicePixelRatio || 1;
+
+    function resize() {
+      canvas.width  = window.innerWidth  * dpr;
+      canvas.height = window.innerHeight * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    document.addEventListener('click', function (e) {
+      var now = performance.now();
+      for (var i = 0; i < 10; i++) {
+        sparks.push({ x: e.clientX, y: e.clientY, angle: (2 * Math.PI * i) / 10, startTime: now });
+      }
+    });
+
+    function ease(t) { return t * (2 - t); }
+    function draw(ts) {
+      ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+      for (var i = sparks.length - 1; i >= 0; i--) {
+        var s  = sparks[i];
+        var el = ts - s.startTime;
+        if (el >= 460) { sparks.splice(i, 1); continue; }
+        var p  = el / 460;
+        var e  = ease(p);
+        var d  = e * 24;
+        var ll = 12 * (1 - e);
+        var x1 = s.x + d  * Math.cos(s.angle);
+        var y1 = s.y + d  * Math.sin(s.angle);
+        var x2 = s.x + (d + ll) * Math.cos(s.angle);
+        var y2 = s.y + (d + ll) * Math.sin(s.angle);
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth   = 2;
+        ctx.lineCap     = 'round';
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+      }
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+  })();
+
+})();
+
+
+  /* Contact page animations */
+  (function () {
+    if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+    var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    var WAVES = [
+      {
+        pathId: 'sk-wave-path-2',
+        wrapperId: 'sk-wave-divider-2',
+        dA: 'M 0 0 L 1440 0 L 1440 14 C 1080 22 360 76 0 88 Z',
+        dB: 'M 0 0 L 1440 0 L 1440 50 C 1080 112 360 20 0 72 Z'
+      },
+      {
+        pathId: 'sk-wave-path-enquiry-top',
+        wrapperId: 'sk-wave-divider-enquiry-top',
+        dA: 'M 0 120 L 1440 120 L 1440 34 C 1080 48 360 98 0 72 Z',
+        dB: 'M 0 120 L 1440 120 L 1440 70 C 1080 16 360 116 0 48 Z'
+      }
+    ];
+
+    WAVES.forEach(function (cfg) {
+      var path = document.getElementById(cfg.pathId);
+      var wrapper = document.getElementById(cfg.wrapperId);
+      if (!path || !wrapper || reduced) return;
+      gsap.set(path, { attr: { d: cfg.dA } });
+      gsap.timeline({
+        scrollTrigger: {
+          trigger: wrapper,
+          start: 'top 100%',
+          end: 'bottom 0%',
+          scrub: 1.6
+        }
+      })
+      .fromTo(path, { attr: { d: cfg.dA } }, { attr: { d: cfg.dB }, ease: 'sine.inOut' })
+      .to(path, { attr: { d: cfg.dA }, ease: 'sine.inOut' });
+    });
+
+    if (reduced) return;
+
+    /* Pre-set hero elements immediately so they never flash visible before load */
+    gsap.set('.sk-contact-hero__heading', { y: 28 });
+    gsap.set('.sk-hero-image-wrap img',   { scale: 1.09 });
+
+    window.addEventListener('load', function () {
+      var heroHeading = document.querySelector('.sk-contact-hero__heading');
+      var heroImage   = document.querySelector('.sk-hero-image-wrap img');
+      if (!heroHeading) return;
+      gsap.timeline({ defaults: { ease: 'expo.out' } })
+        .to(heroImage,   { scale: 1.04, duration: 1.6, ease: 'power3.out' }, 0)
+        .to(heroHeading, { y: 0,        duration: 1.05 }, 0.15);
+    });
+
+    /* Pre-hide all scroll-animated elements immediately (before any paint) */
+    gsap.set([
+      '.sk-contact-intro__body',
+      '.sk-get-in-touch__details',
+      '.sk-contact-detail',
+      '.sk-map-frame',
+      '.sk-enquiry__panel',
+      '.sk-enquiry-form',
+      '.sk-form-field',
+      '.sk-enquiry-form__actions',
+      '.sk-next-card',
+      '.sk-next-card .sk-btn-wipe',
+      '.sk-next-card .sk-social-chip'
+    ], { autoAlpha: 0 });
+
+    gsap.fromTo('.sk-contact-intro__body',
+      { y: 26, autoAlpha: 0 },
+      { y: 0, autoAlpha: 1, duration: 0.9, ease: 'expo.out', scrollTrigger: { trigger: '.sk-contact-intro', start: 'top 78%', once: true } }
+    );
+
+    var contactRows = document.querySelectorAll('.sk-contact-detail');
+    gsap.timeline({ scrollTrigger: { trigger: '.sk-get-in-touch', start: 'top 76%', once: true } })
+      .fromTo('.sk-get-in-touch__details', { y: 34, autoAlpha: 0, scale: 0.985 }, { y: 0, autoAlpha: 1, scale: 1, duration: 0.9, ease: 'expo.out' })
+      .fromTo(contactRows, { x: -18, autoAlpha: 0 }, { x: 0, autoAlpha: 1, duration: 0.55, ease: 'expo.out', stagger: 0.1 }, '-=0.35')
+      .fromTo('.sk-map-frame', { clipPath: 'inset(12% round 18px)', y: 34, autoAlpha: 0 }, { clipPath: 'inset(0% round 18px)', y: 0, autoAlpha: 1, duration: 1.05, ease: 'expo.out' }, '-=0.45');
+
+    gsap.timeline({ scrollTrigger: { trigger: '#sk-enquiry', start: 'top 76%', once: true } })
+      .fromTo('.sk-enquiry__panel', { y: 30, autoAlpha: 0, scale: 0.985 }, { y: 0, autoAlpha: 1, scale: 1, duration: 0.85, ease: 'expo.out' })
+      .fromTo('.sk-enquiry-form', { y: 34, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.9, ease: 'expo.out' }, '-=0.5')
+      .fromTo('.sk-form-field, .sk-enquiry-form__actions', { y: 16, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.52, ease: 'expo.out', stagger: 0.06 }, '-=0.45');
+
+    gsap.timeline({ scrollTrigger: { trigger: '#sk-next-steps', start: 'top 78%', once: true } })
+      .fromTo('.sk-next-card', { y: 28, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.75, ease: 'expo.out', stagger: 0.14 })
+      .fromTo('.sk-next-card .sk-btn-wipe, .sk-next-card .sk-social-chip', { y: 14, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.48, ease: 'expo.out', stagger: 0.08 }, '-=0.3');
+
+    /* ── Submit loading state ── */
+    var enquiryForm = document.querySelector('.sk-enquiry-form');
+    if (enquiryForm) {
+      enquiryForm.addEventListener('submit', function () {
+        var btn = enquiryForm.querySelector('[type="submit"]');
+        if (btn) {
+          btn.disabled = true;
+          btn.textContent = 'Sending…';
+        }
+      });
+    }
+
+    /* ── Status toast from ?status= param ── */
+    (function () {
+      var params  = new URLSearchParams(window.location.search);
+      var status  = params.get('status');
+      if (!status) return;
+
+      /* Clean URL without reload */
+      history.replaceState(null, '', window.location.pathname);
+
+      var isSent  = status === 'sent';
+      var toast   = document.createElement('div');
+      toast.setAttribute('role', 'status');
+      toast.setAttribute('aria-live', 'polite');
+      toast.style.cssText = [
+        'position:fixed',
+        'bottom:32px',
+        'left:50%',
+        'transform:translateX(-50%) translateY(16px)',
+        'display:flex',
+        'align-items:center',
+        'gap:14px',
+        'padding:18px 28px',
+        'border-radius:8px',
+        "font-family:'Inter',ui-sans-serif,system-ui,sans-serif",
+        'font-size:15px',
+        'font-weight:600',
+        'letter-spacing:-0.01em',
+        'color:#ffffff',
+        'white-space:nowrap',
+        'z-index:9999',
+        'opacity:0',
+        'transition:opacity 0.4s ease, transform 0.4s cubic-bezier(0.16,1,0.3,1)',
+        'pointer-events:none',
+        'background-color:' + (isSent ? '#051E42' : '#8A2232'),
+        'box-shadow:0 8px 32px rgba(5,30,66,0.22)',
+      ].join(';');
+
+      var icon = isSent
+        ? '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><path d="M6 10.5l2.5 2.5 5.5-5.5" stroke="#fff" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+        : '<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="9" stroke="rgba(255,255,255,0.4)" stroke-width="1.5"/><path d="M10 6v4.5M10 14h.01" stroke="#fff" stroke-width="1.75" stroke-linecap="round"/></svg>';
+
+      var msg = isSent
+        ? 'Your message has been sent. We\'ll be in touch.'
+        : 'Something went wrong. Please try again or call us.';
+
+      toast.innerHTML = icon + '<span>' + msg + '</span>';
+      document.body.appendChild(toast);
+
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          toast.style.opacity  = '1';
+          toast.style.transform = 'translateX(-50%) translateY(0)';
+        });
+      });
+
+      setTimeout(function () {
+        toast.style.opacity   = '0';
+        toast.style.transform = 'translateX(-50%) translateY(12px)';
+        setTimeout(function () { toast.remove(); }, 500);
+      }, isSent ? 6000 : 8000);
+
+      /* Scroll to form on error so user can retry */
+      if (!isSent) {
+        var section = document.getElementById('sk-enquiry');
+        if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    })();
+
+  })();
+  </script>
+
+</body>
+</html>
