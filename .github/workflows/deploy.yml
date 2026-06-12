@@ -1,0 +1,30 @@
+name: Sync deploy branch
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'site/**'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Push site/ contents to deploy branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          cd site
+
+          git init
+          git add -A
+          git commit -m "deploy: ${GITHUB_SHA::7} — $(date -u '+%Y-%m-%d %H:%M UTC')"
+          git push --force \
+            https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git \
+            HEAD:refs/heads/deploy
