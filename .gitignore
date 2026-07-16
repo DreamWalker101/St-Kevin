@@ -45,5 +45,7 @@ coverage/
 Downloads/
 .gstack/
 
-# Admin credentials — never commit
+# Admin credentials & per-environment admin data — never commit
 site/admin/config.php
+site/admin/emails.json
+site/admin/otp-debug.log

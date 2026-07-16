@@ -45,29 +45,40 @@ These are per-environment and intentionally **not** in git.
 
 ### 2a. Admin dashboard — clears the current 500  ← DO THIS FIRST
 `https://dev.on5.io/st-kevins/admin/` returns **500** only because
-`admin/config.php` is missing on the server. The admin uses **password auth**
-(bcrypt), not OTP.
+`admin/config.php` is missing on the server. The admin uses **email-OTP login**
+(same as the other school sites) and needs **two** per-environment files —
+`config.php` and `emails.json`. Both are gitignored and excluded from deploy, so
+create them once on the server.
 
-```bash
-# 1. Generate a bcrypt hash of your chosen admin password
-php -r "echo password_hash('CHOOSE-A-STRONG-PASSWORD', PASSWORD_BCRYPT, ['cost'=>12]), PHP_EOL;"
-
-# 2. Create the file (gitignored, never committed)
-#    ~/public_html/st-kevins/admin/config.php
-```
-`admin/config.php` contents:
+**1) `~/public_html/st-kevins/admin/config.php`**
 ```php
 <?php
-// Admin password hash — never commit this file to git.
-define('ADMIN_PASSWORD_HASH', '$2y$12$...paste-the-hash-from-step-1...');
+define('DEV_MODE', true);                       // staging: OTP is logged, not emailed
+define('OTP_FROM_EMAIL', 'noreply@dev.on5.io'); // real domain: use noreply@<real-domain>
+define('OTP_FROM_NAME',  "St Kevin's Hampton Park");
 ```
-Then:
+
+**2) `~/public_html/st-kevins/admin/emails.json`** — allowed admin login emails (JSON array)
+```json
+[
+  "administration@skhamptonpark.catholic.edu.au"
+]
+```
+
+**3) Permissions**
 ```bash
-chmod 644 ~/public_html/st-kevins/admin/config.php
+chmod 644 ~/public_html/st-kevins/admin/config.php ~/public_html/st-kevins/admin/emails.json
 ```
-Reload `/st-kevins/admin/` — the login page should render (no more 500).
-> Note: `admin/emails.json` is **not** used by this site's admin (that's the
-> OTP-based schools). Only `config.php` with `ADMIN_PASSWORD_HASH` is required.
+
+**4) How to log in** — go to `/st-kevins/admin/`, enter an allowed email → a 6-digit
+code is issued (expires 10 min; 5 wrong attempts locks it; 60s between requests).
+- **Staging (`DEV_MODE = true`):** the code is **not** emailed (dev.on5.io mail is
+  unreliable) — read it from the log:
+  ```bash
+  tail -n 5 ~/public_html/st-kevins/admin/otp-debug.log
+  ```
+- **Real domain (`DEV_MODE = false`):** the code is emailed — needs working
+  SPF/DKIM/DMARC on the sending domain (see §2c / §3).
 
 ### 2b. Permissions
 Folders `755`, files `644`. (The site folder was normalised from `705 → 755`
