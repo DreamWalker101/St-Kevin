@@ -1,6 +1,0 @@
----
-deployment:
-  tasks:
-    - export DEPLOYPATH=/home/devon5io/public_html/st-kevins-plainpress/
-    - /bin/cp -R site/* $DEPLOYPATH
-    - /bin/cp deploy.php $DEPLOYPATH

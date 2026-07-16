@@ -44,7 +44,7 @@ The site replaces an existing WordPress site. Design is inspired by [Green Schoo
 | Phone | (03) 9709 8600 |
 | Email | administration@skhamptonpark.catholic.edu.au |
 | Current site | https://www.skhamptonpark.catholic.edu.au/ |
-| Staging | https://dev.on5.io/st-kevins/home/ |
+| Staging | https://dev.on5.io/st-kevins/ |
 
 ---
 
